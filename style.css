@@ -192,3 +192,26 @@ footer a.to-top {
     display: block;
   }
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+}
+.logo-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    display: inline-block;
+}
+.logo-text {
+    font-weight: 700;
+    font-size: 1.125rem;
+    line-height: 1;
+}
+@media (max-width: 600px) {
+    .logo-text { display: none; } /* hide text on small screens if desired */
+    .logo-img { width: 34px; height: 34px; }
+}
