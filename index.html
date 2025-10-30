@@ -3,132 +3,1137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="efNJZ4wc5BaR5UKpLvS6WC7RUCAVWaqDGSKnBfpS2tQ" />
 
+    <!-- Schema.org structured data -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "Organization",
+            "name": "Crescent Youth vzw",
             "url": "https://crescentyouth.be",
-            "logo": "https://crescentyouth.be/favicon.ico"
+            "logo": "https://crescentyouth.be/images/crescent_youtrh_logo-removebg-%20-%20Copy.png",
+            "description": "Inspirerende jeugdorganisatie in Brugge rond Islam, educatie, sport en gemeenschap",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Molenwiekstraat-West 13",
+                "addressLocality": "Brugge",
+                "postalCode": "8200",
+                "addressCountry": "BE"
+            },
+            "email": "info@crescentyouth.be",
+            "foundingDate": "2020",
+            "sameAs": [
+                "https://www.facebook.com/crescentyouth",
+                "https://www.instagram.com/crescentyouth"
+            ]
         }
     </script>
-
 
     <!-- Favicon & SEO -->
     <title>Crescent Youth vzw – Brugge</title>
     <meta name="description" content="Crescent Youth vzw: Inspirerende jeugdorganisatie in Brugge rond Islam, educatie, sport en gemeenschap.">
-    <meta name="google-site-verification" content="efNJZ4wc5BaR5UKpLvS6WC7RUCAVWaqDGSKnBfpS2tQ" />
-
-    <!-- Favicon links -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="/favicon.ico">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="comply_with_law/banner.css">
+    <style>
+        :root {
+            --primary: #0f2027;
+            --accent: #4fd1c5;
+            --accent-dark: #38b2ac;
+            --text-light: #f8f9fa;
+            --text-dark: #222;
+            --bg: #f4f7fa;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
 
-    <!-- JS -->
-    <script defer src="script.js"></script>
-    <script defer src="comply_with_law/banner.js"></script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header.navbar {
+            background: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 30px;
+            background: rgba(15, 32, 39, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            line-height: 1;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            background: rgba(79, 209, 197, 0.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: rotate(90deg);
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: var(--text-light);
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(79, 209, 197, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero .btn {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 209, 197, 0.4);
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .hero .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(79, 209, 197, 0.6);
+            background: var(--accent-dark);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Quick Stats Section */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .stat-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section.alt {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .value-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .value-card i {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            transition: transform 0.4s ease;
+        }
+
+        .value-card:hover i {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Activities Grid */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .activity-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .activity-icon {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .activity-icon i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .activity-content {
+            padding: 30px;
+        }
+
+        .activity-content h3 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .activity-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 5px 20px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-member i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .team-member h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .team-member p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-section .btn {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 209, 197, 0.4);
+        }
+
+        .cta-section .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(79, 209, 197, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 2;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 30px;
+        }
+
+        .footer-links {
+            margin: 15px 0;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-links a::after {
+            content: '|';
+            margin-left: 20px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-links a:last-child::after {
+            content: '';
+            margin-left: 0;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            animation: slideUp 0.4s ease;
+        }
+
+        .cookie-banner.show {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .cookie-banner p {
+            margin: 0;
+            flex: 1;
+            font-size: 0.95rem;
+        }
+
+        .cookie-banner a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        .cookie-banner button {
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .cookie-banner button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(79, 209, 197, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 15px;
+            }
+
+            .cookie-banner button {
+                width: 100%;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-links a::after {
+                content: '';
+                margin-left: 0;
+            }
+        }
+
+        .to-top {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(79, 209, 197, 0.4);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                background: var(--primary);
+                padding: 30px;
+                border-radius: 16px 0 0 16px;
+                box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.3);
+                transition: right 0.4s ease;
+                width: 250px;
+                gap: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 20px;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: 20px;
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-
 <body>
 <header class="navbar">
     <a href="index.html" class="logo">
-        <img src="/images/crescent_youtrh_logo-removebg-%20-%20Copy.png" alt="Crescent Youth logo" class="logo-img">
+        <img src="images/crescent_youtrh_logo-removebg-%20-%20Copy.png" alt="Crescent Youth logo" class="logo-img">
         <span class="logo-text">Crescent Youth</span>
     </a>
     <nav>
-        <ul class="nav-links">
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
             <li><a href="#missie">Missie</a></li>
             <li><a href="#waarden">Waarden</a></li>
             <li><a href="#activiteiten">Activiteiten</a></li>
-            <li><a href="#oprichters">Structuur</a></li>
-            <li><a href="#vzw">VZW</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
-    <div class="menu-toggle" id="mobile-menu"><i class="fas fa-bars"></i></div>
+    <div class="menu-toggle" id="mobile-menu">
+        <i class="fas fa-bars"></i>
+    </div>
 </header>
 
 <section class="hero">
-    <h1>🌙 Welkom bij Crescent Youth</h1>
-    <p>Een brug tussen jongeren en het islamitische geloof via educatie, sport en inspiratie.</p>
-    <a href="#missie" class="btn">Ontdek Meer</a>
-</section>
-
-<section id="missie" class="section">
-    <h2>Onze Missie</h2>
-    <p>Wij brengen jongeren dichter bij het geloof via educatieve en sociale initiatieven.</p>
-</section>
-
-<section id="waarden" class="section alt">
-    <h2>Kernwaarden</h2>
-    <div class="values-grid">
-        <div><i class="fas fa-book"></i><h3>Educatie</h3><p>Diepgaande islamitische kennis</p></div>
-        <div><i class="fas fa-mosque"></i><h3>Religie</h3><p>Geloof als leidraad</p></div>
-        <div><i class="fas fa-users"></i><h3>Verbinding</h3><p>Een warme gemeenschap</p></div>
-        <div><i class="fas fa-balance-scale"></i><h3>Integriteit</h3><p>Eerlijk & betrouwbaar</p></div>
+    <div class="hero-content">
+        <h1>🌙 Welkom bij Crescent Youth</h1>
+        <p>Een brug tussen jongeren en het islamitische geloof via educatie, sport en inspiratie.</p>
+        <a href="#missie" class="btn">Ontdek Meer</a>
     </div>
 </section>
 
-<section id="activiteiten" class="section">
+<div class="quick-stats fade-in">
+    <div class="stat-card">
+        <i class="fas fa-users"></i>
+        <h3>500+</h3>
+        <p>Actieve Jongeren</p>
+    </div>
+    <div class="stat-card">
+        <i class="fas fa-calendar-check"></i>
+        <h3>50+</h3>
+        <p>Evenementen per jaar</p>
+    </div>
+    <div class="stat-card">
+        <i class="fas fa-star"></i>
+        <h3>5+</h3>
+        <p>Jaren Ervaring</p>
+    </div>
+    <div class="stat-card">
+        <i class="fas fa-heart"></i>
+        <h3>100%</h3>
+        <p>Toewijding</p>
+    </div>
+</div>
+
+<section id="missie" class="section fade-in">
+    <h2>Onze Missie</h2>
+    <p class="section-intro">
+        Crescent Youth vzw heeft als missie om jongeren dichter bij het islamitische geloof te brengen door middel van educatieve programma's, sportieve activiteiten en gemeenschapsinitiatieven. Wij geloven in holistische ontwikkeling van lichaam, geest en ziel.
+    </p>
+</section>
+
+<section id="waarden" class="section alt fade-in">
+    <h2>Kernwaarden</h2>
+    <p class="section-intro">
+        Onze organisatie is gebouwd op vier fundamentele pilaren die ons werk en onze gemeenschap leiden.
+    </p>
+    <div class="values-grid">
+        <div class="value-card">
+            <i class="fas fa-book"></i>
+            <h3>Educatie</h3>
+            <p>Diepgaande islamitische kennis en persoonlijke ontwikkeling door middel van workshops, lezingen en studieprogramma's.</p>
+        </div>
+        <div class="value-card">
+            <i class="fas fa-mosque"></i>
+            <h3>Religie</h3>
+            <p>Het islamitische geloof als leidraad voor ons dagelijks leven, morele keuzes en gemeenschapsactiviteiten.</p>
+        </div>
+        <div class="value-card">
+            <i class="fas fa-users"></i>
+            <h3>Verbinding</h3>
+            <p>Een warme, inclusieve gemeenschap waar jongeren zich thuis voelen en vriendschappen voor het leven sluiten.</p>
+        </div>
+        <div class="value-card">
+            <i class="fas fa-balance-scale"></i>
+            <h3>Integriteit</h3>
+            <p>Eerlijkheid, betrouwbaarheid en transparantie in alles wat we doen, van financiën tot interpersoonlijke relaties.</p>
+        </div>
+    </div>
+</section>
+
+<section id="activiteiten" class="section fade-in">
     <h2>Activiteiten</h2>
-    <ul class="icon-list">
-        <li><i class="fas fa-chalkboard-teacher"></i> Lezingen & workshops</li>
-        <li><i class="fas fa-futbol"></i> Sport: voetbal, basket, zwemmen</li>
-        <li><i class="fas fa-horse"></i> Paardrijden & boogschieten</li>
-        <li><i class="fas fa-handshake"></i> Samenwerkingen & evenementen</li>
-        <li><i class="fas fa-kaaba"></i> Omra organisatie (in toekomst)</li>
-    </ul>
+    <p class="section-intro">
+        Ontdek onze diverse activiteiten die jongeren helpen groeien in geloof, kennis en fysieke fitheid.
+    </p>
+    <div class="activities-grid">
+        <div class="activity-card">
+            <div class="activity-icon">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="activity-content">
+                <h3>Lezingen & Workshops</h3>
+                <p>Regelmatige educatieve sessies over islamitische kennis, persoonlijke ontwikkeling en actuele thema's met gastsprekers.</p>
+            </div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-icon">
+                <i class="fas fa-futbol"></i>
+            </div>
+            <div class="activity-content">
+                <h3>Sport Activiteiten</h3>
+                <p>Wekelijkse voetbal, basketbal en zwemactiviteiten om gezondheid en teamwork te bevorderen.</p>
+            </div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-icon">
+                <i class="fas fa-horse"></i>
+            </div>
+            <div class="activity-content">
+                <h3>Paardrijden & Boogschieten</h3>
+                <p>Traditionele islamitische sporten zoals aanbevolen door de Profeet (vrede zij met hem).</p>
+            </div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <div class="activity-content">
+                <h3>Samenwerkingen</h3>
+                <p>Partnerships met andere organisaties voor grotere evenementen en gemeenschapsprojecten.</p>
+            </div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-icon">
+                <i class="fas fa-kaaba"></i>
+            </div>
+            <div class="activity-content">
+                <h3>Omra Organisatie</h3>
+                <p>Toekomstige plannen voor georganiseerde Omra-reizen voor onze gemeenschap.</p>
+            </div>
+        </div>
+        <div class="activity-card">
+            <div class="activity-icon">
+                <i class="fas fa-hands-helping"></i>
+            </div>
+            <div class="activity-content">
+                <h3>Vrijwilligerswerk</h3>
+                <p>Sociale projecten en liefdadigheidsinitiatieven om de bredere gemeenschap te dienen.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="oprichters" class="section alt">
-    <h2>Oprichters & Structuur</h2>
-    <p><strong>Nadir, Makhtar, Sharfuddeen, Wasim, Khalid</strong></p>
-    <p>We bespreken functies, rollen en vrijwilligersstructuur.</p>
+<section id="team" class="section alt fade-in">
+    <h2>Oprichters & Team</h2>
+    <p class="section-intro">
+        Ons toegewijde team van oprichters en vrijwilligers werkt hard om onze missie waar te maken.
+    </p>
+    <div class="team-grid">
+        <div class="team-member">
+            <i class="fas fa-user-tie"></i>
+            <h3>Nadir</h3>
+            <p>Medeoprichter</p>
+        </div>
+        <div class="team-member">
+            <i class="fas fa-user-tie"></i>
+            <h3>Makhtar</h3>
+            <p>Medeoprichter</p>
+        </div>
+        <div class="team-member">
+            <i class="fas fa-user-tie"></i>
+            <h3>Sharfuddeen</h3>
+            <p>Medeoprichter</p>
+        </div>
+        <div class="team-member">
+            <i class="fas fa-user-tie"></i>
+            <h3>Wasim</h3>
+            <p>Medeoprichter</p>
+        </div>
+        <div class="team-member">
+            <i class="fas fa-user-tie"></i>
+            <h3>Khalid</h3>
+            <p>Medeoprichter</p>
+        </div>
+    </div>
 </section>
 
-<section id="vzw" class="section">
-    <h2>VZW Oprichten</h2>
-    <ol class="steps">
-        <li>🎯 Doel bepalen: Missie & waarden</li>
-        <li>🔤 Unieke naam: Crescent Youth</li>
-        <li>👥 Min. 2 oprichters</li>
-        <li>📆 Oprichtingsvergadering & contracten</li>
-        <li>📜 Statuten opstellen</li>
-        <li>📰 Publicatie Belgisch Staatsblad</li>
-        <li>🏢 Inschrijving bij KBO</li>
-        <li>🏦 Bankrekening openen</li>
-        <li>📚 Boekhouding voeren</li>
-        <li>🛡️ Verzekeringen afsluiten</li>
-        <li>💶 Subsidies onderzoeken</li>
-    </ol>
-</section>
-
-<section id="contact" class="section alt">
-    <h2>Contact</h2>
-    <p>📍 Molenwiekstraat-West 13, 8200 Brugge</p>
-    <p>📧 <a href="mailto:info@crescentyouth.be">info@crescentyouth.be</a></p>
+<section class="cta-section">
+    <h2>Sluit je aan bij onze gemeenschap</h2>
+    <p>Word onderdeel van een groeiende beweging van geïnspireerde jongeren</p>
+    <a href="contact.html" class="btn">Neem Contact Op</a>
 </section>
 
 <footer>
-    <p>&copy; 2025 Crescent Youth vzw</p>
-    <p>
-        <a href="/comply_with_law/terms-and-conditions.html">Algemene Voorwaarden</a> |
-        <a href="/comply_with_law/privacy-policy.html">Privacybeleid</a> |
-        <a href="/comply_with_law/cookie-policy.html">Cookiebeleid</a>
-
-    <a href="#" class="to-top"><i class="fas fa-arrow-up"></i> Bovenaan</a>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Crescent Youth vzw</h3>
+            <p>Een brug tussen jongeren en het islamitische geloof via educatie, sport en inspiratie.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>Snelle Links</h3>
+            <p><a href="index.html">Home</a></p>
+            <p><a href="#missie">Missie</a></p>
+            <p><a href="#waarden">Waarden</a></p>
+            <p><a href="#activiteiten">Activiteiten</a></p>
+            <p><a href="contact.html">Contact</a></p>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Info</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Molenwiekstraat-West 13<br>8200 Brugge, België</p>
+            <p><i class="fas fa-envelope"></i> info@crescentyouth.be</p>
+            <p><i class="fas fa-phone"></i> +32 (0)50 XXX XXX</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Crescent Youth vzw - Alle rechten voorbehouden</p>
+        <div class="footer-links">
+            <a href="/comply_with_law/terms-and-conditions.html">Algemene Voorwaarden</a>
+            <a href="/comply_with_law/privacy-policy.html">Privacybeleid</a>
+            <a href="/comply_with_law/cookie-policy.html">Cookiebeleid</a>
+        </div>
+        <a href="#" class="to-top"><i class="fas fa-arrow-up"></i> Terug naar boven</a>
+    </div>
 </footer>
+
 <!-- Cookie Banner -->
 <div id="cookie-banner" class="cookie-banner">
     <p>We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons <a href="/comply_with_law/cookie-policy.html">cookiebeleid</a>.</p>
-    <button onclick="acceptCookies()">Akkoord</button>
+    <button id="cookie-accept">Akkoord</button>
 </div>
 
+<script>
+    // Mobile menu toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+
+    mobileMenu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = mobileMenu.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = mobileMenu.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        });
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // Scroll to top button
+    document.querySelector('.to-top').addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Fade-in animation on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+
+    // Animate stat numbers
+    const animateStats = () => {
+        const stats = document.querySelectorAll('.stat-card h3');
+        stats.forEach(stat => {
+            const target = parseInt(stat.textContent);
+            let current = 0;
+            const increment = target / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    stat.textContent = target + (stat.textContent.includes('+') ? '+' : '') + (stat.textContent.includes('%') ? '%' : '');
+                    clearInterval(timer);
+                } else {
+                    stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '') + (stat.textContent.includes('%') ? '%' : '');
+                }
+            }, 30);
+        });
+    };
+
+    // Trigger stat animation when visible
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateStats();
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('.quick-stats');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
+    }
+
+    // Cookie Banner functionality
+    const cookieBanner = document.getElementById('cookie-banner');
+    const cookieAccept = document.getElementById('cookie-accept');
+
+    // Check if user has already accepted cookies
+    if (!localStorage.getItem('cookiesAccepted')) {
+        setTimeout(() => {
+            cookieBanner.classList.add('show');
+        }, 1000);
+    }
+
+    // Handle cookie acceptance
+    cookieAccept.addEventListener('click', () => {
+        localStorage.setItem('cookiesAccepted', 'true');
+        cookieBanner.classList.remove('show');
+        setTimeout(() => {
+            cookieBanner.style.display = 'none';
+        }, 400);
+    });
+</script>
 </body>
 </html>
