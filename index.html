@@ -32,24 +32,26 @@
     <!-- Favicon & SEO -->
     <title>Crescent Youth vzw – Brugge</title>
     <meta name="description" content="Crescent Youth vzw: Inspirerende jeugdorganisatie in Brugge rond Islam, educatie, sport en gemeenschap.">
-    <!-- Favicon -->
     <link rel="icon" href="https://crescentyouth.be/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="https://crescentyouth.be/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://crescentyouth.be/favicon.ico">
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
 
-    <!-- Stylesheets -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary: #0f2027;
-            --accent: #4fd1c5;
-            --accent-dark: #38b2ac;
+            --primary: #022248;
+            --accent: #7fe8ff;        /* soft premium accent */
+            --accent-dark: #5fcde8;   /* slightly darker version */
             --text-light: #f8f9fa;
-            --text-dark: #222;
+            --text-dark: #222222;
             --bg: #f4f7fa;
             --card-bg: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.1);
+            --shadow: rgba(0, 0, 0, 0.08);
         }
 
         * {
@@ -72,22 +74,22 @@
 
         /* Header & Navigation */
         header.navbar {
-            background: var(--primary);
+            background: linear-gradient(90deg, #005ecb 0%, #3aaeea 50%, #6ef1ff 100%);
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 14px 26px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
             transition: all 0.3s ease;
         }
 
         .navbar.scrolled {
-            padding: 10px 30px;
-            background: rgba(15, 32, 39, 0.95);
+            padding: 10px 24px;
+            background: linear-gradient(90deg, #004aa5 0%, #3193dc 50%, #6ef1ff 100%) !important;
             backdrop-filter: blur(10px);
         }
 
@@ -97,72 +99,75 @@
             gap: 0.75rem;
             text-decoration: none;
             color: inherit;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .logo:hover {
-            transform: scale(1.05);
+            transform: translateY(-1px) scale(1.02);
+            opacity: 0.95;
         }
 
         .logo-img {
-            width: 50px;
-            height: 50px;
+            width: 72px;
+            height: 72px;
             object-fit: contain;
-            border-radius: 8px;
+            border-radius: 18px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
         }
 
         .logo-text {
             font-weight: 700;
             font-size: 1.4rem;
-            line-height: 1;
-            color: var(--accent);
+            line-height: 1.1;
+            color: #fdfefe;
+            letter-spacing: 0.04em;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 1.8rem;
             align-items: center;
         }
 
         .nav-links a {
-            color: white;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 0.96rem;
             padding: 8px 16px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
+            border-radius: 999px;
+            transition: all 0.25s ease;
             position: relative;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: 6px;
             left: 50%;
             width: 0;
             height: 2px;
             background: var(--accent);
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             transform: translateX(-50%);
         }
 
         .nav-links a:hover::after {
-            width: 80%;
+            width: 55%;
         }
 
         .nav-links a:hover {
             color: var(--accent);
-            background: rgba(79, 209, 197, 0.1);
+            background: rgba(0, 0, 0, 0.14);
         }
 
         .menu-toggle {
             display: none;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: white;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
         .menu-toggle:hover {
@@ -172,10 +177,10 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background: linear-gradient(110deg, #005ecb 0%, #3aaeea 45%, #6ef1ff 100%);
             color: var(--text-light);
             text-align: center;
-            padding: 120px 20px 80px;
+            padding: 130px 20px 90px;
             position: relative;
             overflow: hidden;
         }
@@ -183,17 +188,20 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
+            top: -40%;
+            left: -35%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(79, 209, 197, 0.1) 0%, transparent 70%);
-            animation: rotate 30s linear infinite;
+            background:
+                    radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
+                    radial-gradient(circle at 90% 100%, rgba(255, 255, 255, 0.14) 0%, transparent 60%);
+            animation: floatGlow 24s linear infinite alternate;
+            opacity: 0.9;
         }
 
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+        @keyframes floatGlow {
+            from { transform: translate3d(0, 0, 0) scale(1); }
+            to   { transform: translate3d(-40px, 25px, 0) scale(1.05); }
         }
 
         .hero-content {
@@ -201,38 +209,48 @@
             z-index: 1;
             max-width: 800px;
             margin: 0 auto;
+            animation: heroFloat 7s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroFloat {
+            from { transform: translateY(0); }
+            to   { transform: translateY(-8px); }
         }
 
         .hero h1 {
+            font-family: 'Ubuntu', sans-serif !important;
+            font-weight: 700 !important;
             font-size: 3rem;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             animation: fadeInUp 1s ease;
+            letter-spacing: 0.05em;
         }
 
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 30px;
-            opacity: 0.95;
+            opacity: 0.96;
             animation: fadeInUp 1s ease 0.2s backwards;
+            font-style: italic;
         }
 
         .hero .btn {
             background: var(--accent);
             color: var(--primary);
             padding: 14px 32px;
-            border-radius: 50px;
+            border-radius: 999px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.02rem;
             display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(79, 209, 197, 0.4);
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
             animation: fadeInUp 1s ease 0.4s backwards;
         }
 
         .hero .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(79, 209, 197, 0.6);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
             background: var(--accent-dark);
         }
 
@@ -252,7 +270,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: -40px auto 60px;
             padding: 0 20px;
             position: relative;
@@ -261,33 +279,49 @@
 
         .stat-card {
             background: var(--card-bg);
-            padding: 30px 20px;
-            border-radius: 16px;
+            padding: 26px 20px;
+            border-radius: 22px;
             text-align: center;
-            box-shadow: 0 10px 30px var(--shadow);
-            transition: all 0.3s ease;
+            box-shadow: 0 12px 32px var(--shadow);
+            transition: all 0.28s ease;
             cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(127, 232, 255, 0.08), transparent);
+            opacity: 0;
+            transition: opacity 0.28s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
         }
 
         .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
         }
 
         .stat-card i {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            color: #005ecb;
+            margin-bottom: 10px;
         }
 
         .stat-card h3 {
             font-size: 2rem;
             color: var(--primary);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         .stat-card p {
-            color: #666;
+            color: #666666;
             font-size: 0.95rem;
         }
 
@@ -301,12 +335,13 @@
         .section h2 {
             color: var(--primary);
             margin-bottom: 15px;
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             text-align: center;
             position: relative;
             display: inline-block;
             left: 50%;
             transform: translateX(-50%);
+            letter-spacing: 0.03em;
         }
 
         .section h2::after {
@@ -315,18 +350,18 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
+            width: 80px;
+            height: 3px;
             background: var(--accent);
-            border-radius: 2px;
+            border-radius: 20px;
         }
 
         .section-intro {
             text-align: center;
-            font-size: 1.1rem;
-            color: #555;
+            font-size: 1.05rem;
+            color: #555555;
             margin-bottom: 50px;
-            max-width: 700px;
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -346,10 +381,10 @@
         .value-card {
             background: var(--card-bg);
             padding: 40px 30px;
-            border-radius: 16px;
+            border-radius: 22px;
             text-align: center;
-            box-shadow: 0 5px 20px var(--shadow);
-            transition: all 0.4s ease;
+            box-shadow: 0 5px 22px var(--shadow);
+            transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
             overflow: hidden;
@@ -358,43 +393,46 @@
         .value-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(127, 232, 255, 0.24), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .value-card:hover::before {
-            transform: scaleX(1);
+            opacity: 1;
         }
 
         .value-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .value-icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 999px;
+            margin: 0 auto 18px;
+            background: radial-gradient(circle at 30% 0%, #ffffff 0%, #6ef1ff 35%, #005ecb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
         }
 
         .value-card i {
-            font-size: 3.5rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-            transition: transform 0.4s ease;
-        }
-
-        .value-card:hover i {
-            transform: scale(1.1) rotate(5deg);
+            font-size: 2.4rem;
+            color: #ffffff;
         }
 
         .value-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .value-card p {
-            color: #666;
+            color: #666666;
             line-height: 1.6;
         }
 
@@ -408,42 +446,44 @@
 
         .activity-card {
             background: var(--card-bg);
-            border-radius: 16px;
+            border-radius: 22px;
             overflow: hidden;
-            box-shadow: 0 5px 20px var(--shadow);
-            transition: all 0.4s ease;
+            box-shadow: 0 6px 24px var(--shadow);
+            transition: all 0.3s ease;
             cursor: pointer;
+            transform-origin: center;
         }
 
         .activity-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.015);
+            box-shadow: 0 18px 46px rgba(0, 0, 0, 0.18);
         }
 
         .activity-icon {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-            padding: 40px;
+            background: linear-gradient(135deg, #005ecb 0%, #3aaeea 50%, #6ef1ff 100%);
+            padding: 36px;
             text-align: center;
         }
 
         .activity-icon i {
-            font-size: 4rem;
-            color: white;
+            font-size: 3rem;
+            color: #ffffff;
         }
 
         .activity-content {
-            padding: 30px;
+            padding: 28px 26px 30px;
         }
 
         .activity-content h3 {
             color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            font-size: 1.35rem;
+            margin-bottom: 8px;
         }
 
         .activity-content p {
-            color: #666;
+            color: #666666;
             line-height: 1.6;
+            font-size: 0.98rem;
         }
 
         /* Team Section */
@@ -457,37 +497,37 @@
         .team-member {
             background: var(--card-bg);
             padding: 30px 20px;
-            border-radius: 16px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 5px 20px var(--shadow);
-            transition: all 0.3s ease;
+            box-shadow: 0 5px 22px var(--shadow);
+            transition: all 0.28s ease;
         }
 
         .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.015);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
         }
 
         .team-member i {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 15px;
+            font-size: 2.6rem;
+            color: #005ecb;
+            margin-bottom: 12px;
         }
 
         .team-member h3 {
             color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 5px;
+            font-size: 1.25rem;
+            margin-bottom: 4px;
         }
 
         .team-member p {
-            color: #666;
+            color: #666666;
             font-size: 0.95rem;
         }
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+            background: linear-gradient(135deg, #022248 0%, #005ecb 45%, #3aaeea 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -496,12 +536,13 @@
 
         .cta-section h2 {
             color: white;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
+            font-size: 2.4rem;
+            margin-bottom: 18px;
+            letter-spacing: 0.03em;
         }
 
         .cta-section p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 30px;
             opacity: 0.9;
         }
@@ -510,18 +551,19 @@
             background: var(--accent);
             color: var(--primary);
             padding: 14px 32px;
-            border-radius: 50px;
+            border-radius: 999px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-weight: 700;
+            font-size: 1.05rem;
             display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(79, 209, 197, 0.4);
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
         }
 
         .cta-section .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(79, 209, 197, 0.6);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            background: var(--accent-dark);
         }
 
         /* Footer */
@@ -544,13 +586,15 @@
         .footer-section h3 {
             color: var(--accent);
             margin-bottom: 15px;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
         }
 
-        .footer-section p, .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.82);
             text-decoration: none;
             line-height: 2;
+            font-size: 0.95rem;
         }
 
         .footer-section a:hover {
@@ -568,22 +612,33 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .social-links a i {
+            font-size: 1.2rem;
         }
 
         .social-links a:hover {
             background: var(--accent);
             transform: translateY(-3px);
+            color: var(--primary);
         }
 
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 18px;
             margin-top: 30px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            opacity: 0.85;
         }
 
         .footer-links {
@@ -591,10 +646,11 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.82);
             text-decoration: none;
             margin: 0 10px;
-            transition: color 0.3s ease;
+            transition: color 0.25s ease;
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover {
@@ -612,6 +668,27 @@
             margin-left: 0;
         }
 
+        .to-top {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 9px 20px;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 999px;
+            transition: all 0.25s ease;
+            font-size: 0.9rem;
+        }
+
+        .to-top i {
+            margin-right: 6px;
+        }
+
+        .to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 16px rgba(0, 0, 0, 0.25);
+        }
+
         /* Cookie Banner */
         .cookie-banner {
             position: fixed;
@@ -620,7 +697,7 @@
             right: 0;
             background: var(--primary);
             color: white;
-            padding: 20px;
+            padding: 18px 20px;
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
             z-index: 9999;
             display: none;
@@ -646,7 +723,7 @@
         .cookie-banner p {
             margin: 0;
             flex: 1;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .cookie-banner a {
@@ -658,94 +735,93 @@
             background: var(--accent);
             color: var(--primary);
             border: none;
-            padding: 10px 30px;
-            border-radius: 50px;
-            font-weight: bold;
+            padding: 9px 26px;
+            border-radius: 999px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             white-space: nowrap;
+            font-size: 0.9rem;
         }
 
         .cookie-banner button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(79, 209, 197, 0.4);
+            transform: scale(1.04);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
         }
 
-        @media (max-width: 768px) {
-            .cookie-banner {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 15px;
-            }
-
-            .cookie-banner button {
-                width: 100%;
-            }
-
-            .footer-links {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .footer-links a::after {
-                content: '';
-                margin-left: 0;
-            }
-        }
-
-        .to-top {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: var(--accent);
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-
-        .to-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(79, 209, 197, 0.4);
-        }
-
-        /* Scroll Animations */
-        .fade-in {
+        /* Scroll Animations – Youth Vibrant (medium motion) */
+        .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
 
-        .fade-in.visible {
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .reveal.visible,
+        .reveal-left.visible,
+        .reveal-right.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0) translateY(0);
+        }
+
+        /* WhatsApp labels */
+        .wa-men::after,
+        .wa-women::after {
+            content: 'Broeders';
+            position: absolute;
+            bottom: -6px;
+            right: -6px;
+            background: var(--accent);
+            color: var(--primary);
+            font-size: 0.6rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .wa-women::after {
+            content: 'Zusters';
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            header.navbar {
+                padding: 12px 18px;
+            }
+
             .nav-links {
                 flex-direction: column;
                 position: fixed;
                 right: -100%;
                 top: 70px;
-                background: var(--primary);
-                padding: 30px;
+                background: #022248;
+                padding: 26px 24px;
                 border-radius: 16px 0 0 16px;
-                box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.3);
-                transition: right 0.4s ease;
-                width: 250px;
-                gap: 0;
+                box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.35);
+                transition: right 0.35s ease;
+                width: 260px;
+                gap: 4px;
             }
 
             .nav-links li {
                 width: 100%;
-                margin: 10px 0;
             }
 
             .nav-links a {
                 display: block;
-                padding: 12px 20px;
+                padding: 10px 16px;
             }
 
             .nav-links.active {
@@ -756,12 +832,16 @@
                 display: block;
             }
 
+            .hero {
+                padding: 110px 18px 70px;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1.05rem;
             }
 
             .section h2 {
@@ -770,7 +850,7 @@
 
             .quick-stats {
                 grid-template-columns: repeat(2, 1fr);
-                margin-top: 20px;
+                margin-top: 10px;
             }
 
             .logo-text {
@@ -778,8 +858,29 @@
             }
 
             .logo-img {
-                width: 40px;
-                height: 40px;
+                width: 46px;
+                height: 46px;
+            }
+
+            .cookie-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 18px 15px;
+            }
+
+            .cookie-banner button {
+                width: 100%;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .footer-links a::after {
+                content: '';
+                margin-left: 0;
             }
         }
 
@@ -793,7 +894,7 @@
 <body>
 <header class="navbar">
     <a href="index.html" class="logo">
-        <img src="images/crescent_youtrh_logo-removebg-%20-%20Copy.png" alt="Crescent Youth logo" class="logo-img">
+        <img src="images/IMG_5436.PNG" alt="Crescent Youth logo" class="logo-img">
         <span class="logo-text">Crescent Youth</span>
     </a>
     <nav>
@@ -813,27 +914,22 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h1>🌙 Welkom bij Crescent Youth</h1>
+        <h1>Welkom bij Crescent Youth</h1>
         <p>Een brug tussen jongeren en het islamitische geloof via educatie, sport en inspiratie.</p>
         <a href="#missie" class="btn">Ontdek Meer</a>
     </div>
 </section>
 
-<div class="quick-stats fade-in">
+<div class="quick-stats reveal">
     <div class="stat-card">
         <i class="fas fa-users"></i>
         <h3>75+</h3>
-        <p>Actieve Jongeren</p>
+        <p>Actieve jongeren</p>
     </div>
     <div class="stat-card">
         <i class="fas fa-calendar-check"></i>
         <h3>15+</h3>
         <p>Evenementen per jaar</p>
-    </div>
-    <div class="stat-card">
-        <i class="fas fa-star"></i>
-        <h3>1</h3>
-        <p>Jaren Ervaring</p>
     </div>
     <div class="stat-card">
         <i class="fas fa-heart"></i>
@@ -842,143 +938,151 @@
     </div>
 </div>
 
-<section id="missie" class="section fade-in">
+<section id="missie" class="section reveal-left">
     <h2>Onze Missie</h2>
     <p class="section-intro">
-        Crescent Youth vzw heeft als missie om jongeren dichter bij het islamitische geloof te brengen door middel van educatieve programma's, sportieve activiteiten en gemeenschapsinitiatieven. Wij geloven in holistische ontwikkeling van lichaam, geest en ziel.
+        Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid. We geloven dat iedereen welkom is, ongeacht achtergrond, en creëren een veilige en inclusieve omgeving waar je jezelf kan zijn. Met toffe activiteiten zoals workshops, sport, cultuur en uitstappen helpen we jongeren nieuwe skills ontdekken en sterke vriendschappen opbouwen. We zetten in op dialoog, samenwerking en positieve rolmodellen, zodat jongeren weerbaar en zelfverzekerd in het leven staan. Samen bouwen we aan een community die kansen biedt, diversiteit omarmt en waarin jongeren een actieve stem hebben.
     </p>
 </section>
 
-<section id="waarden" class="section alt fade-in">
+<section id="waarden" class="section alt reveal">
     <h2>Kernwaarden</h2>
     <p class="section-intro">
-        Onze organisatie is gebouwd op vier fundamentele pilaren die ons werk en onze gemeenschap leiden.
+        Onze organisatie is gebouwd op vier fundamentele pijlers die ons werk en onze gemeenschap leiden.
     </p>
     <div class="values-grid">
-        <div class="value-card">
-            <i class="fas fa-book"></i>
+        <div class="value-card reveal-left">
+            <div class="value-icon-circle">
+                <i class="fas fa-book"></i>
+            </div>
             <h3>Educatie</h3>
             <p>Diepgaande islamitische kennis en persoonlijke ontwikkeling door middel van workshops, lezingen en studieprogramma's.</p>
         </div>
-        <div class="value-card">
-            <i class="fas fa-mosque"></i>
+        <div class="value-card reveal">
+            <div class="value-icon-circle">
+                <i class="fas fa-mosque"></i>
+            </div>
             <h3>Religie</h3>
             <p>Het islamitische geloof als leidraad voor ons dagelijks leven, morele keuzes en gemeenschapsactiviteiten.</p>
         </div>
-        <div class="value-card">
-            <i class="fas fa-users"></i>
+        <div class="value-card reveal">
+            <div class="value-icon-circle">
+                <i class="fas fa-users"></i>
+            </div>
             <h3>Verbinding</h3>
             <p>Een warme, inclusieve gemeenschap waar jongeren zich thuis voelen en vriendschappen voor het leven sluiten.</p>
         </div>
-        <div class="value-card">
-            <i class="fas fa-balance-scale"></i>
+        <div class="value-card reveal-right">
+            <div class="value-icon-circle">
+                <i class="fas fa-balance-scale"></i>
+            </div>
             <h3>Integriteit</h3>
             <p>Eerlijkheid, betrouwbaarheid en transparantie in alles wat we doen, van financiën tot interpersoonlijke relaties.</p>
         </div>
     </div>
 </section>
 
-<section id="activiteiten" class="section fade-in">
+<section id="activiteiten" class="section reveal">
     <h2>Activiteiten</h2>
     <p class="section-intro">
-        Ontdek onze diverse activiteiten die jongeren helpen groeien in geloof, kennis en fysieke fitheid.
+        Ontdek onze diverse activiteiten die jongeren helpen groeien in geloof, kennis en verbondenheid.
     </p>
     <div class="activities-grid">
-        <div class="activity-card">
+        <div class="activity-card reveal-left">
             <div class="activity-icon">
                 <i class="fas fa-chalkboard-teacher"></i>
             </div>
             <div class="activity-content">
-                <h3>Lezingen & Workshops</h3>
+                <h3>Lezingen & lessen</h3>
                 <p>Regelmatige educatieve sessies over islamitische kennis, persoonlijke ontwikkeling en actuele thema's met gastsprekers.</p>
             </div>
         </div>
-        <div class="activity-card">
+        <div class="activity-card reveal">
             <div class="activity-icon">
                 <i class="fas fa-futbol"></i>
             </div>
             <div class="activity-content">
-                <h3>Sport Activiteiten</h3>
-                <p>Wekelijkse voetbal, basketbal en zwemactiviteiten om gezondheid en teamwork te bevorderen.</p>
+                <h3>Sport evenementen</h3>
+                <p>Sportieve activiteiten en traditionele sporten zoals aanbevolen door de Profeet ﷺ, om gezondheid en teamwork te bevorderen.</p>
             </div>
         </div>
-        <div class="activity-card">
-            <div class="activity-icon">
-                <i class="fas fa-horse"></i>
-            </div>
-            <div class="activity-content">
-                <h3>Paardrijden & Boogschieten</h3>
-                <p>Traditionele islamitische sporten zoals aanbevolen door de Profeet (vrede zij met hem).</p>
-            </div>
-        </div>
-        <div class="activity-card">
+        <div class="activity-card reveal-right">
             <div class="activity-icon">
                 <i class="fas fa-handshake"></i>
             </div>
             <div class="activity-content">
                 <h3>Samenwerkingen</h3>
-                <p>Partnerships met andere organisaties voor grotere evenementen en gemeenschapsprojecten.</p>
+                <p>Bruggen bouwen met de gemeenschap en samenwerkingen uitwerken met verschillende partners en organisaties.</p>
             </div>
         </div>
-        <div class="activity-card">
+        <div class="activity-card reveal-left">
+            <div class="activity-icon">
+                <i class="fa-solid fa-people-group"></i>
+            </div>
+            <div class="activity-content">
+                <h3>Sociale activiteiten</h3>
+                <p>Interreligieuze ontmoetingen, dialoogmomenten en sociale projecten die verbinding en begrip stimuleren.</p>
+            </div>
+        </div>
+        <div class="activity-card reveal">
             <div class="activity-icon">
                 <i class="fas fa-kaaba"></i>
             </div>
             <div class="activity-content">
-                <h3>Omra Organisatie</h3>
-                <p>Toekomstige plannen voor georganiseerde Omra-reizen voor onze gemeenschap.</p>
+                <h3>Umrah organisatie</h3>
+                <p>Toekomstige plannen voor georganiseerde Umrah-reizen voor jongeren en families binnen onze gemeenschap.</p>
             </div>
         </div>
-        <div class="activity-card">
+        <div class="activity-card reveal-right">
             <div class="activity-icon">
-                <i class="fas fa-hands-helping"></i>
+                <i class="fa-solid fa-hand-holding-heart"></i>
             </div>
             <div class="activity-content">
-                <h3>Vrijwilligerswerk</h3>
-                <p>Sociale projecten en liefdadigheidsinitiatieven om de bredere gemeenschap te dienen.</p>
+                <h3>Liefdadigheid</h3>
+                <p>Sociale projecten en liefdadigheidsinitiatieven om de bredere gemeenschap te ondersteunen en te versterken.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section id="team" class="section alt fade-in">
-    <h2>Oprichters & Team</h2>
+<section id="team" class="section alt reveal">
+    <h2>Ons Team</h2>
     <p class="section-intro">
         Ons toegewijde team van oprichters en vrijwilligers werkt hard om onze missie waar te maken.
     </p>
     <div class="team-grid">
-        <div class="team-member">
+        <div class="team-member reveal-left">
             <i class="fas fa-user-tie"></i>
             <h3>Nadir</h3>
-            <p>Medeoprichter</p>
+            <p>Coördinator</p>
         </div>
-        <div class="team-member">
-            <i class="fas fa-user-tie"></i>
-            <h3>Makhtar</h3>
-            <p>Medeoprichter</p>
-        </div>
-        <div class="team-member">
-            <i class="fas fa-user-tie"></i>
-            <h3>Sharfuddeen</h3>
-            <p>Medeoprichter</p>
-        </div>
-        <div class="team-member">
-            <i class="fas fa-user-tie"></i>
-            <h3>Wasim</h3>
-            <p>Medeoprichter</p>
-        </div>
-        <div class="team-member">
+        <div class="team-member reveal">
             <i class="fas fa-user-tie"></i>
             <h3>Khalid</h3>
-            <p>Medeoprichter</p>
+            <p>Vice-coördinator</p>
+        </div>
+        <div class="team-member reveal">
+            <i class="fas fa-user-tie"></i>
+            <h3>Mukhtar</h3>
+            <p>Secretaris</p>
+        </div>
+        <div class="team-member reveal">
+            <i class="fas fa-user-tie"></i>
+            <h3>Sharfuddeen</h3>
+            <p>IT-specialist</p>
+        </div>
+        <div class="team-member reveal-right">
+            <i class="fas fa-user-tie"></i>
+            <h3>Wassim</h3>
+            <p>Financieel</p>
         </div>
     </div>
 </section>
 
-<section class="cta-section">
-    <h2>Sluit je aan bij onze gemeenschap</h2>
-    <p>Word onderdeel van een groeiende beweging van geïnspireerde jongeren</p>
-    <a href="/Contact.html" class="btn">Neem Contact Op</a>
+<section class="cta-section reveal">
+    <h2>Word deel van onze community!</h2>
+    <p>Join our crew! Samen leren, connecten en groeien – jouw plek, jouw vibe.</p>
+    <a href="/Contact.html" class="btn">Contacteer ons</a>
 </section>
 
 <footer>
@@ -987,14 +1091,13 @@
             <h3>Crescent Youth vzw</h3>
             <p>Een brug tussen jongeren en het islamitische geloof via educatie, sport en inspiratie.</p>
             <div class="social-links">
-<!--                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>-->
                 <a href="https://www.instagram.com/crescentyouth.be?igsh=dDVwM2J0NzFpbzFy" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://chat.whatsapp.com/DGoYa2tPvDX1SMUbS39prK?mode=wwt" aria-label="Whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-<!--                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>-->
+                <a href="https://chat.whatsapp.com/DGoYa2tPvDX1SMUbS39prK?mode=wwt" aria-label="Whatsapp broeders" class="wa-men" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://chat.whatsapp.com/DnZtZIw7snKDIbPzfFZRYR?mode=wwt" aria-label="Whatsapp zusters" class="wa-women" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
         <div class="footer-section">
-            <h3>Snelle Links</h3>
+            <h3>Snelle links</h3>
             <p><a href="index.html">Home</a></p>
             <p><a href="#missie">Missie</a></p>
             <p><a href="#waarden">Waarden</a></p>
@@ -1002,14 +1105,14 @@
             <p><a href="contact.html">Contact</a></p>
         </div>
         <div class="footer-section">
-            <h3>Contact Info</h3>
+            <h3>Contact info</h3>
             <p><i class="fas fa-envelope"></i> info@crescentyouth.be</p>
         </div>
     </div>
     <div class="footer-bottom">
         <p>&copy; 2025 Crescent Youth vzw - Alle rechten voorbehouden</p>
         <div class="footer-links">
-            <a href="/comply_with_law/terms-and-conditions.html">Algemene Voorwaarden</a>
+            <a href="/comply_with_law/terms-and-conditions.html">Algemene voorwaarden</a>
             <a href="/comply_with_law/privacy-policy.html">Privacybeleid</a>
             <a href="/comply_with_law/cookie-policy.html">Cookiebeleid</a>
         </div>
@@ -1061,45 +1164,49 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Fade-in animation on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+    // Scroll animations (IntersectionObserver)
+    const animatedEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observerOptions = {
+        threshold: 0.18,
+        rootMargin: '0px 0px -40px 0px'
     };
 
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    const onAppear = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            obs.unobserve(entry.target);
         });
-    }, appearOptions);
+    }, observerOptions);
 
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
+    animatedEls.forEach(el => onAppear.observe(el));
 
     // Animate stat numbers
     const animateStats = () => {
         const stats = document.querySelectorAll('.stat-card h3');
         stats.forEach(stat => {
-            const target = parseInt(stat.textContent);
+            const original = stat.textContent;
+            const numeric = parseInt(original);
+            const hasPlus = original.includes('+');
+            const hasPercent = original.includes('%');
+
+            if (isNaN(numeric)) return;
+
             let current = 0;
-            const increment = target / 50;
+            const increment = numeric / 40;
+
             const timer = setInterval(() => {
                 current += increment;
-                if (current >= target) {
-                    stat.textContent = target + (stat.textContent.includes('+') ? '+' : '') + (stat.textContent.includes('%') ? '%' : '');
+                if (current >= numeric) {
+                    stat.textContent = numeric + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
                     clearInterval(timer);
                 } else {
-                    stat.textContent = Math.floor(current) + (stat.textContent.includes('+') ? '+' : '') + (stat.textContent.includes('%') ? '%' : '');
+                    stat.textContent = Math.floor(current) + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
                 }
             }, 30);
         });
     };
 
-    // Trigger stat animation when visible
     const statsObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1118,14 +1225,12 @@
     const cookieBanner = document.getElementById('cookie-banner');
     const cookieAccept = document.getElementById('cookie-accept');
 
-    // Check if user has already accepted cookies
     if (!localStorage.getItem('cookiesAccepted')) {
         setTimeout(() => {
             cookieBanner.classList.add('show');
         }, 1000);
     }
 
-    // Handle cookie acceptance
     cookieAccept.addEventListener('click', () => {
         localStorage.setItem('cookiesAccepted', 'true');
         cookieBanner.classList.remove('show');
