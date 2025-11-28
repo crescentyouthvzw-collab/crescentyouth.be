@@ -803,7 +803,8 @@
         =========================== */
         .wa-men::after,
         .wa-women::after,
-        .wa-Channel::after {
+        .wa-Channel::after,
+        .linktree-icon::after {
             content: 'Broeders';
             position: absolute;
             bottom: -6px;
@@ -823,6 +824,9 @@
 
         .wa-Channel::after {
             content: 'Channel';
+        }
+        .linktree-icon::after {
+            content: 'Linktree';
         }
 
         /* ==========================
@@ -914,6 +918,7 @@
                 content: '';
                 margin-left: 0;
             }
+
         }
 
         @media (max-width: 480px) {
@@ -921,6 +926,17 @@
                 grid-template-columns: 1fr;
             }
         }
+        .social-links a.linktree-icon img {
+            width: 22px;
+            height: 22px;
+            filter: brightness(0) invert(1); /* makes it white like the other icons */
+            transition: 0.25s ease;
+        }
+
+        .social-links a.linktree-icon:hover img {
+            filter: brightness(1) invert(0); /* flip on hover */
+        }
+
     </style>
 </head>
 <body>
@@ -971,7 +987,7 @@
 </div>
 
 <section id="missie" class="section reveal-left">
-    <h2>Onze Missie</h2>
+    <h2>Onze missie</h2>
     <p class="section-intro">
         Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid. We geloven dat iedereen welkom is, ongeacht achtergrond, en creëren een veilige en inclusieve omgeving waar je jezelf kan zijn. Met toffe activiteiten zoals workshops, sport, cultuur en uitstappen helpen we jongeren nieuwe skills ontdekken en sterke vriendschappen opbouwen. We zetten in op dialoog, samenwerking en positieve rolmodellen, zodat jongeren weerbaar en zelfverzekerd in het leven staan. Samen bouwen we aan een community die kansen biedt, diversiteit omarmt en waarin jongeren een actieve stem hebben.
     </p>
@@ -1125,11 +1141,14 @@
             <h3>Crescent Youth vzw</h3>
             <p>Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.</p>
             <div class="social-links">
-                <a href="https://www.instagram.com/crescentyouth.be?igsh=dDVwM2J0NzFpbzFy" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://chat.whatsapp.com/DGoYa2tPvDX1SMUbS39prK?mode=wwt" aria-label="Whatsapp broeders" class="wa-men" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://chat.whatsapp.com/DnZtZIw7snKDIbPzfFZRYR?mode=wwt" aria-label="Whatsapp zusters" class="wa-women" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://whatsapp.com/channel/0029Vb6utLZ9WtBupBQ2tU1S" aria-label="Whatsapp Channel" class="wa-Channel" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://www.tiktok.com/@crescentyouth.be?is_from_webapp=1&sender_device=pc" aria-label="Tik-Tok"  target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+<!--                <a href="https://www.instagram.com/crescentyouth.be?igsh=dDVwM2J0NzFpbzFy" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>-->
+<!--                <a href="https://chat.whatsapp.com/DGoYa2tPvDX1SMUbS39prK?mode=wwt" aria-label="Whatsapp broeders" class="wa-men" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>-->
+<!--                <a href="https://chat.whatsapp.com/DnZtZIw7snKDIbPzfFZRYR?mode=wwt" aria-label="Whatsapp zusters" class="wa-women" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>-->
+<!--                <a href="https://whatsapp.com/channel/0029Vb6utLZ9WtBupBQ2tU1S" aria-label="Whatsapp Channel" class="wa-Channel" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>-->
+<!--                <a href="https://www.tiktok.com/@crescentyouth.be?is_from_webapp=1&sender_device=pc" aria-label="Tik-Tok"  target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>-->
+<!--                <a href="https://linktr.ee/CrescentYouth" aria-label="linktree"  target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-link"></i></a>-->
+                <a href="https://linktr.ee/CrescentYouth" aria-label="Linktree" target="_blank" rel="noopener noreferrer" class="linktree-icon"><img src="/images/linktree-seeklogo.png" alt="Linktree" /></a>
+
             </div>
         </div>
         <div class="footer-section">
