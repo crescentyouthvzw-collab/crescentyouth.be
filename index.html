@@ -43,10 +43,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* ==========================
+           ROOT VARIABLES
+        =========================== */
         :root {
             --primary: #022248;
-            --accent: #7fe8ff;        /* soft premium accent */
-            --accent-dark: #5fcde8;   /* slightly darker version */
+            --accent: #7fe8ff;       /* soft premium accent */
+            --accent-dark: #5fcde8;  /* slightly darker version */
             --text-light: #f8f9fa;
             --text-dark: #222222;
             --bg: #f4f7fa;
@@ -72,7 +75,9 @@
             overflow-x: hidden;
         }
 
-        /* Header & Navigation */
+        /* ==========================
+           HEADER & NAVBAR
+        =========================== */
         header.navbar {
             background: linear-gradient(90deg, #005ecb 0%, #3aaeea 50%, #6ef1ff 100%);
             color: white;
@@ -85,12 +90,13 @@
             z-index: 1000;
             box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
             transition: all 0.3s ease;
+            backdrop-filter: blur(6px);
         }
 
-        .navbar {
+        .navbar.scrolled {
             padding: 10px 24px;
             background: linear-gradient(90deg, #004aa5 0%, #3193dc 50%, #6ef1ff 100%) !important;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
@@ -175,7 +181,9 @@
             color: var(--accent);
         }
 
-        /* Hero Section */
+        /* ==========================
+           HERO SECTION
+        =========================== */
         .hero {
             background: linear-gradient(110deg, #005ecb 0%, #3aaeea 45%, #6ef1ff 100%);
             color: var(--text-light);
@@ -197,6 +205,7 @@
                     radial-gradient(circle at 90% 100%, rgba(255, 255, 255, 0.14) 0%, transparent 60%);
             animation: floatGlow 24s linear infinite alternate;
             opacity: 0.9;
+            pointer-events: none;
         }
 
         @keyframes floatGlow {
@@ -230,7 +239,7 @@
             font-size: 1.2rem;
             margin-bottom: 30px;
             opacity: 0.96;
-            animation: fadeInUp 1s ease 0.2s backwards;
+            animation: fadeInUp 1s ease 0.25s backwards;
             font-style: italic;
         }
 
@@ -245,7 +254,7 @@
             display: inline-block;
             transition: all 0.25s ease;
             box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
-            animation: fadeInUp 1s ease 0.4s backwards;
+            animation: fadeInUp 1s ease 0.45s backwards;
         }
 
         .hero .btn:hover {
@@ -265,7 +274,9 @@
             }
         }
 
-        /* Quick Stats Section */
+        /* ==========================
+           QUICK STATS
+        =========================== */
         .quick-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -325,7 +336,9 @@
             font-size: 0.95rem;
         }
 
-        /* Section Styling */
+        /* ==========================
+           SECTIONS
+        =========================== */
         .section {
             padding: 80px 20px;
             max-width: 1200px;
@@ -370,7 +383,9 @@
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
         }
 
-        /* Values Grid */
+        /* ==========================
+           VALUES GRID
+        =========================== */
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -436,7 +451,9 @@
             line-height: 1.6;
         }
 
-        /* Activities Grid */
+        /* ==========================
+           ACTIVITIES GRID
+        =========================== */
         .activities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -486,7 +503,9 @@
             font-size: 0.98rem;
         }
 
-        /* Team Section */
+        /* ==========================
+           TEAM GRID
+        =========================== */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -525,7 +544,9 @@
             font-size: 0.95rem;
         }
 
-        /* CTA Section */
+        /* ==========================
+           CTA SECTION
+        =========================== */
         .cta-section {
             background: linear-gradient(135deg, #022248 0%, #005ecb 45%, #3aaeea 100%);
             color: white;
@@ -566,7 +587,9 @@
             background: var(--accent-dark);
         }
 
-        /* Footer */
+        /* ==========================
+           FOOTER
+        =========================== */
         footer {
             background: var(--primary);
             color: white;
@@ -688,7 +711,9 @@
             box-shadow: 0 5px 16px rgba(0, 0, 0, 0.25);
         }
 
-        /* Cookie Banner */
+        /* ==========================
+           COOKIE BANNER
+        =========================== */
         .cookie-banner {
             position: fixed;
             bottom: 0;
@@ -699,24 +724,20 @@
             padding: 18px 20px;
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
             z-index: 9999;
-            display: none;
+            display: none; /* default hidden, show with .show */
             align-items: center;
             justify-content: space-between;
             gap: 20px;
             animation: slideUp 0.4s ease;
         }
 
-        .cookie-banner {
+        .cookie-banner.show {
             display: flex;
         }
 
         @keyframes slideUp {
-            from {
-                transform: translateY(100%);
-            }
-            to {
-                transform: translateY(0);
-            }
+            from { transform: translateY(100%); }
+            to   { transform: translateY(0); }
         }
 
         .cookie-banner p {
@@ -748,33 +769,38 @@
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
         }
 
-        /* Scroll Animations – Youth Vibrant (medium motion) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-
+        /* ==========================
+           SCROLL ANIMATIONS
+        =========================== */
         .reveal,
         .reveal-left,
         .reveal-right {
-            opacity: 1;
-            transform: translateX(0) translateY(0);
+            opacity: 0;
         }
 
-        /* WhatsApp labels */
+        .reveal {
+            transform: translateY(30px);
+        }
+
+        .reveal-left {
+            transform: translateX(-40px);
+        }
+
+        .reveal-right {
+            transform: translateX(40px);
+        }
+
+        .reveal.visible,
+        .reveal-left.visible,
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0) translateY(0);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        /* ==========================
+           WHATSAPP LABELS
+        =========================== */
         .wa-men::after,
         .wa-women::after,
         .wa-Channel::after {
@@ -794,12 +820,14 @@
         .wa-women::after {
             content: 'Zusters';
         }
+
         .wa-Channel::after {
-            content: 'Channel'
+            content: 'Channel';
         }
 
-
-        /* Mobile Responsive */
+        /* ==========================
+           RESPONSIVE
+        =========================== */
         @media (max-width: 768px) {
             header.navbar {
                 padding: 12px 18px;
@@ -819,6 +847,10 @@
                 gap: 4px;
             }
 
+            .nav-links.active {
+                right: 0;
+            }
+
             .nav-links li {
                 width: 100%;
             }
@@ -826,10 +858,6 @@
             .nav-links a {
                 display: block;
                 padding: 10px 16px;
-            }
-
-            .nav-links {
-                right: 0;
             }
 
             .menu-toggle {
@@ -1028,15 +1056,17 @@
                 <p>Interreligieuze ontmoetingen, dialoogmomenten en sociale projecten die verbinding en begrip stimuleren.</p>
             </div>
         </div>
-<!--        <div class="activity-card reveal">-->
-<!--            <div class="activity-icon">-->
-<!--                <i class="fas fa-kaaba"></i>-->
-<!--            </div>-->
-<!--            <div class="activity-content">-->
-<!--                <h3>Umrah organisatie</h3>-->
-<!--                <p>Toekomstige plannen voor georganiseerde Umrah-reizen voor jongeren en families binnen onze gemeenschap.</p>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--
+        <div class="activity-card reveal">
+            <div class="activity-icon">
+                <i class="fas fa-kaaba"></i>
+            </div>
+            <div class="activity-content">
+                <h3>Umrah organisatie</h3>
+                <p>Toekomstige plannen voor georganiseerde Umrah-reizen voor jongeren en families binnen onze gemeenschap.</p>
+            </div>
+        </div>
+        -->
         <div class="activity-card reveal-right">
             <div class="activity-icon">
                 <i class="fa-solid fa-hand-holding-heart"></i>
@@ -1100,7 +1130,6 @@
                 <a href="https://chat.whatsapp.com/DnZtZIw7snKDIbPzfFZRYR?mode=wwt" aria-label="Whatsapp zusters" class="wa-women" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://whatsapp.com/channel/0029Vb6utLZ9WtBupBQ2tU1S" aria-label="Whatsapp Channel" class="wa-Channel" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://www.tiktok.com/@crescentyouth.be?is_from_webapp=1&sender_device=pc" aria-label="Tik-Tok"  target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-
             </div>
         </div>
         <div class="footer-section">
@@ -1171,7 +1200,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Scroll animations (IntersectionObserver)
+    // Scroll reveal animations
     const animatedEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const observerOptions = {
         threshold: 0.18,
