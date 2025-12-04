@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="efNJZ4wc5BaR5UKpLvS6WC7RUCAVWaqDGSKnBfpS2tQ" />
+    <meta name="google-site-verification" content="efNJZ4wc5BaR5UKpLvS6WC7RUCAVWaqDGSKnBfpS2tQ">
 
     <!-- Schema.org structured data -->
     <script type="application/ld+json">
@@ -29,9 +29,9 @@
         }
     </script>
 
-    <!-- Favicon & SEO -->
     <title>Crescent Youth vzw – Brugge</title>
     <meta name="description" content="Crescent Youth vzw: Inspirerende jeugdorganisatie in Brugge rond Islam, educatie, sport en gemeenschap.">
+
     <link rel="icon" href="https://crescentyouth.be/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="https://crescentyouth.be/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="https://crescentyouth.be/favicon.ico">
@@ -43,13 +43,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* ==========================
-           ROOT VARIABLES
-        =========================== */
         :root {
             --primary: #022248;
-            --accent: #7fe8ff;       /* soft premium accent */
-            --accent-dark: #5fcde8;  /* slightly darker version */
+            --accent: #7fe8ff;
+            --accent-dark: #5fcde8;
             --text-light: #f8f9fa;
             --text-dark: #222222;
             --bg: #f4f7fa;
@@ -75,16 +72,15 @@
             overflow-x: hidden;
         }
 
-        /* ==========================
-           HEADER & NAVBAR
-        =========================== */
+        /* HEADER / NAVBAR */
+
         header.navbar {
             background: linear-gradient(90deg, #005ecb 0%, #3aaeea 50%, #6ef1ff 100%);
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 26px;
+            padding: 12px 26px;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -94,7 +90,7 @@
         }
 
         .navbar.scrolled {
-            padding: 10px 24px;
+            padding: 8px 24px;
             background: linear-gradient(90deg, #004aa5 0%, #3193dc 50%, #6ef1ff 100%) !important;
             box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
         }
@@ -119,8 +115,6 @@
             object-fit: contain;
             border-radius: 18px;
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-
-
         }
 
         .logo-text {
@@ -131,22 +125,55 @@
             letter-spacing: 0.04em;
         }
 
+        /* NAV always hidden until hamburger click */
+
+        nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(2, 34, 72, 0.97);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.35s ease, opacity 0.25s ease;
+        }
+
+        nav.open {
+            max-height: 320px;
+            opacity: 1;
+        }
+
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 1.8rem;
+            flex-direction: column;
+            gap: 0.6rem;
+            padding: 10px 16px 18px;
             align-items: center;
         }
 
+        .nav-links li {
+            position: relative;
+            width: 100%;
+            max-width: 260px;
+        }
+
         .nav-links a {
+            display: block;
+            width: 100%;
             color: #ffffff;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.96rem;
-            padding: 8px 16px;
+            font-size: 0.98rem;
+            padding: 10px 20px;
             border-radius: 999px;
             transition: all 0.25s ease;
             position: relative;
+            text-align: center;
         }
 
         .nav-links a::after {
@@ -170,22 +197,79 @@
             background: rgba(0, 0, 0, 0.14);
         }
 
-        .menu-toggle {
-            display: none;
+        /* Language selector */
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 16px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        .lang-option {
             cursor: pointer;
-            font-size: 1.6rem;
+            font-size: 0.78rem;
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            color: #e8f7ff;
+            transition: all 0.25s ease;
+            text-transform: uppercase;
+        }
+
+        .lang-option.active {
+            background: var(--accent);
+            color: var(--primary);
+            border-color: rgba(255, 255, 255, 0.4);
+            font-weight: 700;
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        /* Hamburger */
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-toggle {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle i {
+            font-size: 1.3rem;
             color: white;
             transition: transform 0.3s ease, color 0.3s ease;
         }
 
         .menu-toggle:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .menu-toggle.open i {
             transform: rotate(90deg);
             color: var(--accent);
         }
 
-        /* ==========================
-           HERO SECTION
-        =========================== */
+        /* HERO */
+
         .hero {
             background: linear-gradient(110deg, #005ecb 0%, #3aaeea 45%, #6ef1ff 100%);
             color: var(--text-light);
@@ -266,19 +350,12 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ==========================
-           QUICK STATS
-        =========================== */
+        /* QUICK STATS */
+
         .quick-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -338,9 +415,8 @@
             font-size: 0.95rem;
         }
 
-        /* ==========================
-           SECTIONS
-        =========================== */
+        /* SECTIONS */
+
         .section {
             padding: 80px 20px;
             max-width: 1200px;
@@ -385,9 +461,8 @@
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
         }
 
-        /* ==========================
-           VALUES GRID
-        =========================== */
+        /* VALUES GRID */
+
         .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -453,9 +528,8 @@
             line-height: 1.6;
         }
 
-        /* ==========================
-           ACTIVITIES GRID
-        =========================== */
+        /* ACTIVITIES GRID */
+
         .activities-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -505,9 +579,8 @@
             font-size: 0.98rem;
         }
 
-        /* ==========================
-           TEAM GRID
-        =========================== */
+        /* TEAM GRID */
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -546,9 +619,8 @@
             font-size: 0.95rem;
         }
 
-        /* ==========================
-           CTA SECTION
-        =========================== */
+        /* CTA SECTION */
+
         .cta-section {
             background: linear-gradient(135deg, #022248 0%, #005ecb 45%, #3aaeea 100%);
             color: white;
@@ -589,9 +661,8 @@
             background: var(--accent-dark);
         }
 
-        /* ==========================
-           FOOTER
-        =========================== */
+        /* FOOTER */
+
         footer {
             background: var(--primary);
             color: white;
@@ -713,9 +784,8 @@
             box-shadow: 0 5px 16px rgba(0, 0, 0, 0.25);
         }
 
-        /* ==========================
-           COOKIE BANNER
-        =========================== */
+        /* COOKIE BANNER */
+
         .cookie-banner {
             position: fixed;
             bottom: 0;
@@ -726,7 +796,7 @@
             padding: 18px 20px;
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
             z-index: 9999;
-            display: none; /* default hidden, show with .show */
+            display: none;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
@@ -771,9 +841,8 @@
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
         }
 
-        /* ==========================
-           SCROLL ANIMATIONS
-        =========================== */
+        /* SCROLL ANIMATIONS */
+
         .reveal,
         .reveal-left,
         .reveal-right {
@@ -800,14 +869,12 @@
             transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
 
-        /* ==========================
-           WHATSAPP LABELS
-        =========================== */
+        /* WHATSAPP LABELS */
+
         .wa-men::after,
         .wa-women::after,
         .wa-Channel::after,
         .linktree-icon::after {
-            /*content: 'Broeders';*/
             position: absolute;
             bottom: -6px;
             right: -6px;
@@ -827,47 +894,45 @@
         .wa-Channel::after {
             content: 'Channel';
         }
-        /*.linktree-icon::after {*/
-        /*    content: 'Linktree';*/
-        /*}*/
 
-        /* ==========================
-           RESPONSIVE
-        =========================== */
+        /* SOCIAL ICON IMAGE */
+
+        .social-links a.linktree-icon img {
+            width: 22px;
+            height: 22px;
+            filter: brightness(0) invert(1);
+            transition: 0.25s ease;
+        }
+
+        .social-links a.linktree-icon:hover img {
+            filter: brightness(1) invert(0);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1024px) {
+            .logo-img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
         @media (max-width: 768px) {
             header.navbar {
-                padding: 12px 18px;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                position: fixed;
-                right: -100%;
-                top: 70px;
-                background: #022248;
-                padding: 26px 24px;
-                border-radius: 16px 0 0 16px;
-                box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.35);
-                transition: right 0.35s ease;
-                width: 260px;
-                gap: 4px;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
                 padding: 10px 16px;
             }
 
-            .menu-toggle {
-                display: block;
+            .logo-text {
+                display: none;
+            }
+
+            .logo-img {
+                width: 46px;
+                height: 46px;
+            }
+
+            .lang-switcher {
+                margin-left: 0;
             }
 
             .hero {
@@ -891,15 +956,6 @@
                 margin-top: 10px;
             }
 
-            .logo-text {
-                display: none;
-            }
-
-            .logo-img {
-                width: 46px;
-                height: 46px;
-            }
-
             .cookie-banner {
                 flex-direction: column;
                 text-align: center;
@@ -920,25 +976,17 @@
                 content: '';
                 margin-left: 0;
             }
-
         }
 
         @media (max-width: 480px) {
             .quick-stats {
                 grid-template-columns: 1fr;
             }
-        }
-        .social-links a.linktree-icon img {
-            width: 22px;
-            height: 22px;
-            filter: brightness(0) invert(1); /* makes it white like the other icons */
-            transition: 0.25s ease;
-        }
 
-        .social-links a.linktree-icon:hover img {
-            filter: brightness(1) invert(0); /* flip on hover */
+            .lang-switcher {
+                display: none;
+            }
         }
-
     </style>
 </head>
 <body>
@@ -947,26 +995,36 @@
         <img src="images/IMG_5436.PNG" alt="Crescent Youth logo" class="logo-img">
         <span class="logo-text">Crescent Youth</span>
     </a>
-    <nav>
+
+    <nav id="main-nav" aria-label="Hoofd navigatie">
         <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#missie">Missie</a></li>
-            <li><a href="#kernwaarden">Kernwaarden</a></li>
-            <li><a href="#activiteiten">Wat doen wij?</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="#missie" data-i18n="nav_mission">Missie</a></li>
+            <li><a href="#kernwaarden" data-i18n="nav_values">Kernwaarden</a></li>
+            <li><a href="#activiteiten" data-i18n="nav_activities">Wat doen wij?</a></li>
+            <li><a href="#team" data-i18n="nav_team">Team</a></li>
+            <li><a href="Contact.html" data-i18n="nav_contact">Contact</a></li>
         </ul>
     </nav>
-    <div class="menu-toggle" id="mobile-menu">
-        <i class="fas fa-bars"></i>
+
+    <div class="nav-actions">
+        <div class="lang-switcher" aria-label="Taal kiezen">
+            <span class="lang-option active" data-lang="nl">NL</span>
+            <span class="lang-option" data-lang="en">EN</span>
+            <span class="lang-option" data-lang="fr">FR</span>
+        </div>
+
+        <button class="menu-toggle" id="mobile-menu" aria-label="Open navigatie" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
 </header>
 
 <section class="hero">
     <div class="hero-content">
-        <h1>Welkom bij Crescent Youth</h1>
-        <p>Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.</p>
-        <a href="#missie" class="btn">Bekijk verder</a>
+        <h1 data-i18n="hero_title">Welkom bij Crescent Youth</h1>
+        <p data-i18n="hero_subtitle">Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.</p>
+        <a href="#missie" class="btn" data-i18n="hero_cta">Bekijk verder</a>
     </div>
 </section>
 
@@ -974,30 +1032,30 @@
     <div class="stat-card">
         <i class="fas fa-users"></i>
         <h3>75+</h3>
-        <p>Actieve jongeren</p>
+        <p data-i18n="stats_youth">Actieve jongeren</p>
     </div>
     <div class="stat-card">
         <i class="fas fa-calendar-check"></i>
         <h3>15+</h3>
-        <p>Evenementen per jaar</p>
+        <p data-i18n="stats_events">Evenementen per jaar</p>
     </div>
     <div class="stat-card">
         <i class="fas fa-heart"></i>
         <h3>100%</h3>
-        <p>Passie, Engagement, Impact</p>
+        <p data-i18n="stats_impact">Passie, Engagement, Impact</p>
     </div>
 </div>
 
 <section id="missie" class="section reveal-left">
-    <h2>Onze missie</h2>
-    <p class="section-intro">
-        Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid. We geloven dat iedereen welkom is, ongeacht achtergrond, en creëren een veilige en inclusieve omgeving waar je jezelf kan zijn. Met toffe activiteiten zoals workshops, sport, cultuur en uitstappen helpen we jongeren nieuwe skills ontdekken en sterke vriendschappen opbouwen. We zetten in op dialoog, samenwerking en positieve rolmodellen, zodat jongeren weerbaar en zelfverzekerd in het leven staan. Samen bouwen we aan een community die kansen biedt, diversiteit omarmt en waarin jongeren een actieve stem hebben.
+    <h2 data-i18n="mission_title">Onze missie</h2>
+    <p class="section-intro" data-i18n="mission_text">
+        Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid.
     </p>
 </section>
 
 <section id="kernwaarden" class="section alt reveal">
-    <h2>Kernwaarden</h2>
-    <p class="section-intro">
+    <h2 data-i18n="values_title">Kernwaarden</h2>
+    <p class="section-intro" data-i18n="values_intro">
         Dit is wat ons drijft: waarden die jongeren verbinden, laten groeien en samen impact maken.
     </p>
     <div class="values-grid">
@@ -1005,50 +1063,62 @@
             <div class="value-icon-circle">
                 <i class="fas fa-book"></i>
             </div>
-            <h3>Educatie</h3>
-            <p>Leren op een manier die bij jou past! Van workshops tot sport en creatieve projecten – wij geven jongeren de tools om te groeien.</p>
+            <h3 data-i18n="value_education_title">Educatie</h3>
+            <p data-i18n="value_education_text">
+                Leren op een manier die bij jou past! Van workshops tot sport en creatieve projecten – wij geven jongeren de tools om te groeien.
+            </p>
         </div>
         <div class="value-card reveal">
             <div class="value-icon-circle">
                 <i class="fas fa-compass"></i>
             </div>
-            <h3>Kompas</h3>
-            <p>Ons kompas? Islamitische waarden. Ze geven ons richting en helpen ons eerlijk, respectvol en open te blijven. Zo bouwen we samen bruggen tussen alle jongeren.</p>
+            <h3 data-i18n="value_compass_title">Kompas</h3>
+            <p data-i18n="value_compass_text">
+                Ons kompas? Islamitische waarden. Ze geven ons richting en helpen ons eerlijk, respectvol en open te blijven.
+            </p>
         </div>
         <div class="value-card reveal">
             <div class="value-icon-circle">
                 <i class="fas fa-users"></i>
             </div>
-            <h3>Verbinding</h3>
-            <p>Hier vind je jouw crew! Een plek waar diversiteit telt, vriendschappen ontstaan en we samen impact maken.</p>
+            <h3 data-i18n="value_connection_title">Verbinding</h3>
+            <p data-i18n="value_connection_text">
+                Hier vind je jouw crew! Een plek waar diversiteit telt, vriendschappen ontstaan en we samen impact maken.
+            </p>
         </div>
         <div class="value-card reveal-right">
             <div class="value-icon-circle">
                 <i class="fas fa-balance-scale"></i>
             </div>
-            <h3>Integriteit</h3>
-            <p>We houden het echt. Eerlijkheid en transparantie in alles wat we doen – van projecten tot hoe we met elkaar omgaan.</p>
+            <h3 data-i18n="value_integrity_title">Integriteit</h3>
+            <p data-i18n="value_integrity_text">
+                We houden het echt. Eerlijkheid en transparantie in alles wat we doen – van projecten tot hoe we met elkaar omgaan.
+            </p>
         </div>
         <div class="value-card reveal-right">
             <div class="value-icon-circle">
-                <i class="fas fa-balance-scale"></i>
+                <i class="fas fa-door-open"></i>
             </div>
-            <h3>Openheid</h3>
-            <p>Iedereen hoort erbij. Verschillen? Die maken ons sterker. We creëren ruimte voor dialoog, samenwerking en respect.</p>
+            <h3 data-i18n="value_openness_title">Openheid</h3>
+            <p data-i18n="value_openness_text">
+                Iedereen hoort erbij. Verschillen maken ons sterker; we creëren ruimte voor dialoog, samenwerking en respect.
+            </p>
         </div>
         <div class="value-card reveal-right">
             <div class="value-icon-circle">
-                <i class="fas fa-balance-scale"></i>
+                <i class="fas fa-map-marked-alt"></i>
             </div>
-            <h3>Excursie</h3>
-            <p></p>
+            <h3 data-i18n="value_excursions_title">Excursies</h3>
+            <p data-i18n="value_excursions_text">
+                Samen ontdekken we nieuwe plaatsen en ervaringen die jongeren inspireren en samenbrengen.
+            </p>
         </div>
     </div>
 </section>
 
 <section id="activiteiten" class="section reveal">
-    <h2>Wat doen wij?</h2>
-    <p class="section-intro">
+    <h2 data-i18n="activities_title">Wat doen wij?</h2>
+    <p class="section-intro" data-i18n="activities_intro">
         Check wat we doen! Van leren tot sporten en ontdekken, alles om samen te groeien en sterker te staan.
     </p>
     <div class="activities-grid">
@@ -1057,8 +1127,10 @@
                 <i class="fas fa-chalkboard-teacher"></i>
             </div>
             <div class="activity-content">
-                <h3>Educatie</h3>
-                <p>Ontdek nieuwe dingen en boost je skills! Toffe workshops, interactieve sessies en talks die jou verder brengen.</p>
+                <h3 data-i18n="activity_education_title">Educatie</h3>
+                <p data-i18n="activity_education_text">
+                    Ontdek nieuwe dingen en boost je skills! Toffe workshops, interactieve sessies en talks die jou verder brengen.
+                </p>
             </div>
         </div>
         <div class="activity-card reveal">
@@ -1066,8 +1138,10 @@
                 <i class="fas fa-futbol"></i>
             </div>
             <div class="activity-content">
-                <h3>Sport</h3>
-                <p>Beweeg mee! Van voetbal tot coole challenges, sport en fun gaan hier hand in hand.</p>
+                <h3 data-i18n="activity_sport_title">Sport</h3>
+                <p data-i18n="activity_sport_text">
+                    Beweeg mee! Van voetbal tot leuke challenges; sport en fun gaan hier hand in hand.
+                </p>
             </div>
         </div>
         <div class="activity-card reveal-right">
@@ -1075,106 +1149,91 @@
                 <i class="fas fa-handshake"></i>
             </div>
             <div class="activity-content">
-                <h3>Sociale activiteiten</h3>
-                <p>Samen lachen, creatief bezig zijn en nieuwe vrienden maken. Gezellige momenten in onze community!</p>
+                <h3 data-i18n="activity_social_title">Sociale activiteiten</h3>
+                <p data-i18n="activity_social_text">
+                    Samen lachen, creatief bezig zijn en nieuwe vrienden maken. Gezellige momenten in onze community.
+                </p>
             </div>
         </div>
-<!--        <div class="activity-card reveal-left">-->
-<!--            <div class="activity-icon">-->
-<!--                <i class="fa-solid fa-people-group"></i>-->
-<!--            </div>-->
-<!--            <div class="activity-content">-->
-<!--                <h3>Sociale activiteiten</h3>-->
-<!--                <p>Interreligieuze ontmoetingen, dialoogmomenten en sociale projecten die verbinding en begrip stimuleren.</p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash;-->
-<!--        <div class="activity-card reveal">-->
-<!--            <div class="activity-icon">-->
-<!--                <i class="fas fa-kaaba"></i>-->
-<!--            </div>-->
-<!--            <div class="activity-content">-->
-<!--                <h3>Umrah organisatie</h3>-->
-<!--                <p>Toekomstige plannen voor georganiseerde Umrah-reizen voor jongeren en families binnen onze gemeenschap.</p>-->
-<!--            </div>-->
-<!--        </div>-->
         <div class="activity-card reveal-right">
             <div class="activity-icon">
                 <i class="fa-solid fa-hand-holding-heart"></i>
             </div>
             <div class="activity-content">
-                <h3>Liefdadigheid</h3>
-                <p>Sociale projecten en liefdadigheidsinitiatieven om de bredere gemeenschap te ondersteunen en te versterken.</p>
+                <h3 data-i18n="activity_charity_title">Liefdadigheid</h3>
+                <p data-i18n="activity_charity_text">
+                    Social projects en liefdadigheidsinitiatieven om de bredere gemeenschap te ondersteunen en te versterken.
+                </p>
             </div>
         </div>
     </div>
 </section>
 
 <section id="team" class="section alt reveal">
-    <h2>Onze crew</h2>
-    <p class="section-intro">
-        Onze crew geeft alles om samen onze missie waar te maken!
+    <h2 data-i18n="team_title">Onze crew</h2>
+    <p class="section-intro" data-i18n="team_intro">
+        Onze crew geeft alles om samen onze missie waar te maken.
     </p>
     <div class="team-grid">
         <div class="team-member reveal-left">
             <i class="fas fa-user-tie"></i>
             <h3>Nadir</h3>
-            <p>Coördinator</p>
+            <p data-i18n="team_nadir">Coördinator</p>
         </div>
         <div class="team-member reveal">
             <i class="fas fa-user-tie"></i>
             <h3>Khalid</h3>
-            <p>Vice-coördinator</p>
+            <p data-i18n="team_khalid">Vice-coördinator</p>
         </div>
         <div class="team-member reveal">
             <i class="fas fa-user-tie"></i>
             <h3>Mukhtar</h3>
-            <p>Secretaris</p>
+            <p data-i18n="team_mukhtar">Secretaris</p>
         </div>
         <div class="team-member reveal">
             <i class="fas fa-user-tie"></i>
             <h3>Sharfuddeen</h3>
-            <p>IT-specialist</p>
+            <p data-i18n="team_sharfuddeen">IT-specialist</p>
         </div>
         <div class="team-member reveal-right">
             <i class="fas fa-user-tie"></i>
             <h3>Wassim</h3>
-            <p>Financieel</p>
+            <p data-i18n="team_wassim">Financieel</p>
         </div>
     </div>
 </section>
 
 <section class="cta-section reveal">
-    <h2>Word deel van onze community!</h2>
-    <p>Join our crew! Samen leren, connecten en groeien – jouw plek, jouw vibe.</p>
-    <a href="/Contact.html" class="btn">Contacteer ons</a>
+    <h2 data-i18n="cta_title">Word deel van onze community!</h2>
+    <p data-i18n="cta_text">Join our crew! Samen leren, connecten en groeien – jouw plek, jouw vibe.</p>
+    <a href="/Contact.html" class="btn" data-i18n="cta_button">Contacteer ons</a>
 </section>
 
 <footer>
     <div class="footer-content">
         <div class="footer-section">
             <h3>Crescent Youth vzw</h3>
-            <p>Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.</p>
+            <p data-i18n="footer_about">
+                Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.
+            </p>
             <div class="social-links">
                 <a href="https://www.instagram.com/crescentyouth.be?igsh=dDVwM2J0NzFpbzFy" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-<!--                <a href="https://chat.whatsapp.com/DGoYa2tPvDX1SMUbS39prK?mode=wwt" aria-label="Whatsapp broeders" class="wa-men" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>-->
-<!--                <a href="https://chat.whatsapp.com/DnZtZIw7snKDIbPzfFZRYR?mode=wwt" aria-label="Whatsapp zusters" class="wa-women" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>-->
-<!--                <a href="https://whatsapp.com/channel/0029Vb6utLZ9WtBupBQ2tU1S" aria-label="Whatsapp Channel" class="wa-Channel" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>-->
-                <a href="https://www.tiktok.com/@crescentyouth.be?is_from_webapp=1&sender_device=pc" aria-label="Tik-Tok"  target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
-                <a href="https://linktr.ee/CrescentYouth" aria-label="Linktree" target="_blank" rel="noopener noreferrer" class="linktree-icon"><img src="/images/linktree-seeklogo.png" alt="Linktree" /></a>
-
+                <a href="https://www.tiktok.com/@crescentyouth.be?is_from_webapp=1&sender_device=pc" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                <a href="https://linktr.ee/CrescentYouth" aria-label="Linktree" target="_blank" rel="noopener noreferrer" class="linktree-icon">
+                    <img src="/images/linktree-seeklogo.png" alt="Linktree">
+                </a>
             </div>
         </div>
         <div class="footer-section">
-            <h3>Snelle links</h3>
-            <p><a href="index.html">Home</a></p>
-            <p><a href="#missie">Missie</a></p>
-            <p><a href="#waarden">Waarden</a></p>
-            <p><a href="#activiteiten">Wat doen wij?</a></p>
-            <p><a href="Contact.html">Contact</a></p>
+            <h3 data-i18n="footer_links_title">Snelle links</h3>
+            <p><a href="index.html" data-i18n="footer_home">Home</a></p>
+            <p><a href="#missie" data-i18n="footer_mission">Missie</a></p>
+            <p><a href="#kernwaarden" data-i18n="footer_values">Kernwaarden</a></p>
+            <p><a href="#activiteiten" data-i18n="footer_activities">Wat doen wij?</a></p>
+            <p><a href="Contact.html" data-i18n="footer_contact">Contact</a></p>
         </div>
         <div class="footer-section">
-            <h3>Contact info</h3>
+            <h3 data-i18n="footer_contact_title">Contact info</h3>
             <p><i class="fas fa-envelope"></i> info@crescentyouth.be</p>
         </div>
     </div>
@@ -1189,33 +1248,38 @@
     </div>
 </footer>
 
-<!-- Cookie Banner -->
 <div id="cookie-banner" class="cookie-banner">
-    <p>We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons <a href="/comply_with_law/cookie-policy.html">cookiebeleid</a>.</p>
-    <button id="cookie-accept">Akkoord</button>
+    <p>
+        <span data-i18n="cookies_text">
+            We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons
+        </span>
+        <a href="/comply_with_law/cookie-policy.html">cookiebeleid</a>.
+    </p>
+    <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
 </div>
 
 <script>
-    // Mobile menu toggle
+    // Mobile/desktop menu toggle (same behavior everywhere)
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.getElementById('nav-links');
+    const mainNav = document.getElementById('main-nav');
 
-    mobileMenu.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        const icon = mobileMenu.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-    });
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            const icon = mobileMenu.querySelector('i');
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
+    if (mobileMenu && mainNav) {
+        mobileMenu.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('open');
+            mobileMenu.classList.toggle('open', isOpen);
+            mobileMenu.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
-    });
+
+        document.querySelectorAll('#nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('open')) {
+                    mainNav.classList.remove('open');
+                    mobileMenu.classList.remove('open');
+                    mobileMenu.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+    }
 
     // Navbar scroll effect
     window.addEventListener('scroll', () => {
@@ -1227,18 +1291,15 @@
         }
     });
 
-    // Scroll to top button
+    // Scroll to top
     document.querySelector('.to-top').addEventListener('click', (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Scroll reveal animations
+    // Scroll reveal
     const animatedEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observerOptions = {
-        threshold: 0.18,
-        rootMargin: '0px 0px -40px 0px'
-    };
+    const observerOptions = { threshold: 0.18, rootMargin: '0px 0px -40px 0px' };
 
     const onAppear = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
@@ -1250,7 +1311,7 @@
 
     animatedEls.forEach(el => onAppear.observe(el));
 
-    // Animate stat numbers
+    // Stats animation
     const animateStats = () => {
         const stats = document.querySelectorAll('.stat-card h3');
         stats.forEach(stat => {
@@ -1258,12 +1319,10 @@
             const numeric = parseInt(original);
             const hasPlus = original.includes('+');
             const hasPercent = original.includes('%');
-
             if (isNaN(numeric)) return;
 
             let current = 0;
             const increment = numeric / 40;
-
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= numeric) {
@@ -1286,11 +1345,9 @@
     }, { threshold: 0.5 });
 
     const statsSection = document.querySelector('.quick-stats');
-    if (statsSection) {
-        statsObserver.observe(statsSection);
-    }
+    if (statsSection) statsObserver.observe(statsSection);
 
-    // Cookie Banner functionality
+    // Cookie banner
     const cookieBanner = document.getElementById('cookie-banner');
     const cookieAccept = document.getElementById('cookie-accept');
 
@@ -1303,10 +1360,159 @@
     cookieAccept.addEventListener('click', () => {
         localStorage.setItem('cookiesAccepted', 'true');
         cookieBanner.classList.remove('show');
-        setTimeout(() => {
-            cookieBanner.style.display = 'none';
-        }, 400);
+        setTimeout(() => { cookieBanner.style.display = 'none'; }, 400);
     });
+
+    // Simple i18n
+    const translations = {
+        en: {
+            nav_home: 'Home',
+            nav_mission: 'Mission',
+            nav_values: 'Core values',
+            nav_activities: 'What we do',
+            nav_team: 'Team',
+            nav_contact: 'Contact',
+            hero_title: 'Welcome to Crescent Youth',
+            hero_subtitle: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.',
+            hero_cta: 'Discover more',
+            stats_youth: 'Active youth',
+            stats_events: 'Events per year',
+            stats_impact: 'Passion, Engagement, Impact',
+            mission_title: 'Our mission',
+            mission_text: 'Crescent Youth is a place where young people come together to learn, grow and have fun, inspired by Islamic values.',
+            values_title: 'Core values',
+            values_intro: 'These values guide us and help young people grow and make impact together.',
+            value_education_title: 'Education',
+            value_education_text: 'Learning in a way that fits you, from workshops to sports and creative projects.',
+            value_compass_title: 'Compass',
+            value_compass_text: 'Islamic values give us direction and help us stay fair, respectful and open.',
+            value_connection_title: 'Connection',
+            value_connection_text: 'A place where friendships grow and diversity is our strength.',
+            value_integrity_title: 'Integrity',
+            value_integrity_text: 'Honesty and transparency in everything we do.',
+            value_openness_title: 'Openness',
+            value_openness_text: 'Everyone is welcome and there is room for dialogue and respect.',
+            value_excursions_title: 'Excursions',
+            value_excursions_text: 'We explore new places and experiences that inspire and connect.',
+            activities_title: 'What we do',
+            activities_intro: 'Take a look at what we do to help young people grow and become stronger together.',
+            activity_education_title: 'Education',
+            activity_education_text: 'Workshops, interactive sessions and talks that help you move forward.',
+            activity_sport_title: 'Sports',
+            activity_sport_text: 'From football to fun challenges, sports and fun go together.',
+            activity_social_title: 'Social activities',
+            activity_social_text: 'Relax, be creative and make new friends in our community.',
+            activity_charity_title: 'Charity',
+            activity_charity_text: 'Social projects and charity initiatives to support the wider community.',
+            team_title: 'Our crew',
+            team_intro: 'Our crew gives everything to make our mission reality.',
+            team_nadir: 'Coordinator',
+            team_khalid: 'Vice coordinator',
+            team_mukhtar: 'Secretary',
+            team_sharfuddeen: 'IT specialist',
+            team_wassim: 'Finance',
+            cta_title: 'Become part of our community!',
+            cta_text: 'Join our crew! Learn, connect and grow together.',
+            cta_button: 'Contact us',
+            footer_about: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.',
+            footer_links_title: 'Quick links',
+            footer_home: 'Home',
+            footer_mission: 'Mission',
+            footer_values: 'Core values',
+            footer_activities: 'What we do',
+            footer_contact: 'Contact',
+            footer_contact_title: 'Contact info',
+            cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our cookie policy.',
+            cookies_button: 'Accept'
+        },
+        fr: {
+            nav_home: 'Accueil',
+            nav_mission: 'Mission',
+            nav_values: 'Valeurs',
+            nav_activities: 'Ce que nous faisons',
+            nav_team: 'Équipe',
+            nav_contact: 'Contact',
+            hero_title: 'Bienvenue chez Crescent Youth',
+            hero_subtitle: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.',
+            hero_cta: 'Découvrir plus',
+            stats_youth: 'Jeunes actifs',
+            stats_events: 'Événements par an',
+            stats_impact: 'Passion, Engagement, Impact',
+            mission_title: 'Notre mission',
+            mission_text: 'Crescent Youth est un lieu où les jeunes se retrouvent pour apprendre, grandir et s’amuser, inspirés par les valeurs islamiques.',
+            values_title: 'Valeurs clés',
+            values_intro: 'Nos valeurs rassemblent les jeunes, les font grandir et leur permettent de créer de l’impact ensemble.',
+            value_education_title: 'Éducation',
+            value_education_text: 'Apprendre d’une manière qui te correspond, avec des ateliers, du sport et des projets créatifs.',
+            value_compass_title: 'Boussole',
+            value_compass_text: 'Les valeurs islamiques nous donnent une direction et nous aident à rester justes, respectueux et ouverts.',
+            value_connection_title: 'Lien',
+            value_connection_text: 'Un endroit où les amitiés naissent et où la diversité est une force.',
+            value_integrity_title: 'Intégrité',
+            value_integrity_text: 'Honnêteté et transparence dans tout ce que nous faisons.',
+            value_openness_title: 'Ouverture',
+            value_openness_text: 'Tout le monde est le bienvenu; il y a de la place pour le dialogue et le respect.',
+            value_excursions_title: 'Excursions',
+            value_excursions_text: 'Nous découvrons ensemble de nouveaux lieux et expériences qui inspirent et rassemblent.',
+            activities_title: 'Ce que nous faisons',
+            activities_intro: 'Découvre ce que nous faisons pour aider les jeunes à grandir et à se renforcer ensemble.',
+            activity_education_title: 'Éducation',
+            activity_education_text: 'Des ateliers et sessions interactives pour te faire avancer.',
+            activity_sport_title: 'Sport',
+            activity_sport_text: 'Du football et d’autres défis ludiques pour bouger dans la bonne ambiance.',
+            activity_social_title: 'Activités sociales',
+            activity_social_text: 'Des moments conviviaux pour créer, rire et se faire de nouveaux amis.',
+            activity_charity_title: 'Charité',
+            activity_charity_text: 'Des projets sociaux et initiatives solidaires pour soutenir la communauté.',
+            team_title: 'Notre équipe',
+            team_intro: 'Notre équipe donne tout pour faire vivre notre mission.',
+            team_nadir: 'Coordinateur',
+            team_khalid: 'Vice-coordinateur',
+            team_mukhtar: 'Secrétaire',
+            team_sharfuddeen: 'Spécialiste IT',
+            team_wassim: 'Finances',
+            cta_title: 'Rejoins notre communauté !',
+            cta_text: 'Rejoins notre équipe ! Apprendre, connecter et grandir ensemble.',
+            cta_button: 'Nous contacter',
+            footer_about: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.',
+            footer_links_title: 'Liens rapides',
+            footer_home: 'Accueil',
+            footer_mission: 'Mission',
+            footer_values: 'Valeurs',
+            footer_activities: 'Ce que nous faisons',
+            footer_contact: 'Contact',
+            footer_contact_title: 'Infos de contact',
+            cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant, tu acceptes notre politique de cookies.',
+            cookies_button: 'Accepter'
+        }
+    };
+
+    const langButtons = document.querySelectorAll('.lang-option');
+    const i18nElements = document.querySelectorAll('[data-i18n]');
+
+    function setLanguage(lang) {
+        langButtons.forEach(btn => {
+            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+        });
+        const dict = translations[lang];
+        if (!dict) return;
+        i18nElements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (dict[key]) el.textContent = dict[key];
+        });
+        document.documentElement.lang = lang;
+        localStorage.setItem('siteLang', lang);
+    }
+
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.getAttribute('data-lang');
+            setLanguage(lang);
+        });
+    });
+
+    const storedLang = localStorage.getItem('siteLang') || 'nl';
+    if (storedLang !== 'nl') setLanguage(storedLang);
 </script>
 </body>
 </html>
