@@ -469,6 +469,8 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
+
+
         }
 
         .value-card {
@@ -978,6 +980,32 @@
                 margin-left: 0;
             }
         }
+        /* Desktop perfect centering for values grid */
+        @media (min-width: 1024px) {
+            .values-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .values-grid .value-card {
+                width: 300px; /* same size cards */
+            }
+        }
+        /* Desktop perfect centering for the activities grid */
+        @media (min-width: 1024px) {
+            .activities-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+            }
+
+            .activities-grid .activity-card {
+                width: 300px; /* Same width for all cards */
+            }
+        }
 
         @media (max-width: 480px) {
             .quick-stats {
@@ -988,6 +1016,7 @@
                 display: flex;
                 justify-content: center;
             }
+
         }
     </style>
 </head>
