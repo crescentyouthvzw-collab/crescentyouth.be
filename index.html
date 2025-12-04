@@ -212,14 +212,13 @@
         .lang-option {
             cursor: pointer;
             font-size: 0.78rem;
-            /*padding: 3px 8px;*/
             border-radius: 999px;
             border: 1px solid transparent;
             color: #e8f7ff;
             transition: all 0.25s ease;
             text-transform: uppercase;
-            padding: 6px 12px;    /* larger tap area */
-            margin: 2px;          /* prevents overlap */
+            padding: 6px 12px;
+            margin: 2px;
         }
 
         .lang-option.active {
@@ -1262,7 +1261,7 @@
 </div>
 
 <script>
-    // Mobile/desktop menu toggle (same behavior everywhere)
+    // Mobile/desktop menu toggle
     const mobileMenu = document.getElementById('mobile-menu');
     const mainNav = document.getElementById('main-nav');
 
@@ -1360,14 +1359,85 @@
         }, 1000);
     }
 
-    cookieAccept.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookieBanner.classList.remove('show');
-        setTimeout(() => { cookieBanner.style.display = 'none'; }, 400);
-    });
+    if (cookieAccept) {
+        cookieAccept.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.classList.remove('show');
+            setTimeout(() => { cookieBanner.style.display = 'none'; }, 400);
+        });
+    }
 
     // Simple i18n
     const translations = {
+        nl: {
+            nav_home: 'Home',
+            nav_mission: 'Missie',
+            nav_values: 'Kernwaarden',
+            nav_activities: 'Wat doen wij?',
+            nav_team: 'Team',
+            nav_contact: 'Contact',
+
+            hero_title: 'Welkom bij Crescent Youth',
+            hero_subtitle: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.',
+            hero_cta: 'Bekijk verder',
+
+            stats_youth: 'Actieve jongeren',
+            stats_events: 'Evenementen per jaar',
+            stats_impact: 'Passie, Engagement, Impact',
+
+            mission_title: 'Onze missie',
+            mission_text: 'Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid.',
+
+            values_title: 'Kernwaarden',
+            values_intro: 'Dit is wat ons drijft: waarden die jongeren verbinden, laten groeien en samen impact maken.',
+            value_education_title: 'Educatie',
+            value_education_text: 'Leren op een manier die bij jou past! Van workshops tot sport en creatieve projecten – wij geven jongeren de tools om te groeien.',
+            value_compass_title: 'Kompas',
+            value_compass_text: 'Ons kompas? Islamitische waarden. Ze geven ons richting en helpen ons eerlijk, respectvol en open te blijven.',
+            value_connection_title: 'Verbinding',
+            value_connection_text: 'Hier vind je jouw crew! Een plek waar diversiteit telt, vriendschappen ontstaan en we samen impact maken.',
+            value_integrity_title: 'Integriteit',
+            value_integrity_text: 'We houden het echt. Eerlijkheid en transparantie in alles wat we doen – van projecten tot hoe we met elkaar omgaan.',
+            value_openness_title: 'Openheid',
+            value_openness_text: 'Iedereen hoort erbij. Verschillen maken ons sterker; we creëren ruimte voor dialoog, samenwerking en respect.',
+            value_excursions_title: 'Excursies',
+            value_excursions_text: 'Samen ontdekken we nieuwe plaatsen en ervaringen die jongeren inspireren en samenbrengen.',
+
+            activities_title: 'Wat doen wij?',
+            activities_intro: 'Check wat we doen! Van leren tot sporten en ontdekken, alles om samen te groeien en sterker te staan.',
+            activity_education_title: 'Educatie',
+            activity_education_text: 'Ontdek nieuwe dingen en boost je skills! Toffe workshops, interactieve sessies en talks die jou verder brengen.',
+            activity_sport_title: 'Sport',
+            activity_sport_text: 'Beweeg mee! Van voetbal tot leuke challenges; sport en fun gaan hier hand in hand.',
+            activity_social_title: 'Sociale activiteiten',
+            activity_social_text: 'Samen lachen, creatief bezig zijn en nieuwe vrienden maken. Gezellige momenten in onze community.',
+            activity_charity_title: 'Liefdadigheid',
+            activity_charity_text: 'Social projects en liefdadigheidsinitiatieven om de bredere gemeenschap te ondersteunen en te versterken.',
+
+            team_title: 'Onze crew',
+            team_intro: 'Onze crew geeft alles om samen onze missie waar te maken.',
+            team_nadir: 'Coördinator',
+            team_khalid: 'Vice-coördinator',
+            team_mukhtar: 'Secretaris',
+            team_sharfuddeen: 'IT-specialist',
+            team_wassim: 'Financieel',
+
+            cta_title: 'Word deel van onze community!',
+            cta_text: 'Join our crew! Samen leren, connecten en groeien – jouw plek, jouw vibe.',
+            cta_button: 'Contacteer ons',
+
+            footer_about: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.',
+            footer_links_title: 'Snelle links',
+            footer_home: 'Home',
+            footer_mission: 'Missie',
+            footer_values: 'Kernwaarden',
+            footer_activities: 'Wat doen wij?',
+            footer_contact: 'Contact',
+            footer_contact_title: 'Contact info',
+
+            cookies_text: 'We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons',
+            cookies_button: 'Akkoord'
+        },
         en: {
             nav_home: 'Home',
             nav_mission: 'Mission',
@@ -1494,31 +1564,33 @@
     const i18nElements = document.querySelectorAll('[data-i18n]');
 
     function setLanguage(lang) {
+        const dict = translations[lang];
+        if (!dict) return;
+
         langButtons.forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
-        const dict = translations[lang];
-        if (!dict) return;
+
         i18nElements.forEach(el => {
             const key = el.getAttribute('data-i18n');
             if (dict[key]) el.textContent = dict[key];
         });
+
         document.documentElement.lang = lang;
         localStorage.setItem('siteLang', lang);
     }
 
     langButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // prevents hamburger or layout from interfering
-            e.preventDefault();  // ensures clean tap behavior
-
+            e.stopPropagation();
+            e.preventDefault();
             const lang = btn.getAttribute('data-lang');
             setLanguage(lang);
         });
     });
 
     const storedLang = localStorage.getItem('siteLang') || 'nl';
-    if (storedLang !== 'nl') setLanguage(storedLang);
+    setLanguage(storedLang);
 </script>
 </body>
 </html>
