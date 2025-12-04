@@ -212,12 +212,14 @@
         .lang-option {
             cursor: pointer;
             font-size: 0.78rem;
-            padding: 3px 8px;
+            /*padding: 3px 8px;*/
             border-radius: 999px;
             border: 1px solid transparent;
             color: #e8f7ff;
             transition: all 0.25s ease;
             text-transform: uppercase;
+            padding: 6px 12px;    /* larger tap area */
+            margin: 2px;          /* prevents overlap */
         }
 
         .lang-option.active {
@@ -1506,7 +1508,10 @@
     }
 
     langButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // prevents hamburger or layout from interfering
+            e.preventDefault();  // ensures clean tap behavior
+
             const lang = btn.getAttribute('data-lang');
             setLanguage(lang);
         });
