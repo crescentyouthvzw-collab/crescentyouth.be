@@ -44,14 +44,18 @@
 
     <style>
         :root {
-            --primary: #022248;
-            --accent: #7fe8ff;
-            --accent-dark: #5fcde8;
+            --primary: #1e3d2f;
+            --primary-mid: #2d5a42;
+            --accent: #d4b896;
+            --accent-dark: #c0a07e;
+            --accent-light: #e8d5be;
+            --green-light: #7aad8a;
+            --green-mid: #4a7c5e;
             --text-light: #f8f9fa;
-            --text-dark: #222222;
-            --bg: #f4f7fa;
+            --text-dark: #1a2e22;
+            --bg: #f5f2ee;
             --card-bg: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow: rgba(30, 61, 47, 0.10);
         }
 
         * {
@@ -75,7 +79,7 @@
         /* HEADER / NAVBAR */
 
         header.navbar {
-            background: linear-gradient(90deg, #005ecb 0%, #3aaeea 50%, #6ef1ff 100%);
+            background: linear-gradient(90deg, #1e3d2f 0%, #2d5a42 50%, #4a7c5e 100%);
             color: white;
             display: flex;
             justify-content: space-between;
@@ -91,7 +95,7 @@
 
         .navbar.scrolled {
             padding: 8px 24px;
-            background: linear-gradient(90deg, #004aa5 0%, #3193dc 50%, #6ef1ff 100%) !important;
+            background: linear-gradient(90deg, #162d22 0%, #254d38 50%, #3d6b4f 100%) !important;
             box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
         }
 
@@ -132,7 +136,7 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: rgba(2, 34, 72, 0.97);
+            background: rgba(30, 61, 47, 0.97);
             backdrop-filter: blur(4px);
             display: flex;
             justify-content: center;
@@ -214,7 +218,7 @@
             font-size: 0.78rem;
             border-radius: 999px;
             border: 1px solid transparent;
-            color: #e8f7ff;
+            color: #e8f5e9;
             transition: all 0.25s ease;
             text-transform: uppercase;
             padding: 6px 12px;
@@ -272,7 +276,7 @@
         /* HERO */
 
         .hero {
-            background: linear-gradient(110deg, #005ecb 0%, #3aaeea 45%, #6ef1ff 100%);
+            background: linear-gradient(110deg, #1e3d2f 0%, #2d5a42 45%, #4a7c5e 100%);
             color: var(--text-light);
             text-align: center;
             padding: 130px 20px 90px;
@@ -288,8 +292,8 @@
             width: 200%;
             height: 200%;
             background:
-                    radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
-                    radial-gradient(circle at 90% 100%, rgba(255, 255, 255, 0.14) 0%, transparent 60%);
+                    radial-gradient(circle at 10% 0%, rgba(212, 184, 150, 0.12) 0%, transparent 60%),
+                    radial-gradient(circle at 90% 100%, rgba(212, 184, 150, 0.10) 0%, transparent 60%);
             animation: floatGlow 24s linear infinite alternate;
             opacity: 0.9;
             pointer-events: none;
@@ -385,7 +389,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(127, 232, 255, 0.08), transparent);
+            background: linear-gradient(135deg, rgba(212, 184, 150, 0.10), transparent);
             opacity: 0;
             transition: opacity 0.28s ease;
         }
@@ -401,7 +405,7 @@
 
         .stat-card i {
             font-size: 2.5rem;
-            color: #005ecb;
+            color: var(--green-mid);
             margin-bottom: 10px;
         }
 
@@ -412,7 +416,7 @@
         }
 
         .stat-card p {
-            color: #666666;
+            color: #666;
             font-size: 0.95rem;
         }
 
@@ -451,7 +455,7 @@
         .section-intro {
             text-align: center;
             font-size: 1.05rem;
-            color: #555555;
+            color: #555;
             margin-bottom: 50px;
             max-width: 750px;
             margin-left: auto;
@@ -459,7 +463,7 @@
         }
 
         .section.alt {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f5f2ee 100%);
         }
 
         /* VALUES GRID */
@@ -469,8 +473,6 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
-
-
         }
 
         .value-card {
@@ -489,7 +491,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at top, rgba(127, 232, 255, 0.24), transparent 60%);
+            background: radial-gradient(circle at top, rgba(212, 184, 150, 0.18), transparent 60%);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -508,7 +510,7 @@
             height: 80px;
             border-radius: 999px;
             margin: 0 auto 18px;
-            background: radial-gradient(circle at 30% 0%, #ffffff 0%, #6ef1ff 35%, #005ecb 100%);
+            background: radial-gradient(circle at 30% 0%, #d4b896 0%, #7aad8a 35%, #1e3d2f 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -527,7 +529,7 @@
         }
 
         .value-card p {
-            color: #666666;
+            color: #666;
             line-height: 1.6;
         }
 
@@ -556,7 +558,7 @@
         }
 
         .activity-icon {
-            background: linear-gradient(135deg, #005ecb 0%, #3aaeea 50%, #6ef1ff 100%);
+            background: linear-gradient(135deg, #1e3d2f 0%, #2d5a42 50%, #4a7c5e 100%);
             padding: 36px;
             text-align: center;
         }
@@ -577,7 +579,7 @@
         }
 
         .activity-content p {
-            color: #666666;
+            color: #666;
             line-height: 1.6;
             font-size: 0.98rem;
         }
@@ -607,7 +609,7 @@
 
         .team-member i {
             font-size: 2.6rem;
-            color: #005ecb;
+            color: var(--green-mid);
             margin-bottom: 12px;
         }
 
@@ -618,14 +620,14 @@
         }
 
         .team-member p {
-            color: #666666;
+            color: #666;
             font-size: 0.95rem;
         }
 
         /* CTA SECTION */
 
         .cta-section {
-            background: linear-gradient(135deg, #022248 0%, #005ecb 45%, #3aaeea 100%);
+            background: linear-gradient(135deg, #1e3d2f 0%, #2d5a42 45%, #4a7c5e 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -980,6 +982,7 @@
                 margin-left: 0;
             }
         }
+
         /* Desktop perfect centering for values grid */
         @media (min-width: 1024px) {
             .values-grid {
@@ -990,9 +993,10 @@
             }
 
             .values-grid .value-card {
-                width: 300px; /* same size cards */
+                width: 300px;
             }
         }
+
         /* Desktop perfect centering for the activities grid */
         @media (min-width: 1024px) {
             .activities-grid {
@@ -1003,7 +1007,7 @@
             }
 
             .activities-grid .activity-card {
-                width: 400px; /* Same width for all cards */
+                width: 400px;
             }
         }
 
@@ -1016,7 +1020,6 @@
                 display: flex;
                 justify-content: center;
             }
-
         }
     </style>
 </head>
@@ -1080,7 +1083,8 @@
 <section id="missie" class="section reveal-left">
     <h2 data-i18n="mission_title">Onze missie</h2>
     <p class="section-intro" data-i18n="mission_text">
-        Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid. We geloven dat iedereen welkom is, ongeacht achtergrond, en creëren een veilige en inclusieve omgeving waar je jezelf kan zijn. Met toffe activiteiten zoals workshops, sport, cultuur en uitstappen helpen we jongeren nieuwe skills ontdekken en sterke vriendschappen opbouwen. We zetten in op dialoog, samenwerking en positieve rolmodellen, zodat jongeren weerbaar en zelfverzekerd in het leven staan. Samen bouwen we aan een community die kansen biedt, diversiteit omarmt en waarin jongeren een actieve stem hebben.    </p>
+        Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid. We geloven dat iedereen welkom is, ongeacht achtergrond, en creëren een veilige en inclusieve omgeving waar je jezelf kan zijn. Met toffe activiteiten zoals workshops, sport, cultuur en uitstappen helpen we jongeren nieuwe skills ontdekken en sterke vriendschappen opbouwen. We zetten in op dialoog, samenwerking en positieve rolmodellen, zodat jongeren weerbaar en zelfverzekerd in het leven staan. Samen bouwen we aan een community die kansen biedt, diversiteit omarmt en waarin jongeren een actieve stem hebben.
+    </p>
 </section>
 
 <section id="kernwaarden" class="section alt reveal">
@@ -1134,15 +1138,15 @@
                 Iedereen hoort erbij. Verschillen maken ons sterker; we creëren ruimte voor dialoog, samenwerking en respect.
             </p>
         </div>
-<!--        <div class="value-card reveal-right">-->
-<!--            <div class="value-icon-circle">-->
-<!--                <i class="fas fa-map-marked-alt"></i>-->
-<!--            </div>-->
-<!--            <h3 data-i18n="value_excursions_title">Excursies</h3>-->
-<!--            <p data-i18n="value_excursions_text">-->
-<!--                Samen ontdekken we nieuwe plaatsen en ervaringen die jongeren inspireren en samenbrengen.-->
-<!--            </p>-->
-<!--        </div>-->
+        <!--        <div class="value-card reveal-right">-->
+        <!--            <div class="value-icon-circle">-->
+        <!--                <i class="fas fa-map-marked-alt"></i>-->
+        <!--            </div>-->
+        <!--            <h3 data-i18n="value_excursions_title">Excursies</h3>-->
+        <!--            <p data-i18n="value_excursions_text">-->
+        <!--                Samen ontdekken we nieuwe plaatsen en ervaringen die jongeren inspireren en samenbrengen.-->
+        <!--            </p>-->
+        <!--        </div>-->
     </div>
 </section>
 
@@ -1159,7 +1163,8 @@
             <div class="activity-content">
                 <h3 data-i18n="activity_education_title">Educatie</h3>
                 <p data-i18n="activity_education_text">
-                    Ontdek nieuwe dingen en boost je skills! Toffe workshops, interactieve sessies en talks die jou verder brengen.                </p>
+                    Ontdek nieuwe dingen en boost je skills! Toffe workshops, interactieve sessies en talks die jou verder brengen.
+                </p>
             </div>
         </div>
         <div class="activity-card reveal">
@@ -1169,7 +1174,8 @@
             <div class="activity-content">
                 <h3 data-i18n="activity_sport_title">Sport</h3>
                 <p data-i18n="activity_sport_text">
-                    Beweeg mee! Van voetbal tot coole challenges, sport en fun gaan hier hand in hand.                </p>
+                    Beweeg mee! Van voetbal tot coole challenges, sport en fun gaan hier hand in hand.
+                </p>
             </div>
         </div>
         <div class="activity-card reveal-right">
@@ -1183,17 +1189,17 @@
                 </p>
             </div>
         </div>
-<!--        <div class="activity-card reveal-right">-->
-<!--            <div class="activity-icon">-->
-<!--                <i class="fa-solid fa-hand-holding-heart"></i>-->
-<!--            </div>-->
-<!--            <div class="activity-content">-->
-<!--                <h3 data-i18n="activity_charity_title">Liefdadigheid</h3>-->
-<!--                <p data-i18n="activity_charity_text">-->
-<!--                    Social projects en liefdadigheidsinitiatieven om de bredere gemeenschap te ondersteunen en te versterken.-->
-<!--                </p>-->
-<!--            </div>-->
-<!--        </div>-->
+        <!--        <div class="activity-card reveal-right">-->
+        <!--            <div class="activity-icon">-->
+        <!--                <i class="fa-solid fa-hand-holding-heart"></i>-->
+        <!--            </div>-->
+        <!--            <div class="activity-content">-->
+        <!--                <h3 data-i18n="activity_charity_title">Liefdadigheid</h3>-->
+        <!--                <p data-i18n="activity_charity_text">-->
+        <!--                    Social projects en liefdadigheidsinitiatieven om de bredere gemeenschap te ondersteunen en te versterken.-->
+        <!--                </p>-->
+        <!--            </div>-->
+        <!--        </div>-->
         <div class="activity-card reveal-right">
             <div class="activity-icon">
                 <i class="fa-solid fa-route"></i>
@@ -1445,14 +1451,13 @@
             activity_education_title: 'Educatie',
             activity_education_text: 'Ontdek nieuwe dingen en boost je skills! Toffe workshops, interactieve sessies en talks die jou verder brengen.',
             activity_sport_title: 'Sport',
-            activity_sport_text: 'Beweeg mee! Van voetbal tot leuke challenges; sport en fun gaan hier hand in hand.',
+            activity_sport_text: 'Beweeg mee! Van voetbal tot coole challenges, sport en fun gaan hier hand in hand.',
             activity_social_title: 'Sociale activiteiten',
             activity_social_text: 'Samen lachen, creatief bezig zijn en nieuwe vrienden maken. Gezellige momenten in onze community.',
             activity_charity_title: 'Liefdadigheid',
             activity_charity_text: 'Social projects en liefdadigheidsinitiatieven om de bredere gemeenschap te ondersteunen en te versterken.',
             activity_trips_title: 'Trips',
             activity_trips_text: 'Ontdek, beleef, geniet! Onvergetelijke trips en herinneringen die je niet vergeet.',
-
 
             team_title: 'Onze crew',
             team_intro: 'Onze crew geeft alles om samen onze missie waar te maken.',
@@ -1492,7 +1497,7 @@
             stats_events: 'Events per year',
             stats_impact: 'Passion, Engagement, Impact',
             mission_title: 'Our mission',
-            mission_text: 'Crescent Youth is a place where young people come together to learn, grow, and have fun, inspired by Islamic values of respect, solidarity, and responsibility. We believe that everyone is welcome, regardless of background, and we create a safe and inclusive environment where you can truly be yourself.With exciting activities such as workshops, sports, cultural events, and trips, we help young people discover new skills and build strong friendships. We focus on dialogue, collaboration, and positive role models, empowering youth to become resilient and confident in their daily lives. Together, we are building a community that creates opportunities, embraces diversity, and gives young people an active voice.',
+            mission_text: 'Crescent Youth is a place where young people come together to learn, grow, and have fun, inspired by Islamic values of respect, solidarity, and responsibility. We believe that everyone is welcome, regardless of background, and we create a safe and inclusive environment where you can truly be yourself. With exciting activities such as workshops, sports, cultural events, and trips, we help young people discover new skills and build strong friendships. We focus on dialogue, collaboration, and positive role models, empowering youth to become resilient and confident in their daily lives. Together, we are building a community that creates opportunities, embraces diversity, and gives young people an active voice.',
             values_title: 'Core values',
             values_intro: 'These values guide us and help young people grow and make impact together.',
             value_education_title: 'Education',
@@ -1519,7 +1524,6 @@
             activity_charity_text: 'Social projects and charity initiatives to support the wider community.',
             activity_trips_title: 'Trips',
             activity_trips_text: 'Explore, experience, enjoy! Fun trips and unforgettable memories.',
-
 
             team_title: 'Our crew',
             team_intro: 'Our crew gives everything to make our mission reality.',
@@ -1556,7 +1560,7 @@
             stats_events: 'Événements par an',
             stats_impact: 'Passion, Engagement, Impact',
             mission_title: 'Notre mission',
-            mission_text: 'Crescent Youth est un lieu où les jeunes se réunissent pour apprendre, grandir et s’amuser, inspirés par les valeurs islamiques de respect, de solidarité et de responsabilité. Nous croyons que chacun est le bienvenu, quelle que soit son origine, et nous créons un environnement sûr et inclusif où tu peux être toi-même.Avec des activités passionnantes comme des ateliers, du sport, de la culture et des sorties, nous aidons les jeunes à découvrir de nouvelles compétences et à créer des amitiés solides. Nous misons sur le dialogue, la collaboration et des modèles positifs, afin de renforcer la résilience et la confiance des jeunes dans leur quotidien. Ensemble, nous construisons une communauté qui offre des opportunités, valorise la diversité et donne aux jeunes une voix active.',
+            mission_text: 'Crescent Youth est un lieu où les jeunes se réunissent pour apprendre, grandir et s’amuser, inspirés par les valeurs islamiques de respect, de solidarité et de responsabilité. Nous croyons que chacun est le bienvenu, quelle que soit son origine, et nous créons un environnement sûr et inclusif où tu peux être toi-même. Avec des activités passionnantes comme des ateliers, du sport, de la culture et des sorties, nous aidons les jeunes à découvrir de nouvelles compétences et à créer des amitiés solides. Nous misons sur le dialogue, la collaboration et des modèles positifs, afin de renforcer la résilience et la confiance des jeunes dans leur quotidien. Ensemble, nous construisons une communauté qui offre des opportunités, valorise la diversité et donne aux jeunes une voix active.',
             values_title: 'Valeurs clés',
             values_intro: 'Nos valeurs rassemblent les jeunes, les font grandir et leur permettent de créer de l’impact ensemble.',
             value_education_title: 'Éducation',
@@ -1641,6 +1645,3 @@
 </script>
 </body>
 </html>
-
-
-
