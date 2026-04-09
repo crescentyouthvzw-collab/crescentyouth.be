@@ -12,7 +12,7 @@
             "@type": "Organization",
             "name": "Crescent Youth vzw",
             "url": "https://crescentyouth.be",
-            "logo": "https://crescentyouth.be/images/crescent_youtrh_logo-removebg-%20-%20Copy.png",
+            "logo": "https://crescentyouth.be/images/crescent_youtrh_logo_new_without name.png",
             "description": "Inspirerende jeugdorganisatie in Brugge rond Islam, educatie, sport en gemeenschap",
             "address": {
                 "@type": "PostalAddress",
@@ -44,14 +44,18 @@
 
     <style>
         :root {
-            --primary: #022248;
-            --accent: #7fe8ff;
-            --accent-dark: #5fcde8;
+            --primary: #1e3d2f;
+            --primary-mid: #2d5a42;
+            --accent: #d4b896;
+            --accent-dark: #c0a07e;
+            --accent-light: #e8d5be;
+            --green-light: #7aad8a;
+            --green-mid: #4a7c5e;
             --text-light: #f8f9fa;
-            --text-dark: #222222;
-            --bg: #f4f7fa;
+            --text-dark: #1a2e22;
+            --bg: #f5f2ee;
             --card-bg: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow: rgba(30, 61, 47, 0.10);
         }
 
         * {
@@ -75,7 +79,7 @@
         /* HEADER / NAVBAR */
 
         header.navbar {
-            background: linear-gradient(90deg, #005ecb 0%, #3aaeea 50%, #6ef1ff 100%);
+            background: linear-gradient(90deg, #1e3d2f 0%, #2d5a42 50%, #4a7c5e 100%);
             color: white;
             display: flex;
             justify-content: space-between;
@@ -91,7 +95,7 @@
 
         .navbar.scrolled {
             padding: 8px 24px;
-            background: linear-gradient(90deg, #004aa5 0%, #3193dc 50%, #6ef1ff 100%) !important;
+            background: linear-gradient(90deg, #162d22 0%, #254d38 50%, #3d6b4f 100%) !important;
             box-shadow: 0 3px 20px rgba(0, 0, 0, 0.3);
         }
 
@@ -132,7 +136,7 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: rgba(2, 34, 72, 0.97);
+            background: rgba(30, 61, 47, 0.97);
             backdrop-filter: blur(4px);
             display: flex;
             justify-content: center;
@@ -214,7 +218,7 @@
             font-size: 0.78rem;
             border-radius: 999px;
             border: 1px solid transparent;
-            color: #e8f7ff;
+            color: #e8f5e9;
             transition: all 0.25s ease;
             text-transform: uppercase;
             padding: 6px 12px;
@@ -272,7 +276,7 @@
         /* HERO */
 
         .hero {
-            background: linear-gradient(110deg, #005ecb 0%, #3aaeea 45%, #6ef1ff 100%);
+            background: linear-gradient(110deg, #1e3d2f 0%, #2d5a42 45%, #4a7c5e 100%);
             color: var(--text-light);
             text-align: center;
             padding: 130px 20px 90px;
@@ -288,8 +292,8 @@
             width: 200%;
             height: 200%;
             background:
-                    radial-gradient(circle at 10% 0%, rgba(255, 255, 255, 0.15) 0%, transparent 60%),
-                    radial-gradient(circle at 90% 100%, rgba(255, 255, 255, 0.14) 0%, transparent 60%);
+                    radial-gradient(circle at 10% 0%, rgba(212, 184, 150, 0.12) 0%, transparent 60%),
+                    radial-gradient(circle at 90% 100%, rgba(212, 184, 150, 0.10) 0%, transparent 60%);
             animation: floatGlow 24s linear infinite alternate;
             opacity: 0.9;
             pointer-events: none;
@@ -373,7 +377,7 @@
         .contact-intro {
             margin-bottom: 18px;
             font-size: 1rem;
-            color: #555555;
+            color: #555;
         }
 
         .contact-cards {
@@ -403,7 +407,7 @@
             width: 60px;
             height: 60px;
             border-radius: 18px;
-            background: linear-gradient(135deg, #005ecb 0%, #3aaeea 60%, #6ef1ff 100%);
+            background: linear-gradient(135deg, #1e3d2f 0%, #2d5a42 60%, #4a7c5e 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -422,12 +426,12 @@
 
         .contact-text p {
             font-size: 0.97rem;
-            color: #555555;
+            color: #555;
             margin: 2px 0;
         }
 
         .contact-text a {
-            color: #005ecb;
+            color: var(--primary-mid);
             text-decoration: none;
             font-weight: 600;
         }
@@ -451,7 +455,7 @@
 
         .contact-form-card .subtitle {
             font-size: 0.98rem;
-            color: #666666;
+            color: #666;
             margin-bottom: 20px;
         }
 
@@ -490,7 +494,7 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(127, 232, 255, 0.25);
+            box-shadow: 0 0 0 4px rgba(212, 184, 150, 0.25);
         }
 
         .form-group textarea {
@@ -503,7 +507,7 @@
             padding: 13px 20px;
             border-radius: 999px;
             border: none;
-            background: linear-gradient(135deg, #005ecb 0%, #3aaeea 50%);
+            background: linear-gradient(135deg, #1e3d2f 0%, #2d5a42 50%);
             color: #ffffff;
             font-size: 1.02rem;
             font-weight: 700;
@@ -524,7 +528,7 @@
         .submit-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
-            background: linear-gradient(135deg, #004aa5, #3193dc);
+            background: linear-gradient(135deg, #162d22, #254d38);
         }
 
         /* FOOTER */
@@ -820,7 +824,7 @@
 <body>
 <header class="navbar">
     <a href="index.html" class="logo">
-        <img src="images/IMG_5436.PNG" alt="Crescent Youth logo" class="logo-img">
+        <img src="images/crescent_youtrh_logo_new_without%20name.png" alt="Crescent Youth logo" class="logo-img">
         <span class="logo-text">Crescent Youth</span>
     </a>
 
@@ -862,8 +866,6 @@
     <div class="contact-inner">
         <!-- LEFT: INFO & CARDS -->
         <div>
-
-
             <div class="contact-cards">
                 <div class="contact-card reveal-left">
                     <div class="contact-icon">
@@ -959,15 +961,15 @@
                            placeholder="bijv. ahmed@example.com"
                            data-i18n-placeholder="contact_placeholder_email">
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" data-i18n="contact_label_phone">
                         Telefoonnummer<span class="required">*</span>
                     </label>
-                     <input type="tel" name="phone"
-                         placeholder="bijv. +32 4xx xx xx xx"
-                         data-i18n-placeholder="contact_placeholder_phone"
-                         autocomplete="tel">
+                    <input type="tel" name="phone"
+                           placeholder="bijv. +32 4xx xx xx xx"
+                           data-i18n-placeholder="contact_placeholder_phone"
+                           autocomplete="tel">
                 </div>
 
                 <div class="form-group">
@@ -1216,7 +1218,6 @@
             contact_social_instagram: "Instagram – @crescentyouth.be",
             contact_social_tiktok: "TikTok – @crescentyouth.be",
 
-
             contact_form_title: 'Stuur ons een bericht',
             contact_form_subtitle: 'Vul het formulier in en we nemen zo snel mogelijk contact met je op.',
 
@@ -1331,7 +1332,6 @@
             contact_social_instagram: "Instagram – @crescentyouth.be",
             contact_social_tiktok: "TikTok – @crescentyouth.be",
 
-
             contact_form_title: 'Send us a message',
             contact_form_subtitle: 'Fill in the form and we will get back to you as soon as possible.',
 
@@ -1445,7 +1445,6 @@
             contact_social_text: "Suis-nous pour des activités, mises à jour et actualités:",
             contact_social_instagram: "Instagram – @crescentyouth.be",
             contact_social_tiktok: "TikTok – @crescentyouth.be",
-
 
             contact_form_title: 'Envoie-nous un message',
             contact_form_subtitle: 'Remplis le formulaire et nous reviendrons vers toi dès que possible.',
