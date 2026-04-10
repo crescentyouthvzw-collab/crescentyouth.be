@@ -844,6 +844,8 @@
             <span class="lang-option active" data-lang="nl">NL</span>
             <span class="lang-option" data-lang="en">EN</span>
             <span class="lang-option" data-lang="fr">FR</span>
+            <span class="lang-option" data-lang="ar">AR</span>
+
         </div>
 
         <button class="menu-toggle" id="mobile-menu" aria-label="Open navigatie" aria-expanded="false">
@@ -1055,11 +1057,11 @@
 </div>
 
 <script>
-    // Mobile/desktop menu toggle
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mainNav = document.getElementById('main-nav');
+        // Mobile/desktop menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mainNav = document.getElementById('main-nav');
 
-    if (mobileMenu && mainNav) {
+        if (mobileMenu && mainNav) {
         mobileMenu.addEventListener('click', () => {
             const isOpen = mainNav.classList.toggle('open');
             mobileMenu.classList.toggle('open', isOpen);
@@ -1067,37 +1069,37 @@
         });
 
         document.querySelectorAll('#nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (mainNav.classList.contains('open')) {
-                    mainNav.classList.remove('open');
-                    mobileMenu.classList.remove('open');
-                    mobileMenu.setAttribute('aria-expanded', 'false');
-                }
-            });
-        });
+        link.addEventListener('click', () => {
+        if (mainNav.classList.contains('open')) {
+        mainNav.classList.remove('open');
+        mobileMenu.classList.remove('open');
+        mobileMenu.setAttribute('aria-expanded', 'false');
+    }
+    });
+    });
     }
 
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
     });
 
-    // Scroll to top
-    document.querySelector('.to-top').addEventListener('click', (e) => {
+        // Scroll to top
+        document.querySelector('.to-top').addEventListener('click', (e) => {
         e.preventDefault();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Scroll reveal
-    const animatedEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    const observerOptions = { threshold: 0.18, rootMargin: '0px 0px -40px 0px' };
+        // Scroll reveal
+        const animatedEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const observerOptions = { threshold: 0.18, rootMargin: '0px 0px -40px 0px' };
 
-    const onAppear = new IntersectionObserver((entries, obs) => {
+        const onAppear = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
             entry.target.classList.add('visible');
@@ -1105,19 +1107,19 @@
         });
     }, observerOptions);
 
-    animatedEls.forEach(el => onAppear.observe(el));
+        animatedEls.forEach(el => onAppear.observe(el));
 
-    // Cookie banner
-    const cookieBanner = document.getElementById('cookie-banner');
-    const cookieAccept = document.getElementById('cookie-accept');
+        // Cookie banner
+        const cookieBanner = document.getElementById('cookie-banner');
+        const cookieAccept = document.getElementById('cookie-accept');
 
-    if (!localStorage.getItem('cookiesAccepted')) {
+        if (!localStorage.getItem('cookiesAccepted')) {
         setTimeout(() => {
             cookieBanner.classList.add('show');
         }, 1000);
     }
 
-    if (cookieAccept) {
+        if (cookieAccept) {
         cookieAccept.addEventListener('click', () => {
             localStorage.setItem('cookiesAccepted', 'true');
             cookieBanner.classList.remove('show');
@@ -1125,386 +1127,499 @@
         });
     }
 
-    // i18n translations (same base as index.html + contact page keys)
-    const translations = {
+        // i18n translations
+        const translations = {
         nl: {
-            nav_home: 'Home',
-            nav_mission: 'Missie',
-            nav_values: 'Kernwaarden',
-            nav_activities: 'Wat doen wij?',
-            nav_team: 'Team',
-            nav_contact: 'Contact',
+        nav_home: 'Home',
+        nav_mission: 'Missie',
+        nav_values: 'Kernwaarden',
+        nav_activities: 'Wat doen wij?',
+        nav_team: 'Team',
+        nav_contact: 'Contact',
 
-            // Home (kept for consistency)
-            hero_title: 'Welkom bij Crescent Youth',
-            hero_subtitle: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.',
-            hero_cta: 'Bekijk verder',
+        hero_title: 'Welkom bij Crescent Youth',
+        hero_subtitle: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.',
+        hero_cta: 'Bekijk verder',
 
-            stats_youth: 'Actieve jongeren',
-            stats_events: 'Evenementen per jaar',
-            stats_impact: 'Passie, Engagement, Impact',
+        stats_youth: 'Actieve jongeren',
+        stats_events: 'Evenementen per jaar',
+        stats_impact: 'Passie, Engagement, Impact',
 
-            mission_title: 'Onze missie',
-            mission_text: 'Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid.',
+        mission_title: 'Onze missie',
+        mission_text: 'Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid.',
 
-            values_title: 'Kernwaarden',
-            values_intro: 'Dit is wat ons drijft: waarden die jongeren verbinden, laten groeien en samen impact maken.',
-            value_education_title: 'Educatie',
-            value_education_text: 'Leren op een manier die bij jou past! Van workshops tot sport en creatieve projecten – wij geven jongeren de tools om te groeien.',
-            value_compass_title: 'Kompas',
-            value_compass_text: 'Ons kompas? Islamitische waarden. Ze geven ons richting en helpen ons eerlijk, respectvol en open te blijven.',
-            value_connection_title: 'Verbinding',
-            value_connection_text: 'Hier vind je jouw crew! Een plek waar diversiteit telt, vriendschappen ontstaan en we samen impact maken.',
-            value_integrity_title: 'Integriteit',
-            value_integrity_text: 'We houden het echt. Eerlijkheid en transparantie in alles wat we doen – van projecten tot hoe we met elkaar omgaan.',
-            value_openness_title: 'Openheid',
-            value_openness_text: 'Iedereen hoort erbij. Verschillen maken ons sterker; we creëren ruimte voor dialoog, samenwerking en respect.',
-            value_excursions_title: 'Excursies',
-            value_excursions_text: 'Samen ontdekken we nieuwe plaatsen en ervaringen die jongeren inspireren en samenbrengen.',
+        values_title: 'Kernwaarden',
+        values_intro: 'Dit is wat ons drijft: waarden die jongeren verbinden, laten groeien en samen impact maken.',
+        value_education_title: 'Educatie',
+        value_education_text: 'Leren op een manier die bij jou past! Van workshops tot sport en creatieve projecten – wij geven jongeren de tools om te groeien.',
+        value_compass_title: 'Kompas',
+        value_compass_text: 'Ons kompas? Islamitische waarden. Ze geven ons richting en helpen ons eerlijk, respectvol en open te blijven.',
+        value_connection_title: 'Verbinding',
+        value_connection_text: 'Hier vind je jouw crew! Een plek waar diversiteit telt, vriendschappen ontstaan en we samen impact maken.',
+        value_integrity_title: 'Integriteit',
+        value_integrity_text: 'We houden het echt. Eerlijkheid en transparantie in alles wat we doen – van projecten tot hoe we met elkaar omgaan.',
+        value_openness_title: 'Openheid',
+        value_openness_text: 'Iedereen hoort erbij. Verschillen maken ons sterker; we creëren ruimte voor dialoog, samenwerking en respect.',
+        value_excursions_title: 'Excursies',
+        value_excursions_text: 'Samen ontdekken we nieuwe plaatsen en ervaringen die jongeren inspireren en samenbrengen.',
 
-            activities_title: 'Wat doen wij?',
-            activities_intro: 'Check wat we doen! Van leren tot sporten en ontdekken, alles om samen te groeien en sterker te staan.',
-            activity_education_title: 'Educatie',
-            activity_education_text: 'Ontdek nieuwe dingen en boost je skills! Toffe workshops, interactieve sessies en talks die jou verder brengen.',
-            activity_sport_title: 'Sport',
-            activity_sport_text: 'Beweeg mee! Van voetbal tot leuke challenges; sport en fun gaan hier hand in hand.',
-            activity_social_title: 'Sociale activiteiten',
-            activity_social_text: 'Samen lachen, creatief bezig zijn en nieuwe vrienden maken. Gezellige momenten in onze community.',
-            activity_charity_title: 'Liefdadigheid',
-            activity_charity_text: 'Social projects en liefdadigheidsinitiatieven om de bredere gemeenschap te ondersteunen en te versterken.',
+        activities_title: 'Wat doen wij?',
+        activities_intro: 'Check wat we doen! Van leren tot sporten en ontdekken, alles om samen te groeien en sterker te staan.',
+        activity_education_title: 'Educatie',
+        activity_education_text: 'Ontdek nieuwe dingen en boost je skills! Toffe workshops, interactieve sessies en talks die jou verder brengen.',
+        activity_sport_title: 'Sport',
+        activity_sport_text: 'Beweeg mee! Van voetbal tot leuke challenges; sport en fun gaan hier hand in hand.',
+        activity_social_title: 'Sociale activiteiten',
+        activity_social_text: 'Samen lachen, creatief bezig zijn en nieuwe vrienden maken. Gezellige momenten in onze community.',
+        activity_charity_title: 'Liefdadigheid',
+        activity_charity_text: 'Social projects en liefdadigheidsinitiatieven om de bredere gemeenschap te ondersteunen en te versterken.',
 
-            team_title: 'Onze crew',
-            team_intro: 'Onze crew geeft alles om samen onze missie waar te maken.',
-            team_nadir: 'Coördinator',
-            team_khalid: 'Vice-coördinator',
-            team_mukhtar: 'Secretaris',
-            team_sharfuddeen: 'IT-specialist',
-            team_wassim: 'Financieel',
+        team_title: 'Onze crew',
+        team_intro: 'Onze crew geeft alles om samen onze missie waar te maken.',
+        team_nadir: 'Coördinator',
+        team_khalid: 'Vice-coördinator',
+        team_mukhtar: 'Secretaris',
+        team_sharfuddeen: 'IT-specialist',
+        team_wassim: 'Financieel',
 
-            cta_title: 'Word deel van onze community!',
-            cta_text: 'Join our crew! Samen leren, connecten en groeien – jouw plek, jouw vibe.',
-            cta_button: 'Contacteer ons',
+        cta_title: 'Word deel van onze community!',
+        cta_text: 'Join our crew! Samen leren, connecten en groeien – jouw plek, jouw vibe.',
+        cta_button: 'Contacteer ons',
 
-            footer_about: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.',
-            footer_links_title: 'Snelle links',
-            footer_home: 'Home',
-            footer_mission: 'Missie',
-            footer_values: 'Kernwaarden',
-            footer_activities: 'Wat doen wij?',
-            footer_contact: 'Contact',
-            footer_contact_title: 'Contact info',
+        footer_about: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.',
+        footer_links_title: 'Snelle links',
+        footer_home: 'Home',
+        footer_mission: 'Missie',
+        footer_values: 'Kernwaarden',
+        footer_activities: 'Wat doen wij?',
+        footer_contact: 'Contact',
+        footer_contact_title: 'Contact info',
 
-            cookies_text: 'We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons',
-            cookies_button: 'Akkoord',
+        cookies_text: 'We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons',
+        cookies_button: 'Akkoord',
 
-            /* CONTACT PAGE */
-            contact_hero_title: 'Neem contact op',
-            contact_hero_subtitle: 'Heb je een vraag, idee of wil je samenwerken? Laat van je horen – we reageren zo snel mogelijk.',
-            contact_hero_cta: 'Ga naar het formulier',
+        contact_hero_title: 'Neem contact op',
+        contact_hero_subtitle: 'Heb je een vraag, idee of wil je samenwerken? Laat van je horen – we reageren zo snel mogelijk.',
+        contact_hero_cta: 'Ga naar het formulier',
 
-            contact_title: 'Hoe wil je ons bereiken?',
-            contact_intro: 'Je kan ons mailen, aansluiten bij onze WhatsApp-groepen of gewoon het formulier hiernaast invullen.',
+        contact_title: 'Hoe wil je ons bereiken?',
+        contact_intro: 'Je kan ons mailen, aansluiten bij onze WhatsApp-groepen of gewoon het formulier hiernaast invullen.',
 
-            contact_email_title: 'Email',
-            contact_email_hint: 'We proberen binnen 24–48 uur te reageren.',
+        contact_email_title: 'Email',
+        contact_email_hint: 'We proberen binnen 24–48 uur te reageren.',
 
-            contact_whatsapp_title: 'WhatsApp groepen',
-            contact_whatsapp_text: 'Sluit je aan bij onze communitygroepen via WhatsApp:',
-            contact_whatsapp_brothers: 'Broeders – WhatsApp groep',
-            contact_whatsapp_sisters: 'Zusters – WhatsApp groep',
+        contact_whatsapp_title: 'WhatsApp groepen',
+        contact_whatsapp_text: 'Sluit je aan bij onze communitygroepen via WhatsApp:',
+        contact_whatsapp_brothers: 'Broeders – WhatsApp groep',
+        contact_whatsapp_sisters: 'Zusters – WhatsApp groep',
 
-            contact_social_title: "Sociale media",
-            contact_social_text: "Volg ons voor activiteiten, updates en community nieuws:",
-            contact_social_instagram: "Instagram – @crescentyouth.be",
-            contact_social_tiktok: "TikTok – @crescentyouth.be",
+        contact_social_title: 'Sociale media',
+        contact_social_text: 'Volg ons voor activiteiten, updates en community nieuws:',
+        contact_social_instagram: 'Instagram – @crescentyouth.be',
+        contact_social_tiktok: 'TikTok – @crescentyouth.be',
 
-            contact_form_title: 'Stuur ons een bericht',
-            contact_form_subtitle: 'Vul het formulier in en we nemen zo snel mogelijk contact met je op.',
+        contact_form_title: 'Stuur ons een bericht',
+        contact_form_subtitle: 'Vul het formulier in en we nemen zo snel mogelijk contact met je op.',
 
-            contact_label_name: 'Naam',
-            contact_label_email: 'E-mailadres',
-            contact_label_phone: 'Telefoonnummer',
-            contact_label_subject: 'Onderwerp',
-            contact_label_message: 'Bericht',
+        contact_label_name: 'Naam',
+        contact_label_email: 'E-mailadres',
+        contact_label_phone: 'Telefoonnummer',
+        contact_label_subject: 'Onderwerp',
+        contact_label_message: 'Bericht',
 
-            contact_placeholder_name: 'bijv. Ahmed Al-Mansouri',
-            contact_placeholder_email: 'bijv. ahmed@example.com',
-            contact_placeholder_phone: 'bijv. +32 4xx xx xx xx',
-            contact_placeholder_message: 'Schrijf hier je vraag of voorstel...',
+        contact_placeholder_name: 'bijv. Ahmed Al-Mansouri',
+        contact_placeholder_email: 'bijv. ahmed@example.com',
+        contact_placeholder_phone: 'bijv. +32 4xx xx xx xx',
+        contact_placeholder_message: 'Schrijf hier je vraag of voorstel...',
 
-            contact_select_default: 'Kies een onderwerp',
-            contact_select_general: 'Algemene vraag',
-            contact_select_membership: 'Lidmaatschap',
-            contact_select_activities: 'Activiteiten',
-            contact_select_volunteering: 'Vrijwilligerswerk',
-            contact_select_collab: 'Samenwerking',
-            contact_select_other: 'Andere',
+        contact_select_default: 'Kies een onderwerp',
+        contact_select_general: 'Algemene vraag',
+        contact_select_membership: 'Lidmaatschap',
+        contact_select_activities: 'Activiteiten',
+        contact_select_volunteering: 'Vrijwilligerswerk',
+        contact_select_collab: 'Samenwerking',
+        contact_select_other: 'Andere',
 
-            contact_button_submit: 'Verstuur bericht'
-        },
+        contact_button_submit: 'Verstuur bericht'
+    },
+
         en: {
-            nav_home: 'Home',
-            nav_mission: 'Mission',
-            nav_values: 'Core values',
-            nav_activities: 'What we do',
-            nav_team: 'Team',
-            nav_contact: 'Contact',
+        nav_home: 'Home',
+        nav_mission: 'Mission',
+        nav_values: 'Core values',
+        nav_activities: 'What we do',
+        nav_team: 'Team',
+        nav_contact: 'Contact',
 
-            hero_title: 'Welcome to Crescent Youth',
-            hero_subtitle: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.',
-            hero_cta: 'Discover more',
+        hero_title: 'Welcome to Crescent Youth',
+        hero_subtitle: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.',
+        hero_cta: 'Discover more',
 
-            stats_youth: 'Active youth',
-            stats_events: 'Events per year',
-            stats_impact: 'Passion, Engagement, Impact',
+        stats_youth: 'Active youth',
+        stats_events: 'Events per year',
+        stats_impact: 'Passion, Engagement, Impact',
 
-            mission_title: 'Our mission',
-            mission_text: 'Crescent Youth is a place where young people come together to learn, grow and have fun, inspired by Islamic values.',
+        mission_title: 'Our mission',
+        mission_text: 'Crescent Youth is a place where young people come together to learn, grow and have fun, inspired by Islamic values.',
 
-            values_title: 'Core values',
-            values_intro: 'These values guide us and help young people grow and make impact together.',
-            value_education_title: 'Education',
-            value_education_text: 'Learning in a way that fits you, from workshops to sports and creative projects.',
-            value_compass_title: 'Compass',
-            value_compass_text: 'Islamic values give us direction and help us stay fair, respectful and open.',
-            value_connection_title: 'Connection',
-            value_connection_text: 'A place where friendships grow and diversity is our strength.',
-            value_integrity_title: 'Integrity',
-            value_integrity_text: 'Honesty and transparency in everything we do.',
-            value_openness_title: 'Openness',
-            value_openness_text: 'Everyone is welcome and there is room for dialogue and respect.',
-            value_excursions_title: 'Excursions',
-            value_excursions_text: 'We explore new places and experiences that inspire and connect.',
+        values_title: 'Core values',
+        values_intro: 'These values guide us and help young people grow and make impact together.',
+        value_education_title: 'Education',
+        value_education_text: 'Learning in a way that fits you, from workshops to sports and creative projects.',
+        value_compass_title: 'Compass',
+        value_compass_text: 'Islamic values give us direction and help us stay fair, respectful and open.',
+        value_connection_title: 'Connection',
+        value_connection_text: 'A place where friendships grow and diversity is our strength.',
+        value_integrity_title: 'Integrity',
+        value_integrity_text: 'Honesty and transparency in everything we do.',
+        value_openness_title: 'Openness',
+        value_openness_text: 'Everyone is welcome and there is room for dialogue and respect.',
+        value_excursions_title: 'Excursions',
+        value_excursions_text: 'We explore new places and experiences that inspire and connect.',
 
-            activities_title: 'What we do',
-            activities_intro: 'Take a look at what we do to help young people grow and become stronger together.',
-            activity_education_title: 'Education',
-            activity_education_text: 'Workshops, interactive sessions and talks that help you move forward.',
-            activity_sport_title: 'Sports',
-            activity_sport_text: 'From football to fun challenges, sports and fun go together.',
-            activity_social_title: 'Social activities',
-            activity_social_text: 'Relax, be creative and make new friends in our community.',
-            activity_charity_title: 'Charity',
-            activity_charity_text: 'Social projects and charity initiatives to support the wider community.',
+        activities_title: 'What we do',
+        activities_intro: 'Take a look at what we do to help young people grow and become stronger together.',
+        activity_education_title: 'Education',
+        activity_education_text: 'Workshops, interactive sessions and talks that help you move forward.',
+        activity_sport_title: 'Sports',
+        activity_sport_text: 'From football to fun challenges, sports and fun go together.',
+        activity_social_title: 'Social activities',
+        activity_social_text: 'Relax, be creative and make new friends in our community.',
+        activity_charity_title: 'Charity',
+        activity_charity_text: 'Social projects and charity initiatives to support the wider community.',
 
-            team_title: 'Our crew',
-            team_intro: 'Our crew gives everything to make our mission reality.',
-            team_nadir: 'Coordinator',
-            team_khalid: 'Vice coordinator',
-            team_mukhtar: 'Secretary',
-            team_sharfuddeen: 'IT specialist',
-            team_wassim: 'Finance',
+        team_title: 'Our crew',
+        team_intro: 'Our crew gives everything to make our mission reality.',
+        team_nadir: 'Coordinator',
+        team_khalid: 'Vice coordinator',
+        team_mukhtar: 'Secretary',
+        team_sharfuddeen: 'IT specialist',
+        team_wassim: 'Finance',
 
-            cta_title: 'Become part of our community!',
-            cta_text: 'Join our crew! Learn, connect and grow together.',
-            cta_button: 'Contact us',
+        cta_title: 'Become part of our community!',
+        cta_text: 'Join our crew! Learn, connect and grow together.',
+        cta_button: 'Contact us',
 
-            footer_about: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.',
-            footer_links_title: 'Quick links',
-            footer_home: 'Home',
-            footer_mission: 'Mission',
-            footer_values: 'Core values',
-            footer_activities: 'What we do',
-            footer_contact: 'Contact',
-            footer_contact_title: 'Contact info',
+        footer_about: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.',
+        footer_links_title: 'Quick links',
+        footer_home: 'Home',
+        footer_mission: 'Mission',
+        footer_values: 'Core values',
+        footer_activities: 'What we do',
+        footer_contact: 'Contact',
+        footer_contact_title: 'Contact info',
 
-            cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our cookie policy.',
-            cookies_button: 'Accept',
+        cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our cookie policy.',
+        cookies_button: 'Accept',
 
-            /* CONTACT PAGE */
-            contact_hero_title: 'Get in touch',
-            contact_hero_subtitle: 'Do you have a question, idea or would you like to collaborate? Reach out and we will respond as soon as possible.',
-            contact_hero_cta: 'Go to the form',
+        contact_hero_title: 'Get in touch',
+        contact_hero_subtitle: 'Do you have a question, idea or would you like to collaborate? Reach out and we will respond as soon as possible.',
+        contact_hero_cta: 'Go to the form',
 
-            contact_title: 'How would you like to reach us?',
-            contact_intro: 'You can email us, join our WhatsApp groups or simply fill in the form next to this.',
+        contact_title: 'How would you like to reach us?',
+        contact_intro: 'You can email us, join our WhatsApp groups or simply fill in the form next to this.',
 
-            contact_email_title: 'Email',
-            contact_email_hint: 'We try to respond within 24–48 hours.',
+        contact_email_title: 'Email',
+        contact_email_hint: 'We try to respond within 24–48 hours.',
 
-            contact_whatsapp_title: 'WhatsApp groups',
-            contact_whatsapp_text: 'Join our community groups via WhatsApp:',
-            contact_whatsapp_brothers: 'Brothers – WhatsApp group',
-            contact_whatsapp_sisters: 'Sisters – WhatsApp group',
+        contact_whatsapp_title: 'WhatsApp groups',
+        contact_whatsapp_text: 'Join our community groups via WhatsApp:',
+        contact_whatsapp_brothers: 'Brothers – WhatsApp group',
+        contact_whatsapp_sisters: 'Sisters – WhatsApp group',
 
-            contact_social_title: "Social media",
-            contact_social_text: "Follow us for activities, updates and community news:",
-            contact_social_instagram: "Instagram – @crescentyouth.be",
-            contact_social_tiktok: "TikTok – @crescentyouth.be",
+        contact_social_title: 'Social media',
+        contact_social_text: 'Follow us for activities, updates and community news:',
+        contact_social_instagram: 'Instagram – @crescentyouth.be',
+        contact_social_tiktok: 'TikTok – @crescentyouth.be',
 
-            contact_form_title: 'Send us a message',
-            contact_form_subtitle: 'Fill in the form and we will get back to you as soon as possible.',
+        contact_form_title: 'Send us a message',
+        contact_form_subtitle: 'Fill in the form and we will get back to you as soon as possible.',
 
-            contact_label_name: 'Name',
-            contact_label_email: 'Email address',
-            contact_label_phone: 'Phone number',
-            contact_label_subject: 'Subject',
-            contact_label_message: 'Message',
+        contact_label_name: 'Name',
+        contact_label_email: 'Email address',
+        contact_label_phone: 'Phone number',
+        contact_label_subject: 'Subject',
+        contact_label_message: 'Message',
 
-            contact_placeholder_name: 'e.g. Ahmed Al-Mansouri',
-            contact_placeholder_email: 'e.g. ahmed@example.com',
-            contact_placeholder_phone: 'e.g. +32 4xx xx xx xx',
-            contact_placeholder_message: 'Write your question or proposal here...',
+        contact_placeholder_name: 'e.g. Ahmed Al-Mansouri',
+        contact_placeholder_email: 'e.g. ahmed@example.com',
+        contact_placeholder_phone: 'e.g. +32 4xx xx xx xx',
+        contact_placeholder_message: 'Write your question or proposal here...',
 
-            contact_select_default: 'Choose a subject',
-            contact_select_general: 'General question',
-            contact_select_membership: 'Membership',
-            contact_select_activities: 'Activities',
-            contact_select_volunteering: 'Volunteering',
-            contact_select_collab: 'Collaboration',
-            contact_select_other: 'Other',
+        contact_select_default: 'Choose a subject',
+        contact_select_general: 'General question',
+        contact_select_membership: 'Membership',
+        contact_select_activities: 'Activities',
+        contact_select_volunteering: 'Volunteering',
+        contact_select_collab: 'Collaboration',
+        contact_select_other: 'Other',
 
-            contact_button_submit: 'Send message'
-        },
+        contact_button_submit: 'Send message'
+    },
+
         fr: {
-            nav_home: 'Accueil',
-            nav_mission: 'Mission',
-            nav_values: 'Valeurs',
-            nav_activities: 'Ce que nous faisons',
-            nav_team: 'Équipe',
-            nav_contact: 'Contact',
+        nav_home: 'Accueil',
+        nav_mission: 'Mission',
+        nav_values: 'Valeurs',
+        nav_activities: 'Ce que nous faisons',
+        nav_team: 'Équipe',
+        nav_contact: 'Contact',
 
-            hero_title: 'Bienvenue chez Crescent Youth',
-            hero_subtitle: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.',
-            hero_cta: 'Découvrir plus',
+        hero_title: 'Bienvenue chez Crescent Youth',
+        hero_subtitle: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.',
+        hero_cta: 'Découvrir plus',
 
-            stats_youth: 'Jeunes actifs',
-            stats_events: 'Événements par an',
-            stats_impact: 'Passion, Engagement, Impact',
+        stats_youth: 'Jeunes actifs',
+        stats_events: 'Événements par an',
+        stats_impact: 'Passion, Engagement, Impact',
 
-            mission_title: 'Notre mission',
-            mission_text: 'Crescent Youth est un lieu où les jeunes se retrouvent pour apprendre, grandir et s’amuser, inspirés par les valeurs islamiques.',
+        mission_title: 'Notre mission',
+        mission_text: 'Crescent Youth est un lieu où les jeunes se retrouvent pour apprendre, grandir et s’amuser, inspirés par les valeurs islamiques.',
 
-            values_title: 'Valeurs clés',
-            values_intro: 'Nos valeurs rassemblent les jeunes, les font grandir et leur permettent de créer de l’impact ensemble.',
-            value_education_title: 'Éducation',
-            value_education_text: 'Apprendre d’une manière qui te correspond, avec des ateliers, du sport et des projets créatifs.',
-            value_compass_title: 'Boussole',
-            value_compass_text: 'Les valeurs islamiques nous donnent une direction et nous aident à rester justes, respectueux et ouverts.',
-            value_connection_title: 'Lien',
-            value_connection_text: 'Un endroit où les amitiés naissent et où la diversité est une force.',
-            value_integrity_title: 'Intégrité',
-            value_integrity_text: 'Honnêteté et transparence dans tout ce que nous faisons.',
-            value_openness_title: 'Ouverture',
-            value_openness_text: 'Tout le monde est le bienvenu; il y a de la place pour le dialogue et le respect.',
-            value_excursions_title: 'Excursions',
-            value_excursions_text: 'Nous découvrons ensemble de nouveaux lieux et expériences qui inspirent et rassemblent.',
+        values_title: 'Valeurs clés',
+        values_intro: 'Nos valeurs rassemblent les jeunes, les font grandir et leur permettent de créer de l’impact ensemble.',
+        value_education_title: 'Éducation',
+        value_education_text: 'Apprendre d’une manière qui te correspond, avec des ateliers, du sport et des projets créatifs.',
+        value_compass_title: 'Boussole',
+        value_compass_text: 'Les valeurs islamiques nous donnent une direction et nous aident à rester justes, respectueux et ouverts.',
+        value_connection_title: 'Lien',
+        value_connection_text: 'Un endroit où les amitiés naissent et où la diversité est une force.',
+        value_integrity_title: 'Intégrité',
+        value_integrity_text: 'Honnêteté et transparence dans tout ce que nous faisons.',
+        value_openness_title: 'Ouverture',
+        value_openness_text: 'Tout le monde est le bienvenu; il y a de la place pour le dialogue et le respect.',
+        value_excursions_title: 'Excursions',
+        value_excursions_text: 'Nous découvrons ensemble de nouveaux lieux et expériences qui inspirent et rassemblent.',
 
-            activities_title: 'Ce que nous faisons',
-            activities_intro: 'Découvre ce que nous faisons pour aider les jeunes à grandir et à se renforcer ensemble.',
-            activity_education_title: 'Éducation',
-            activity_education_text: 'Des ateliers et sessions interactives pour te faire avancer.',
-            activity_sport_title: 'Sport',
-            activity_sport_text: 'Du football et d’autres défis ludiques pour bouger dans la bonne ambiance.',
-            activity_social_title: 'Activités sociales',
-            activity_social_text: 'Des moments conviviaux pour créer, rire et se faire de nouveaux amis.',
-            activity_charity_title: 'Charité',
-            activity_charity_text: 'Des projets sociaux et initiatives solidaires pour soutenir la communauté.',
+        activities_title: 'Ce que nous faisons',
+        activities_intro: 'Découvre ce que nous faisons pour aider les jeunes à grandir et à se renforcer ensemble.',
+        activity_education_title: 'Éducation',
+        activity_education_text: 'Des ateliers et sessions interactives pour te faire avancer.',
+        activity_sport_title: 'Sport',
+        activity_sport_text: 'Du football et d’autres défis ludiques pour bouger dans la bonne ambiance.',
+        activity_social_title: 'Activités sociales',
+        activity_social_text: 'Des moments conviviaux pour créer, rire et se faire de nouveaux amis.',
+        activity_charity_title: 'Charité',
+        activity_charity_text: 'Des projets sociaux et initiatives solidaires pour soutenir la communauté.',
 
-            team_title: 'Notre équipe',
-            team_intro: 'Notre équipe donne tout pour faire vivre notre mission.',
-            team_nadir: 'Coordinateur',
-            team_khalid: 'Vice-coordinateur',
-            team_mukhtar: 'Secrétaire',
-            team_sharfuddeen: 'Spécialiste IT',
-            team_wassim: 'Finances',
+        team_title: 'Notre équipe',
+        team_intro: 'Notre équipe donne tout pour faire vivre notre mission.',
+        team_nadir: 'Coordinateur',
+        team_khalid: 'Vice-coordinateur',
+        team_mukhtar: 'Secrétaire',
+        team_sharfuddeen: 'Spécialiste IT',
+        team_wassim: 'Finances',
 
-            cta_title: 'Rejoins notre communauté !',
-            cta_text: 'Rejoins notre équipe ! Apprendre, connecter et grandir ensemble.',
-            cta_button: 'Nous contacter',
+        cta_title: 'Rejoins notre communauté !',
+        cta_text: 'Rejoins notre équipe ! Apprendre, connecter et grandir ensemble.',
+        cta_button: 'Nous contacter',
 
-            footer_about: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.',
-            footer_links_title: 'Liens rapides',
-            footer_home: 'Accueil',
-            footer_mission: 'Mission',
-            footer_values: 'Valeurs',
-            footer_activities: 'Ce que nous faisons',
-            footer_contact: 'Contact',
-            footer_contact_title: 'Infos de contact',
+        footer_about: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.',
+        footer_links_title: 'Liens rapides',
+        footer_home: 'Accueil',
+        footer_mission: 'Mission',
+        footer_values: 'Valeurs',
+        footer_activities: 'Ce que nous faisons',
+        footer_contact: 'Contact',
+        footer_contact_title: 'Infos de contact',
 
-            cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant, tu acceptes notre politique de cookies.',
-            cookies_button: 'Accepter',
+        cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant, tu acceptes notre politique de cookies.',
+        cookies_button: 'Accepter',
 
-            /* CONTACT PAGE */
-            contact_hero_title: 'Contacte-nous',
-            contact_hero_subtitle: 'Tu as une question, une idée ou envie de collaborer ? Écris-nous et nous te répondrons dès que possible.',
-            contact_hero_cta: 'Aller au formulaire',
+        contact_hero_title: 'Contacte-nous',
+        contact_hero_subtitle: 'Tu as une question, une idée ou envie de collaborer ? Écris-nous et nous te répondrons dès que possible.',
+        contact_hero_cta: 'Aller au formulaire',
 
-            contact_title: 'Comment veux-tu nous joindre ?',
-            contact_intro: 'Tu peux nous envoyer un e-mail, rejoindre nos groupes WhatsApp ou simplement remplir le formulaire à côté.',
+        contact_title: 'Comment veux-tu nous joindre ?',
+        contact_intro: 'Tu peux nous envoyer un e-mail, rejoindre nos groupes WhatsApp ou simplement remplir le formulaire à côté.',
 
-            contact_email_title: 'Email',
-            contact_email_hint: 'Nous essayons de répondre dans les 24–48 heures.',
+        contact_email_title: 'Email',
+        contact_email_hint: 'Nous essayons de répondre dans les 24–48 heures.',
 
-            contact_whatsapp_title: 'Groupes WhatsApp',
-            contact_whatsapp_text: 'Rejoins nos groupes communautaires sur WhatsApp :',
-            contact_whatsapp_brothers: 'Frères – Groupe WhatsApp',
-            contact_whatsapp_sisters: 'Sœurs – Groupe WhatsApp',
+        contact_whatsapp_title: 'Groupes WhatsApp',
+        contact_whatsapp_text: 'Rejoins nos groupes communautaires sur WhatsApp :',
+        contact_whatsapp_brothers: 'Frères – Groupe WhatsApp',
+        contact_whatsapp_sisters: 'Sœurs – Groupe WhatsApp',
 
-            contact_social_title: "Réseaux sociaux",
-            contact_social_text: "Suis-nous pour des activités, mises à jour et actualités:",
-            contact_social_instagram: "Instagram – @crescentyouth.be",
-            contact_social_tiktok: "TikTok – @crescentyouth.be",
+        contact_social_title: 'Réseaux sociaux',
+        contact_social_text: 'Suis-nous pour des activités, mises à jour et actualités:',
+        contact_social_instagram: 'Instagram – @crescentyouth.be',
+        contact_social_tiktok: 'TikTok – @crescentyouth.be',
 
-            contact_form_title: 'Envoie-nous un message',
-            contact_form_subtitle: 'Remplis le formulaire et nous reviendrons vers toi dès que possible.',
+        contact_form_title: 'Envoie-nous un message',
+        contact_form_subtitle: 'Remplis le formulaire et nous reviendrons vers toi dès que possible.',
 
-            contact_label_name: 'Nom',
-            contact_label_email: 'Adresse e-mail',
-            contact_label_phone: 'Numéro de téléphone',
-            contact_label_subject: 'Sujet',
-            contact_label_message: 'Message',
+        contact_label_name: 'Nom',
+        contact_label_email: 'Adresse e-mail',
+        contact_label_phone: 'Numéro de téléphone',
+        contact_label_subject: 'Sujet',
+        contact_label_message: 'Message',
 
-            contact_placeholder_name: 'ex. Ahmed Al-Mansouri',
-            contact_placeholder_email: 'ex. ahmed@example.com',
-            contact_placeholder_phone: 'ex. +32 4xx xx xx xx',
-            contact_placeholder_message: 'Écris ta question ou ta proposition ici...',
+        contact_placeholder_name: 'ex. Ahmed Al-Mansouri',
+        contact_placeholder_email: 'ex. ahmed@example.com',
+        contact_placeholder_phone: 'ex. +32 4xx xx xx xx',
+        contact_placeholder_message: 'Écris ta question ou ta proposition ici...',
 
-            contact_select_default: 'Choisis un sujet',
-            contact_select_general: 'Question générale',
-            contact_select_membership: 'Adhésion',
-            contact_select_activities: 'Activités',
-            contact_select_volunteering: 'Bénévolat',
-            contact_select_collab: 'Collaboration',
-            contact_select_other: 'Autre',
+        contact_select_default: 'Choisis un sujet',
+        contact_select_general: 'Question générale',
+        contact_select_membership: 'Adhésion',
+        contact_select_activities: 'Activités',
+        contact_select_volunteering: 'Bénévolat',
+        contact_select_collab: 'Collaboration',
+        contact_select_other: 'Autre',
 
-            contact_button_submit: 'Envoyer le message'
-        }
+        contact_button_submit: 'Envoyer le message'
+    },
+
+        ar: {
+        nav_home: 'الرئيسية',
+        nav_mission: 'المهمة',
+        nav_values: 'القيم الأساسية',
+        nav_activities: 'ماذا نفعل؟',
+        nav_team: 'الفريق',
+        nav_contact: 'اتصل بنا',
+
+        hero_title: 'مرحبًا بكم في كريسنت يوث',
+        hero_subtitle: 'نربط الشباب من مختلف الخلفيات بالقيم الإسلامية من خلال التعليم والرياضة والأنشطة الملهمة.',
+        hero_cta: 'اكتشف المزيد',
+
+        stats_youth: 'شباب نشطون',
+        stats_events: 'فعاليات سنويًا',
+        stats_impact: 'شغف، التزام، تأثير',
+
+        mission_title: 'مهمتنا',
+        mission_text: 'كريسنت يوث هو مكان يجتمع فيه الشباب للتعلّم والنمو والاستمتاع، بإلهام من القيم الإسلامية.',
+
+        values_title: 'القيم الأساسية',
+        values_intro: 'هذه هي القيم التي توجهنا وتساعد الشباب على النمو وصنع الأثر معًا.',
+        value_education_title: 'التعليم',
+        value_education_text: 'التعلّم بطريقة تناسبك، من الورشات إلى الرياضة والمشاريع الإبداعية.',
+        value_compass_title: 'البوصلة',
+        value_compass_text: 'القيم الإسلامية تمنحنا الاتجاه وتساعدنا على البقاء عادلين ومحترمين ومنفتحين.',
+        value_connection_title: 'الترابط',
+        value_connection_text: 'مكان تنمو فيه الصداقات ويكون فيه التنوع مصدر قوة.',
+        value_integrity_title: 'النزاهة',
+        value_integrity_text: 'الصدق والشفافية في كل ما نقوم به.',
+        value_openness_title: 'الانفتاح',
+        value_openness_text: 'الجميع مرحب بهم وهناك مساحة للحوار والاحترام.',
+        value_excursions_title: 'الرحلات',
+        value_excursions_text: 'نكتشف معًا أماكن وتجارب جديدة تلهمنا وتقربنا من بعضنا.',
+
+        activities_title: 'ماذا نفعل؟',
+        activities_intro: 'اكتشف ما نقوم به لمساعدة الشباب على النمو والتقوّي معًا.',
+        activity_education_title: 'التعليم',
+        activity_education_text: 'ورشات وجلسات تفاعلية ومحاضرات تساعدك على التقدم.',
+        activity_sport_title: 'الرياضة',
+        activity_sport_text: 'من كرة القدم إلى التحديات الممتعة، الرياضة والمتعة تسيران معًا.',
+        activity_social_title: 'الأنشطة الاجتماعية',
+        activity_social_text: 'استرخِ، كن مبدعًا، واصنع صداقات جديدة داخل مجتمعنا.',
+        activity_charity_title: 'العمل الخيري',
+        activity_charity_text: 'مشاريع اجتماعية ومبادرات خيرية لدعم المجتمع الأوسع.',
+
+        team_title: 'فريقنا',
+        team_intro: 'فريقنا يبذل كل ما لديه لتحقيق رسالتنا.',
+        team_nadir: 'المنسق',
+        team_khalid: 'نائب المنسق',
+        team_mukhtar: 'السكرتير',
+        team_sharfuddeen: 'أخصائي تكنولوجيا المعلومات',
+        team_wassim: 'المالية',
+
+        cta_title: 'كن جزءًا من مجتمعنا!',
+        cta_text: 'انضم إلى فريقنا! تعلّم وتواصل وانمُ معنا.',
+        cta_button: 'اتصل بنا',
+
+        footer_about: 'نربط الشباب من مختلف الخلفيات بالقيم الإسلامية من خلال التعليم والرياضة والأنشطة الملهمة.',
+        footer_links_title: 'روابط سريعة',
+        footer_home: 'الرئيسية',
+        footer_mission: 'المهمة',
+        footer_values: 'القيم الأساسية',
+        footer_activities: 'ماذا نفعل؟',
+        footer_contact: 'اتصل بنا',
+        footer_contact_title: 'معلومات التواصل',
+
+        cookies_text: 'نستخدم ملفات تعريف الارتباط لتحسين تجربتك. من خلال الاستمرار في استخدام موقعنا، فإنك توافق على سياسة ملفات تعريف الارتباط الخاصة بنا.',
+        cookies_button: 'موافق',
+
+        contact_hero_title: 'تواصل معنا',
+        contact_hero_subtitle: 'هل لديك سؤال أو فكرة أو ترغب في التعاون؟ تواصل معنا وسنرد عليك في أقرب وقت ممكن.',
+        contact_hero_cta: 'اذهب إلى النموذج',
+
+        contact_title: 'كيف تود التواصل معنا؟',
+        contact_intro: 'يمكنك مراسلتنا عبر البريد الإلكتروني أو الانضمام إلى مجموعات واتساب أو ببساطة ملء النموذج الموجود هنا.',
+
+        contact_email_title: 'البريد الإلكتروني',
+        contact_email_hint: 'نحاول الرد خلال 24 إلى 48 ساعة.',
+
+        contact_whatsapp_title: 'مجموعات واتساب',
+        contact_whatsapp_text: 'انضم إلى مجموعات مجتمعنا عبر واتساب:',
+        contact_whatsapp_brothers: 'الإخوة – مجموعة واتساب',
+        contact_whatsapp_sisters: 'الأخوات – مجموعة واتساب',
+
+        contact_social_title: 'وسائل التواصل الاجتماعي',
+        contact_social_text: 'تابعنا للاطلاع على الأنشطة والتحديثات وأخبار المجتمع:',
+        contact_social_instagram: 'إنستغرام – @crescentyouth.be',
+        contact_social_tiktok: 'تيك توك – @crescentyouth.be',
+
+        contact_form_title: 'أرسل لنا رسالة',
+        contact_form_subtitle: 'املأ النموذج وسنتواصل معك في أقرب وقت ممكن.',
+
+        contact_label_name: 'الاسم',
+        contact_label_email: 'البريد الإلكتروني',
+        contact_label_phone: 'رقم الهاتف',
+        contact_label_subject: 'الموضوع',
+        contact_label_message: 'الرسالة',
+
+        contact_placeholder_name: 'مثال: أحمد المنصوري',
+        contact_placeholder_email: 'مثال: ahmed@example.com',
+        contact_placeholder_phone: 'مثال: +32 4xx xx xx xx',
+        contact_placeholder_message: 'اكتب سؤالك أو اقتراحك هنا...',
+
+        contact_select_default: 'اختر موضوعًا',
+        contact_select_general: 'سؤال عام',
+        contact_select_membership: 'العضوية',
+        contact_select_activities: 'الأنشطة',
+        contact_select_volunteering: 'التطوع',
+        contact_select_collab: 'التعاون',
+        contact_select_other: 'أخرى',
+
+        contact_button_submit: 'إرسال الرسالة'
+    }
     };
 
-    const langButtons = document.querySelectorAll('.lang-option');
-    const i18nElements = document.querySelectorAll('[data-i18n]');
-    const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
-    const selectOptions = document.querySelectorAll('[data-i18n-select] option[data-i18n]');
+        const langButtons = document.querySelectorAll('.lang-option');
+        const i18nElements = document.querySelectorAll('[data-i18n]');
+        const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+        const selectOptions = document.querySelectorAll('[data-i18n-select] option[data-i18n]');
 
-    function setLanguage(lang) {
+        function setLanguage(lang) {
         const dict = translations[lang];
         if (!dict) return;
 
         langButtons.forEach(btn => {
-            btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-        });
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
 
         i18nElements.forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (dict[key]) el.textContent = dict[key];
-        });
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+    });
 
         placeholderElements.forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            if (dict[key]) el.placeholder = dict[key];
-        });
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) el.placeholder = dict[key];
+    });
 
         selectOptions.forEach(opt => {
-            const key = opt.getAttribute('data-i18n');
-            if (dict[key]) opt.textContent = dict[key];
-        });
+        const key = opt.getAttribute('data-i18n');
+        if (dict[key]) opt.textContent = dict[key];
+    });
 
         document.documentElement.lang = lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
         localStorage.setItem('siteLang', lang);
     }
 
-    langButtons.forEach(btn => {
+        langButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             e.preventDefault();
@@ -1513,8 +1628,8 @@
         });
     });
 
-    const storedLang = localStorage.getItem('siteLang') || 'nl';
-    setLanguage(storedLang);
+        const storedLang = localStorage.getItem('siteLang') || 'nl';
+        setLanguage(storedLang);
 </script>
 </body>
 </html>
