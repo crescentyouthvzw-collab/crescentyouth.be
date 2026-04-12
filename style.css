@@ -423,15 +423,17 @@ nav.open {
 
 .section h2 {
     color: var(--primary);
-    margin-bottom: 15px;
+    margin: 0 auto 15px;
     font-size: 2.4rem;
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
     position: relative;
-    display: inline-block;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    left: auto;
+    transform: none;
     letter-spacing: 0.03em;
 }
 
@@ -1315,9 +1317,10 @@ footer {
     text-align: left;
     font-size: 1.05rem;
     font-weight: 700;
-    line-height: 1.4;
+    line-height: 1.6;
     color: var(--primary);
     cursor: pointer;
+    display: block;
 }
 
 .faq-answer {
@@ -1333,4 +1336,62 @@ footer {
 
 .faq-item.active .faq-answer {
     display: block;
+}
+html[dir="rtl"] .faq-question,
+html[dir="rtl"] .faq-answer,
+html[dir="rtl"] .faq-answer p {
+    direction: rtl;
+    text-align: right;
+}
+
+html[dir="rtl"] .section-intro {
+    direction: rtl;
+    text-align: center;
+}
+
+html[dir="rtl"] .faq-container {
+    direction: rtl;
+}
+.faq-question,
+.faq-answer p,
+.section-intro,
+.section h2 {
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+@media (max-width: 768px) {
+    .faq-container {
+        max-width: 100%;
+        margin: 30px auto 0;
+    }
+
+    .faq-question {
+        padding: 18px 18px;
+        font-size: 1rem;
+    }
+
+    .faq-answer {
+        padding: 0 18px 18px;
+    }
+}
+html[dir="rtl"] .contact-text,
+html[dir="rtl"] .contact-text p,
+html[dir="rtl"] .contact-text h3,
+html[dir="rtl"] .contact-form-card,
+html[dir="rtl"] .contact-form-card .subtitle,
+html[dir="rtl"] .form-label {
+    direction: rtl;
+    text-align: right;
+}
+html[dir="rtl"] .form-group input,
+html[dir="rtl"] .form-group textarea,
+html[dir="rtl"] .form-group select {
+    direction: rtl;
+    text-align: right;
+}
+.brand-ltr {
+    direction: ltr;
+    unicode-bidi: isolate;
+    display: inline-block;
 }

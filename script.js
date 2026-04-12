@@ -567,7 +567,7 @@ const translations = {
     team_wassim: 'المالية',
 
     faq_title: 'الأسئلة المتكررة',
-    faq_intro: 'هنا ستجد إجابات عن أكثر الأسئلة شيوعًا حول Crescent Youth.',
+    faq_intro: 'هنا ستجد إجابات عن أكثر الأسئلة شيوعًا حول <span class="brand-ltr">Crescent Youth</span>.',
     faq_q1: 'هل تعملون فقط مع الشباب المسلمين؟',
     faq_a1: 'لا، الجميع مرحب بهم في Crescent Youth بغض النظر عن الخلفية أو المعتقد أو الأصل. نحن مستوحون من القيم الإسلامية مثل الاحترام والتضامن والمسؤولية، لكن أبوابنا مفتوحة لجميع الشباب. التنوع هو ما يجعل مجتمعنا أقوى.',
     faq_q2: 'ماذا تفعل Crescent Youth بالضبط؟',
@@ -658,7 +658,13 @@ function setLanguage(lang) {
 
   i18nElements.forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (dict[key]) el.textContent = dict[key];
+    if (!dict[key]) return;
+
+    if (dict[key].includes('<span')) {
+      el.innerHTML = dict[key];
+    } else {
+      el.textContent = dict[key];
+    }
   });
 
   placeholderElements.forEach(el => {
