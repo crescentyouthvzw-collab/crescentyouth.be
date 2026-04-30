@@ -140,16 +140,16 @@
     <form id="form">
 
         <label>First Name</label>
-        <input type="text" name="firstName" placeholder="First Name" required>
+        <input type="text" name="firstName" required>
 
         <label>Last Name</label>
-        <input type="text" name="lastName" placeholder="Last Name" required>
+        <input type="text" name="lastName" required>
 
         <label>Email Address</label>
-        <input type="email" name="email" placeholder="Email Address" required>
+        <input type="email" name="email" required>
 
         <label>Phone Number</label>
-        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <input type="tel" name="phone" required>
 
         <label>Date of Birth</label>
         <input type="date" name="dateOfBirth" required>
@@ -157,41 +157,41 @@
         <label>Gender</label>
         <select name="gender" required>
             <option value="">Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Prefer not to say">Prefer not to say</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Prefer not to say</option>
         </select>
 
         <label>Membership Type</label>
         <select name="membership" required>
             <option value="">Select Membership Type</option>
-            <option value="Youth Member (€10/year)">Youth Member (€10/year)</option>
-            <option value="Volunteer (Free)">Volunteer (Free)</option>
+            <option>Youth Member (€10/year)</option>
+            <option>Volunteer (Free)</option>
         </select>
 
         <label>Emergency Contact Name</label>
-        <input type="text" name="emergencyName" placeholder="Emergency Contact Name" required>
+        <input type="text" name="emergencyName" required>
 
         <label>Emergency Contact Phone</label>
-        <input type="tel" name="emergencyPhone" placeholder="Emergency Contact Phone" required>
+        <input type="tel" name="emergencyPhone" required>
 
         <label>Interests / Activities</label>
-        <textarea name="interests" placeholder="Example: sports, events, volunteering, workshops..."></textarea>
+        <textarea name="interests"></textarea>
 
         <div class="checkbox-group">
             <label>
                 <input type="checkbox" name="gdprConsent" value="Yes" required>
-                I agree that Crescent Youth may store my personal data for membership administration.
+                I agree that Crescent Youth may store my personal data.
             </label>
 
             <label>
                 <input type="checkbox" name="termsConsent" value="Yes" required>
-                I agree to follow the rules, values and respectful environment of Crescent Youth.
+                I agree to follow the rules and values of Crescent Youth.
             </label>
 
             <label>
                 <input type="checkbox" name="photoConsent" value="Yes">
-                I give permission for photos/videos to be used for Crescent Youth communication and social media.
+                I allow photos/videos to be used.
             </label>
         </div>
 
@@ -202,12 +202,12 @@
     <p id="loading">Processing... Please wait</p>
 
     <p class="note">
-        After payment, please mention your full name and email in the SumUp payment remark.
+        After payment, please include your full name and email in the payment remark.
     </p>
 </div>
 
 <script>
-    const scriptURL = "https://script.google.com/a/macros/crescentyouth.be/s/AKfycbxO0sCiecYXgQeiwGZ8ForOnsaDwmni37gyeBABuk1xmNT4cr0sSByOYikT_Tku8c8Txg/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxO0sCiecYXgQeiwGZ8ForOnsaDwmni37gyeBABuk1xmNT4cr0sSByOYikT_Tku8c8Txg/exec";
     const sumUpLink = "https://pay.sumup.com/b2c/QEK4YNPB";
 
     const form = document.getElementById("form");
@@ -223,6 +223,7 @@
 
         fetch(scriptURL, {
             method: "POST",
+            mode: "no-cors",   // 🔥 IMPORTANT FIX
             body: new FormData(form)
         })
             .then(() => {
