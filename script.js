@@ -255,7 +255,42 @@ const translations = {
     contact_select_collab: 'Samenwerking',
     contact_select_other: 'Andere',
 
-    contact_button_submit: 'Verstuur bericht'
+    contact_button_submit: 'Verstuur bericht',
+    // Registration
+    membership_page_title: 'Word lid van Crescent Youth',
+    membership_page_subtitle: 'Sluit je aan bij onze community en steun jongerenactiviteiten, evenementen en projecten in Brugge.',
+    membership_page_cta: 'Registreren',
+
+    membership_form_title: 'Lidmaatschapsregistratie',
+    membership_form_subtitle: 'Vul je gegevens correct in. Na registratie word je automatisch doorgestuurd naar de betaling.',
+
+    membership_first_name: 'Voornaam',
+    membership_last_name: 'Achternaam',
+    membership_email: 'E-mailadres',
+    membership_phone: 'Telefoonnummer',
+    membership_dob: 'Geboortedatum',
+    membership_gender: 'Geslacht',
+    membership_gender_select: 'Selecteer geslacht',
+    membership_gender_male: 'Man',
+    membership_gender_female: 'Vrouw',
+    membership_gender_prefer: 'Zeg ik liever niet',
+    membership_type: 'Lidmaatschapstype',
+    membership_type_select: 'Selecteer lidmaatschapstype',
+    membership_youth: 'Jongerenlid (€10/jaar)',
+    membership_emergency_name: 'Naam noodcontact',
+    membership_emergency_phone: 'Telefoonnummer noodcontact',
+    membership_interests: 'Interesses / Activiteiten',
+
+    membership_gdpr: 'Ik ga akkoord dat Crescent Youth mijn persoonsgegevens mag bewaren voor ledenadministratie.',
+    membership_terms: 'Ik ga akkoord met de regels, waarden en respectvolle omgeving van Crescent Youth.',
+    membership_photo: 'Ik geef toestemming dat Crescent Youth foto’s/video’s mag gebruiken voor communicatie en sociale media.',
+    membership_button: 'Doorgaan naar betaling',
+    membership_loading: 'Bezig met verwerken... even geduld',
+    membership_note: 'Na betaling, vermeld je volledige naam en e-mailadres in de SumUp-betalingsopmerking.',
+
+    membership_placeholder_email: 'voorbeeld@gmail.com',
+    membership_placeholder_phone: '123456789',
+    membership_placeholder_interests: 'Bijvoorbeeld: sport, evenementen, vrijwilligerswerk, workshops'
   },
 
   en: {
@@ -383,7 +418,42 @@ const translations = {
     contact_select_collab: 'Collaboration',
     contact_select_other: 'Other',
 
-    contact_button_submit: 'Send message'
+    contact_button_submit: 'Send message',
+    // Registration
+    membership_page_title: 'Join Crescent Youth',
+    membership_page_subtitle: 'Join our community and support youth activities, events and projects in Bruges.',
+    membership_page_cta: 'Register',
+
+    membership_form_title: 'Membership Registration',
+    membership_form_subtitle: 'Please fill in your details correctly. After registration, you will be redirected to payment automatically.',
+
+    membership_first_name: 'First Name',
+    membership_last_name: 'Last Name',
+    membership_email: 'Email Address',
+    membership_phone: 'Phone Number',
+    membership_dob: 'Date of Birth',
+    membership_gender: 'Gender',
+    membership_gender_select: 'Select Gender',
+    membership_gender_male: 'Male',
+    membership_gender_female: 'Female',
+    membership_gender_prefer: 'Prefer not to say',
+    membership_type: 'Membership Type',
+    membership_type_select: 'Select Membership Type',
+    membership_youth: 'Youth Member (€10/year)',
+    membership_emergency_name: 'Emergency Contact Name',
+    membership_emergency_phone: 'Emergency Contact Phone',
+    membership_interests: 'Interests / Activities',
+
+    membership_gdpr: 'I agree that Crescent Youth may store my personal data for membership administration.',
+    membership_terms: 'I agree to follow the rules, values and respectful environment of Crescent Youth.',
+    membership_photo: 'I allow Crescent Youth to use photos/videos for communication and social media.',
+    membership_button: 'Proceed to Payment',
+    membership_loading: 'Processing... Please wait',
+    membership_note: 'After payment, please mention your full name and email in the SumUp payment remark.',
+
+    membership_placeholder_email: 'example@gmail.com',
+    membership_placeholder_phone: '123456789',
+    membership_placeholder_interests: 'Example: sports, events, volunteering, workshops'
   },
 
   fr: {
@@ -511,7 +581,42 @@ const translations = {
     contact_select_collab: 'Collaboration',
     contact_select_other: 'Autre',
 
-    contact_button_submit: 'Envoyer le message'
+    contact_button_submit: 'Envoyer le message',
+    // Registration
+    membership_page_title: 'Devenir membre de Crescent Youth',
+    membership_page_subtitle: 'Rejoins notre communauté et soutiens les activités, événements et projets pour les jeunes à Bruges.',
+    membership_page_cta: 'S’inscrire',
+
+    membership_form_title: 'Inscription membre',
+    membership_form_subtitle: 'Remplis correctement tes informations. Après l’inscription, tu seras automatiquement redirigé vers le paiement.',
+
+    membership_first_name: 'Prénom',
+    membership_last_name: 'Nom',
+    membership_email: 'Adresse e-mail',
+    membership_phone: 'Numéro de téléphone',
+    membership_dob: 'Date de naissance',
+    membership_gender: 'Genre',
+    membership_gender_select: 'Sélectionner le genre',
+    membership_gender_male: 'Homme',
+    membership_gender_female: 'Femme',
+    membership_gender_prefer: 'Je préfère ne pas dire',
+    membership_type: 'Type d’adhésion',
+    membership_type_select: 'Sélectionner le type d’adhésion',
+    membership_youth: 'Membre jeune (10 €/an)',
+    membership_emergency_name: 'Nom du contact d’urgence',
+    membership_emergency_phone: 'Téléphone du contact d’urgence',
+    membership_interests: 'Intérêts / Activités',
+
+    membership_gdpr: 'J’accepte que Crescent Youth conserve mes données personnelles pour l’administration des membres.',
+    membership_terms: 'J’accepte de respecter les règles, les valeurs et l’environnement respectueux de Crescent Youth.',
+    membership_photo: 'J’autorise Crescent Youth à utiliser des photos/vidéos pour la communication et les réseaux sociaux.',
+    membership_button: 'Continuer vers le paiement',
+    membership_loading: 'Traitement en cours... merci de patienter',
+    membership_note: 'Après le paiement, indique ton nom complet et ton adresse e-mail dans la remarque SumUp.',
+
+    membership_placeholder_email: 'exemple@gmail.com',
+    membership_placeholder_phone: '123456789',
+    membership_placeholder_interests: 'Exemple : sport, événements, bénévolat, ateliers'
   },
 
   ar: {
@@ -684,7 +789,42 @@ const translations = {
     contact_select_collab: 'التعاون',
     contact_select_other: 'أخرى',
 
-    contact_button_submit: 'إرسال الرسالة'
+    contact_button_submit: 'إرسال الرسالة',
+    // Registration
+    membership_page_title: 'انضم إلى شبيبة الهلال',
+    membership_page_subtitle: 'انضم إلى مجتمعنا وادعم أنشطة الشباب والفعاليات والمشاريع في بروج.',
+    membership_page_cta: 'التسجيل',
+
+    membership_form_title: 'تسجيل العضوية',
+    membership_form_subtitle: 'يرجى ملء بياناتك بشكل صحيح. بعد التسجيل، سيتم تحويلك تلقائيًا إلى صفحة الدفع.',
+
+    membership_first_name: 'الاسم الأول',
+    membership_last_name: 'اسم العائلة',
+    membership_email: 'البريد الإلكتروني',
+    membership_phone: 'رقم الهاتف',
+    membership_dob: 'تاريخ الميلاد',
+    membership_gender: 'الجنس',
+    membership_gender_select: 'اختر الجنس',
+    membership_gender_male: 'ذكر',
+    membership_gender_female: 'أنثى',
+    membership_gender_prefer: 'أفضل عدم الإجابة',
+    membership_type: 'نوع العضوية',
+    membership_type_select: 'اختر نوع العضوية',
+    membership_youth: 'عضو شاب (10 يورو/سنة)',
+    membership_emergency_name: 'اسم جهة الاتصال للطوارئ',
+    membership_emergency_phone: 'رقم هاتف جهة الطوارئ',
+    membership_interests: 'الاهتمامات / الأنشطة',
+
+    membership_gdpr: 'أوافق على أن تقوم شبيبة الهلال بحفظ بياناتي الشخصية لأغراض إدارة العضوية.',
+    membership_terms: 'أوافق على اتباع قواعد وقيم وبيئة الاحترام الخاصة بشبيبة الهلال.',
+    membership_photo: 'أسمح لشبيبة الهلال باستخدام الصور/الفيديوهات للتواصل ووسائل التواصل الاجتماعي.',
+    membership_button: 'المتابعة إلى الدفع',
+    membership_loading: 'جارٍ المعالجة... يرجى الانتظار',
+    membership_note: 'بعد الدفع، يرجى كتابة اسمك الكامل وبريدك الإلكتروني في ملاحظة الدفع عبر SumUp.',
+
+    membership_placeholder_email: 'example@gmail.com',
+    membership_placeholder_phone: '123456789',
+    membership_placeholder_interests: 'مثال: الرياضة، الفعاليات، التطوع، ورش العمل'
   }
 };
 

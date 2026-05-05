@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="efNJZ4wc5BaR5UKpLvS6WC7RUCAVWaqDGSKnBfpS2tQ">
+
+    <title>Lid worden – Crescent Youth vzw</title>
+    <meta name="description" content="Word lid van Crescent Youth vzw en steun onze jongerenactiviteiten, evenementen en community projecten in Brugge.">
+
+    <link rel="icon" href="/favicon.ico?v=20260409-1507" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico?v=20260409-1507" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/favicon.ico?v=20260409-1507">
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../reset.css">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="../index.html" class="logo">
+        <img src="../images/crescent_youtrh_logo_new_without name1.png" alt="Crescent Youth logo" class="logo-img">
+        <span class="logo-text">Crescent Youth</span>
+    </a>
+
+    <nav id="main-nav" aria-label="Hoofd navigatie">
+        <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="../index.html#missie" data-i18n="nav_mission">Missie</a></li>
+            <li><a href="../index.html#kernwaarden" data-i18n="nav_values">Kernwaarden</a></li>
+            <li><a href="../index.html#activiteiten" data-i18n="nav_activities">Wat doen wij?</a></li>
+            <li><a href="../index.html#team" data-i18n="nav_team">Team</a></li>
+            <li><a href="../index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+            <li><a href="../Contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="nav-actions">
+        <div class="lang-switcher" aria-label="Taal kiezen">
+            <span class="lang-option active" data-lang="nl">NL</span>
+            <span class="lang-option" data-lang="en">EN</span>
+            <span class="lang-option" data-lang="fr">FR</span>
+            <span class="lang-option" data-lang="ar">AR</span>
+        </div>
+
+        <button class="menu-toggle" id="mobile-menu" aria-label="Open navigatie" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+</header>
+
+<section class="hero reveal">
+    <div class="hero-content">
+        <h1 data-i18n="membership_page_title">Word lid van Crescent Youth</h1>
+        <p data-i18n="membership_page_subtitle">
+            Sluit je aan bij onze community en steun jongerenactiviteiten, evenementen en projecten in Brugge.
+        </p>
+        <a href="#membership-section" class="btn" data-i18n="membership_page_cta">Registreren</a>
+    </div>
+</section>
+
+<section id="membership-section" class="membership-page reveal">
+    <div class="membership-container">
+
+        <h2 data-i18n="membership_form_title">Lidmaatschapsregistratie</h2>
+
+        <p class="membership-subtitle" data-i18n="membership_form_subtitle">
+            Vul je gegevens correct in. Na registratie word je automatisch doorgestuurd naar de betaling.
+        </p>
+
+        <form id="registrationForm" class="membership-form">
+
+            <label for="firstName" data-i18n="membership_first_name">Voornaam</label>
+            <input type="text" id="firstName" required>
+
+            <label for="lastName" data-i18n="membership_last_name">Achternaam</label>
+            <input type="text" id="lastName" required>
+
+            <label for="email" data-i18n="membership_email">E-mailadres</label>
+            <input
+                    type="email"
+                    id="email"
+                    placeholder="voorbeeld@gmail.com"
+                    data-i18n-placeholder="membership_placeholder_email"
+                    required
+            >
+
+            <label for="phone" data-i18n="membership_phone">Telefoonnummer</label>
+            <div class="membership-phone-row">
+                <select id="phoneCode" required></select>
+                <input
+                        type="tel"
+                        id="phone"
+                        placeholder="123456789"
+                        data-i18n-placeholder="membership_placeholder_phone"
+                        maxlength="9"
+                        required
+                >
+            </div>
+
+            <label for="dateOfBirth" data-i18n="membership_dob">Geboortedatum</label>
+            <input type="date" id="dateOfBirth" required>
+
+            <label for="gender" data-i18n="membership_gender">Geslacht</label>
+            <select id="gender" required>
+                <option value="" data-i18n="membership_gender_select">Selecteer geslacht</option>
+                <option value="Male" data-i18n="membership_gender_male">Man</option>
+                <option value="Female" data-i18n="membership_gender_female">Vrouw</option>
+                <option value="Prefer not to say" data-i18n="membership_gender_prefer">Zeg ik liever niet</option>
+            </select>
+
+            <label for="membership" data-i18n="membership_type">Lidmaatschapstype</label>
+            <select id="membership" required>
+                <option value="" data-i18n="membership_type_select">Selecteer lidmaatschapstype</option>
+                <option value="Youth Member (€10/year)" data-i18n="membership_youth">Jongerenlid (€10/jaar)</option>
+            </select>
+
+            <label for="emergencyName" data-i18n="membership_emergency_name">Naam noodcontact</label>
+            <input type="text" id="emergencyName" required>
+
+            <label for="emergencyPhone" data-i18n="membership_emergency_phone">Telefoonnummer noodcontact</label>
+            <div class="membership-phone-row">
+                <select id="emergencyPhoneCode" required></select>
+                <input
+                        type="tel"
+                        id="emergencyPhone"
+                        placeholder="123456789"
+                        data-i18n-placeholder="membership_placeholder_phone"
+                        maxlength="9"
+                        required
+                >
+            </div>
+
+            <label for="interests" data-i18n="membership_interests">Interesses / Activiteiten</label>
+            <textarea
+                    id="interests"
+                    placeholder="Bijvoorbeeld: sport, evenementen, vrijwilligerswerk, workshops"
+                    data-i18n-placeholder="membership_placeholder_interests"
+            ></textarea>
+
+            <div class="membership-checkbox-group">
+                <label>
+                    <input type="checkbox" id="gdprConsent" required>
+                    <span data-i18n="membership_gdpr">
+                        Ik ga akkoord dat Crescent Youth mijn persoonsgegevens mag bewaren voor ledenadministratie.
+                    </span>
+                </label>
+
+                <label>
+                    <input type="checkbox" id="termsConsent" required>
+                    <span data-i18n="membership_terms">
+                        Ik ga akkoord met de regels, waarden en respectvolle omgeving van Crescent Youth.
+                    </span>
+                </label>
+
+                <label>
+                    <input type="checkbox" id="photoConsent">
+                    <span data-i18n="membership_photo">
+                        Ik geef toestemming dat Crescent Youth foto’s/video’s mag gebruiken voor communicatie en sociale media.
+                    </span>
+                </label>
+            </div>
+
+            <button type="submit" id="submitBtn" class="membership-submit-btn" data-i18n="membership_button">
+                Doorgaan naar betaling
+            </button>
+
+        </form>
+
+        <p id="loading" data-i18n="membership_loading">Bezig met verwerken... even geduld</p>
+
+        <p class="membership-note" data-i18n="membership_note">
+            Na betaling, vermeld je volledige naam en e-mailadres in de SumUp-betalingsopmerking.
+        </p>
+
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Crescent Youth vzw</h3>
+            <p data-i18n="footer_about">
+                Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.
+            </p>
+
+            <div class="social-links">
+                <a href="https://www.instagram.com/crescentyouth.be?igsh=dDVwM2J0NzFpbzFy" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@crescentyouth.be?is_from_webapp=1&sender_device=pc" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://linktr.ee/CrescentYouth" aria-label="Linktree" target="_blank" rel="noopener noreferrer" class="linktree-icon">
+                    <img src="/images/linktree-seeklogo.png" alt="Linktree">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-i18n="footer_links_title">Snelle links</h3>
+            <p><a href="../index.html" data-i18n="footer_home">Home</a></p>
+            <p><a href="../index.html#missie" data-i18n="footer_mission">Missie</a></p>
+            <p><a href="../index.html#kernwaarden" data-i18n="footer_values">Kernwaarden</a></p>
+            <p><a href="../index.html#activiteiten" data-i18n="footer_activities">Wat doen wij?</a></p>
+            <p><a href="../index.html#faq" data-i18n="footer_faq">FAQ</a></p>
+            <p><a href="../Contact.html" data-i18n="footer_contact">Contact</a></p>
+        </div>
+
+        <div class="footer-section">
+            <h3 data-i18n="footer_contact_title">Contact info</h3>
+            <p><i class="fas fa-envelope"></i> info@crescentyouth.be</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 Crescent Youth vzw - Alle rechten voorbehouden</p>
+
+        <div class="footer-links">
+            <a href="/comply_with_law/terms-and-conditions.html">Algemene voorwaarden</a>
+            <a href="/comply_with_law/privacy-policy.html">Privacybeleid</a>
+            <a href="/comply_with_law/cookie-policy.html">Cookiebeleid</a>
+        </div>
+
+        <a href="#" class="to-top"><i class="fas fa-arrow-up"></i> Terug naar boven</a>
+    </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner">
+    <p>
+        <span data-i18n="cookies_text">
+            We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons
+        </span>
+        <a href="/comply_with_law/cookie-policy.html">cookiebeleid</a>.
+    </p>
+    <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
+</div>
+
+<script src="../script.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

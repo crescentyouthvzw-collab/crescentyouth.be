@@ -1395,3 +1395,176 @@ html[dir="rtl"] .form-group select {
     unicode-bidi: isolate;
     display: inline-block;
 }
+/* MEMBERSHIP REGISTRATION PAGE */
+
+.membership-page {
+    background: var(--bg);
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.membership-container {
+    width: 100%;
+    max-width: 560px;
+    background: var(--card-bg);
+    padding: 38px 34px;
+    border-radius: 22px;
+    box-shadow: 0 12px 32px var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+.membership-container h2 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.membership-subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    margin-bottom: 26px;
+}
+
+.membership-form label {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+.membership-form input,
+.membership-form select,
+.membership-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #dcdcdc;
+    border-radius: 12px;
+    font-size: 0.96rem;
+    background: #ffffff;
+    color: var(--text-dark);
+    transition: all 0.25s ease;
+}
+
+.membership-form input:focus,
+.membership-form select:focus,
+.membership-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(212, 184, 150, 0.25);
+}
+
+.membership-form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.membership-phone-row {
+    display: flex;
+    gap: 10px;
+}
+
+.membership-phone-row select {
+    width: 42%;
+}
+
+.membership-phone-row input {
+    width: 58%;
+}
+
+.membership-checkbox-group {
+    margin-top: 18px;
+}
+
+.membership-checkbox-group label {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-weight: 400;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #555;
+    margin-top: 12px;
+}
+
+.membership-checkbox-group input {
+    width: auto;
+    margin-top: 4px;
+    accent-color: var(--primary-mid);
+}
+
+.membership-submit-btn {
+    width: 100%;
+    padding: 14px 22px;
+    margin-top: 22px;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-mid) 55%, var(--green-mid) 100%);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+}
+
+.membership-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+    background: linear-gradient(135deg, #162d22, #254d38);
+}
+
+.membership-submit-btn:disabled {
+    background: #999;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+#loading {
+    display: none;
+    text-align: center;
+    margin-top: 16px;
+    color: #555;
+    font-size: 0.92rem;
+}
+
+.membership-note {
+    font-size: 0.86rem;
+    color: #777;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+    .membership-page {
+        padding: 35px 16px;
+    }
+
+    .membership-container {
+        padding: 28px 22px;
+        border-radius: 18px;
+    }
+
+    .membership-container h2 {
+        font-size: 1.65rem;
+    }
+
+    .membership-phone-row {
+        flex-direction: column;
+    }
+
+    .membership-phone-row select,
+    .membership-phone-row input {
+        width: 100%;
+    }
+}
