@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="efNJZ4wc5BaR5UKpLvS6WC7RUCAVWaqDGSKnBfpS2tQ">
 
-    <!-- Schema.org structured data -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -36,16 +35,15 @@
     <link rel="shortcut icon" href="/favicon.ico?v=20260409-1507" type="image/x-icon">
     <link rel="apple-touch-icon" href="/favicon.ico?v=20260409-1507">
 
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <header class="navbar">
     <a href="index.html" class="logo">
         <img src="images/crescent_youtrh_logo_new_without name1.png" alt="Crescent Youth logo" class="logo-img">
@@ -60,6 +58,7 @@
             <li><a href="index.html#activiteiten" data-i18n="nav_activities">Wat doen wij?</a></li>
             <li><a href="index.html#team" data-i18n="nav_team">Team</a></li>
             <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+            <li><a href="/Registration/Registration.html" data-i18n="nav_register">Lid worden</a></li>
             <li><a href="Contact.html" data-i18n="nav_contact">Contact</a></li>
         </ul>
     </nav>
@@ -85,6 +84,7 @@
             Heb je een vraag, idee of wil je samenwerken? Laat van je horen – we reageren zo snel mogelijk.
         </p>
         <a href="#contact-section" class="btn" data-i18n="contact_hero_cta">Ga naar het formulier</a>
+        <a href="/Registration/Registration.html" class="btn" data-i18n="nav_register">Lid worden</a>
     </div>
 </section>
 
@@ -92,6 +92,7 @@
     <div class="contact-inner">
         <div>
             <div class="contact-cards">
+
                 <div class="contact-card reveal-left">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
@@ -150,6 +151,24 @@
                         </p>
                     </div>
                 </div>
+
+                <div class="contact-card reveal-left">
+                    <div class="contact-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h3 data-i18n="nav_register">Lid worden</h3>
+                        <p>
+                            <a href="/Registration/Registration.html" data-i18n="nav_register">
+                                Lid worden
+                            </a>
+                        </p>
+                        <p data-i18n="faq_a4">
+                            Lidmaatschap kost slechts 10 euro per jaar. Als lid geniet je van voordelen zoals lagere prijzen voor onze events en activiteiten.
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
@@ -232,9 +251,14 @@
             <p data-i18n="footer_about">
                 Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.
             </p>
+
             <div class="social-links">
-                <a href="https://www.instagram.com/crescentyouth.be?igsh=dDVwM2J0NzFpbzFy" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.tiktok.com/@crescentyouth.be?is_from_webapp=1&sender_device=pc" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/crescentyouth.be?igsh=dDVwM2J0NzFpbzFy" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.tiktok.com/@crescentyouth.be?is_from_webapp=1&sender_device=pc" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-tiktok"></i>
+                </a>
                 <a href="https://linktr.ee/CrescentYouth" aria-label="Linktree" target="_blank" rel="noopener noreferrer" class="linktree-icon">
                     <img src="/images/linktree-seeklogo.png" alt="Linktree">
                 </a>
@@ -248,6 +272,7 @@
             <p><a href="index.html#kernwaarden" data-i18n="footer_values">Kernwaarden</a></p>
             <p><a href="index.html#activiteiten" data-i18n="footer_activities">Wat doen wij?</a></p>
             <p><a href="index.html#faq" data-i18n="footer_faq">FAQ</a></p>
+            <p><a href="/Registration/Registration.html" data-i18n="nav_register">Lid worden</a></p>
             <p><a href="Contact.html" data-i18n="footer_contact">Contact</a></p>
         </div>
 
@@ -259,12 +284,16 @@
 
     <div class="footer-bottom">
         <p>&copy; 2025 Crescent Youth vzw - Alle rechten voorbehouden</p>
+
         <div class="footer-links">
             <a href="/comply_with_law/terms-and-conditions.html">Algemene voorwaarden</a>
             <a href="/comply_with_law/privacy-policy.html">Privacybeleid</a>
             <a href="/comply_with_law/cookie-policy.html">Cookiebeleid</a>
         </div>
-        <a href="#" class="to-top"><i class="fas fa-arrow-up"></i> Terug naar boven</a>
+
+        <a href="#" class="to-top">
+            <i class="fas fa-arrow-up"></i> Terug naar boven
+        </a>
     </div>
 </footer>
 
@@ -279,5 +308,6 @@
 </div>
 
 <script src="script.js"></script>
+
 </body>
 </html>

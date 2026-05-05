@@ -256,6 +256,8 @@ const translations = {
     contact_select_other: 'Andere',
 
     contact_button_submit: 'Verstuur bericht',
+
+    nav_register: 'Lid worden',
     // Registration
     membership_page_title: 'Word lid van Crescent Youth',
     membership_page_subtitle: 'Sluit je aan bij onze community en steun jongerenactiviteiten, evenementen en projecten in Brugge.',
@@ -419,6 +421,9 @@ const translations = {
     contact_select_other: 'Other',
 
     contact_button_submit: 'Send message',
+
+    nav_register: 'Join',
+
     // Registration
     membership_page_title: 'Join Crescent Youth',
     membership_page_subtitle: 'Join our community and support youth activities, events and projects in Bruges.',
@@ -582,6 +587,9 @@ const translations = {
     contact_select_other: 'Autre',
 
     contact_button_submit: 'Envoyer le message',
+
+    nav_register: 'Devenir membre',
+
     // Registration
     membership_page_title: 'Devenir membre de Crescent Youth',
     membership_page_subtitle: 'Rejoins notre communauté et soutiens les activités, événements et projets pour les jeunes à Bruges.',
@@ -790,6 +798,9 @@ const translations = {
     contact_select_other: 'أخرى',
 
     contact_button_submit: 'إرسال الرسالة',
+
+    nav_register: 'انضم إلينا',
+
     // Registration
     membership_page_title: 'انضم إلى شبيبة الهلال',
     membership_page_subtitle: 'انضم إلى مجتمعنا وادعم أنشطة الشباب والفعاليات والمشاريع في بروج.',
