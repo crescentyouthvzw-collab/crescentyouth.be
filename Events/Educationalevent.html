@@ -65,7 +65,6 @@
             z-index: 1000;
             box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
             transition: all 0.3s ease;
-            backdrop-filter: blur(6px);
         }
 
         .navbar.scrolled {
@@ -118,7 +117,7 @@
         }
 
         nav.open {
-            max-height: 380px;
+            max-height: 420px;
             opacity: 1;
         }
 
@@ -179,6 +178,7 @@
             text-transform: uppercase;
             padding: 6px 12px;
             margin: 2px;
+            user-select: none;
         }
 
         .lang-option.active {
@@ -243,7 +243,7 @@
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
             animation: heroFloat 7s ease-in-out infinite alternate;
         }
@@ -615,6 +615,21 @@
             transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
 
+        html[dir="rtl"] body {
+            direction: rtl;
+            text-align: right;
+        }
+
+        html[dir="rtl"] .hero,
+        html[dir="rtl"] .section h2,
+        html[dir="rtl"] .section-intro,
+        html[dir="rtl"] .activity-card,
+        html[dir="rtl"] .empty-event-box,
+        html[dir="rtl"] .cta-section,
+        html[dir="rtl"] footer {
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             header.navbar {
                 padding: 10px 16px;
@@ -631,10 +646,17 @@
 
             .lang-switcher {
                 margin-left: 0;
+                gap: 3px;
+                padding: 4px 7px;
+            }
+
+            .lang-option {
+                font-size: 0.7rem;
+                padding: 5px 8px;
             }
 
             .hero {
-                padding: 110px 18px 70px;
+                padding: 105px 18px 70px;
             }
 
             .hero h1 {
@@ -643,6 +665,10 @@
 
             .hero p {
                 font-size: 1.05rem;
+            }
+
+            .section {
+                padding: 65px 18px;
             }
 
             .section h2,
@@ -692,23 +718,23 @@
 
     <nav id="main-nav" aria-label="Hoofd navigatie">
         <ul class="nav-links" id="nav-links">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/index.html#missie">Missie</a></li>
-            <li><a href="/index.html#kernwaarden">Kernwaarden</a></li>
-            <li><a href="/index.html#activiteiten">Wat doen wij?</a></li>
-            <li><a href="/index.html#team">Team</a></li>
-            <li><a href="/index.html#faq">FAQ</a></li>
-            <li><a href="/Registration/Registration.html">Lid worden</a></li>
-            <li><a href="/Contact.html">Contact</a></li>
+            <li><a href="/index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="/index.html#missie" data-i18n="nav_mission">Missie</a></li>
+            <li><a href="/index.html#kernwaarden" data-i18n="nav_values">Kernwaarden</a></li>
+            <li><a href="/index.html#activiteiten" data-i18n="nav_activities">Wat doen wij?</a></li>
+            <li><a href="/index.html#team" data-i18n="nav_team">Team</a></li>
+            <li><a href="/index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+            <li><a href="/Registration/Registration.html" data-i18n="nav_register">Lid worden</a></li>
+            <li><a href="/Contact.html" data-i18n="nav_contact">Contact</a></li>
         </ul>
     </nav>
 
     <div class="nav-actions">
         <div class="lang-switcher" aria-label="Taal kiezen">
-            <span class="lang-option active">NL</span>
-            <span class="lang-option">EN</span>
-            <span class="lang-option">FR</span>
-            <span class="lang-option">AR</span>
+            <span class="lang-option active" data-lang="nl">NL</span>
+            <span class="lang-option" data-lang="en">EN</span>
+            <span class="lang-option" data-lang="fr">FR</span>
+            <span class="lang-option" data-lang="ar">AR</span>
         </div>
 
         <button class="menu-toggle" id="mobile-menu" aria-label="Open navigatie" aria-expanded="false">
@@ -719,16 +745,16 @@
 
 <section class="hero">
     <div class="hero-content">
-        <h1>Educatie Events</h1>
-        <p>Bekijk onze upcoming en past educatieve activiteiten.</p>
-        <a href="#event-options" class="btn">Bekijk events</a>
-        <a href="/index.html#activiteiten" class="btn">Terug naar activiteiten</a>
+        <h1 data-i18n="hero_title">Educatie Events</h1>
+        <p data-i18n="hero_subtitle">Bekijk onze upcoming en past educatieve activiteiten.</p>
+        <a href="#event-options" class="btn" data-i18n="hero_btn_events">Bekijk events</a>
+        <a href="/index.html#activiteiten" class="btn" data-i18n="hero_btn_back">Terug naar activiteiten</a>
     </div>
 </section>
 
 <section id="event-options" class="section reveal">
-    <h2>Events</h2>
-    <p class="section-intro">
+    <h2 data-i18n="events_title">Events</h2>
+    <p class="section-intro" data-i18n="events_intro">
         Kies hieronder tussen komende events en afgelopen events.
     </p>
 
@@ -738,8 +764,8 @@
                 <i class="fas fa-calendar-plus"></i>
             </div>
             <div class="activity-content">
-                <h3>Upcoming Events</h3>
-                <p>Bekijk onze komende workshops, lezingen en educatieve activiteiten.</p>
+                <h3 data-i18n="upcoming_card_title">Upcoming Events</h3>
+                <p data-i18n="upcoming_card_text">Bekijk onze komende workshops, lezingen en educatieve activiteiten.</p>
             </div>
         </a>
 
@@ -748,16 +774,16 @@
                 <i class="fas fa-calendar-check"></i>
             </div>
             <div class="activity-content">
-                <h3>Past Events</h3>
-                <p>Bekijk activiteiten die al hebben plaatsgevonden.</p>
+                <h3 data-i18n="past_card_title">Past Events</h3>
+                <p data-i18n="past_card_text">Bekijk activiteiten die al hebben plaatsgevonden.</p>
             </div>
         </a>
     </div>
 </section>
 
 <section id="upcoming-events" class="section alt reveal">
-    <h2>Upcoming Events</h2>
-    <p class="section-intro">
+    <h2 data-i18n="upcoming_title">Upcoming Events</h2>
+    <p class="section-intro" data-i18n="upcoming_intro">
         Onze eerstvolgende educatieve workshop.
     </p>
 
@@ -768,14 +794,14 @@
             </div>
 
             <div class="activity-content">
-                <span class="event-badge">Upcoming Workshop</span>
-                <h3>The Noble Journey</h3>
+                <span class="event-badge" data-i18n="event_badge">Upcoming Workshop</span>
+                <h3 data-i18n="noble_title">The Noble Journey</h3>
                 <p>
-                    Workshop on Iman, character and spiritual growth.
+                    <span data-i18n="noble_text">Workshop on Iman, character and spiritual growth.</span>
                     <br><br>
-                    <strong>Date:</strong> 23 May 2026<br>
-                    <strong>Time:</strong> 14:00<br>
-                    <strong>Location:</strong> 8 Koude Keukenstraat, 8200 Brugge
+                    <strong data-i18n="label_date">Date:</strong> 23 May 2026<br>
+                    <strong data-i18n="label_time">Time:</strong> 14:00<br>
+                    <strong data-i18n="label_location">Location:</strong> 8 Koude Keukenstraat, 8200 Brugge
                 </p>
             </div>
         </a>
@@ -783,24 +809,24 @@
 </section>
 
 <section id="past-events" class="section reveal">
-    <h2>Past Events</h2>
+    <h2 data-i18n="past_title">Past Events</h2>
 
     <div class="empty-event-box">
-        <p>Nog geen eerdere educatie events beschikbaar.</p>
+        <p data-i18n="past_empty">Nog geen eerdere educatie events beschikbaar.</p>
     </div>
 </section>
 
 <section class="cta-section reveal">
-    <h2>Wil je deelnemen?</h2>
-    <p>Klik op het upcoming event en registreer je plaats.</p>
-    <a href="#upcoming-events" class="btn">Bekijk upcoming event</a>
+    <h2 data-i18n="cta_title">Wil je deelnemen?</h2>
+    <p data-i18n="cta_text">Klik op het upcoming event en registreer je plaats.</p>
+    <a href="#upcoming-events" class="btn" data-i18n="cta_btn">Bekijk upcoming event</a>
 </section>
 
 <footer>
     <div class="footer-content">
         <div class="footer-section">
             <h3>Crescent Youth vzw</h3>
-            <p>
+            <p data-i18n="footer_about">
                 Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.
             </p>
 
@@ -820,48 +846,116 @@
         </div>
 
         <div class="footer-section">
-            <h3>Snelle links</h3>
-            <p><a href="/index.html">Home</a></p>
-            <p><a href="/index.html#missie">Missie</a></p>
-            <p><a href="/index.html#kernwaarden">Kernwaarden</a></p>
-            <p><a href="/index.html#activiteiten">Wat doen wij?</a></p>
-            <p><a href="/index.html#faq">FAQ</a></p>
-            <p><a href="/membership/index.html">Lid worden</a></p>
-            <p><a href="/Contact.html">Contact</a></p>
+            <h3 data-i18n="footer_links_title">Snelle links</h3>
+            <p><a href="/index.html" data-i18n="footer_home">Home</a></p>
+            <p><a href="/index.html#missie" data-i18n="footer_mission">Missie</a></p>
+            <p><a href="/index.html#kernwaarden" data-i18n="footer_values">Kernwaarden</a></p>
+            <p><a href="/index.html#activiteiten" data-i18n="footer_activities">Wat doen wij?</a></p>
+            <p><a href="/index.html#faq" data-i18n="footer_faq">FAQ</a></p>
+            <p><a href="/membership/index.html" data-i18n="footer_join">Lid worden</a></p>
+            <p><a href="/Contact.html" data-i18n="footer_contact">Contact</a></p>
         </div>
 
         <div class="footer-section">
-            <h3>Contact info</h3>
+            <h3 data-i18n="footer_contact_title">Contact info</h3>
             <p><i class="fas fa-envelope"></i> info@crescentyouth.be</p>
         </div>
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; 2026 Crescent Youth vzw - Alle rechten voorbehouden</p>
+        <p data-i18n="footer_rights">&copy; 2026 Crescent Youth vzw - Alle rechten voorbehouden</p>
 
         <div class="footer-links">
-            <a href="/comply_with_law/terms-and-conditions.html">Algemene voorwaarden</a>
-            <a href="/comply_with_law/privacy-policy.html">Privacybeleid</a>
-            <a href="/comply_with_law/cookie-policy.html">Cookiebeleid</a>
+            <a href="/comply_with_law/terms-and-conditions.html" data-i18n="footer_terms">Algemene voorwaarden</a>
+            <a href="/comply_with_law/privacy-policy.html" data-i18n="footer_privacy">Privacybeleid</a>
+            <a href="/comply_with_law/cookie-policy.html" data-i18n="footer_cookie">Cookiebeleid</a>
         </div>
 
         <a href="#" class="to-top">
-            <i class="fas fa-arrow-up"></i> Terug naar boven
+            <i class="fas fa-arrow-up"></i> <span data-i18n="footer_top">Terug naar boven</span>
         </a>
     </div>
 </footer>
 
 <div id="cookie-banner" class="cookie-banner">
     <p>
-        We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons
-        <a href="/comply_with_law/cookie-policy.html">cookiebeleid</a>.
+        <span data-i18n="cookies_text">We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons</span>
+        <a href="/comply_with_law/cookie-policy.html" data-i18n="cookies_policy">cookiebeleid</a>.
     </p>
-    <button id="cookie-accept">Akkoord</button>
+    <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
 </div>
 
 <script>
+    const translations = {
+        nl: {
+            nav_home: 'Home', nav_mission: 'Missie', nav_values: 'Kernwaarden', nav_activities: 'Wat doen wij?', nav_team: 'Team', nav_faq: 'FAQ', nav_register: 'Lid worden', nav_contact: 'Contact',
+            hero_title: 'Educatie Events', hero_subtitle: 'Bekijk onze komende en afgelopen educatieve activiteiten.', hero_btn_events: 'Bekijk events', hero_btn_back: 'Terug naar activiteiten',
+            events_title: 'Events', events_intro: 'Kies hieronder tussen komende events en afgelopen events.', upcoming_card_title: 'Upcoming Events', upcoming_card_text: 'Bekijk onze komende workshops, lezingen en educatieve activiteiten.', past_card_title: 'Past Events', past_card_text: 'Bekijk activiteiten die al hebben plaatsgevonden.',
+            upcoming_title: 'Upcoming Events', upcoming_intro: 'Onze eerstvolgende educatieve workshop.', event_badge: 'Upcoming Workshop', noble_title: 'The Noble Journey', noble_text: 'Workshop over Iman, karakter en spirituele groei.', label_date: 'Datum:', label_time: 'Tijd:', label_location: 'Locatie:',
+            past_title: 'Past Events', past_empty: 'Nog geen eerdere educatie events beschikbaar.', cta_title: 'Wil je deelnemen?', cta_text: 'Klik op het upcoming event en registreer je plaats.', cta_btn: 'Bekijk upcoming event',
+            footer_about: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.', footer_links_title: 'Snelle links', footer_home: 'Home', footer_mission: 'Missie', footer_values: 'Kernwaarden', footer_activities: 'Wat doen wij?', footer_faq: 'FAQ', footer_join: 'Lid worden', footer_contact: 'Contact', footer_contact_title: 'Contact info', footer_rights: '© 2026 Crescent Youth vzw - Alle rechten voorbehouden', footer_terms: 'Algemene voorwaarden', footer_privacy: 'Privacybeleid', footer_cookie: 'Cookiebeleid', footer_top: 'Terug naar boven',
+            cookies_text: 'We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons', cookies_policy: 'cookiebeleid', cookies_button: 'Akkoord'
+        },
+        en: {
+            nav_home: 'Home', nav_mission: 'Mission', nav_values: 'Core values', nav_activities: 'What we do', nav_team: 'Team', nav_faq: 'FAQ', nav_register: 'Join', nav_contact: 'Contact',
+            hero_title: 'Education Events', hero_subtitle: 'View our upcoming and past educational activities.', hero_btn_events: 'View events', hero_btn_back: 'Back to activities',
+            events_title: 'Events', events_intro: 'Choose below between upcoming events and past events.', upcoming_card_title: 'Upcoming Events', upcoming_card_text: 'View our upcoming workshops, lectures and educational activities.', past_card_title: 'Past Events', past_card_text: 'View activities that have already taken place.',
+            upcoming_title: 'Upcoming Events', upcoming_intro: 'Our next educational workshop.', event_badge: 'Upcoming Workshop', noble_title: 'The Noble Journey', noble_text: 'Workshop on Iman, character and spiritual growth.', label_date: 'Date:', label_time: 'Time:', label_location: 'Location:',
+            past_title: 'Past Events', past_empty: 'No previous education events available yet.', cta_title: 'Want to join?', cta_text: 'Click on the upcoming event and register your place.', cta_btn: 'View upcoming event',
+            footer_about: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.', footer_links_title: 'Quick links', footer_home: 'Home', footer_mission: 'Mission', footer_values: 'Core values', footer_activities: 'What we do', footer_faq: 'FAQ', footer_join: 'Join', footer_contact: 'Contact', footer_contact_title: 'Contact info', footer_rights: '© 2026 Crescent Youth vzw - All rights reserved', footer_terms: 'Terms and conditions', footer_privacy: 'Privacy policy', footer_cookie: 'Cookie policy', footer_top: 'Back to top',
+            cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our', cookies_policy: 'cookie policy', cookies_button: 'Accept'
+        },
+        fr: {
+            nav_home: 'Accueil', nav_mission: 'Mission', nav_values: 'Valeurs', nav_activities: 'Ce que nous faisons', nav_team: 'Équipe', nav_faq: 'FAQ', nav_register: 'Devenir membre', nav_contact: 'Contact',
+            hero_title: 'Événements éducatifs', hero_subtitle: 'Découvrez nos activités éducatives à venir et passées.', hero_btn_events: 'Voir les événements', hero_btn_back: 'Retour aux activités',
+            events_title: 'Événements', events_intro: 'Choisissez ci-dessous entre les événements à venir et les événements passés.', upcoming_card_title: 'Événements à venir', upcoming_card_text: 'Découvrez nos prochains ateliers, conférences et activités éducatives.', past_card_title: 'Événements passés', past_card_text: 'Découvrez les activités qui ont déjà eu lieu.',
+            upcoming_title: 'Événements à venir', upcoming_intro: 'Notre prochain atelier éducatif.', event_badge: 'Atelier à venir', noble_title: 'The Noble Journey', noble_text: 'Atelier sur l’Iman, le caractère et la croissance spirituelle.', label_date: 'Date :', label_time: 'Heure :', label_location: 'Lieu :',
+            past_title: 'Événements passés', past_empty: 'Aucun événement éducatif précédent disponible pour le moment.', cta_title: 'Tu veux participer ?', cta_text: 'Clique sur l’événement à venir et réserve ta place.', cta_btn: 'Voir l’événement à venir',
+            footer_about: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.', footer_links_title: 'Liens rapides', footer_home: 'Accueil', footer_mission: 'Mission', footer_values: 'Valeurs', footer_activities: 'Ce que nous faisons', footer_faq: 'FAQ', footer_join: 'Devenir membre', footer_contact: 'Contact', footer_contact_title: 'Infos de contact', footer_rights: '© 2026 Crescent Youth vzw - Tous droits réservés', footer_terms: 'Conditions générales', footer_privacy: 'Politique de confidentialité', footer_cookie: 'Politique de cookies', footer_top: 'Retour en haut',
+            cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant à utiliser notre site, tu acceptes notre', cookies_policy: 'politique de cookies', cookies_button: 'Accepter'
+        },
+        ar: {
+            nav_home: 'الرئيسية', nav_mission: 'رسالتنا', nav_values: 'قيمنا', nav_activities: 'ماذا نفعل؟', nav_team: 'الفريق', nav_faq: 'الأسئلة الشائعة', nav_register: 'انضم إلينا', nav_contact: 'اتصل بنا',
+            hero_title: 'الفعاليات التعليمية', hero_subtitle: 'اطّلع على أنشطتنا التعليمية القادمة والسابقة.', hero_btn_events: 'عرض الفعاليات', hero_btn_back: 'العودة إلى الأنشطة',
+            events_title: 'الفعاليات', events_intro: 'اختر بين الفعاليات القادمة والفعاليات السابقة.', upcoming_card_title: 'الفعاليات القادمة', upcoming_card_text: 'اطّلع على ورشنا ومحاضراتنا وأنشطتنا التعليمية القادمة.', past_card_title: 'الفعاليات السابقة', past_card_text: 'اطّلع على الأنشطة التي أُقيمت سابقًا.',
+            upcoming_title: 'الفعاليات القادمة', upcoming_intro: 'ورشتنا التعليمية القادمة.', event_badge: 'ورشة قادمة', noble_title: 'The Noble Journey', noble_text: 'ورشة حول الإيمان، الأخلاق، والنمو الروحي.', label_date: 'التاريخ:', label_time: 'الوقت:', label_location: 'المكان:',
+            past_title: 'الفعاليات السابقة', past_empty: 'لا توجد فعاليات تعليمية سابقة متاحة حاليًا.', cta_title: 'هل تريد المشاركة؟', cta_text: 'اضغط على الفعالية القادمة وسجّل مكانك.', cta_btn: 'عرض الفعالية القادمة',
+            footer_about: 'نربط الشباب من مختلف الخلفيات بالقيم الإسلامية من خلال التعليم والرياضة والأنشطة الملهمة.', footer_links_title: 'روابط سريعة', footer_home: 'الرئيسية', footer_mission: 'رسالتنا', footer_values: 'قيمنا', footer_activities: 'ماذا نفعل؟', footer_faq: 'الأسئلة الشائعة', footer_join: 'انضم إلينا', footer_contact: 'اتصل بنا', footer_contact_title: 'معلومات التواصل', footer_rights: '© 2026 Crescent Youth vzw - جميع الحقوق محفوظة', footer_terms: 'الشروط والأحكام', footer_privacy: 'سياسة الخصوصية', footer_cookie: 'سياسة ملفات تعريف الارتباط', footer_top: 'العودة إلى الأعلى',
+            cookies_text: 'نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستخدامك للموقع فإنك توافق على', cookies_policy: 'سياسة ملفات تعريف الارتباط', cookies_button: 'موافق'
+        }
+    };
+
     const mobileMenu = document.getElementById('mobile-menu');
     const mainNav = document.getElementById('main-nav');
+    const langButtons = document.querySelectorAll('.lang-option');
+    const i18nElements = document.querySelectorAll('[data-i18n]');
+
+    function setLanguage(lang) {
+        const dictionary = translations[lang];
+        if (!dictionary) return;
+
+        i18nElements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (dictionary[key]) {
+                element.textContent = dictionary[key];
+            }
+        });
+
+        langButtons.forEach(button => {
+            button.classList.toggle('active', button.getAttribute('data-lang') === lang);
+        });
+
+        document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        localStorage.setItem('siteLang', lang);
+    }
+
+    langButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const selectedLang = button.getAttribute('data-lang');
+            setLanguage(selectedLang);
+        });
+    });
 
     if (mobileMenu && mainNav) {
         mobileMenu.addEventListener('click', () => {
@@ -882,12 +976,7 @@
     window.addEventListener('scroll', () => {
         const navbar = document.querySelector('.navbar');
         if (!navbar) return;
-
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
 
     const animatedEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -931,6 +1020,8 @@
             }, 400);
         });
     }
+
+    setLanguage(localStorage.getItem('siteLang') || 'nl');
 </script>
 
 </body>
