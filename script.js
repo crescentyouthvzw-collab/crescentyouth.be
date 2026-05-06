@@ -317,7 +317,7 @@ const translations = {
 
     values_title: 'Core values',
     values_intro: 'These values guide us and help young people grow and make impact together.',
-    value_education_title: 'Education',
+    value_education_title: 'Events',
     value_education_text: 'Learning in a way that fits you, from workshops to sports and creative projects.',
     value_compass_title: 'Compass',
     value_compass_text: 'Islamic values give us direction and help us stay fair, respectful and open.',
@@ -330,7 +330,7 @@ const translations = {
 
     activities_title: 'What we do?',
     activities_intro: 'Take a look at what we do to help young people grow and become stronger together.',
-    activity_education_title: 'Education',
+    activity_education_title: 'Events',
     activity_education_text: 'Workshops, interactive sessions and talks that help you move forward.',
     activity_sport_title: 'Sports',
     activity_sport_text: 'From football to fun challenges, sports and fun go together.',

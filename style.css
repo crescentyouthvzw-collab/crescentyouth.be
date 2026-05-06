@@ -1567,4 +1567,10 @@ html[dir="rtl"] .form-group select {
     .membership-phone-row input {
         width: 100%;
     }
+    .activity-card {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
 }
