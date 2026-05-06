@@ -13,15 +13,18 @@
     <style>
         :root {
             --primary: #1e3d2f;
+            --primary-dark: #173126;
             --primary-mid: #2d5a42;
             --accent: #d4b896;
             --accent-dark: #c0a07e;
             --green-mid: #4a7c5e;
             --text-light: #f8f9fa;
             --text-dark: #1a2e22;
+            --muted: #637267;
             --bg: #f5f2ee;
             --card-bg: #ffffff;
-            --shadow: rgba(30, 61, 47, 0.10);
+            --shadow: rgba(30, 61, 47, 0.12);
+            --shadow-strong: rgba(0, 0, 0, 0.28);
         }
 
         * {
@@ -53,13 +56,17 @@
             font: inherit;
         }
 
+        img {
+            max-width: 100%;
+        }
+
         header.navbar {
-            background: linear-gradient(90deg, #1e3d2f 0%, #2d5a42 50%, #4a7c5e 100%);
+            background: linear-gradient(90deg, #1e3d2f 0%, #2d5a42 55%, #4a7c5e 100%);
             color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 26px;
+            padding: 10px 24px;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -69,7 +76,7 @@
 
         .navbar.scrolled {
             padding: 8px 24px;
-            background: linear-gradient(90deg, #162d22 0%, #254d38 50%, #3d6b4f 100%);
+            background: linear-gradient(90deg, #162d22 0%, #254d38 55%, #3d6b4f 100%);
         }
 
         .logo {
@@ -79,16 +86,16 @@
         }
 
         .logo-img {
-            width: 72px;
-            height: 72px;
+            width: 58px;
+            height: 58px;
             object-fit: contain;
-            border-radius: 18px;
+            border-radius: 16px;
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
         }
 
         .logo-text {
             font-weight: 700;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #ffffff;
             letter-spacing: 0.04em;
         }
@@ -98,7 +105,7 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: rgba(30, 61, 47, 0.97);
+            background: rgba(30, 61, 47, 0.98);
             display: flex;
             justify-content: center;
             max-height: 0;
@@ -108,7 +115,7 @@
         }
 
         nav.open {
-            max-height: 380px;
+            max-height: 420px;
             opacity: 1;
         }
 
@@ -117,21 +124,22 @@
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
-            padding: 10px 16px 18px;
+            padding: 14px 16px 20px;
             align-items: center;
+            width: 100%;
         }
 
         .nav-links li {
             width: 100%;
-            max-width: 260px;
+            max-width: 280px;
         }
 
         .nav-links a {
             display: block;
             width: 100%;
             color: #ffffff;
-            font-weight: 500;
-            font-size: 0.98rem;
+            font-weight: 600;
+            font-size: 0.95rem;
             padding: 10px 20px;
             border-radius: 999px;
             transition: all 0.25s ease;
@@ -140,7 +148,7 @@
 
         .nav-links a:hover {
             color: var(--accent);
-            background: rgba(0, 0, 0, 0.14);
+            background: rgba(0, 0, 0, 0.16);
         }
 
         .nav-actions {
@@ -152,29 +160,27 @@
         .lang-switcher {
             display: flex;
             align-items: center;
-            gap: 6px;
-            margin-left: 16px;
-            padding: 4px 10px;
+            gap: 4px;
+            padding: 4px 8px;
             border-radius: 999px;
             background: rgba(0, 0, 0, 0.18);
         }
 
         .lang-option {
             cursor: pointer;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             border-radius: 999px;
-            border: 1px solid transparent;
             color: #e8f5e9;
             transition: all 0.25s ease;
             text-transform: uppercase;
-            padding: 6px 12px;
-            margin: 2px;
+            padding: 6px 11px;
+            user-select: none;
         }
 
         .lang-option.active {
             background: var(--accent);
             color: var(--primary);
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .menu-toggle {
@@ -190,8 +196,9 @@
         }
 
         .menu-toggle i {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: white;
+            transition: transform 0.25s ease, color 0.25s ease;
         }
 
         .menu-toggle.open i {
@@ -200,10 +207,10 @@
         }
 
         .hero {
-            background: linear-gradient(110deg, #1e3d2f 0%, #2d5a42 45%, #4a7c5e 100%);
+            background: linear-gradient(120deg, #1e3d2f 0%, #2d5a42 52%, #4a7c5e 100%);
             color: var(--text-light);
             text-align: center;
-            padding: 120px 20px 80px;
+            padding: 70px 20px 80px;
             position: relative;
             overflow: hidden;
         }
@@ -211,70 +218,90 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: -40%;
-            left: -35%;
-            width: 200%;
-            height: 200%;
+            inset: -35%;
             background:
-                    radial-gradient(circle at 10% 0%, rgba(212, 184, 150, 0.12) 0%, transparent 60%),
-                    radial-gradient(circle at 90% 100%, rgba(212, 184, 150, 0.10) 0%, transparent 60%);
-            animation: floatGlow 24s linear infinite alternate;
+                    radial-gradient(circle at 15% 5%, rgba(212, 184, 150, 0.16) 0%, transparent 45%),
+                    radial-gradient(circle at 90% 100%, rgba(255, 255, 255, 0.08) 0%, transparent 55%);
             pointer-events: none;
-        }
-
-        @keyframes floatGlow {
-            from { transform: translate3d(0, 0, 0) scale(1); }
-            to { transform: translate3d(-40px, 25px, 0) scale(1.05); }
         }
 
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 950px;
+            width: 100%;
+            max-width: 1040px;
             margin: 0 auto;
-            animation: heroFloat 7s ease-in-out infinite alternate;
         }
 
-        @keyframes heroFloat {
-            from { transform: translateY(0); }
-            to { transform: translateY(-8px); }
+        .hero-poster {
+            width: 100%;
+            max-width: 1100px;
+            aspect-ratio: 21 / 9;
+            margin: 0 auto 45px;
+            border-radius: 30px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow:
+                    0 30px 70px rgba(0, 0, 0, 0.38),
+                    0 10px 30px rgba(0, 0, 0, 0.18);
+            backdrop-filter: blur(6px);
+        }
+
+        .hero-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .hero-poster:hover img {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .hero-poster {
+                max-width: 100%;
+                aspect-ratio: 16 / 9;
+                margin-bottom: 30px;
+                border-radius: 20px;
+            }
         }
 
         .hero h1 {
             font-family: 'Ubuntu', sans-serif;
-            font-size: 3rem;
-            line-height: 1.15;
+            font-size: clamp(2.1rem, 5vw, 3.7rem);
+            line-height: 1.1;
             margin-bottom: 18px;
             letter-spacing: 0.05em;
         }
 
         .hero p {
-            font-size: 1.15rem;
-            margin-bottom: 28px;
+            font-size: clamp(0.98rem, 2vw, 1.15rem);
+            margin: 0 auto 28px;
             opacity: 0.96;
             font-style: italic;
             max-width: 760px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .btn {
             background: var(--accent);
             color: var(--primary);
-            padding: 14px 32px;
+            padding: 13px 30px;
             border-radius: 999px;
-            font-weight: 700;
-            font-size: 1.02rem;
+            font-weight: 800;
+            font-size: 0.98rem;
             display: inline-block;
             transition: all 0.25s ease;
-            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
             margin: 5px;
             border: none;
             cursor: pointer;
         }
 
         .btn:hover {
-            transform: translateY(-3px) scale(1.03);
+            transform: translateY(-3px);
             background: var(--accent-dark);
         }
 
@@ -298,8 +325,8 @@
         .section h2 {
             color: var(--primary);
             margin: 0 auto 15px;
-            font-size: 2.4rem;
-            font-weight: 700;
+            font-size: clamp(1.9rem, 4vw, 2.4rem);
+            font-weight: 800;
             text-align: center;
             position: relative;
             width: fit-content;
@@ -321,9 +348,9 @@
 
         .section-intro {
             text-align: center;
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             line-height: 1.7;
-            color: #555;
+            color: var(--muted);
             margin: 30px auto 50px;
             max-width: 780px;
         }
@@ -341,14 +368,14 @@
         .price-box,
         .form-card {
             background: white;
-            padding: 28px;
-            border-radius: 28px;
+            padding: 26px;
+            border-radius: 26px;
             box-shadow: 0 12px 32px var(--shadow);
         }
 
         .poster-card img {
             width: 100%;
-            border-radius: 20px;
+            border-radius: 18px;
             display: block;
         }
 
@@ -360,80 +387,85 @@
 
         .detail-card {
             background: var(--card-bg);
-            padding: 24px;
+            padding: 24px 18px;
             border-radius: 22px;
             text-align: center;
             box-shadow: 0 6px 24px var(--shadow);
         }
 
         .detail-card i {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--green-mid);
             margin-bottom: 12px;
         }
 
         .detail-card h3 {
             color: var(--primary);
-            font-size: 1.15rem;
+            font-size: 1.08rem;
             margin-bottom: 6px;
         }
 
         .detail-card p {
             color: #666;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 28px;
             margin-top: 45px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .info-card {
             background: var(--card-bg);
-            padding: 34px 28px;
+            padding: 34px 26px;
             border-radius: 22px;
             text-align: center;
             box-shadow: 0 6px 24px var(--shadow);
         }
 
         .info-card i {
-            width: 75px;
-            height: 75px;
+            width: 68px;
+            height: 68px;
             border-radius: 999px;
-            background: radial-gradient(circle at 30% 0%, #d4b896 0%, #7aad8a 35%, #1e3d2f 100%);
+            background: radial-gradient(circle at 30% 0%, #d4b896 0%, #7aad8a 38%, #1e3d2f 100%);
             color: #ffffff;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 18px;
         }
 
         .info-card h3 {
             color: var(--primary);
-            font-size: 1.35rem;
+            font-size: 1.28rem;
             margin-bottom: 10px;
         }
 
         .info-card p {
             color: #666;
+            font-size: 0.95rem;
         }
 
         .price-box h3 {
             color: var(--primary);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.45rem;
+            margin-bottom: 18px;
         }
 
         .price-line {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 18px;
             padding: 16px 0;
             border-bottom: 1px solid #eee;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .price-line:last-child {
@@ -442,22 +474,23 @@
 
         .price {
             color: #c96b21;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
+            white-space: nowrap;
         }
 
         .note {
-            margin-top: 18px;
+            margin-top: 16px;
             color: #666;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             background: #f9f3ea;
-            padding: 15px;
-            border-radius: 16px;
+            padding: 14px;
+            border-radius: 14px;
         }
 
         .membership-form label {
             display: block;
-            font-size: 0.92rem;
-            font-weight: 700;
+            font-size: 0.9rem;
+            font-weight: 800;
             color: var(--primary);
             margin-top: 14px;
             margin-bottom: 6px;
@@ -475,7 +508,7 @@
             padding: 12px 14px;
             border: 2px solid #dcdcdc;
             border-radius: 12px;
-            font-size: 0.96rem;
+            font-size: 0.95rem;
             background: #ffffff;
             color: var(--text-dark);
             transition: all 0.25s ease;
@@ -507,26 +540,27 @@
 
         .terms-link {
             color: var(--primary);
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: underline;
         }
 
         .status-box {
             margin-top: 20px;
-            padding: 18px;
+            padding: 16px;
             border-radius: 16px;
             background: linear-gradient(135deg, #ffffff 0%, #f5f2ee 100%);
             border: 1px solid rgba(212, 184, 150, 0.45);
             box-shadow: 0 6px 18px var(--shadow);
             color: var(--primary);
-            font-weight: 700;
+            font-weight: 800;
             text-align: center;
+            font-size: 0.92rem;
         }
 
         .form-message {
             margin-top: 14px;
             text-align: center;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 0.92rem;
         }
 
@@ -539,24 +573,23 @@
             color: white;
             padding: 80px 20px;
             text-align: center;
-            margin-top: 60px;
         }
 
         .cta-section h2 {
             color: white;
-            font-size: 2.4rem;
-            font-weight: 700;
+            font-size: clamp(1.9rem, 4vw, 2.4rem);
+            font-weight: 800;
             margin-bottom: 18px;
         }
 
         .cta-section p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             margin-bottom: 30px;
             opacity: 0.9;
         }
 
         footer {
-            background: var(--primary);
+            background: var(--primary-dark);
             color: white;
             padding: 40px 20px 20px;
             text-align: center;
@@ -565,7 +598,7 @@
         .footer-content {
             max-width: 1200px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 40px;
             margin: 0 auto 30px;
         }
@@ -573,14 +606,14 @@
         .footer-section h3 {
             color: var(--accent);
             margin-bottom: 15px;
-            font-size: 1.25rem;
+            font-size: 1.18rem;
         }
 
         .footer-section p,
         .footer-section a {
             color: rgba(255, 255, 255, 0.82);
             line-height: 2;
-            font-size: 0.95rem;
+            font-size: 0.93rem;
         }
 
         .footer-bottom {
@@ -607,7 +640,7 @@
             color: var(--primary);
             border-radius: 999px;
             font-size: 0.9rem;
-            font-weight: 700;
+            font-weight: 800;
         }
 
         .cookie-banner {
@@ -645,7 +678,7 @@
             border: none;
             padding: 9px 26px;
             border-radius: 999px;
-            font-weight: 700;
+            font-weight: 800;
             cursor: pointer;
         }
 
@@ -684,19 +717,20 @@
 
         @media (max-width: 900px) {
             .event-layout,
-            .registration-layout {
+            .registration-layout,
+            .info-grid,
+            .footer-content {
                 grid-template-columns: 1fr;
             }
 
-            .details-grid,
-            .form-row {
-                grid-template-columns: 1fr;
+            .details-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
             header.navbar {
-                padding: 10px 16px;
+                padding: 9px 14px;
             }
 
             .logo-text {
@@ -706,23 +740,84 @@
             .logo-img {
                 width: 46px;
                 height: 46px;
+                border-radius: 14px;
             }
 
             .lang-switcher {
-                margin-left: 0;
+                gap: 2px;
+                padding: 3px 6px;
+            }
+
+            .lang-option {
+                font-size: 0.68rem;
+                padding: 5px 8px;
+            }
+
+            .menu-toggle {
+                width: 36px;
+                height: 36px;
             }
 
             .hero {
-                padding: 105px 18px 70px;
+                padding: 45px 14px 60px;
+            }
+
+            .hero-poster {
+                max-width: 100%;
+                margin-bottom: 28px;
+                border-radius: 18px;
+                box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32);
             }
 
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+
+            .section {
+                padding: 60px 16px;
             }
 
             .section h2,
             .cta-section h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .section-intro {
+                margin-bottom: 35px;
+                font-size: 0.95rem;
+            }
+
+            .poster-card,
+            .price-box,
+            .form-card {
+                padding: 20px;
+                border-radius: 22px;
+            }
+
+            .details-grid,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .info-card {
+                padding: 30px 22px;
+            }
+
+            .price-line {
+                align-items: flex-start;
+            }
+
+            .price {
+                font-size: 1.45rem;
             }
 
             .cookie-banner {
@@ -774,6 +869,10 @@
 
 <section class="hero">
     <div class="hero-content">
+        <div class="hero-poster">
+            <img src="/images/NOBLEJOURNEYEVENT/NobleJourneyTop.jpeg" alt="The Noble Journey poster">
+        </div>
+
         <h1 data-i18n="event_title">The Noble Journey</h1>
         <p data-i18n="event_subtitle">
             Een workshop over Iman, karakter en spirituele groei. Een betekenisvolle namiddag voor jongeren om te reflecteren, leren en verbinden.
@@ -881,7 +980,6 @@
 
         <div class="form-card reveal-right">
             <form id="registrationForm" class="membership-form">
-
                 <div class="form-row">
                     <div>
                         <label data-i18n="first_name">Voornaam *</label>
@@ -924,11 +1022,6 @@
                             <option value="Yes" data-i18n="yes_option">Ja</option>
                         </select>
                     </div>
-
-<!--                    <div id="discountWrap" class="hidden">-->
-<!--                        <label data-i18n="discount_code">Leden kortingscode *</label>-->
-<!--                        <input type="text" name="discountCode" id="discountCode" data-i18n-placeholder="discount_placeholder" placeholder="Voer je code in">-->
-<!--                    </div>-->
                 </div>
 
                 <label data-i18n="heard_from">Hoe heb je over dit event gehoord?</label>
@@ -1016,338 +1109,54 @@
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJshkJg5WIGfYmLDP6tNBvqR-czrajjt3ulTAuAOQ8dgVJN-Bn09DvMGCFaGn7Ix0/exec";
     const PAYMENT_URL = "https://pay.sumup.com/b2c/QPOY0HHM";
 
-
     const translations = {
         nl: {
-            nav_home: 'Home',
-            nav_mission: 'Missie',
-            nav_values: 'Kernwaarden',
-            nav_activities: 'Wat doen wij?',
-            nav_team: 'Team',
-            nav_faq: 'FAQ',
-            nav_register: 'Lid worden',
-            nav_contact: 'Contact',
-
-            event_title: 'The Noble Journey',
-            event_subtitle: 'Een workshop over Iman, karakter en spirituele groei. Een betekenisvolle namiddag voor jongeren om te reflecteren, leren en verbinden.',
-            event_register_btn: 'Registreer nu',
-            event_details_btn: 'Bekijk details',
-
-            event_info_title: 'Info',
-            event_info_intro: 'Neem deel aan een betekenisvolle workshop rond geloof, karakter, reflectie en persoonlijke groei.',
-            event_date_label: 'Datum',
-            event_time_label: 'Tijd',
-            event_location_label: 'Locatie',
-            event_age_label: 'Leeftijd',
-
-            expect_title: 'Wat kan je verwachten?',
-            expect_intro: 'Een rustige en inspirerende ruimte om samen te leren, reflecteren en groeien.',
-            expect_faith_title: 'Geloof',
-            expect_faith_text: 'Korte reminders en reflecties over Iman in het dagelijkse leven.',
-            expect_character_title: 'Karakter',
-            expect_character_text: 'Praktische lessen over manieren, zelfcontrole en respect.',
-            expect_connection_title: 'Verbinding',
-            expect_connection_text: 'Een warme plek waar jongeren elkaar ontmoeten, leren en samen groeien.',
-
-            registration_title: 'Workshop registratie',
-            registration_intro: 'Vul je gegevens correct in. Na registratie word je doorgestuurd naar de SumUp-betaalpagina.',
-            ticket_prices_title: 'Ticketprijs',
-            everyone_pays: 'Iedereen betaalt online',
-            member_refund: 'Leden met geldige code krijgen refund',
-            age_note: 'Leeftijdsregel: registratie is alleen mogelijk voor deelnemers van 16 tot 35 jaar.',
-            payment_note: 'Betaling: iedereen betaalt €15 online. Leden met een geldige code krijgen €5 terug op het event.',
-            first_name: 'Voornaam *',
-            last_name: 'Achternaam *',
-            event_dob: 'Geboortedatum *',
-            email: 'E-mailadres *',
-            phone: 'Telefoonnummer *',
-            member_question: 'Ben je lid van Crescent Youth? *',
-            select_option: 'Selecteer',
-            no_option: 'Nee',
-            yes_option: 'Ja',
-            discount_code: 'Leden kortingscode *',
-            discount_placeholder: 'Voer je code in',
-            heard_from: 'Hoe heb je over dit event gehoord?',
-            heard_placeholder: 'Instagram, vriend, WhatsApp, website...',
-            payment_status: 'Iedereen betaalt €15 online. Leden met een geldige code krijgen €5 refund op het event.',
-            terms_before: 'Ik ga akkoord met de',
-            terms_link: 'algemene voorwaarden',
-            terms_download_note: 'Je kan de voorwaarden als PDF downloaden vóór je registreert.',
-            continue_payment: 'Doorgaan naar betaling',
-
-            age_valid: 'Leeftijd gecontroleerd. Registratie is mogelijk.',
-            age_invalid: 'Registratie is alleen mogelijk voor deelnemers tussen 16 en 35 jaar.',
-            discount_required: 'Vul je leden kortingscode in.',
-            processing: 'Registratie wordt verwerkt...',
-            script_missing: 'Plak eerst je Google Apps Script Web App URL.',
-
-            cta_title: 'Klaar om deel te nemen?',
-            cta_text: 'Registreer je plaats en maak deel uit van deze betekenisvolle workshop.',
-
-            footer_about: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.',
-            footer_links_title: 'Snelle links',
-            footer_home: 'Home',
-            footer_activities: 'Wat doen wij?',
-            footer_contact: 'Contact',
-            footer_contact_title: 'Contact info',
-            footer_rights: '© 2026 Crescent Youth vzw - Alle rechten voorbehouden',
-            footer_terms: 'Algemene voorwaarden',
-            footer_privacy: 'Privacybeleid',
-            footer_cookie: 'Cookiebeleid',
-            footer_top: 'Terug naar boven',
-
-            cookies_text: 'We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons',
-            cookies_policy: 'cookiebeleid',
-            cookies_button: 'Akkoord'
+            nav_home: 'Home', nav_mission: 'Missie', nav_values: 'Kernwaarden', nav_activities: 'Wat doen wij?', nav_team: 'Team', nav_faq: 'FAQ', nav_register: 'Lid worden', nav_contact: 'Contact',
+            event_title: 'The Noble Journey', event_subtitle: 'Een workshop over Iman, karakter en spirituele groei. Een betekenisvolle namiddag voor jongeren om te reflecteren, leren en verbinden.', event_register_btn: 'Registreer nu', event_details_btn: 'Bekijk details',
+            event_info_title: 'Info', event_info_intro: 'Neem deel aan een betekenisvolle workshop rond geloof, karakter, reflectie en persoonlijke groei.', event_date_label: 'Datum', event_time_label: 'Tijd', event_location_label: 'Locatie', event_age_label: 'Leeftijd',
+            expect_title: 'Wat kan je verwachten?', expect_intro: 'Een rustige en inspirerende ruimte om samen te leren, reflecteren en groeien.', expect_faith_title: 'Geloof', expect_faith_text: 'Korte reminders en reflecties over Iman in het dagelijkse leven.', expect_character_title: 'Karakter', expect_character_text: 'Praktische lessen over manieren, zelfcontrole en respect.', expect_connection_title: 'Verbinding', expect_connection_text: 'Een warme plek waar jongeren elkaar ontmoeten, leren en samen groeien.',
+            registration_title: 'Workshop registratie', registration_intro: 'Vul je gegevens correct in. Na registratie word je doorgestuurd naar de SumUp-betaalpagina.', ticket_prices_title: 'Ticketprijs', everyone_pays: 'Iedereen betaalt online', member_refund: 'Leden met geldige code krijgen refund', age_note: 'Leeftijdsregel: registratie is alleen mogelijk voor deelnemers van 16 tot 35 jaar.', payment_note: 'Betaling: iedereen betaalt €15 online. Leden met een geldige code krijgen €5 terug op het event.',
+            first_name: 'Voornaam *', last_name: 'Achternaam *', event_dob: 'Geboortedatum *', email: 'E-mailadres *', phone: 'Telefoonnummer *', member_question: 'Ben je lid van Crescent Youth? *', select_option: 'Selecteer', no_option: 'Nee', yes_option: 'Ja', heard_from: 'Hoe heb je over dit event gehoord?', heard_placeholder: 'Instagram, vriend, WhatsApp, website...', payment_status: 'Iedereen betaalt €15 online. Leden met een geldige code krijgen €5 refund op het event.', terms_before: 'Ik ga akkoord met de', terms_link: 'algemene voorwaarden', terms_download_note: 'Je kan de voorwaarden als PDF downloaden vóór je registreert.', continue_payment: 'Doorgaan naar betaling',
+            age_valid: 'Leeftijd gecontroleerd. Registratie is mogelijk.', age_invalid: 'Registratie is alleen mogelijk voor deelnemers tussen 16 en 35 jaar.', processing: 'Registratie wordt verwerkt...', script_missing: 'Plak eerst je Google Apps Script Web App URL.',
+            cta_title: 'Klaar om deel te nemen?', cta_text: 'Registreer je plaats en maak deel uit van deze betekenisvolle workshop.',
+            footer_about: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.', footer_links_title: 'Snelle links', footer_home: 'Home', footer_activities: 'Wat doen wij?', footer_contact: 'Contact', footer_contact_title: 'Contact info', footer_rights: '© 2026 Crescent Youth vzw - Alle rechten voorbehouden', footer_terms: 'Algemene voorwaarden', footer_privacy: 'Privacybeleid', footer_cookie: 'Cookiebeleid', footer_top: 'Terug naar boven',
+            cookies_text: 'We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons', cookies_policy: 'cookiebeleid', cookies_button: 'Akkoord'
         },
-
         en: {
-            nav_home: 'Home',
-            nav_mission: 'Mission',
-            nav_values: 'Core values',
-            nav_activities: 'What we do',
-            nav_team: 'Team',
-            nav_faq: 'FAQ',
-            nav_register: 'Join',
-            nav_contact: 'Contact',
-
-            event_title: 'The Noble Journey',
-            event_subtitle: 'A workshop on Iman, character and spiritual growth. A meaningful afternoon for youth to reflect, learn and connect.',
-            event_register_btn: 'Register Now',
-            event_details_btn: 'View Details',
-
-            event_info_title: 'Event Information',
-            event_info_intro: 'Join us for a meaningful workshop focused on faith, character, reflection and personal growth.',
-            event_date_label: 'Date',
-            event_time_label: 'Time',
-            event_location_label: 'Location',
-            event_age_label: 'Age Group',
-
-            expect_title: 'What to Expect',
-            expect_intro: 'A calm and inspiring space to learn, reflect and grow together.',
-            expect_faith_title: 'Faith',
-            expect_faith_text: 'Short reminders and reflections about Iman in daily life.',
-            expect_character_title: 'Character',
-            expect_character_text: 'Practical lessons about manners, self-control and respect.',
-            expect_connection_title: 'Connection',
-            expect_connection_text: 'A welcoming space for youth to meet, learn and grow together.',
-
-            registration_title: 'Workshop Registration',
-            registration_intro: 'Fill in your details correctly. After registration you will be redirected to the SumUp payment page.',
-            ticket_prices_title: 'Ticket Price',
-            everyone_pays: 'Everyone pays online',
-            member_refund: 'Members with valid code receive refund',
-            age_note: 'Age rule: registration is only open for participants aged 16 to 35.',
-            payment_note: 'Payment: everyone pays €15 online. Members with a valid code receive €5 refund at the event.',
-            first_name: 'First Name *',
-            last_name: 'Last Name *',
-            event_dob: 'Date of Birth *',
-            email: 'Email Address *',
-            phone: 'Phone Number *',
-            member_question: 'Are you a member of Crescent Youth? *',
-            select_option: 'Select',
-            no_option: 'No',
-            yes_option: 'Yes',
-            discount_code: 'Member Discount Code *',
-            discount_placeholder: 'Enter your code',
-            heard_from: 'How did you hear about this event?',
-            heard_placeholder: 'Instagram, friend, WhatsApp, website...',
-            payment_status: 'Everyone pays €15 online. Members with a valid code receive €5 refund at the event.',
-            terms_before: 'I agree to the',
-            terms_link: 'terms and conditions',
-            terms_download_note: 'You can download the terms and conditions PDF before registering.',
-            continue_payment: 'Continue to Payment',
-
-            age_valid: 'Age verified. Registration is allowed.',
-            age_invalid: 'Registration is only allowed for participants between 16 and 35 years old.',
-            discount_required: 'Please enter your member discount code.',
-            processing: 'Processing registration...',
-            script_missing: 'Please paste your Google Apps Script Web App URL first.',
-
-            cta_title: 'Ready to join?',
-            cta_text: 'Register your place and be part of this meaningful workshop.',
-
-            footer_about: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.',
-            footer_links_title: 'Quick links',
-            footer_home: 'Home',
-            footer_activities: 'What we do',
-            footer_contact: 'Contact',
-            footer_contact_title: 'Contact info',
-            footer_rights: '© 2026 Crescent Youth vzw - All rights reserved',
-            footer_terms: 'Terms and conditions',
-            footer_privacy: 'Privacy policy',
-            footer_cookie: 'Cookie policy',
-            footer_top: 'Back to top',
-
-            cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our',
-            cookies_policy: 'cookie policy',
-            cookies_button: 'Accept'
+            nav_home: 'Home', nav_mission: 'Mission', nav_values: 'Core values', nav_activities: 'What we do', nav_team: 'Team', nav_faq: 'FAQ', nav_register: 'Join', nav_contact: 'Contact',
+            event_title: 'The Noble Journey', event_subtitle: 'A workshop on Iman, character and spiritual growth. A meaningful afternoon for youth to reflect, learn and connect.', event_register_btn: 'Register Now', event_details_btn: 'View Details',
+            event_info_title: 'Event Information', event_info_intro: 'Join us for a meaningful workshop focused on faith, character, reflection and personal growth.', event_date_label: 'Date', event_time_label: 'Time', event_location_label: 'Location', event_age_label: 'Age Group',
+            expect_title: 'What to Expect', expect_intro: 'A calm and inspiring space to learn, reflect and grow together.', expect_faith_title: 'Faith', expect_faith_text: 'Short reminders and reflections about Iman in daily life.', expect_character_title: 'Character', expect_character_text: 'Practical lessons about manners, self-control and respect.', expect_connection_title: 'Connection', expect_connection_text: 'A welcoming space for youth to meet, learn and grow together.',
+            registration_title: 'Workshop Registration', registration_intro: 'Fill in your details correctly. After registration you will be redirected to the SumUp payment page.', ticket_prices_title: 'Ticket Price', everyone_pays: 'Everyone pays online', member_refund: 'Members with valid code receive refund', age_note: 'Age rule: registration is only open for participants aged 16 to 35.', payment_note: 'Payment: everyone pays €15 online. Members with a valid code receive €5 refund at the event.',
+            first_name: 'First Name *', last_name: 'Last Name *', event_dob: 'Date of Birth *', email: 'Email Address *', phone: 'Phone Number *', member_question: 'Are you a member of Crescent Youth? *', select_option: 'Select', no_option: 'No', yes_option: 'Yes', heard_from: 'How did you hear about this event?', heard_placeholder: 'Instagram, friend, WhatsApp, website...', payment_status: 'Everyone pays €15 online. Members with a valid code receive €5 refund at the event.', terms_before: 'I agree to the', terms_link: 'terms and conditions', terms_download_note: 'You can download the terms and conditions PDF before registering.', continue_payment: 'Continue to Payment',
+            age_valid: 'Age verified. Registration is allowed.', age_invalid: 'Registration is only allowed for participants between 16 and 35 years old.', processing: 'Processing registration...', script_missing: 'Please paste your Google Apps Script Web App URL first.',
+            cta_title: 'Ready to join?', cta_text: 'Register your place and be part of this meaningful workshop.',
+            footer_about: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.', footer_links_title: 'Quick links', footer_home: 'Home', footer_activities: 'What we do', footer_contact: 'Contact', footer_contact_title: 'Contact info', footer_rights: '© 2026 Crescent Youth vzw - All rights reserved', footer_terms: 'Terms and conditions', footer_privacy: 'Privacy policy', footer_cookie: 'Cookie policy', footer_top: 'Back to top',
+            cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our', cookies_policy: 'cookie policy', cookies_button: 'Accept'
         },
-
         fr: {
-            nav_home: 'Accueil',
-            nav_mission: 'Mission',
-            nav_values: 'Valeurs',
-            nav_activities: 'Ce que nous faisons',
-            nav_team: 'Équipe',
-            nav_faq: 'FAQ',
-            nav_register: 'Devenir membre',
-            nav_contact: 'Contact',
-
-            event_title: 'The Noble Journey',
-            event_subtitle: 'Un atelier sur l’Iman, le caractère et la croissance spirituelle. Un après-midi significatif pour réfléchir, apprendre et se connecter.',
-            event_register_btn: 'S’inscrire',
-            event_details_btn: 'Voir les détails',
-
-            event_info_title: 'Informations sur l’événement',
-            event_info_intro: 'Participe à un atelier significatif autour de la foi, du caractère, de la réflexion et du développement personnel.',
-            event_date_label: 'Date',
-            event_time_label: 'Heure',
-            event_location_label: 'Lieu',
-            event_age_label: 'Âge',
-
-            expect_title: 'À quoi s’attendre ?',
-            expect_intro: 'Un espace calme et inspirant pour apprendre, réfléchir et grandir ensemble.',
-            expect_faith_title: 'Foi',
-            expect_faith_text: 'Courts rappels et réflexions sur l’Iman dans la vie quotidienne.',
-            expect_character_title: 'Caractère',
-            expect_character_text: 'Leçons pratiques sur les bonnes manières, la maîtrise de soi et le respect.',
-            expect_connection_title: 'Connexion',
-            expect_connection_text: 'Un espace accueillant où les jeunes peuvent se rencontrer, apprendre et grandir ensemble.',
-
-            registration_title: 'Inscription à l’atelier',
-            registration_intro: 'Remplis correctement tes informations. Après inscription, tu seras redirigé vers la page de paiement SumUp.',
-            ticket_prices_title: 'Prix du ticket',
-            everyone_pays: 'Tout le monde paie en ligne',
-            member_refund: 'Les membres avec code valide reçoivent un remboursement',
-            age_note: 'Règle d’âge : l’inscription est ouverte uniquement aux participants de 16 à 35 ans.',
-            payment_note: 'Paiement : tout le monde paie 15 € en ligne. Les membres avec un code valide reçoivent 5 € de remboursement à l’événement.',
-            first_name: 'Prénom *',
-            last_name: 'Nom *',
-            event_dob: 'Date de naissance *',
-            email: 'Adresse e-mail *',
-            phone: 'Numéro de téléphone *',
-            member_question: 'Es-tu membre de Crescent Youth ? *',
-            select_option: 'Sélectionner',
-            no_option: 'Non',
-            yes_option: 'Oui',
-            discount_code: 'Code membre *',
-            discount_placeholder: 'Entre ton code',
-            heard_from: 'Comment as-tu entendu parler de cet événement ?',
-            heard_placeholder: 'Instagram, ami, WhatsApp, site web...',
-            payment_status: 'Tout le monde paie 15 € en ligne. Les membres avec un code valide reçoivent 5 € de remboursement à l’événement.',
-            terms_before: 'J’accepte les',
-            terms_link: 'conditions générales',
-            terms_download_note: 'Tu peux télécharger les conditions générales en PDF avant de t’inscrire.',
-            continue_payment: 'Continuer vers le paiement',
-
-            age_valid: 'Âge vérifié. L’inscription est possible.',
-            age_invalid: 'L’inscription est uniquement possible pour les participants de 16 à 35 ans.',
-            discount_required: 'Veuillez entrer votre code membre.',
-            processing: 'Traitement de l’inscription...',
-            script_missing: 'Veuillez d’abord coller votre URL Google Apps Script Web App.',
-
-            cta_title: 'Prêt à participer ?',
-            cta_text: 'Réserve ta place et participe à cet atelier significatif.',
-
-            footer_about: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.',
-            footer_links_title: 'Liens rapides',
-            footer_home: 'Accueil',
-            footer_activities: 'Ce que nous faisons',
-            footer_contact: 'Contact',
-            footer_contact_title: 'Infos de contact',
-            footer_rights: '© 2026 Crescent Youth vzw - Tous droits réservés',
-            footer_terms: 'Conditions générales',
-            footer_privacy: 'Politique de confidentialité',
-            footer_cookie: 'Politique de cookies',
-            footer_top: 'Retour en haut',
-
-            cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant à utiliser notre site, tu acceptes notre',
-            cookies_policy: 'politique de cookies',
-            cookies_button: 'Accepter'
+            nav_home: 'Accueil', nav_mission: 'Mission', nav_values: 'Valeurs', nav_activities: 'Ce que nous faisons', nav_team: 'Équipe', nav_faq: 'FAQ', nav_register: 'Devenir membre', nav_contact: 'Contact',
+            event_title: 'The Noble Journey', event_subtitle: 'Un atelier sur l’Iman, le caractère et la croissance spirituelle. Un après-midi significatif pour réfléchir, apprendre et se connecter.', event_register_btn: 'S’inscrire', event_details_btn: 'Voir les détails',
+            event_info_title: 'Informations sur l’événement', event_info_intro: 'Participe à un atelier significatif autour de la foi, du caractère, de la réflexion et du développement personnel.', event_date_label: 'Date', event_time_label: 'Heure', event_location_label: 'Lieu', event_age_label: 'Âge',
+            expect_title: 'À quoi s’attendre ?', expect_intro: 'Un espace calme et inspirant pour apprendre, réfléchir et grandir ensemble.', expect_faith_title: 'Foi', expect_faith_text: 'Courts rappels et réflexions sur l’Iman dans la vie quotidienne.', expect_character_title: 'Caractère', expect_character_text: 'Leçons pratiques sur les bonnes manières, la maîtrise de soi et le respect.', expect_connection_title: 'Connexion', expect_connection_text: 'Un espace accueillant où les jeunes peuvent se rencontrer, apprendre et grandir ensemble.',
+            registration_title: 'Inscription à l’atelier', registration_intro: 'Remplis correctement tes informations. Après inscription, tu seras redirigé vers la page de paiement SumUp.', ticket_prices_title: 'Prix du ticket', everyone_pays: 'Tout le monde paie en ligne', member_refund: 'Les membres avec code valide reçoivent un remboursement', age_note: 'Règle d’âge : l’inscription est ouverte uniquement aux participants de 16 à 35 ans.', payment_note: 'Paiement : tout le monde paie 15 € en ligne. Les membres avec un code valide reçoivent 5 € de remboursement à l’événement.',
+            first_name: 'Prénom *', last_name: 'Nom *', event_dob: 'Date de naissance *', email: 'Adresse e-mail *', phone: 'Numéro de téléphone *', member_question: 'Es-tu membre de Crescent Youth ? *', select_option: 'Sélectionner', no_option: 'Non', yes_option: 'Oui', heard_from: 'Comment as-tu entendu parler de cet événement ?', heard_placeholder: 'Instagram, ami, WhatsApp, site web...', payment_status: 'Tout le monde paie 15 € en ligne. Les membres avec un code valide reçoivent 5 € de remboursement à l’événement.', terms_before: 'J’accepte les', terms_link: 'conditions générales', terms_download_note: 'Tu peux télécharger les conditions générales en PDF avant de t’inscrire.', continue_payment: 'Continuer vers le paiement',
+            age_valid: 'Âge vérifié. L’inscription est possible.', age_invalid: 'L’inscription est uniquement possible pour les participants de 16 à 35 ans.', processing: 'Traitement de l’inscription...', script_missing: 'Veuillez d’abord coller votre URL Google Apps Script Web App.',
+            cta_title: 'Prêt à participer ?', cta_text: 'Réserve ta place et participe à cet atelier significatif.',
+            footer_about: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.', footer_links_title: 'Liens rapides', footer_home: 'Accueil', footer_activities: 'Ce que nous faisons', footer_contact: 'Contact', footer_contact_title: 'Infos de contact', footer_rights: '© 2026 Crescent Youth vzw - Tous droits réservés', footer_terms: 'Conditions générales', footer_privacy: 'Politique de confidentialité', footer_cookie: 'Politique de cookies', footer_top: 'Retour en haut',
+            cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant à utiliser notre site, tu acceptes notre', cookies_policy: 'politique de cookies', cookies_button: 'Accepter'
         },
-
         ar: {
-            nav_home: 'الرئيسية',
-            nav_mission: 'رسالتنا',
-            nav_values: 'قيمنا',
-            nav_activities: 'ماذا نفعل؟',
-            nav_team: 'الفريق',
-            nav_faq: 'الأسئلة الشائعة',
-            nav_register: 'انضم إلينا',
-            nav_contact: 'اتصل بنا',
-
-            event_title: 'The Noble Journey',
-            event_subtitle: 'ورشة حول الإيمان، الأخلاق، والنمو الروحي. أمسية هادفة للشباب للتأمل والتعلم والتواصل.',
-            event_register_btn: 'سجّل الآن',
-            event_details_btn: 'عرض التفاصيل',
-
-            event_info_title: 'معلومات الفعالية',
-            event_info_intro: 'انضم إلينا في ورشة هادفة تركّز على الإيمان، الأخلاق، التأمل، والنمو الشخصي.',
-            event_date_label: 'التاريخ',
-            event_time_label: 'الوقت',
-            event_location_label: 'المكان',
-            event_age_label: 'الفئة العمرية',
-
-            expect_title: 'ماذا تتوقع؟',
-            expect_intro: 'مساحة هادئة وملهمة للتعلم والتأمل والنمو معًا.',
-            expect_faith_title: 'الإيمان',
-            expect_faith_text: 'تذكيرات وتأملات قصيرة حول الإيمان في الحياة اليومية.',
-            expect_character_title: 'الأخلاق',
-            expect_character_text: 'دروس عملية حول الآداب، ضبط النفس، والاحترام.',
-            expect_connection_title: 'التواصل',
-            expect_connection_text: 'مساحة مرحبة للشباب للتعارف والتعلم والنمو معًا.',
-
-            registration_title: 'تسجيل الورشة',
-            registration_intro: 'يرجى ملء بياناتك بشكل صحيح. بعد التسجيل سيتم تحويلك إلى صفحة الدفع SumUp.',
-            ticket_prices_title: 'سعر التذكرة',
-            everyone_pays: 'الجميع يدفع عبر الإنترنت',
-            member_refund: 'الأعضاء مع رمز صالح يحصلون على استرداد',
-            age_note: 'قاعدة العمر: التسجيل متاح فقط للمشاركين بين 16 و 35 سنة.',
-            payment_note: 'الدفع: الجميع يدفع 15€ عبر الإنترنت. الأعضاء مع رمز صالح يحصلون على استرداد 5€ في الفعالية.',
-            first_name: 'الاسم الأول *',
-            last_name: 'اسم العائلة *',
-            event_dob: 'تاريخ الميلاد *',
-            email: 'البريد الإلكتروني *',
-            phone: 'رقم الهاتف *',
-            member_question: 'هل أنت عضو في Crescent Youth؟ *',
-            select_option: 'اختر',
-            no_option: 'لا',
-            yes_option: 'نعم',
-            discount_code: 'رمز العضوية *',
-            discount_placeholder: 'أدخل الرمز',
-            heard_from: 'كيف سمعت عن هذه الفعالية؟',
-            heard_placeholder: 'إنستغرام، صديق، واتساب، الموقع...',
-            payment_status: 'الجميع يدفع 15€ عبر الإنترنت. الأعضاء مع رمز صالح يحصلون على استرداد 5€ في الفعالية.',
-            terms_before: 'أوافق على',
-            terms_link: 'الشروط والأحكام',
-            terms_download_note: 'يمكنك تنزيل الشروط والأحكام بصيغة PDF قبل التسجيل.',
-            continue_payment: 'المتابعة إلى الدفع',
-
-            age_valid: 'تم التحقق من العمر. التسجيل مسموح.',
-            age_invalid: 'التسجيل متاح فقط للمشاركين بين 16 و 35 سنة.',
-            discount_required: 'يرجى إدخال رمز العضوية.',
-            processing: 'جارٍ معالجة التسجيل...',
-            script_missing: 'يرجى إدخال رابط Google Apps Script Web App أولاً.',
-
-            cta_title: 'هل أنت مستعد للمشاركة؟',
-            cta_text: 'سجّل مكانك وكن جزءًا من هذه الورشة الهادفة.',
-
-            footer_about: 'نربط الشباب من مختلف الخلفيات بالقيم الإسلامية من خلال التعليم والرياضة والأنشطة الملهمة.',
-            footer_links_title: 'روابط سريعة',
-            footer_home: 'الرئيسية',
-            footer_activities: 'ماذا نفعل؟',
-            footer_contact: 'اتصل بنا',
-            footer_contact_title: 'معلومات التواصل',
-            footer_rights: '© 2026 Crescent Youth vzw - جميع الحقوق محفوظة',
-            footer_terms: 'الشروط والأحكام',
-            footer_privacy: 'سياسة الخصوصية',
-            footer_cookie: 'سياسة ملفات تعريف الارتباط',
-            footer_top: 'العودة إلى الأعلى',
-
-            cookies_text: 'نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستخدامك للموقع فإنك توافق على',
-            cookies_policy: 'سياسة ملفات تعريف الارتباط',
-            cookies_button: 'موافق'
+            nav_home: 'الرئيسية', nav_mission: 'رسالتنا', nav_values: 'قيمنا', nav_activities: 'ماذا نفعل؟', nav_team: 'الفريق', nav_faq: 'الأسئلة الشائعة', nav_register: 'انضم إلينا', nav_contact: 'اتصل بنا',
+            event_title: 'The Noble Journey', event_subtitle: 'ورشة حول الإيمان، الأخلاق، والنمو الروحي. أمسية هادفة للشباب للتأمل والتعلم والتواصل.', event_register_btn: 'سجّل الآن', event_details_btn: 'عرض التفاصيل',
+            event_info_title: 'معلومات الفعالية', event_info_intro: 'انضم إلينا في ورشة هادفة تركّز على الإيمان، الأخلاق، التأمل، والنمو الشخصي.', event_date_label: 'التاريخ', event_time_label: 'الوقت', event_location_label: 'المكان', event_age_label: 'الفئة العمرية',
+            expect_title: 'ماذا تتوقع؟', expect_intro: 'مساحة هادئة وملهمة للتعلم والتأمل والنمو معًا.', expect_faith_title: 'الإيمان', expect_faith_text: 'تذكيرات وتأملات قصيرة حول الإيمان في الحياة اليومية.', expect_character_title: 'الأخلاق', expect_character_text: 'دروس عملية حول الآداب، ضبط النفس، والاحترام.', expect_connection_title: 'التواصل', expect_connection_text: 'مساحة مرحبة للشباب للتعارف والتعلم والنمو معًا.',
+            registration_title: 'تسجيل الورشة', registration_intro: 'يرجى ملء بياناتك بشكل صحيح. بعد التسجيل سيتم تحويلك إلى صفحة الدفع SumUp.', ticket_prices_title: 'سعر التذكرة', everyone_pays: 'الجميع يدفع عبر الإنترنت', member_refund: 'الأعضاء مع رمز صالح يحصلون على استرداد', age_note: 'قاعدة العمر: التسجيل متاح فقط للمشاركين بين 16 و 35 سنة.', payment_note: 'الدفع: الجميع يدفع 15€ عبر الإنترنت. الأعضاء مع رمز صالح يحصلون على استرداد 5€ في الفعالية.',
+            first_name: 'الاسم الأول *', last_name: 'اسم العائلة *', event_dob: 'تاريخ الميلاد *', email: 'البريد الإلكتروني *', phone: 'رقم الهاتف *', member_question: 'هل أنت عضو في Crescent Youth؟ *', select_option: 'اختر', no_option: 'لا', yes_option: 'نعم', heard_from: 'كيف سمعت عن هذه الفعالية؟', heard_placeholder: 'إنستغرام، صديق، واتساب، الموقع...', payment_status: 'الجميع يدفع 15€ عبر الإنترنت. الأعضاء مع رمز صالح يحصلون على استرداد 5€ في الفعالية.', terms_before: 'أوافق على', terms_link: 'الشروط والأحكام', terms_download_note: 'يمكنك تنزيل الشروط والأحكام بصيغة PDF قبل التسجيل.', continue_payment: 'المتابعة إلى الدفع',
+            age_valid: 'تم التحقق من العمر. التسجيل مسموح.', age_invalid: 'التسجيل متاح فقط للمشاركين بين 16 و 35 سنة.', processing: 'جارٍ معالجة التسجيل...', script_missing: 'يرجى إدخال رابط Google Apps Script Web App أولاً.',
+            cta_title: 'هل أنت مستعد للمشاركة؟', cta_text: 'سجّل مكانك وكن جزءًا من هذه الورشة الهادفة.',
+            footer_about: 'نربط الشباب من مختلف الخلفيات بالقيم الإسلامية من خلال التعليم والرياضة والأنشطة الملهمة.', footer_links_title: 'روابط سريعة', footer_home: 'الرئيسية', footer_activities: 'ماذا نفعل؟', footer_contact: 'اتصل بنا', footer_contact_title: 'معلومات التواصل', footer_rights: '© 2026 Crescent Youth vzw - جميع الحقوق محفوظة', footer_terms: 'الشروط والأحكام', footer_privacy: 'سياسة الخصوصية', footer_cookie: 'سياسة ملفات تعريف الارتباط', footer_top: 'العودة إلى الأعلى',
+            cookies_text: 'نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستخدامك للموقع فإنك توافق على', cookies_policy: 'سياسة ملفات تعريف الارتباط', cookies_button: 'موافق'
         }
     };
 
@@ -1356,9 +1165,6 @@
     const langButtons = document.querySelectorAll('.lang-option');
     const i18nElements = document.querySelectorAll('[data-i18n]');
     const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
-    const memberStatus = document.getElementById('memberStatus');
-    const discountWrap = document.getElementById('discountWrap');
-    const discountCode = document.getElementById('discountCode');
     const registrationForm = document.getElementById('registrationForm');
     const formMessage = document.getElementById('formMessage');
     const ageMessage = document.getElementById('ageMessage');
@@ -1394,7 +1200,6 @@
 
         document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-
         localStorage.setItem('siteLang', lang);
     }
 
@@ -1403,7 +1208,6 @@
 
         const dob = new Date(dobValue);
         const today = new Date();
-
         let age = today.getFullYear() - dob.getFullYear();
         const monthDiff = today.getMonth() - dob.getMonth();
 
@@ -1418,6 +1222,7 @@
         const age = calculateAge(dateOfBirth.value);
 
         if (age === null || isNaN(age)) {
+            if (showMessage) ageMessage.textContent = '';
             return false;
         }
 
@@ -1507,33 +1312,14 @@
         dateOfBirth.addEventListener('change', () => validateAge(true));
     }
 
-    if (memberStatus) {
-        memberStatus.addEventListener('change', () => {
-            const isMember = memberStatus.value === 'Yes';
-            discountWrap.classList.toggle('hidden', !isMember);
-            discountCode.required = isMember;
-
-            if (!isMember) {
-                discountCode.value = '';
-            }
-        });
-    }
-
     if (registrationForm) {
         registrationForm.addEventListener('submit', async e => {
             e.preventDefault();
-
             formMessage.textContent = '';
 
             if (!validateAge(true)) {
                 formMessage.style.color = '#c0392b';
                 formMessage.textContent = t('age_invalid');
-                return;
-            }
-
-            if (memberStatus.value === 'Yes' && discountCode.value.trim() === '') {
-                formMessage.style.color = '#c0392b';
-                formMessage.textContent = t('discount_required');
                 return;
             }
 
