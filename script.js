@@ -330,7 +330,7 @@ const translations = {
 
     activities_title: 'What we do?',
     activities_intro: 'Take a look at what we do to help young people grow and become stronger together.',
-    activity_education_title: 'Events',
+    activity_education_title: 'Education',
     activity_education_text: 'Workshops, interactive sessions and talks that help you move forward.',
     activity_sport_title: 'Sports',
     activity_sport_text: 'From football to fun challenges, sports and fun go together.',
