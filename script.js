@@ -180,7 +180,7 @@ const translations = {
     team_khalid: 'Coördinator',
     team_mukhtar: 'Bestuurslid',
     team_sharfuddeen: 'IT-specialist',
-    team_wassim: 'Financieel',
+    team_wassim: 'penningmeester',
 
     faq_title: 'Veelgestelde vragen',
     faq_intro: 'Hier vind je antwoorden op de meest gestelde vragen over Crescent Youth.',
