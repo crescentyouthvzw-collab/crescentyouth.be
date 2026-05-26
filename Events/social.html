@@ -1,10 +1,167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sociale Activiteiten | Crescent Youth</title>
+    <meta name="description" content="Bekijk komende en afgelopen sociale activiteiten van Crescent Youth vzw in Brugge.">
+
+    <link rel="icon" href="/favicon.ico?v=20260409-1507" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root { --primary:#1e3d2f; --primary-mid:#2d5a42; --accent:#d4b896; --accent-dark:#c0a07e; --green-mid:#4a7c5e; --text-light:#f8f9fa; --text-dark:#1a2e22; --bg:#f5f2ee; --card-bg:#fff; --shadow:rgba(30,61,47,.10); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; font-size:16px; line-height:1.6; background:var(--bg); color:var(--text-dark); overflow-x:hidden; }
+        a { color:inherit; text-decoration:none; }
+        button { font:inherit; }
+        header.navbar { background:linear-gradient(90deg,#1e3d2f 0%,#2d5a42 50%,#4a7c5e 100%); color:white; display:flex; justify-content:space-between; align-items:center; padding:12px 26px; position:sticky; top:0; z-index:1000; box-shadow:0 2px 16px rgba(0,0,0,.25); transition:.3s ease; }
+        .navbar.scrolled { padding:8px 24px; background:linear-gradient(90deg,#162d22 0%,#254d38 50%,#3d6b4f 100%); }
+        .logo { display:flex; align-items:center; gap:.75rem; }
+        .logo-img { width:72px; height:72px; object-fit:contain; border-radius:18px; box-shadow:0 4px 14px rgba(0,0,0,.35); }
+        .logo-text { font-weight:700; font-size:1.4rem; color:#fff; letter-spacing:.04em; }
+        nav { position:absolute; top:100%; left:0; right:0; background:rgba(30,61,47,.97); display:flex; justify-content:center; max-height:0; overflow:hidden; opacity:0; transition:max-height .35s ease,opacity .25s ease; }
+        nav.open { max-height:420px; opacity:1; }
+        .nav-links { list-style:none; display:flex; flex-direction:column; gap:.6rem; padding:10px 16px 18px; align-items:center; }
+        .nav-links li { width:100%; max-width:260px; }
+        .nav-links a { display:block; width:100%; color:white; font-weight:500; font-size:.98rem; padding:10px 20px; border-radius:999px; text-align:center; transition:.25s ease; }
+        .nav-links a:hover { color:var(--accent); background:rgba(0,0,0,.14); }
+        .nav-actions { display:flex; align-items:center; gap:10px; }
+        .lang-switcher { display:flex; align-items:center; gap:6px; margin-left:16px; padding:4px 10px; border-radius:999px; background:rgba(0,0,0,.18); }
+        .lang-option { cursor:pointer; font-size:.78rem; border-radius:999px; color:#e8f5e9; padding:6px 12px; user-select:none; }
+        .lang-option.active { background:var(--accent); color:var(--primary); font-weight:700; }
+        .menu-toggle { cursor:pointer; width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.4); display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.12); }
+        .menu-toggle i { font-size:1.3rem; color:white; transition:.3s ease; }
+        .menu-toggle.open i { transform:rotate(90deg); color:var(--accent); }
+        .hero { background:linear-gradient(110deg,#1e3d2f 0%,#2d5a42 45%,#4a7c5e 100%); color:var(--text-light); text-align:center; padding:130px 20px 90px; position:relative; overflow:hidden; }
+        .hero::before { content:''; position:absolute; inset:-40% -35%; background:radial-gradient(circle at 10% 0%,rgba(212,184,150,.12),transparent 60%),radial-gradient(circle at 90% 100%,rgba(212,184,150,.10),transparent 60%); animation:floatGlow 24s linear infinite alternate; pointer-events:none; }
+        @keyframes floatGlow { from { transform:translate3d(0,0,0) scale(1); } to { transform:translate3d(-40px,25px,0) scale(1.05); } }
+        .hero-content { position:relative; z-index:1; max-width:850px; margin:0 auto; animation:heroFloat 7s ease-in-out infinite alternate; }
+        @keyframes heroFloat { from { transform:translateY(0); } to { transform:translateY(-8px); } }
+        .hero h1 { font-family:'Ubuntu',sans-serif; font-weight:700; font-size:3rem; line-height:1.15; margin-bottom:18px; letter-spacing:.05em; }
+        .hero p { font-size:1.2rem; margin-bottom:30px; opacity:.96; font-style:italic; }
+        .btn { background:var(--accent); color:var(--primary); padding:14px 32px; border-radius:999px; font-weight:700; font-size:1.02rem; display:inline-block; transition:.25s ease; box-shadow:0 6px 22px rgba(0,0,0,.35); margin:5px; }
+        .btn:hover { transform:translateY(-3px) scale(1.03); background:var(--accent-dark); }
+        .section { padding:80px 20px; max-width:1200px; margin:0 auto; }
+        .section.alt { background:linear-gradient(135deg,#fff 0%,#f5f2ee 100%); max-width:100%; }
+        .section h2 { color:var(--primary); margin:0 auto 15px; font-size:2.4rem; font-weight:700; text-align:center; position:relative; width:fit-content; max-width:100%; letter-spacing:.03em; }
+        .section h2::after { content:''; position:absolute; bottom:-10px; left:50%; transform:translateX(-50%); width:80px; height:3px; background:var(--accent); border-radius:20px; }
+        .section-intro { text-align:center; font-size:1.05rem; line-height:1.7; color:#555; margin:30px auto 50px; max-width:750px; }
+        .activities-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:40px; }
+        .activity-card { width:400px; background:var(--card-bg); border-radius:22px; overflow:hidden; box-shadow:0 6px 24px var(--shadow); transition:.3s ease; color:inherit; display:block; }
+        .activity-card:hover { transform:translateY(-8px) scale(1.015); box-shadow:0 18px 46px rgba(0,0,0,.18); }
+        .activity-icon { background:linear-gradient(135deg,#1e3d2f 0%,#2d5a42 50%,#4a7c5e 100%); padding:36px; text-align:center; min-height:190px; display:flex; align-items:center; justify-content:center; }
+        .activity-icon i { font-size:3.4rem; color:white; }
+        .image-placeholder { flex-direction:column; gap:14px; color:white; }
+        .image-placeholder span { font-weight:700; opacity:.9; }
+        .activity-content { padding:28px 26px 30px; }
+        .activity-content h3 { color:var(--primary); font-size:1.35rem; font-weight:700; margin-bottom:8px; }
+        .activity-content p { color:#666; font-size:.98rem; }
+        .event-badge { display:inline-block; background:var(--accent); color:var(--primary); padding:6px 14px; border-radius:999px; font-size:.82rem; font-weight:700; margin-bottom:12px; }
+        .empty-event-box { background:var(--card-bg); padding:35px 25px; border-radius:22px; text-align:center; box-shadow:0 6px 24px var(--shadow); max-width:700px; margin:40px auto 0; color:#666; }
+        .cta-section { background:linear-gradient(135deg,#1e3d2f 0%,#2d5a42 45%,#4a7c5e 100%); color:white; padding:80px 20px; text-align:center; margin-top:60px; }
+        .cta-section h2 { color:white; font-size:2.4rem; font-weight:700; margin-bottom:18px; }
+        .cta-section p { font-size:1.1rem; margin-bottom:30px; opacity:.9; }
+        footer { background:var(--primary); color:white; padding:40px 20px 20px; text-align:center; }
+        .footer-content { max-width:1200px; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px; margin:0 auto 30px; }
+        .footer-section h3 { color:var(--accent); margin-bottom:15px; font-size:1.25rem; font-weight:700; }
+        .footer-section p,.footer-section a { color:rgba(255,255,255,.82); line-height:2; font-size:.95rem; }
+        .footer-section a:hover,.footer-links a:hover { color:var(--accent); }
+        .social-links { display:flex; gap:15px; justify-content:center; margin-top:15px; }
+        .social-links a { width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; transition:.25s ease; }
+        .social-links a:hover { background:var(--accent); transform:translateY(-3px); color:var(--primary); }
+        .social-links img { width:22px; height:22px; filter:brightness(0) invert(1); }
+        .footer-bottom { border-top:1px solid rgba(255,255,255,.15); padding-top:18px; margin-top:30px; }
+        .footer-links { margin:15px 0; }
+        .footer-links a { color:rgba(255,255,255,.82); margin:0 10px; font-size:.9rem; }
+        .to-top { display:inline-block; margin-top:15px; padding:9px 20px; background:var(--accent); color:var(--primary); border-radius:999px; font-size:.9rem; font-weight:700; }
+        .cookie-banner { position:fixed; bottom:0; left:0; right:0; background:var(--primary); color:white; padding:18px 20px; z-index:9999; display:none; align-items:center; justify-content:space-between; gap:20px; }
+        .cookie-banner.show { display:flex; }
+        .cookie-banner p { flex:1; font-size:.9rem; }
+        .cookie-banner a { color:var(--accent); text-decoration:underline; }
+        .cookie-banner button { background:var(--accent); color:var(--primary); border:none; padding:9px 26px; border-radius:999px; font-weight:700; cursor:pointer; }
+        .reveal,.reveal-left,.reveal-right { opacity:0; }
+        .reveal { transform:translateY(30px); }
+        .reveal-left { transform:translateX(-40px); }
+        .reveal-right { transform:translateX(40px); }
+        .reveal.visible,.reveal-left.visible,.reveal-right.visible { opacity:1; transform:translateX(0) translateY(0); transition:opacity .7s ease-out,transform .7s ease-out; }
+        html[dir="rtl"] .hero,html[dir="rtl"] .section h2,html[dir="rtl"] .section-intro,html[dir="rtl"] .activity-card,html[dir="rtl"] .empty-event-box,html[dir="rtl"] .cta-section,html[dir="rtl"] footer { text-align:center; }
+        @media (max-width:768px) { header.navbar{padding:10px 16px;} .logo-text{display:none;} .logo-img{width:46px;height:46px;} .lang-switcher{margin-left:0;gap:3px;padding:4px 7px;} .lang-option{font-size:.7rem;padding:5px 8px;} .hero{padding:105px 18px 70px;} .hero h1{font-size:2.2rem;} .hero p{font-size:1.05rem;} .section{padding:65px 18px;} .section h2,.cta-section h2{font-size:2rem;} .activity-card{width:100%;} .cookie-banner{flex-direction:column;text-align:center;} .cookie-banner button{width:100%;} .footer-links{display:flex;flex-direction:column;gap:6px;} }
+    </style>
 </head>
 <body>
+<header class="navbar">
+    <a href="/index.html" class="logo"><img src="/images/crescent_youtrh_logo_new_without name1.png" alt="Crescent Youth logo" class="logo-img"><span class="logo-text">Crescent Youth</span></a>
+    <nav id="main-nav" aria-label="Hoofd navigatie"><ul class="nav-links" id="nav-links"><li><a href="/index.html">Home</a></li><li><a href="/index.html#missie">Missie</a></li><li><a href="/index.html#kernwaarden">Kernwaarden</a></li><li><a href="/index.html#activiteiten">Wat doen wij?</a></li><li><a href="/index.html#team">Team</a></li><li><a href="/index.html#faq">FAQ</a></li><li><a href="/Registration/Registration.html">Lid worden</a></li><li><a href="/Contact.html">Contact</a></li></ul></nav>
+    <div class="nav-actions"><div class="lang-switcher" aria-label="Taal kiezen"><span class="lang-option active">NL</span><span class="lang-option">EN</span><span class="lang-option">FR</span><span class="lang-option">AR</span></div><button class="menu-toggle" id="mobile-menu" aria-label="Open navigatie" aria-expanded="false"><i class="fas fa-bars"></i></button></div>
+</header>
 
+<section class="hero">
+    <div class="hero-content">
+        <h1>Sociale Activiteiten</h1>
+        <p>Ontmoet, verbind en geniet van warme communitymomenten waar jongeren elkaar beter leren kennen.</p>
+        <a href="#event-options" class="btn">Bekijk events</a>
+        <a href="/index.html#activiteiten" class="btn">Terug naar activiteiten</a>
+    </div>
+</section>
+
+<section id="event-options" class="section reveal">
+    <h2>Events</h2>
+    <p class="section-intro">Kies hieronder tussen komende sociale activiteiten en afgelopen communitymomenten.</p>
+    <div class="activities-grid">
+        <a href="#upcoming-events" class="activity-card reveal-left"><div class="activity-icon"><i class="fas fa-handshake"></i></div><div class="activity-content"><h3>Upcoming Events</h3><p>Bekijk komende ontmoetingen, creatieve activiteiten en gezellige communitymomenten.</p></div></a>
+        <a href="#past-events" class="activity-card reveal-right"><div class="activity-icon"><i class="fas fa-calendar-check"></i></div><div class="activity-content"><h3>Past Events</h3><p>Bekijk sociale activiteiten die al hebben plaatsgevonden.</p></div></a>
+    </div>
+</section>
+
+<section id="upcoming-events" class="section alt reveal">
+    <h2>Upcoming Events</h2>
+    <p class="section-intro">Er zijn momenteel geen nieuwe sociale activiteiten aangekondigd.</p>
+    <div class="empty-event-box"><p>Nieuwe sociale activiteiten worden binnenkort hier geplaatst.</p></div>
+</section>
+
+<section id="past-events" class="section reveal">
+    <h2>Past Events</h2>
+    <div class="activities-grid">
+        <div class="activity-card reveal">
+            <div class="activity-icon image-placeholder"><i class="fas fa-image"></i><span>Afbeelding later toevoegen</span></div>
+            <div class="activity-content"><span class="event-badge">Past Social Event</span><h3>Communitymoment</h3><p>Hier komt later een terugblik op afgelopen sociale activiteiten met foto, datum en locatie.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section reveal">
+    <h2>Blijf op de hoogte</h2>
+    <p>Nieuwe sociale activiteiten worden hier en via onze socials gedeeld.</p>
+    <a href="/Contact.html" class="btn">Contacteer ons</a>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section"><h3>Crescent Youth vzw</h3><p>Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.</p><div class="social-links"><a href="https://www.instagram.com/crescentyouth.be?igsh=dDVwM2J0NzFpbzFy" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a><a href="https://www.tiktok.com/@crescentyouth.be?is_from_webapp=1&sender_device=pc" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a><a href="https://linktr.ee/CrescentYouth" aria-label="Linktree" target="_blank" rel="noopener noreferrer"><img src="/images/linktree-seeklogo.png" alt="Linktree"></a></div></div>
+        <div class="footer-section"><h3>Snelle links</h3><p><a href="/index.html">Home</a></p><p><a href="/index.html#missie">Missie</a></p><p><a href="/index.html#kernwaarden">Kernwaarden</a></p><p><a href="/index.html#activiteiten">Wat doen wij?</a></p><p><a href="/Registration/Registration.html">Lid worden</a></p><p><a href="/Contact.html">Contact</a></p></div>
+        <div class="footer-section"><h3>Contact info</h3><p><i class="fas fa-envelope"></i> info@crescentyouth.be</p></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 Crescent Youth vzw - Alle rechten voorbehouden</p><div class="footer-links"><a href="/comply_with_law/terms-and-conditions.html">Algemene voorwaarden</a><a href="/comply_with_law/privacy-policy.html">Privacybeleid</a><a href="/comply_with_law/cookie-policy.html">Cookiebeleid</a></div><a href="#" class="to-top"><i class="fas fa-arrow-up"></i> Terug naar boven</a></div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner"><p>We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons <a href="/comply_with_law/cookie-policy.html">cookiebeleid</a>.</p><button id="cookie-accept">Akkoord</button></div>
+
+<script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mainNav = document.getElementById('main-nav');
+    if (mobileMenu && mainNav) mobileMenu.addEventListener('click', () => { const isOpen = mainNav.classList.toggle('open'); mobileMenu.classList.toggle('open', isOpen); mobileMenu.setAttribute('aria-expanded', isOpen ? 'true' : 'false'); });
+    document.querySelectorAll('#nav-links a').forEach(link => link.addEventListener('click', () => { mainNav.classList.remove('open'); mobileMenu.classList.remove('open'); mobileMenu.setAttribute('aria-expanded','false'); }));
+    window.addEventListener('scroll', () => document.querySelector('.navbar')?.classList.toggle('scrolled', window.scrollY > 50));
+    document.querySelector('.to-top')?.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top:0, behavior:'smooth' }); });
+    const animatedEls = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+    if (animatedEls.length) { const observer = new IntersectionObserver((entries, obs) => entries.forEach(entry => { if (!entry.isIntersecting) return; entry.target.classList.add('visible'); obs.unobserve(entry.target); }), { threshold:.18, rootMargin:'0px 0px -40px 0px' }); animatedEls.forEach(el => observer.observe(el)); }
+    const cookieBanner = document.getElementById('cookie-banner');
+    const cookieAccept = document.getElementById('cookie-accept');
+    if (cookieBanner && !localStorage.getItem('cookiesAccepted')) setTimeout(() => cookieBanner.classList.add('show'), 1000);
+    if (cookieAccept && cookieBanner) cookieAccept.addEventListener('click', () => { localStorage.setItem('cookiesAccepted','true'); cookieBanner.classList.remove('show'); });
+</script>
 </body>
 </html>
