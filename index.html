@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=20260526-membershipbutton1">
 </head>
 
 <body>
@@ -53,10 +53,9 @@
     <nav id="main-nav" aria-label="Hoofd navigatie">
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-            <li><a href="#missie" data-i18n="nav_mission">Missie</a></li>
-            <li><a href="#kernwaarden" data-i18n="nav_values">Kernwaarden</a></li>
-            <li><a href="#activiteiten" data-i18n="nav_activities">Wat doen wij?</a></li>
-            <li><a href="#team" data-i18n="nav_team">Team</a></li>
+            <li><a href="#activiteiten" data-i18n="nav_activities">Activiteiten</a></li>
+            <li><a href="#events-highlight" data-i18n="nav_events">Events</a></li>
+            <li><a href="#membership-preview" data-i18n="nav_membership">Lidmaatschap</a></li>
             <li><a href="#faq" data-i18n="nav_faq">FAQ</a></li>
             <li><a href="/Registration/Registration.html" data-i18n="nav_register">Lid worden</a></li>
             <li><a href="Contact.html" data-i18n="nav_contact">Contact</a></li>
@@ -81,9 +80,9 @@
     <div class="hero-content">
         <h1 data-i18n="hero_title">Welkom bij Crescent Youth</h1>
         <p data-i18n="hero_subtitle">
-            Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.
+            Een jongerenorganisatie in Brugge waar jongeren leren, bewegen, verbinden en groeien in een veilige community.
         </p>
-        <a href="#missie" class="btn" data-i18n="hero_cta">Bekijk verder</a>
+        <a href="#activiteiten" class="btn" data-i18n="hero_cta">Bekijk activiteiten</a>
         <a href="/Registration/Registration.html" class="btn" data-i18n="nav_register">Lid worden</a>
     </div>
 </section>
@@ -113,6 +112,59 @@
     <p class="section-intro" data-i18n="mission_text">
         Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid. We geloven dat iedereen welkom is, ongeacht achtergrond, en creëren een veilige en inclusieve omgeving waar je jezelf kan zijn. Met toffe activiteiten zoals workshops, sport, cultuur en uitstappen helpen we jongeren nieuwe skills ontdekken en sterke vriendschappen opbouwen. We zetten in op dialoog, samenwerking en positieve rolmodellen, zodat jongeren weerbaar en zelfverzekerd in het leven staan. Samen bouwen we aan een community die kansen biedt, diversiteit omarmt en waarin jongeren een actieve stem hebben.
     </p>
+</section>
+
+<section id="events-highlight" class="section alt reveal">
+    <h2 data-i18n="events_highlight_title">Events</h2>
+    <p class="section-intro" data-i18n="events_highlight_intro">
+        Ontdek onze komende en afgelopen activiteiten per categorie. Nieuwe events verschijnen hier zodra ze aangekondigd zijn.
+    </p>
+
+    <div class="featured-event">
+        <div class="featured-event-media">
+            <img src="/images/NOBLEJOURNEYEVENT/NobleJourney.jpeg" alt="The Noble Journey event poster">
+        </div>
+        <div class="featured-event-content">
+            <span class="event-label" data-i18n="featured_event_label">Afgelopen educatief event</span>
+            <h3>The Noble Journey</h3>
+            <p data-i18n="featured_event_text">
+                Een workshop rond Iman, karakter en spirituele groei. Bekijk de eventpagina als voorbeeld van onze educatieve activiteiten.
+            </p>
+            <div class="featured-event-actions">
+                <a href="/Events/noble-journey.html" class="btn" data-i18n="featured_event_primary">Bekijk terugblik</a>
+                <a href="/Events/Educationalevent.html" class="btn btn-secondary" data-i18n="featured_event_secondary">Alle educatie events</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="membership-preview" class="section reveal">
+    <h2 data-i18n="membership_preview_title">Lidmaatschap</h2>
+    <p class="section-intro" data-i18n="membership_preview_intro">
+        Voor €10 per jaar steun je onze werking en blijf je dichter bij de community, activiteiten en ledenvoordelen.
+    </p>
+
+    <div class="membership-benefits">
+        <div class="benefit-card reveal-left">
+            <i class="fas fa-ticket"></i>
+            <h3 data-i18n="membership_benefit_discount_title">Ledenvoordelen</h3>
+            <p data-i18n="membership_benefit_discount_text">Geniet van voordelen of lagere prijzen bij geselecteerde activiteiten en events.</p>
+        </div>
+        <div class="benefit-card reveal">
+            <i class="fas fa-bell"></i>
+            <h3 data-i18n="membership_benefit_updates_title">Updates</h3>
+            <p data-i18n="membership_benefit_updates_text">Blijf sneller op de hoogte van workshops, sportmomenten, sociale activiteiten en trips.</p>
+        </div>
+        <div class="benefit-card reveal-right">
+            <i class="fas fa-hand-holding-heart"></i>
+            <h3 data-i18n="membership_benefit_support_title">Steun de werking</h3>
+            <p data-i18n="membership_benefit_support_text">Je helpt ons meer kwalitatieve jongerenactiviteiten in Brugge mogelijk te maken.</p>
+        </div>
+    </div>
+
+    <div class="section-action">
+        <a href="/Registration/Registration.html" class="btn" data-i18n="membership_preview_cta">Word lid voor €10/jaar</a>
+    </div>
 </section>
 
 <section id="kernwaarden" class="section alt reveal">
@@ -405,16 +457,16 @@
     </div>
 
     <div class="footer-bottom">
-        <p>&copy; 2025 Crescent Youth vzw - Alle rechten voorbehouden</p>
+        <p>&copy; 2026 Crescent Youth vzw - Alle rechten voorbehouden</p>
 
         <div class="footer-links">
-            <a href="/comply_with_law/terms-and-conditions.html">Algemene voorwaarden</a>
-            <a href="/comply_with_law/privacy-policy.html">Privacybeleid</a>
-            <a href="/comply_with_law/cookie-policy.html">Cookiebeleid</a>
+            <a href="/comply_with_law/terms-and-conditions.html" data-i18n="footer_terms">Algemene voorwaarden</a>
+            <a href="/comply_with_law/privacy-policy.html" data-i18n="footer_privacy">Privacybeleid</a>
+            <a href="/comply_with_law/cookie-policy.html" data-i18n="footer_cookie">Cookiebeleid</a>
         </div>
 
         <a href="#" class="to-top">
-            <i class="fas fa-arrow-up"></i> Terug naar boven
+            <i class="fas fa-arrow-up"></i> <span data-i18n="footer_top">Terug naar boven</span>
         </a>
     </div>
 </footer>
@@ -424,12 +476,12 @@
         <span data-i18n="cookies_text">
             We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons
         </span>
-        <a href="/comply_with_law/cookie-policy.html">cookiebeleid</a>.
+        <a href="/comply_with_law/cookie-policy.html" data-i18n="cookies_policy">cookiebeleid</a>.
     </p>
     <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20260526-membershipbutton1"></script>
 
 </body>
 </html>

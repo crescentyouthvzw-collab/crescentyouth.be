@@ -134,21 +134,39 @@ const translations = {
     nav_home: 'Home',
     nav_mission: 'Missie',
     nav_values: 'Kernwaarden',
-    nav_activities: 'Wat doen wij?',
+    nav_activities: 'Activiteiten',
+    nav_events: 'Events',
+    nav_membership: 'Lidmaatschap',
     nav_team: 'Team',
     nav_faq: 'FAQ',
     nav_contact: 'Contact',
 
     hero_title: 'Welkom bij Crescent Youth',
-    hero_subtitle: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.',
-    hero_cta: 'Bekijk verder',
-
+    hero_subtitle: 'Een jongerenorganisatie in Brugge waar jongeren leren, bewegen, verbinden en groeien in een veilige community.',
+    hero_cta: 'Bekijk activiteiten',
     stats_youth: 'Actieve jongeren',
     stats_events: 'Evenementen per jaar',
     stats_impact: 'Passie, Engagement, Impact',
 
     mission_title: 'Onze missie',
     mission_text: 'Crescent Youth is een plek waar jongeren samenkomen om te leren, te groeien en plezier te maken, geïnspireerd door islamitische waarden van respect, solidariteit en verantwoordelijkheid. We geloven dat iedereen welkom is, ongeacht achtergrond, en creëren een veilige en inclusieve omgeving waar je jezelf kan zijn. Met toffe activiteiten zoals workshops, sport, cultuur en uitstappen helpen we jongeren nieuwe skills ontdekken en sterke vriendschappen opbouwen. We zetten in op dialoog, samenwerking en positieve rolmodellen, zodat jongeren weerbaar en zelfverzekerd in het leven staan. Samen bouwen we aan een community die kansen biedt, diversiteit omarmt en waarin jongeren een actieve stem hebben.',
+
+    events_highlight_title: 'Events',
+    events_highlight_intro: 'Ontdek onze komende en afgelopen activiteiten per categorie. Nieuwe events verschijnen hier zodra ze aangekondigd zijn.',
+    featured_event_label: 'Afgelopen educatief event',
+    featured_event_text: 'Een workshop rond Iman, karakter en spirituele groei. Bekijk de eventpagina als voorbeeld van onze educatieve activiteiten.',
+    featured_event_primary: 'Bekijk terugblik',
+    featured_event_secondary: 'Alle educatie events',
+
+    membership_preview_title: 'Lidmaatschap',
+    membership_preview_intro: 'Voor €10 per jaar steun je onze werking en blijf je dichter bij de community, activiteiten en ledenvoordelen.',
+    membership_benefit_discount_title: 'Ledenvoordelen',
+    membership_benefit_discount_text: 'Geniet van voordelen of lagere prijzen bij geselecteerde activiteiten en events.',
+    membership_benefit_updates_title: 'Updates',
+    membership_benefit_updates_text: 'Blijf sneller op de hoogte van workshops, sportmomenten, sociale activiteiten en trips.',
+    membership_benefit_support_title: 'Steun de werking',
+    membership_benefit_support_text: 'Je helpt ons meer kwalitatieve jongerenactiviteiten in Brugge mogelijk te maken.',
+    membership_preview_cta: 'Word lid voor €10/jaar',
 
     values_title: 'Kernwaarden',
     values_intro: 'Dit is wat ons drijft: waarden die jongeren verbinden, laten groeien en samen impact maken.',
@@ -180,7 +198,7 @@ const translations = {
     team_khalid: 'Coördinator',
     team_mukhtar: 'Bestuurslid',
     team_sharfuddeen: 'IT-specialist',
-    team_wassim: 'penningmeester',
+    team_wassim: 'Penningmeester',
 
     faq_title: 'Veelgestelde vragen',
     faq_intro: 'Hier vind je antwoorden op de meest gestelde vragen over Crescent Youth.',
@@ -200,7 +218,7 @@ const translations = {
     faq_a7: 'Crescent Youth is gevestigd in Brugge en organiseert activiteiten in en rond de regio.',
 
     cta_title: 'Word deel van onze community!',
-    cta_text: 'Join our crew! Samen leren, connecten en groeien – jouw plek, jouw vibe.',
+    cta_text: 'Doe mee met onze community. Samen leren, verbinden en groeien, op een plek waar jij je thuis voelt.',
     cta_button: 'Contacteer ons',
 
     footer_about: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.',
@@ -212,8 +230,13 @@ const translations = {
     footer_faq: 'FAQ',
     footer_contact: 'Contact',
     footer_contact_title: 'Contact info',
+    footer_terms: 'Algemene voorwaarden',
+    footer_privacy: 'Privacybeleid',
+    footer_cookie: 'Cookiebeleid',
+    footer_top: 'Terug naar boven',
 
     cookies_text: 'We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons',
+    cookies_policy: 'cookiebeleid',
     cookies_button: 'Akkoord',
 
     contact_hero_title: 'Neem contact op',
@@ -229,7 +252,7 @@ const translations = {
     contact_whatsapp_sisters: 'Zusters – WhatsApp groep',
 
     contact_social_title: 'Sociale media',
-    contact_social_text: 'Volg ons voor activiteiten, updates en community nieuws:',
+    contact_social_text: 'Volg ons voor activiteiten, updates en communitynieuws:',
     contact_social_instagram: 'Instagram – @crescentyouth.be',
     contact_social_tiktok: 'TikTok – @crescentyouth.be',
 
@@ -299,15 +322,16 @@ const translations = {
     nav_home: 'Home',
     nav_mission: 'Mission',
     nav_values: 'Core values',
-    nav_activities: 'What we do',
+    nav_activities: 'Activities',
+    nav_events: 'Events',
+    nav_membership: 'Membership',
     nav_team: 'Team',
     nav_faq: 'FAQ',
     nav_contact: 'Contact',
 
     hero_title: 'Welcome to Crescent Youth',
-    hero_subtitle: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.',
-    hero_cta: 'Discover more',
-
+    hero_subtitle: 'A youth organisation in Bruges where young people learn, move, connect and grow in a safe community.',
+    hero_cta: 'View activities',
     stats_youth: 'Active youth',
     stats_events: 'Events per year',
     stats_impact: 'Passion, Engagement, Impact',
@@ -315,9 +339,26 @@ const translations = {
     mission_title: 'Our mission',
     mission_text: 'Crescent Youth is a place where young people come together to learn, grow, and have fun, inspired by Islamic values of respect, solidarity, and responsibility. We believe that everyone is welcome, regardless of background, and we create a safe and inclusive environment where you can truly be yourself. With exciting activities such as workshops, sports, cultural events, and trips, we help young people discover new skills and build strong friendships. We focus on dialogue, collaboration, and positive role models, empowering youth to become resilient and confident in their daily lives. Together, we are building a community that creates opportunities, embraces diversity, and gives young people an active voice.',
 
+    events_highlight_title: 'Events',
+    events_highlight_intro: 'Explore our upcoming and past activities by category. New events will appear here as soon as they are announced.',
+    featured_event_label: 'Past education event',
+    featured_event_text: 'A workshop about Iman, character and spiritual growth. View the event page as an example of our educational activities.',
+    featured_event_primary: 'View recap',
+    featured_event_secondary: 'All education events',
+
+    membership_preview_title: 'Membership',
+    membership_preview_intro: 'For €10 per year, you support our work and stay closer to the community, activities and member benefits.',
+    membership_benefit_discount_title: 'Member benefits',
+    membership_benefit_discount_text: 'Enjoy benefits or reduced prices for selected activities and events.',
+    membership_benefit_updates_title: 'Updates',
+    membership_benefit_updates_text: 'Stay informed about workshops, sports moments, social activities and trips.',
+    membership_benefit_support_title: 'Support the work',
+    membership_benefit_support_text: 'You help us make more quality youth activities possible in Bruges.',
+    membership_preview_cta: 'Join for €10/year',
+
     values_title: 'Core values',
     values_intro: 'These values guide us and help young people grow and make impact together.',
-    value_education_title: 'Events',
+    value_education_title: 'Education',
     value_education_text: 'Learning in a way that fits you, from workshops to sports and creative projects.',
     value_compass_title: 'Compass',
     value_compass_text: 'Islamic values give us direction and help us stay fair, respectful and open.',
@@ -328,7 +369,7 @@ const translations = {
     value_openness_title: 'Openness',
     value_openness_text: 'Everyone is welcome and there is room for dialogue and respect.',
 
-    activities_title: 'What we do?',
+    activities_title: 'What we do',
     activities_intro: 'Take a look at what we do to help young people grow and become stronger together.',
     activity_education_title: 'Education',
     activity_education_text: 'Workshops, interactive sessions and talks that help you move forward.',
@@ -377,8 +418,13 @@ const translations = {
     footer_faq: 'FAQ',
     footer_contact: 'Contact',
     footer_contact_title: 'Contact info',
+    footer_terms: 'Terms and conditions',
+    footer_privacy: 'Privacy policy',
+    footer_cookie: 'Cookie policy',
+    footer_top: 'Back to top',
 
-    cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our cookie policy.',
+    cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our',
+    cookies_policy: 'cookie policy',
     cookies_button: 'Accept',
 
     contact_hero_title: 'Get in touch',
@@ -465,21 +511,39 @@ const translations = {
     nav_home: 'Accueil',
     nav_mission: 'Mission',
     nav_values: 'Valeurs',
-    nav_activities: 'Ce que nous faisons?',
+    nav_activities: 'Activités',
+    nav_events: 'Événements',
+    nav_membership: 'Adhésion',
     nav_team: 'Équipe',
     nav_faq: 'FAQ',
     nav_contact: 'Contact',
 
     hero_title: 'Bienvenue chez Crescent Youth',
-    hero_subtitle: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.',
-    hero_cta: 'Découvrir plus',
-
+    hero_subtitle: 'Une organisation de jeunesse à Bruges où les jeunes apprennent, bougent, se connectent et grandissent dans une communauté sûre.',
+    hero_cta: 'Voir les activités',
     stats_youth: 'Jeunes actifs',
     stats_events: 'Événements par an',
     stats_impact: 'Passion, Engagement, Impact',
 
     mission_title: 'Notre mission',
     mission_text: 'Crescent Youth est un lieu où les jeunes se réunissent pour apprendre, grandir et s’amuser, inspirés par les valeurs islamiques de respect, de solidarité et de responsabilité. Nous croyons que chacun est le bienvenu, quelle que soit son origine, et nous créons un environnement sûr et inclusif où tu peux être toi-même. Avec des activités passionnantes comme des ateliers, du sport, de la culture et des sorties, nous aidons les jeunes à découvrir de nouvelles compétences et à créer des amitiés solides. Nous misons sur le dialogue, la collaboration et des modèles positifs, afin de renforcer la résilience et la confiance des jeunes dans leur quotidien. Ensemble, nous construisons une communauté qui offre des opportunités, valorise la diversité et donne aux jeunes une voix active.',
+
+    events_highlight_title: 'Événements',
+    events_highlight_intro: 'Découvre nos activités à venir et passées par catégorie. Les nouveaux événements apparaîtront ici dès leur annonce.',
+    featured_event_label: 'Événement éducatif passé',
+    featured_event_text: 'Un atelier autour de l’Iman, du caractère et de la croissance spirituelle. Consulte la page de l’événement comme exemple de nos activités éducatives.',
+    featured_event_primary: 'Voir le récapitulatif',
+    featured_event_secondary: 'Tous les événements éducatifs',
+
+    membership_preview_title: 'Adhésion',
+    membership_preview_intro: 'Pour 10 € par an, tu soutiens notre travail et restes plus proche de la communauté, des activités et des avantages membres.',
+    membership_benefit_discount_title: 'Avantages membres',
+    membership_benefit_discount_text: 'Profite d’avantages ou de prix réduits pour certaines activités et certains événements.',
+    membership_benefit_updates_title: 'Actualités',
+    membership_benefit_updates_text: 'Reste informé des ateliers, moments sportifs, activités sociales et excursions.',
+    membership_benefit_support_title: 'Soutenir le projet',
+    membership_benefit_support_text: 'Tu nous aides à proposer davantage d’activités de qualité pour les jeunes à Bruges.',
+    membership_preview_cta: 'Devenir membre pour 10 €/an',
 
     values_title: 'Valeurs clés',
     values_intro: 'Nos valeurs rassemblent les jeunes, les font grandir et leur permettent de créer de l’impact ensemble.',
@@ -543,8 +607,13 @@ const translations = {
     footer_faq: 'FAQ',
     footer_contact: 'Contact',
     footer_contact_title: 'Infos de contact',
+    footer_terms: 'Conditions générales',
+    footer_privacy: 'Politique de confidentialité',
+    footer_cookie: 'Politique de cookies',
+    footer_top: 'Retour en haut',
 
-    cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant, tu acceptes notre politique de cookies.',
+    cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant, tu acceptes notre',
+    cookies_policy: 'politique de cookies',
     cookies_button: 'Accepter',
 
     contact_hero_title: 'Contacte-nous',
@@ -631,17 +700,18 @@ const translations = {
     nav_home: 'الرئيسية',
     nav_mission: 'رسالتنا',
     nav_values: 'قيمنا',
-    nav_activities: 'ماذا نفعل؟',
+    nav_activities: 'الأنشطة',
+    nav_events: 'الفعاليات',
+    nav_membership: 'العضوية',
     nav_team: 'الفريق',
     nav_faq: 'الأسئلة الشائعة',
     nav_contact: 'اتصل بنا',
 
     hero_title: 'مرحبًا بكم في شبيبة الهلال',
 
-    hero_subtitle: 'نربط الشباب من مختلف الخلفيات بالقيم الإسلامية من خلال التعليم والرياضة والأنشطة الهادفة والملهمة.',
+    hero_subtitle: 'منظمة شبابية في بروج حيث يتعلم الشباب ويتحركون ويتواصلون وينمون داخل مجتمع آمن.',
 
-    hero_cta: 'اكتشف المزيد',
-
+    hero_cta: 'عرض الأنشطة',
     stats_youth: 'شباب نشطون',
     stats_events: 'فعاليات سنويًا',
     stats_impact: 'شغف، التزام، أثر',
@@ -649,6 +719,23 @@ const translations = {
     mission_title: 'رسالتنا',
 
     mission_text: 'شبيبة الهلال هي مساحة يجتمع فيها الشباب للتعلم والنمو والاستمتاع، مستلهمين من القيم الإسلامية مثل الاحترام والتضامن والمسؤولية. نؤمن أن الجميع مرحب بهم بغض النظر عن خلفياتهم، ونوفر بيئة آمنة وشاملة يمكن لكل شاب أن يكون فيها على طبيعته. من خلال أنشطة متنوعة مثل ورش العمل، والرياضة، والثقافة، والرحلات، نساعد الشباب على اكتشاف مهارات جديدة وبناء صداقات قوية. كما نركز على الحوار والتعاون والقدوات الإيجابية، حتى يصبح الشباب أكثر ثقة وقدرة على مواجهة الحياة. معًا نبني مجتمعًا يوفّر الفرص، ويحتضن التنوع، ويمنح الشباب صوتًا فاعلًا.',
+
+    events_highlight_title: 'الفعاليات',
+    events_highlight_intro: 'اكتشف أنشطتنا القادمة والسابقة حسب الفئة. ستظهر الفعاليات الجديدة هنا بمجرد الإعلان عنها.',
+    featured_event_label: 'فعالية تعليمية سابقة',
+    featured_event_text: 'ورشة حول الإيمان، الأخلاق، والنمو الروحي. يمكنك زيارة صفحة الفعالية كمثال على أنشطتنا التعليمية.',
+    featured_event_primary: 'عرض الملخص',
+    featured_event_secondary: 'كل الفعاليات التعليمية',
+
+    membership_preview_title: 'العضوية',
+    membership_preview_intro: 'مقابل 10 يورو سنويًا، تدعم عملنا وتبقى أقرب إلى المجتمع والأنشطة ومزايا الأعضاء.',
+    membership_benefit_discount_title: 'مزايا الأعضاء',
+    membership_benefit_discount_text: 'استفد من مزايا أو أسعار مخفضة في بعض الأنشطة والفعاليات.',
+    membership_benefit_updates_title: 'التحديثات',
+    membership_benefit_updates_text: 'ابقَ على اطلاع بالورش، والأنشطة الرياضية، والأنشطة الاجتماعية، والرحلات.',
+    membership_benefit_support_title: 'دعم العمل',
+    membership_benefit_support_text: 'تساعدنا على تنظيم المزيد من الأنشطة النوعية للشباب في بروج.',
+    membership_preview_cta: 'انضم مقابل 10 يورو/سنة',
 
     values_title: 'قيمنا',
 
@@ -745,8 +832,13 @@ const translations = {
     footer_contact: 'اتصل بنا',
 
     footer_contact_title: 'معلومات التواصل',
+    footer_terms: 'الشروط والأحكام',
+    footer_privacy: 'سياسة الخصوصية',
+    footer_cookie: 'سياسة ملفات تعريف الارتباط',
+    footer_top: 'العودة إلى الأعلى',
 
     cookies_text: 'نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستخدامك للموقع فإنك توافق على',
+    cookies_policy: 'سياسة ملفات تعريف الارتباط',
 
     cookies_button: 'موافق',
 
