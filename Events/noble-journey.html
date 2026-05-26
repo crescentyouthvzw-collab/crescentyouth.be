@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Noble Journey | Crescent Youth</title>
-    <meta name="description" content="Register for The Noble Journey workshop by Crescent Youth on 23 May 2026 in Brugge.">
+    <meta name="description" content="The Noble Journey was a Crescent Youth workshop on Iman, character and spiritual growth, held on 23 May 2026 in Brugge.">
 
     <link rel="icon" href="/favicon.ico?v=20260409-1507" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
@@ -557,6 +557,61 @@
             font-size: 0.92rem;
         }
 
+        .event-status-card {
+            max-width: 860px;
+            margin: 45px auto 0;
+            background: var(--card-bg);
+            padding: 34px;
+            border-radius: 26px;
+            box-shadow: 0 12px 32px var(--shadow);
+            text-align: center;
+            border: 1px solid rgba(212, 184, 150, 0.36);
+        }
+
+        .event-status-icon {
+            width: 76px;
+            height: 76px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at 30% 0%, #d4b896 0%, #7aad8a 38%, #1e3d2f 100%);
+            color: #ffffff;
+            font-size: 2rem;
+            margin-bottom: 18px;
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+        }
+
+        .event-status-card h3 {
+            color: var(--primary);
+            font-size: clamp(1.35rem, 3vw, 1.75rem);
+            margin-bottom: 12px;
+        }
+
+        .event-status-card p {
+            color: #5d6b61;
+            max-width: 680px;
+            margin: 0 auto 18px;
+        }
+
+        .status-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            list-style: none;
+            margin: 28px 0 8px;
+            padding: 0;
+        }
+
+        .status-list li {
+            background: #f9f3ea;
+            color: var(--primary);
+            border-radius: 16px;
+            padding: 16px 14px;
+            font-weight: 800;
+            font-size: 0.92rem;
+        }
+
         .form-message {
             margin-top: 14px;
             text-align: center;
@@ -726,6 +781,10 @@
             .details-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .status-list {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -875,10 +934,10 @@
 
         <h1 data-i18n="event_title">The Noble Journey</h1>
         <p data-i18n="event_subtitle">
-            Een workshop over Iman, karakter en spirituele groei. Een betekenisvolle namiddag voor jongeren om te reflecteren, leren en verbinden.
+            Een afgeronde workshop over Iman, karakter en spirituele groei. Dank aan iedereen die deze betekenisvolle namiddag mee heeft gedragen.
         </p>
 
-        <a href="#registration" class="btn" data-i18n="event_register_btn">Registreer nu</a>
+        <a href="#event-status" class="btn" data-i18n="event_register_btn">Event afgerond</a>
         <a href="#event-info" class="btn" data-i18n="event_details_btn">Bekijk details</a>
     </div>
 </section>
@@ -886,7 +945,7 @@
 <section id="event-info" class="section reveal">
     <h2 data-i18n="event_info_title">Info</h2>
     <p class="section-intro" data-i18n="event_info_intro">
-        Neem deel aan een betekenisvolle workshop rond geloof, karakter, reflectie en persoonlijke groei.
+        The Noble Journey bracht jongeren samen voor reflectie, kennis, verbinding en persoonlijke groei.
     </p>
 
     <div class="event-layout">
@@ -923,9 +982,9 @@
 </section>
 
 <section class="section alt reveal">
-    <h2 data-i18n="expect_title">Wat kan je verwachten?</h2>
+    <h2 data-i18n="expect_title">Wat we hebben gedeeld</h2>
     <p class="section-intro" data-i18n="expect_intro">
-        Een rustige en inspirerende ruimte om samen te leren, reflecteren en groeien.
+        Een rustige en inspirerende ruimte waarin jongeren samen konden leren, reflecteren en groeien.
     </p>
 
     <div class="info-grid">
@@ -949,114 +1008,33 @@
     </div>
 </section>
 
-<section id="registration" class="section reveal">
-    <h2 data-i18n="registration_title">Workshop registratie</h2>
+<section id="event-status" class="section reveal">
+    <h2 data-i18n="registration_title">Event afgerond</h2>
     <p class="section-intro" data-i18n="registration_intro">
-        Vul je gegevens correct in. Na registratie word je doorgestuurd naar de SumUp-betaalpagina.
+        De registratie voor The Noble Journey is gesloten. Bedankt aan alle deelnemers, vrijwilligers en partners.
     </p>
 
-    <div class="registration-layout">
-        <aside class="price-box reveal-left">
-            <h3 data-i18n="ticket_prices_title">Ticketprijs</h3>
-
-            <div class="price-line">
-                <span data-i18n="everyone_pays">Iedereen betaalt online</span>
-                <span class="price">€15</span>
-            </div>
-
-            <div class="price-line">
-                <span data-i18n="member_refund">Leden met geldige code krijgen refund</span>
-                <span class="price">€10</span>
-            </div>
-
-            <p class="note" data-i18n="age_note">
-                Leeftijdsregel: registratie is alleen mogelijk voor deelnemers van 16 tot 35 jaar.
-            </p>
-
-            <p class="note" data-i18n="payment_note">
-                Betaling: iedereen betaalt €15 online. Leden met een geldige code krijgen €10 terug op het event.
-            </p>
-        </aside>
-
-        <div class="form-card reveal-right">
-            <form id="registrationForm" class="membership-form">
-                <div class="form-row">
-                    <div>
-                        <label data-i18n="first_name">Voornaam *</label>
-                        <input type="text" name="firstName" required>
-                    </div>
-
-                    <div>
-                        <label data-i18n="last_name">Achternaam *</label>
-                        <input type="text" name="lastName" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div>
-                        <label data-i18n="event_dob">Geboortedatum *</label>
-                        <input type="date" name="dateOfBirth" id="dateOfBirth" required>
-                    </div>
-                </div>
-
-                <p id="ageMessage" class="form-message"></p>
-
-                <div class="form-row">
-                    <div>
-                        <label data-i18n="email">E-mailadres *</label>
-                        <input type="email" name="email" required>
-                    </div>
-
-                    <div>
-                        <label data-i18n="phone">Telefoonnummer *</label>
-                        <input type="tel" name="phone" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div>
-                        <label data-i18n="member_question">Ben je lid van Crescent Youth? *</label>
-                        <select name="memberStatus" id="memberStatus" required>
-                            <option value="" data-i18n="select_option">Selecteer</option>
-                            <option value="No" data-i18n="no_option">Nee</option>
-                            <option value="Yes" data-i18n="yes_option">Ja</option>
-                        </select>
-                    </div>
-                </div>
-
-                <label data-i18n="heard_from">Hoe heb je over dit event gehoord?</label>
-                <input name="heardFrom" data-i18n-placeholder="heard_placeholder" placeholder="Instagram, vriend, WhatsApp, website...">
-
-                <div class="status-box" id="priceStatus" data-i18n="payment_status">
-                    Iedereen betaalt €15 online. Leden krijgen een korting €10 refund op het event.
-                </div>
-
-                <label class="checkbox-label">
-                    <input type="checkbox" name="termsAccepted" required>
-                    <span>
-                        <span data-i18n="terms_before">Ik ga akkoord met de</span>
-                        <a href="/documents/noble-journey-terms.pdf" target="_blank" class="terms-link" data-i18n="terms_link">algemene voorwaarden</a>.
-                    </span>
-                </label>
-
-                <p class="note" data-i18n="terms_download_note">
-                    Je kan de voorwaarden als PDF downloaden vóór je registreert.
-                </p>
-
-                <button type="submit" class="btn" id="submitBtn" data-i18n="continue_payment">
-                    Doorgaan naar betaling
-                </button>
-
-                <p id="formMessage" class="form-message"></p>
-            </form>
+    <div class="event-status-card reveal">
+        <div class="event-status-icon">
+            <i class="fas fa-circle-check"></i>
         </div>
+        <h3 data-i18n="ticket_prices_title">Bedankt voor jullie aanwezigheid</h3>
+        <p data-i18n="payment_note">
+            Deze workshop vond plaats op 23 May 2026 in Brugge. We kijken dankbaar terug op een namiddag vol reflectie, verbinding en groei.
+        </p>
+
+        <ul class="status-list">
+            <li data-i18n="everyone_pays">Registratie gesloten</li>
+            <li data-i18n="member_refund">Betaling niet meer nodig</li>
+            <li data-i18n="age_note">Volgende events volgen binnenkort</li>
+        </ul>
     </div>
 </section>
 
 <section class="cta-section reveal">
-    <h2 data-i18n="cta_title">Klaar om deel te nemen?</h2>
-    <p data-i18n="cta_text">Registreer je plaats en maak deel uit van deze betekenisvolle workshop.</p>
-    <a href="#registration" class="btn" data-i18n="event_register_btn">Registreer nu</a>
+    <h2 data-i18n="cta_title">Blijf op de hoogte</h2>
+    <p data-i18n="cta_text">Volg Crescent Youth voor nieuwe workshops, activiteiten en communitymomenten.</p>
+    <a href="/Events/Educationalevent.html" class="btn" data-i18n="cta_btn">Bekijk events</a>
 </section>
 
 <footer>
@@ -1072,7 +1050,7 @@
             <h3 data-i18n="footer_links_title">Snelle links</h3>
             <p><a href="/index.html" data-i18n="footer_home">Home</a></p>
             <p><a href="/index.html#activiteiten" data-i18n="footer_activities">Wat doen wij?</a></p>
-            <p><a href="/membership/index.html" data-i18n="nav_register">Lid worden</a></p>
+            <p><a href="/Registration/Registration.html" data-i18n="nav_register">Lid worden</a></p>
             <p><a href="/Contact.html" data-i18n="footer_contact">Contact</a></p>
         </div>
 
@@ -1106,55 +1084,52 @@
 </div>
 
 <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJshkJg5WIGfYmLDP6tNBvqR-czrajjt3ulTAuAOQ8dgVJN-Bn09DvMGCFaGn7Ix0/exec";
-    const PAYMENT_URL = "https://pay.sumup.com/b2c/QPOY0HHM";
-
     const translations = {
         nl: {
             nav_home: 'Home', nav_mission: 'Missie', nav_values: 'Kernwaarden', nav_activities: 'Wat doen wij?', nav_team: 'Team', nav_faq: 'FAQ', nav_register: 'Lid worden', nav_contact: 'Contact',
-            event_title: 'The Noble Journey', event_subtitle: 'Een workshop over Iman, karakter en spirituele groei. Een betekenisvolle namiddag voor jongeren om te reflecteren, leren en verbinden.', event_register_btn: 'Registreer nu', event_details_btn: 'Bekijk details',
-            event_info_title: 'Info', event_info_intro: 'Neem deel aan een betekenisvolle workshop rond geloof, karakter, reflectie en persoonlijke groei.', event_date_label: 'Datum', event_time_label: 'Tijd', event_location_label: 'Locatie', event_age_label: 'Leeftijd',
-            expect_title: 'Wat kan je verwachten?', expect_intro: 'Een rustige en inspirerende ruimte om samen te leren, reflecteren en groeien.', expect_faith_title: 'Geloof', expect_faith_text: 'Korte reminders en reflecties over Iman in het dagelijkse leven.', expect_character_title: 'Karakter', expect_character_text: 'Praktische lessen over manieren, zelfcontrole en respect.', expect_connection_title: 'Verbinding', expect_connection_text: 'Een warme plek waar jongeren elkaar ontmoeten, leren en samen groeien.',
-            registration_title: 'Workshop registratie', registration_intro: 'Vul je gegevens correct in. Na registratie word je doorgestuurd naar de SumUp-betaalpagina.', ticket_prices_title: 'Ticketprijs', everyone_pays: 'Iedereen betaalt online', member_refund: 'Leden krijgen een korting', age_note: 'Leeftijdsregel: registratie is alleen mogelijk voor deelnemers van 16 tot 35 jaar.', payment_note: 'Betaling: iedereen betaalt €15 online. Leden met een geldige code krijgen €5 terug op het event.',
-            first_name: 'Voornaam *', last_name: 'Achternaam *', event_dob: 'Geboortedatum *', email: 'E-mailadres *', phone: 'Telefoonnummer *', member_question: 'Ben je lid van Crescent Youth? *', select_option: 'Selecteer', no_option: 'Nee', yes_option: 'Ja', heard_from: 'Hoe heb je over dit event gehoord?', heard_placeholder: 'Instagram, vriend, WhatsApp, website...', payment_status: 'Iedereen betaalt €15 online. Leden krijgen een korting van €5 op het event.\n', terms_before: 'Ik ga akkoord met de', terms_link: 'algemene voorwaarden', terms_download_note: 'Je kan de voorwaarden als PDF downloaden vóór je registreert.', continue_payment: 'Doorgaan naar betaling',
+            event_title: 'The Noble Journey', event_subtitle: 'Een afgeronde workshop over Iman, karakter en spirituele groei. Dank aan iedereen die deze betekenisvolle namiddag mee heeft gedragen.', event_register_btn: 'Event afgerond', event_details_btn: 'Bekijk details',
+            event_info_title: 'Info', event_info_intro: 'The Noble Journey bracht jongeren samen voor reflectie, kennis, verbinding en persoonlijke groei.', event_date_label: 'Datum', event_time_label: 'Tijd', event_location_label: 'Locatie', event_age_label: 'Leeftijd',
+            expect_title: 'Wat we hebben gedeeld', expect_intro: 'Een rustige en inspirerende ruimte waarin jongeren samen konden leren, reflecteren en groeien.', expect_faith_title: 'Geloof', expect_faith_text: 'Korte reminders en reflecties over Iman in het dagelijkse leven.', expect_character_title: 'Karakter', expect_character_text: 'Praktische lessen over manieren, zelfcontrole en respect.', expect_connection_title: 'Verbinding', expect_connection_text: 'Een warme plek waar jongeren elkaar ontmoetten, leerden en samen groeiden.',
+            registration_title: 'Event afgerond', registration_intro: 'De registratie voor The Noble Journey is gesloten. Bedankt aan alle deelnemers, vrijwilligers en partners.', ticket_prices_title: 'Bedankt voor jullie aanwezigheid', everyone_pays: 'Registratie gesloten', member_refund: 'Betaling niet meer nodig', age_note: 'Volgende events volgen binnenkort', payment_note: 'Deze workshop vond plaats op 23 May 2026 in Brugge. We kijken dankbaar terug op een namiddag vol reflectie, verbinding en groei.',
+            first_name: 'Voornaam', last_name: 'Achternaam', event_dob: 'Geboortedatum', email: 'E-mailadres', phone: 'Telefoonnummer', member_question: 'Lidmaatschap', select_option: 'Selecteer', no_option: 'Nee', yes_option: 'Ja', heard_from: 'Hoe hoorde je over dit event?', heard_placeholder: 'Instagram, vriend, WhatsApp, website...', payment_status: 'Registratie is gesloten.', terms_before: 'Bekijk de', terms_link: 'eventvoorwaarden', terms_download_note: 'De eventvoorwaarden blijven beschikbaar als archief.', continue_payment: 'Event afgerond',
             age_valid: 'Leeftijd gecontroleerd. Registratie is mogelijk.', age_invalid: 'Registratie is alleen mogelijk voor deelnemers tussen 16 en 35 jaar.', processing: 'Registratie wordt verwerkt...', script_missing: 'Plak eerst je Google Apps Script Web App URL.',
-            cta_title: 'Klaar om deel te nemen?', cta_text: 'Registreer je plaats en maak deel uit van deze betekenisvolle workshop.',
+            cta_title: 'Blijf op de hoogte', cta_text: 'Volg Crescent Youth voor nieuwe workshops, activiteiten en communitymomenten.', cta_btn: 'Bekijk events',
             footer_about: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.', footer_links_title: 'Snelle links', footer_home: 'Home', footer_activities: 'Wat doen wij?', footer_contact: 'Contact', footer_contact_title: 'Contact info', footer_rights: '© 2026 Crescent Youth vzw - Alle rechten voorbehouden', footer_terms: 'Algemene voorwaarden', footer_privacy: 'Privacybeleid', footer_cookie: 'Cookiebeleid', footer_top: 'Terug naar boven',
             cookies_text: 'We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons', cookies_policy: 'cookiebeleid', cookies_button: 'Akkoord'
         },
         en: {
             nav_home: 'Home', nav_mission: 'Mission', nav_values: 'Core values', nav_activities: 'What we do', nav_team: 'Team', nav_faq: 'FAQ', nav_register: 'Join', nav_contact: 'Contact',
-            event_title: 'The Noble Journey', event_subtitle: 'A workshop on Iman, character and spiritual growth. A meaningful afternoon for youth to reflect, learn and connect.', event_register_btn: 'Register Now', event_details_btn: 'View Details',
-            event_info_title: 'Event Information', event_info_intro: 'Join us for a meaningful workshop focused on faith, character, reflection and personal growth.', event_date_label: 'Date', event_time_label: 'Time', event_location_label: 'Location', event_age_label: 'Age Group',
-            expect_title: 'What to Expect', expect_intro: 'A calm and inspiring space to learn, reflect and grow together.', expect_faith_title: 'Faith', expect_faith_text: 'Short reminders and reflections about Iman in daily life.', expect_character_title: 'Character', expect_character_text: 'Practical lessons about manners, self-control and respect.', expect_connection_title: 'Connection', expect_connection_text: 'A welcoming space for youth to meet, learn and grow together.',
-            registration_title: 'Workshop Registration', registration_intro: 'Fill in your details correctly. After registration you will be redirected to the SumUp payment page.', ticket_prices_title: 'Ticket Price', everyone_pays: 'Everyone pays online', member_refund: 'Members receive a discount', age_note: 'Age rule: registration is only open for participants aged 16 to 35.', payment_note: 'Payment: everyone pays €15 online. Members with a valid code receive €5 refund at the event.',
-            first_name: 'First Name *', last_name: 'Last Name *', event_dob: 'Date of Birth *', email: 'Email Address *', phone: 'Phone Number *', member_question: 'Are you a member of Crescent Youth? *', select_option: 'Select', no_option: 'No', yes_option: 'Yes', heard_from: 'How did you hear about this event?', heard_placeholder: 'Instagram, friend, WhatsApp, website...', payment_status: 'Everyone pays €15 online. Members receive a €5 discount on the event.', terms_before: 'I agree to the', terms_link: 'terms and conditions', terms_download_note: 'You can download the terms and conditions PDF before registering.', continue_payment: 'Continue to Payment',
+            event_title: 'The Noble Journey', event_subtitle: 'A completed workshop on Iman, character and spiritual growth. Thank you to everyone who helped make the afternoon meaningful.', event_register_btn: 'Event completed', event_details_btn: 'View Details',
+            event_info_title: 'Event Information', event_info_intro: 'The Noble Journey brought youth together for reflection, knowledge, connection and personal growth.', event_date_label: 'Date', event_time_label: 'Time', event_location_label: 'Location', event_age_label: 'Age Group',
+            expect_title: 'What We Shared', expect_intro: 'A calm and inspiring space where youth could learn, reflect and grow together.', expect_faith_title: 'Faith', expect_faith_text: 'Short reminders and reflections about Iman in daily life.', expect_character_title: 'Character', expect_character_text: 'Practical lessons about manners, self-control and respect.', expect_connection_title: 'Connection', expect_connection_text: 'A welcoming space where youth met, learned and grew together.',
+            registration_title: 'Event Completed', registration_intro: 'Registration for The Noble Journey is closed. Thank you to all participants, volunteers and partners.', ticket_prices_title: 'Thank You for Joining Us', everyone_pays: 'Registration closed', member_refund: 'Payment no longer needed', age_note: 'New events coming soon', payment_note: 'This workshop took place on 23 May 2026 in Brugge. We look back with gratitude on an afternoon of reflection, connection and growth.',
+            first_name: 'First Name', last_name: 'Last Name', event_dob: 'Date of Birth', email: 'Email Address', phone: 'Phone Number', member_question: 'Membership', select_option: 'Select', no_option: 'No', yes_option: 'Yes', heard_from: 'How did you hear about this event?', heard_placeholder: 'Instagram, friend, WhatsApp, website...', payment_status: 'Registration is closed.', terms_before: 'View the', terms_link: 'event terms', terms_download_note: 'The event terms remain available as an archive.', continue_payment: 'Event completed',
             age_valid: 'Age verified. Registration is allowed.', age_invalid: 'Registration is only allowed for participants between 16 and 35 years old.', processing: 'Processing registration...', script_missing: 'Please paste your Google Apps Script Web App URL first.',
-            cta_title: 'Ready to join?', cta_text: 'Register your place and be part of this meaningful workshop.',
+            cta_title: 'Stay Connected', cta_text: 'Follow Crescent Youth for new workshops, activities and community moments.', cta_btn: 'View events',
             footer_about: 'We connect youth from all backgrounds with Islamic values through education, sports and inspiring activities.', footer_links_title: 'Quick links', footer_home: 'Home', footer_activities: 'What we do', footer_contact: 'Contact', footer_contact_title: 'Contact info', footer_rights: '© 2026 Crescent Youth vzw - All rights reserved', footer_terms: 'Terms and conditions', footer_privacy: 'Privacy policy', footer_cookie: 'Cookie policy', footer_top: 'Back to top',
             cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our', cookies_policy: 'cookie policy', cookies_button: 'Accept'
         },
         fr: {
             nav_home: 'Accueil', nav_mission: 'Mission', nav_values: 'Valeurs', nav_activities: 'Ce que nous faisons', nav_team: 'Équipe', nav_faq: 'FAQ', nav_register: 'Devenir membre', nav_contact: 'Contact',
-            event_title: 'The Noble Journey', event_subtitle: 'Un atelier sur l’Iman, le caractère et la croissance spirituelle. Un après-midi significatif pour réfléchir, apprendre et se connecter.', event_register_btn: 'S’inscrire', event_details_btn: 'Voir les détails',
-            event_info_title: 'Informations sur l’événement', event_info_intro: 'Participe à un atelier significatif autour de la foi, du caractère, de la réflexion et du développement personnel.', event_date_label: 'Date', event_time_label: 'Heure', event_location_label: 'Lieu', event_age_label: 'Âge',
-            expect_title: 'À quoi s’attendre ?', expect_intro: 'Un espace calme et inspirant pour apprendre, réfléchir et grandir ensemble.', expect_faith_title: 'Foi', expect_faith_text: 'Courts rappels et réflexions sur l’Iman dans la vie quotidienne.', expect_character_title: 'Caractère', expect_character_text: 'Leçons pratiques sur les bonnes manières, la maîtrise de soi et le respect.', expect_connection_title: 'Connexion', expect_connection_text: 'Un espace accueillant où les jeunes peuvent se rencontrer, apprendre et grandir ensemble.',
-            registration_title: 'Inscription à l’atelier', registration_intro: 'Remplis correctement tes informations. Après inscription, tu seras redirigé vers la page de paiement SumUp.', ticket_prices_title: 'Prix du ticket', everyone_pays: 'Tout le monde paie en ligne', member_refund: "Les membres bénéficient d'une réduction", age_note: 'Règle d’âge : l’inscription est ouverte uniquement aux participants de 16 à 35 ans.', payment_note: 'Paiement : tout le monde paie 15 € en ligne. Les membres avec un code valide reçoivent 5 € de remboursement à l’événement.',
-            first_name: 'Prénom *', last_name: 'Nom *', event_dob: 'Date de naissance *', email: 'Adresse e-mail *', phone: 'Numéro de téléphone *', member_question: 'Es-tu membre de Crescent Youth ? *', select_option: 'Sélectionner', no_option: 'Non', yes_option: 'Oui', heard_from: 'Comment as-tu entendu parler de cet événement ?', heard_placeholder: 'Instagram, ami, WhatsApp, site web...', payment_status: "Chaque participant paie 15 € en ligne. Les membres bénéficient d'une de €5 sur le prix de l'événement.", terms_before: 'J’accepte les', terms_link: 'conditions générales', terms_download_note: 'Tu peux télécharger les conditions générales en PDF avant de t’inscrire.', continue_payment: 'Continuer vers le paiement',
+            event_title: 'The Noble Journey', event_subtitle: 'Un atelier terminé sur l’Iman, le caractère et la croissance spirituelle. Merci à toutes les personnes qui ont rendu cet après-midi significatif.', event_register_btn: 'Événement terminé', event_details_btn: 'Voir les détails',
+            event_info_title: 'Informations sur l’événement', event_info_intro: 'The Noble Journey a réuni des jeunes autour de la réflexion, du savoir, de la connexion et du développement personnel.', event_date_label: 'Date', event_time_label: 'Heure', event_location_label: 'Lieu', event_age_label: 'Âge',
+            expect_title: 'Ce que nous avons partagé', expect_intro: 'Un espace calme et inspirant où les jeunes ont pu apprendre, réfléchir et grandir ensemble.', expect_faith_title: 'Foi', expect_faith_text: 'Courts rappels et réflexions sur l’Iman dans la vie quotidienne.', expect_character_title: 'Caractère', expect_character_text: 'Leçons pratiques sur les bonnes manières, la maîtrise de soi et le respect.', expect_connection_title: 'Connexion', expect_connection_text: 'Un espace accueillant où les jeunes se sont rencontrés, ont appris et ont grandi ensemble.',
+            registration_title: 'Événement terminé', registration_intro: 'Les inscriptions pour The Noble Journey sont fermées. Merci à tous les participants, bénévoles et partenaires.', ticket_prices_title: 'Merci pour votre présence', everyone_pays: 'Inscription fermée', member_refund: 'Paiement plus nécessaire', age_note: 'De nouveaux événements arrivent bientôt', payment_note: 'Cet atelier a eu lieu le 23 mai 2026 à Bruges. Nous gardons un beau souvenir d’un après-midi de réflexion, de connexion et de croissance.',
+            first_name: 'Prénom', last_name: 'Nom', event_dob: 'Date de naissance', email: 'Adresse e-mail', phone: 'Numéro de téléphone', member_question: 'Adhésion', select_option: 'Sélectionner', no_option: 'Non', yes_option: 'Oui', heard_from: 'Comment as-tu entendu parler de cet événement ?', heard_placeholder: 'Instagram, ami, WhatsApp, site web...', payment_status: "L'inscription est fermée.", terms_before: 'Voir les', terms_link: 'conditions de l’événement', terms_download_note: 'Les conditions de l’événement restent disponibles comme archive.', continue_payment: 'Événement terminé',
             age_valid: 'Âge vérifié. L’inscription est possible.', age_invalid: 'L’inscription est uniquement possible pour les participants de 16 à 35 ans.', processing: 'Traitement de l’inscription...', script_missing: 'Veuillez d’abord coller votre URL Google Apps Script Web App.',
-            cta_title: 'Prêt à participer ?', cta_text: 'Réserve ta place et participe à cet atelier significatif.',
+            cta_title: 'Reste informé', cta_text: 'Suis Crescent Youth pour les prochains ateliers, activités et moments communautaires.', cta_btn: 'Voir les événements',
             footer_about: 'Nous connectons des jeunes de tous horizons avec les valeurs islamiques à travers l’éducation, le sport et des activités inspirantes.', footer_links_title: 'Liens rapides', footer_home: 'Accueil', footer_activities: 'Ce que nous faisons', footer_contact: 'Contact', footer_contact_title: 'Infos de contact', footer_rights: '© 2026 Crescent Youth vzw - Tous droits réservés', footer_terms: 'Conditions générales', footer_privacy: 'Politique de confidentialité', footer_cookie: 'Politique de cookies', footer_top: 'Retour en haut',
             cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant à utiliser notre site, tu acceptes notre', cookies_policy: 'politique de cookies', cookies_button: 'Accepter'
         },
         ar: {
             nav_home: 'الرئيسية', nav_mission: 'رسالتنا', nav_values: 'قيمنا', nav_activities: 'ماذا نفعل؟', nav_team: 'الفريق', nav_faq: 'الأسئلة الشائعة', nav_register: 'انضم إلينا', nav_contact: 'اتصل بنا',
-            event_title: 'The Noble Journey', event_subtitle: 'ورشة حول الإيمان، الأخلاق، والنمو الروحي. أمسية هادفة للشباب للتأمل والتعلم والتواصل.', event_register_btn: 'سجّل الآن', event_details_btn: 'عرض التفاصيل',
-            event_info_title: 'معلومات الفعالية', event_info_intro: 'انضم إلينا في ورشة هادفة تركّز على الإيمان، الأخلاق، التأمل، والنمو الشخصي.', event_date_label: 'التاريخ', event_time_label: 'الوقت', event_location_label: 'المكان', event_age_label: 'الفئة العمرية',
-            expect_title: 'ماذا تتوقع؟', expect_intro: 'مساحة هادئة وملهمة للتعلم والتأمل والنمو معًا.', expect_faith_title: 'الإيمان', expect_faith_text: 'تذكيرات وتأملات قصيرة حول الإيمان في الحياة اليومية.', expect_character_title: 'الأخلاق', expect_character_text: 'دروس عملية حول الآداب، ضبط النفس، والاحترام.', expect_connection_title: 'التواصل', expect_connection_text: 'مساحة مرحبة للشباب للتعارف والتعلم والنمو معًا.',
-            registration_title: 'تسجيل الورشة', registration_intro: 'يرجى ملء بياناتك بشكل صحيح. بعد التسجيل سيتم تحويلك إلى صفحة الدفع SumUp.', ticket_prices_title: 'سعر التذكرة', everyone_pays: 'الجميع يدفع عبر الإنترنت', member_refund: 'يحصل الأعضاء على خصم', age_note: 'قاعدة العمر: التسجيل متاح فقط للمشاركين بين 16 و 35 سنة.', payment_note: 'الدفع: الجميع يدفع 15€ عبر الإنترنت. الأعضاء مع رمز صالح يحصلون على استرداد 5€ في الفعالية.',
-            first_name: 'الاسم الأول *', last_name: 'اسم العائلة *', event_dob: 'تاريخ الميلاد *', email: 'البريد الإلكتروني *', phone: 'رقم الهاتف *', member_question: 'هل أنت عضو في Crescent Youth؟ *', select_option: 'اختر', no_option: 'لا', yes_option: 'نعم', heard_from: 'كيف سمعت عن هذه الفعالية؟', heard_placeholder: 'إنستغرام، صديق، واتساب، الموقع...', payment_status: 'يدفع الجميع 15 يورو عبر الإنترنت. ويحصل الأعضاء على خصم بقيمة 5 يورو على الفعالية.', terms_before: 'أوافق على', terms_link: 'الشروط والأحكام', terms_download_note: 'يمكنك تنزيل الشروط والأحكام بصيغة PDF قبل التسجيل.', continue_payment: 'المتابعة إلى الدفع',
+            event_title: 'The Noble Journey', event_subtitle: 'ورشة أُقيمت حول الإيمان، الأخلاق، والنمو الروحي. شكرًا لكل من ساهم في جعل هذه الأمسية هادفة.', event_register_btn: 'اكتملت الفعالية', event_details_btn: 'عرض التفاصيل',
+            event_info_title: 'معلومات الفعالية', event_info_intro: 'جمعت The Noble Journey الشباب حول التأمل، المعرفة، التواصل، والنمو الشخصي.', event_date_label: 'التاريخ', event_time_label: 'الوقت', event_location_label: 'المكان', event_age_label: 'الفئة العمرية',
+            expect_title: 'ما شاركناه', expect_intro: 'مساحة هادئة وملهمة تمكّن فيها الشباب من التعلم والتأمل والنمو معًا.', expect_faith_title: 'الإيمان', expect_faith_text: 'تذكيرات وتأملات قصيرة حول الإيمان في الحياة اليومية.', expect_character_title: 'الأخلاق', expect_character_text: 'دروس عملية حول الآداب، ضبط النفس، والاحترام.', expect_connection_title: 'التواصل', expect_connection_text: 'مساحة مرحبة التقى فيها الشباب وتعلموا ونموا معًا.',
+            registration_title: 'اكتملت الفعالية', registration_intro: 'تم إغلاق التسجيل في The Noble Journey. شكرًا لجميع المشاركين والمتطوعين والشركاء.', ticket_prices_title: 'شكرًا لحضوركم', everyone_pays: 'التسجيل مغلق', member_refund: 'لا حاجة للدفع', age_note: 'فعاليات جديدة قريبًا', payment_note: 'أُقيمت هذه الورشة في 23 May 2026 في Brugge. ننظر إليها بامتنان كأمسية مليئة بالتأمل والتواصل والنمو.',
+            first_name: 'الاسم الأول', last_name: 'اسم العائلة', event_dob: 'تاريخ الميلاد', email: 'البريد الإلكتروني', phone: 'رقم الهاتف', member_question: 'العضوية', select_option: 'اختر', no_option: 'لا', yes_option: 'نعم', heard_from: 'كيف سمعت عن هذه الفعالية؟', heard_placeholder: 'إنستغرام، صديق، واتساب، الموقع...', payment_status: 'التسجيل مغلق.', terms_before: 'عرض', terms_link: 'شروط الفعالية', terms_download_note: 'تبقى شروط الفعالية متاحة كأرشيف.', continue_payment: 'اكتملت الفعالية',
             age_valid: 'تم التحقق من العمر. التسجيل مسموح.', age_invalid: 'التسجيل متاح فقط للمشاركين بين 16 و 35 سنة.', processing: 'جارٍ معالجة التسجيل...', script_missing: 'يرجى إدخال رابط Google Apps Script Web App أولاً.',
-            cta_title: 'هل أنت مستعد للمشاركة؟', cta_text: 'سجّل مكانك وكن جزءًا من هذه الورشة الهادفة.',
+            cta_title: 'ابقَ على اطلاع', cta_text: 'تابع Crescent Youth لمعرفة الورش والأنشطة واللقاءات القادمة.', cta_btn: 'عرض الفعاليات',
             footer_about: 'نربط الشباب من مختلف الخلفيات بالقيم الإسلامية من خلال التعليم والرياضة والأنشطة الملهمة.', footer_links_title: 'روابط سريعة', footer_home: 'الرئيسية', footer_activities: 'ماذا نفعل؟', footer_contact: 'اتصل بنا', footer_contact_title: 'معلومات التواصل', footer_rights: '© 2026 Crescent Youth vzw - جميع الحقوق محفوظة', footer_terms: 'الشروط والأحكام', footer_privacy: 'سياسة الخصوصية', footer_cookie: 'سياسة ملفات تعريف الارتباط', footer_top: 'العودة إلى الأعلى',
             cookies_text: 'نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستخدامك للموقع فإنك توافق على', cookies_policy: 'سياسة ملفات تعريف الارتباط', cookies_button: 'موافق'
         }
@@ -1165,20 +1140,6 @@
     const langButtons = document.querySelectorAll('.lang-option');
     const i18nElements = document.querySelectorAll('[data-i18n]');
     const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
-    const registrationForm = document.getElementById('registrationForm');
-    const formMessage = document.getElementById('formMessage');
-    const ageMessage = document.getElementById('ageMessage');
-    const submitBtn = document.getElementById('submitBtn');
-    const dateOfBirth = document.getElementById('dateOfBirth');
-
-    function currentLang() {
-        return localStorage.getItem('siteLang') || 'nl';
-    }
-
-    function t(key) {
-        const lang = currentLang();
-        return translations[lang]?.[key] || translations.nl[key] || key;
-    }
 
     function setLanguage(lang) {
         const dict = translations[lang];
@@ -1201,45 +1162,6 @@
         document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
         localStorage.setItem('siteLang', lang);
-    }
-
-    function calculateAge(dobValue) {
-        if (!dobValue) return null;
-
-        const dob = new Date(dobValue);
-        const today = new Date();
-        let age = today.getFullYear() - dob.getFullYear();
-        const monthDiff = today.getMonth() - dob.getMonth();
-
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
-            age--;
-        }
-
-        return age;
-    }
-
-    function validateAge(showMessage = true) {
-        const age = calculateAge(dateOfBirth.value);
-
-        if (age === null || isNaN(age)) {
-            if (showMessage) ageMessage.textContent = '';
-            return false;
-        }
-
-        if (age < 16 || age > 35) {
-            if (showMessage) {
-                ageMessage.style.color = '#c0392b';
-                ageMessage.textContent = t('age_invalid');
-            }
-            return false;
-        }
-
-        if (showMessage) {
-            ageMessage.style.color = '#1e3d2f';
-            ageMessage.textContent = t('age_valid');
-        }
-
-        return true;
     }
 
     if (mobileMenu && mainNav) {
@@ -1304,68 +1226,8 @@
         btn.addEventListener('click', e => {
             e.preventDefault();
             setLanguage(btn.getAttribute('data-lang'));
-            if (dateOfBirth.value) validateAge(true);
         });
     });
-
-    if (dateOfBirth) {
-        dateOfBirth.addEventListener('change', () => validateAge(true));
-    }
-
-    if (registrationForm) {
-        registrationForm.addEventListener('submit', async e => {
-            e.preventDefault();
-            formMessage.textContent = '';
-
-            if (!validateAge(true)) {
-                formMessage.style.color = '#c0392b';
-                formMessage.textContent = t('age_invalid');
-                return;
-            }
-
-            if (SCRIPT_URL.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT')) {
-                formMessage.style.color = '#c0392b';
-                formMessage.textContent = t('script_missing');
-                return;
-            }
-
-            submitBtn.disabled = true;
-            formMessage.style.color = '#1e3d2f';
-            formMessage.textContent = t('processing');
-
-            const formData = new FormData(registrationForm);
-            const data = Object.fromEntries(formData.entries());
-
-            data.eventName = 'The Noble Journey';
-            data.eventDate = '23 May 2026';
-            data.eventTime = '14:00';
-            data.eventLocation = '8 Koude Keukenstraat, 8200 Brugge';
-            data.calculatedAge = calculateAge(dateOfBirth.value);
-            data.price = '15';
-            data.paymentLogic = 'Everyone pays €15. Members with valid code receive €5 refund at the event.';
-
-            try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    window.location.href = PAYMENT_URL;
-                } else {
-                    formMessage.style.color = '#c0392b';
-                    formMessage.textContent = result.message || 'Something went wrong.';
-                    submitBtn.disabled = false;
-                }
-            } catch (error) {
-                formMessage.style.color = '#c0392b';
-                formMessage.textContent = 'Connection error. Please try again later.';
-                submitBtn.disabled = false;
-            }
-        });
-    }
 
     setLanguage(localStorage.getItem('siteLang') || 'nl');
 </script>
