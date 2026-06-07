@@ -855,13 +855,6 @@ nav.open {
     line-height: 1;
 }
 
-.donation-card span:last-child {
-    color: #5f6c64;
-    font-size: 0.96rem;
-    font-weight: 500;
-    line-height: 1.5;
-}
-
 .donation-icon {
     width: 58px;
     height: 58px;
@@ -877,14 +870,6 @@ nav.open {
 .donation-open {
     background: linear-gradient(135deg, #ffffff 0%, #f9f3ea 100%);
     border: 2px solid var(--accent);
-}
-
-.donation-info-grid {
-    max-width: 1050px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 28px;
 }
 
 /* TEAM GRID */
@@ -1486,8 +1471,7 @@ footer {
     .membership-benefits,
     .featured-event,
     .donation-preview-panel,
-    .donation-grid,
-    .donation-info-grid {
+    .donation-grid {
         grid-template-columns: 1fr;
     }
 
