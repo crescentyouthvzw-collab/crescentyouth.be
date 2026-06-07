@@ -108,22 +108,22 @@ const pages = {
 
 const common = {
   nl: {
-    nav_home: 'Home', nav_activities: 'Activiteiten', nav_events: 'Events', nav_membership: 'Lidmaatschap', nav_faq: 'FAQ', nav_register: 'Lid worden', nav_contact: 'Contact',
+    nav_home: 'Home', nav_activities: 'Activiteiten', nav_events: 'Events', nav_membership: 'Lidmaatschap', nav_donate: 'Doneren', nav_faq: 'FAQ', nav_register: 'Lid worden', nav_contact: 'Contact',
     hero_events: 'Bekijk events', hero_back: 'Terug naar activiteiten', events_title: 'Events', upcoming_title: 'Komende events', past_title: 'Afgelopen events', upcoming_card_title: 'Komende events', past_card_title: 'Afgelopen events', image_later: 'Afbeelding later toevoegen', cta_title: 'Blijf op de hoogte', cta_button: 'Contacteer ons',
     footer_about: 'Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.', footer_links_title: 'Snelle links', footer_home: 'Home', footer_activities: 'Wat doen wij?', footer_membership: 'Lidmaatschap', footer_contact: 'Contact', footer_contact_title: 'Contact info', footer_terms: 'Algemene voorwaarden', footer_privacy: 'Privacybeleid', footer_cookie: 'Cookiebeleid', footer_top: 'Terug naar boven', footer_rights: 'Alle rechten voorbehouden', cookies_text: 'We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons', cookies_policy: 'cookiebeleid', cookies_button: 'Akkoord'
   },
   en: {
-    nav_home: 'Home', nav_activities: 'Activities', nav_events: 'Events', nav_membership: 'Membership', nav_faq: 'FAQ', nav_register: 'Join us', nav_contact: 'Contact',
+    nav_home: 'Home', nav_activities: 'Activities', nav_events: 'Events', nav_membership: 'Membership', nav_donate: 'Donate', nav_faq: 'FAQ', nav_register: 'Join us', nav_contact: 'Contact',
     hero_events: 'View events', hero_back: 'Back to activities', events_title: 'Events', upcoming_title: 'Upcoming events', past_title: 'Past events', upcoming_card_title: 'Upcoming events', past_card_title: 'Past events', image_later: 'Image coming later', cta_title: 'Stay updated', cta_button: 'Contact us',
     footer_about: 'We connect young people from all backgrounds through Islamic values, education, sport and inspiring activities.', footer_links_title: 'Quick links', footer_home: 'Home', footer_activities: 'What we do', footer_membership: 'Membership', footer_contact: 'Contact', footer_contact_title: 'Contact info', footer_terms: 'Terms and conditions', footer_privacy: 'Privacy policy', footer_cookie: 'Cookie policy', footer_top: 'Back to top', footer_rights: 'All rights reserved', cookies_text: 'We use cookies to improve your experience. By continuing to use our site, you accept our', cookies_policy: 'cookie policy', cookies_button: 'Accept'
   },
   fr: {
-    nav_home: 'Accueil', nav_activities: 'Activités', nav_events: 'Événements', nav_membership: 'Adhésion', nav_faq: 'FAQ', nav_register: 'Devenir membre', nav_contact: 'Contact',
+    nav_home: 'Accueil', nav_activities: 'Activités', nav_events: 'Événements', nav_membership: 'Adhésion', nav_donate: 'Faire un don', nav_faq: 'FAQ', nav_register: 'Devenir membre', nav_contact: 'Contact',
     hero_events: 'Voir les événements', hero_back: 'Retour aux activités', events_title: 'Événements', upcoming_title: 'Événements à venir', past_title: 'Événements passés', upcoming_card_title: 'Événements à venir', past_card_title: 'Événements passés', image_later: 'Image à ajouter plus tard', cta_title: 'Reste informé', cta_button: 'Contacte-nous',
     footer_about: 'Nous rassemblons des jeunes de tous horizons autour de valeurs islamiques, de l’éducation, du sport et d’activités inspirantes.', footer_links_title: 'Liens rapides', footer_home: 'Accueil', footer_activities: 'Ce que nous faisons', footer_membership: 'Adhésion', footer_contact: 'Contact', footer_contact_title: 'Contact', footer_terms: 'Conditions générales', footer_privacy: 'Politique de confidentialité', footer_cookie: 'Politique relative aux cookies', footer_top: 'Retour en haut', footer_rights: 'Tous droits réservés', cookies_text: 'Nous utilisons des cookies pour améliorer ton expérience. En continuant à utiliser notre site, tu acceptes notre', cookies_policy: 'politique relative aux cookies', cookies_button: 'Accepter'
   },
   ar: {
-    nav_home: 'الرئيسية', nav_activities: 'الأنشطة', nav_events: 'الفعاليات', nav_membership: 'العضوية', nav_faq: 'الأسئلة الشائعة', nav_register: 'انضم إلينا', nav_contact: 'اتصل بنا',
+    nav_home: 'الرئيسية', nav_activities: 'الأنشطة', nav_events: 'الفعاليات', nav_membership: 'العضوية', nav_donate: 'تبرع', nav_faq: 'الأسئلة الشائعة', nav_register: 'انضم إلينا', nav_contact: 'اتصل بنا',
     hero_events: 'عرض الفعاليات', hero_back: 'العودة إلى الأنشطة', events_title: 'الفعاليات', upcoming_title: 'الفعاليات القادمة', past_title: 'الفعاليات السابقة', upcoming_card_title: 'الفعاليات القادمة', past_card_title: 'الفعاليات السابقة', image_later: 'سيتم إضافة الصورة لاحقًا', cta_title: 'ابقَ على اطلاع', cta_button: 'تواصل معنا',
     footer_about: 'نربط الشباب من مختلف الخلفيات بالقيم الإسلامية من خلال التعليم والرياضة والأنشطة الملهمة.', footer_links_title: 'روابط سريعة', footer_home: 'الرئيسية', footer_activities: 'ماذا نفعل؟', footer_membership: 'العضوية', footer_contact: 'اتصل بنا', footer_contact_title: 'معلومات التواصل', footer_terms: 'الشروط والأحكام', footer_privacy: 'سياسة الخصوصية', footer_cookie: 'سياسة ملفات تعريف الارتباط', footer_top: 'العودة إلى الأعلى', footer_rights: 'جميع الحقوق محفوظة', cookies_text: 'نستخدم ملفات تعريف الارتباط لتحسين تجربتك. باستخدامك للموقع فإنك توافق على', cookies_policy: 'سياسة ملفات تعريف الارتباط', cookies_button: 'موافق'
   }
@@ -192,3 +192,4 @@ langButtons.forEach(btn => btn.addEventListener('click', event => {
 }));
 
 setLanguage(localStorage.getItem('siteLang') || 'nl');
+
