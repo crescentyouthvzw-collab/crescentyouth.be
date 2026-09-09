@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sport | Crescent Youth</title>
     <meta name="description" content="Bekijk komende en afgelopen sportactiviteiten van Crescent Youth vzw in Brugge.">
+    <meta name="theme-color" content="#173126">
 
     <link rel="icon" href="/favicon.ico?v=20260409-1507" type="image/x-icon">
+    <link rel="preload" as="image" href="/images/sport/slides/hero-team.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/Events/activity-page.css?v=20260607-donation1">
+    <link rel="stylesheet" href="/Events/activity-page.css?v=20260909-sport-slideshow">
 </head>
 <body data-page="sport">
 <header class="navbar">
@@ -31,25 +33,42 @@
     </nav>
     <div class="nav-actions">
         <div class="lang-switcher" aria-label="Taal kiezen">
-            <span class="lang-option active" data-lang="nl">NL</span>
-            <span class="lang-option" data-lang="en">EN</span>
-            <span class="lang-option" data-lang="fr">FR</span>
-            <span class="lang-option" data-lang="ar">AR</span>
+            <button type="button" class="lang-option active" data-lang="nl" aria-label="Nederlands">NL</button>
+            <button type="button" class="lang-option" data-lang="en" aria-label="English">EN</button>
+            <button type="button" class="lang-option" data-lang="fr" aria-label="Français">FR</button>
+            <button type="button" class="lang-option" data-lang="ar" aria-label="العربية">AR</button>
         </div>
         <button class="menu-toggle" id="mobile-menu" aria-label="Open navigatie" aria-expanded="false"><i class="fas fa-bars"></i></button>
     </div>
 </header>
 
 <section class="hero">
+    <div class="hero-slideshow" aria-hidden="true">
+        <img class="hero-slide active" src="/images/sport/slides/hero-team.jpg" alt="" width="1920" height="1080" fetchpriority="high">
+        <img class="hero-slide" src="/images/sport/slides/hero-focus.jpg" alt="" width="1920" height="1080" decoding="async">
+        <img class="hero-slide" src="/images/sport/slides/hero-together.jpg" alt="" width="1920" height="1080" decoding="async">
+    </div>
     <div class="hero-content">
         <h1 data-i18n="hero_title">Sport</h1>
         <p data-i18n="hero_subtitle">Beweeg mee met sportieve activiteiten die jongeren verbinden, energie geven en teamwork versterken.</p>
-        <a href="#event-options" class="btn" data-i18n="hero_events">Bekijk events</a>
-        <a href="/index.html#activiteiten" class="btn" data-i18n="hero_back">Terug naar activiteiten</a>
+        <div class="hero-actions">
+            <a href="#event-options" class="btn" data-i18n="hero_events">Bekijk events</a>
+            <a href="/index.html#activiteiten" class="btn btn-secondary" data-i18n="hero_back">Terug naar activiteiten</a>
+        </div>
+    </div>
+    <div class="hero-slideshow-controls" aria-label="Slideshowbediening">
+        <button type="button" class="hero-slide-arrow hero-slide-prev" aria-label="Vorige foto" data-i18n-aria="slideshow_previous"><i class="fas fa-arrow-left" aria-hidden="true"></i></button>
+        <div class="hero-slide-dots" aria-label="Kies een foto">
+            <button type="button" class="hero-slide-dot active" data-slide="0" aria-label="Toon foto 1" aria-current="true"></button>
+            <button type="button" class="hero-slide-dot" data-slide="1" aria-label="Toon foto 2" aria-current="false"></button>
+            <button type="button" class="hero-slide-dot" data-slide="2" aria-label="Toon foto 3" aria-current="false"></button>
+        </div>
+<!--        <button type="button" class="hero-slide-toggle" aria-label="Pauzeer slideshow" data-i18n-aria="slideshow_pause" aria-pressed="false"><i class="fas fa-pause" aria-hidden="true"></i></button>-->
+        <button type="button" class="hero-slide-arrow hero-slide-next" aria-label="Volgende foto" data-i18n-aria="slideshow_next"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
     </div>
 </section>
 
-<section id="event-options" class="section reveal">
+<section id="event-options" class="section event-overview reveal">
     <h2 data-i18n="events_title">Events</h2>
     <p class="section-intro" data-i18n="options_intro">Kies hieronder tussen komende sportactiviteiten en afgelopen sportmomenten.</p>
     <div class="activities-grid">
@@ -61,7 +80,10 @@
             </div>
         </a>
         <a href="#past-events" class="activity-card reveal-right">
-            <div class="activity-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="activity-thumbnail">
+                <img src="/images/sport/sport-action.jpg" alt="Jongeren tijdens een sportactiviteit van Crescent Youth" width="1467" height="2200" loading="lazy">
+                <span class="activity-thumbnail-icon" aria-hidden="true"><i class="fas fa-arrow-down"></i></span>
+            </div>
             <div class="activity-content">
                 <h3 data-i18n="past_card_title">Afgelopen events</h3>
                 <p data-i18n="past_card_text">Bekijk sportactiviteiten die al hebben plaatsgevonden.</p>
@@ -78,15 +100,40 @@
 
 <section id="past-events" class="section reveal">
     <h2 data-i18n="past_title">Afgelopen events</h2>
-    <div class="activities-grid">
-        <div class="activity-card reveal">
-            <div class="activity-icon image-placeholder"><i class="fas fa-image"></i><span data-i18n="image_later">Afbeelding later toevoegen</span></div>
-            <div class="activity-content">
-                <span class="event-badge" data-i18n="past_badge">Afgelopen sportevent</span>
-                <h3 data-i18n="past_item_title">Sportmoment</h3>
-                <p data-i18n="past_item_text">Hier komt later een terugblik op afgelopen sportactiviteiten met foto, datum en locatie.</p>
-            </div>
+
+    <article class="sport-feature reveal">
+        <div class="sport-feature-image">
+            <img src="/images/sport/sport-action.jpg" alt="Jongeren verzamelen zich tijdens een zaalvoetbalactiviteit" width="1467" height="2200" loading="lazy">
         </div>
+        <div class="sport-feature-content">
+            <span class="event-badge" data-i18n="past_badge">Afgelopen sportevent</span>
+            <h3 data-i18n="past_item_title">Sportmoment</h3>
+            <p data-i18n="past_item_text">Hier komt later een terugblik op afgelopen sportactiviteiten met foto, datum en locatie.</p>
+        </div>
+    </article>
+
+    <div class="sport-gallery" id="sport-gallery" aria-label="Fotogalerij van de sportactiviteit">
+        <button class="gallery-item gallery-item-portrait" type="button" data-full="/images/sport/sport-team-talk.jpg" aria-label="Vergroot foto: spelers overleggen op het veld">
+            <img src="/images/sport/sport-team-talk.jpg" alt="Twee spelers overleggen op het veld" width="1467" height="2200" loading="lazy">
+        </button>
+        <button class="gallery-item gallery-item-portrait" type="button" data-full="/images/sport/sport-player.jpg" aria-label="Vergroot foto: speler kijkt naar het veld">
+            <img src="/images/sport/sport-player.jpg" alt="Speler kijkt geconcentreerd naar het veld" width="1467" height="2200" loading="lazy">
+        </button>
+        <button class="gallery-item gallery-item-portrait" type="button" data-full="/images/sport/sport-rest.jpg" aria-label="Vergroot foto: spelers nemen rust langs de zijlijn">
+            <img src="/images/sport/sport-rest.jpg" alt="Spelers nemen rust langs de zijlijn" width="1467" height="2200" loading="lazy">
+        </button>
+        <button class="gallery-item gallery-item-wide" type="button" data-full="/images/sport/sport-focus.jpg" aria-label="Vergroot foto: speler volgt de wedstrijd">
+            <img src="/images/sport/sport-focus.jpg" alt="Speler volgt aandachtig de wedstrijd" width="2200" height="1238" loading="lazy">
+        </button>
+        <button class="gallery-item gallery-item-wide" type="button" data-full="/images/sport/sport-huddle.jpg" aria-label="Vergroot foto: twee teamgenoten met arm om elkaar heen">
+            <img src="/images/sport/sport-huddle.jpg" alt="Twee teamgenoten met een arm om elkaar heen" width="2200" height="1238" loading="lazy">
+        </button>
+        <button class="gallery-item gallery-item-wide" type="button" data-full="/images/sport/sport-huddle-close.jpg" aria-label="Vergroot foto: teamgenoten moedigen elkaar aan">
+            <img src="/images/sport/sport-huddle-close.jpg" alt="Teamgenoten moedigen elkaar aan" width="2200" height="1237" loading="lazy">
+        </button>
+        <button class="gallery-item gallery-item-wide gallery-item-mono" type="button" data-full="/images/sport/sport-sideline.jpg" aria-label="Vergroot foto: drie jongeren langs de zijlijn">
+            <img src="/images/sport/sport-sideline.jpg" alt="Drie jongeren langs de zijlijn" width="2200" height="1238" loading="lazy">
+        </button>
     </div>
 </section>
 
@@ -136,7 +183,12 @@
     <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
 </div>
 
-<script src="/Events/activity-page.js?v=20260607-donation1"></script>
+<dialog class="lightbox" id="sport-lightbox" aria-label="Vergrote sportfoto">
+    <button class="lightbox-close" type="button" aria-label="Sluiten"><i class="fas fa-times" aria-hidden="true"></i></button>
+    <img src="" alt="">
+</dialog>
+
+<script src="/Events/activity-page.js?v=20260909-sport-slideshow"></script>
 </body>
 </html>
 
