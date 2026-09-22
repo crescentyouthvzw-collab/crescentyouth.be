@@ -45,7 +45,10 @@ const pages = {
       hero_title: 'Sociale activiteiten', hero_subtitle: 'Ontmoet, verbind en geniet van warme communitymomenten waar jongeren elkaar beter leren kennen.',
       options_intro: 'Kies hieronder tussen komende sociale activiteiten en afgelopen communitymomenten.', upcoming_card_text: 'Bekijk komende ontmoetingen, creatieve activiteiten en gezellige communitymomenten.', past_card_text: 'Bekijk sociale activiteiten die al hebben plaatsgevonden.',
       upcoming_intro: 'Er zijn momenteel geen nieuwe sociale activiteiten aangekondigd.', empty_text: 'Nieuwe sociale activiteiten worden binnenkort hier geplaatst.',
-      past_badge: 'Afgelopen sociaal event', past_item_title: 'Communitymoment', past_item_text: 'Hier komt later een terugblik op afgelopen sociale activiteiten met foto, datum en locatie.',
+      event_kicker: 'Terugblik', past_intro: 'Een terugblik op onze Zusters Iftar van 8 maart in Brugge.',
+      past_badge: 'Afgelopen sociaal event', past_item_title: 'Zusters Iftar', past_item_text: 'Op 8 maart kwamen zusters samen in Brugge voor een warme avond van bezinning, creativiteit, gebed en een gezamenlijke iftar.',
+      event_date_label: 'Datum', event_date: '8 maart', event_location_label: 'Locatie', event_location: 'Brugge', event_program_label: 'Programma', event_program: 'Lezing, tasbeeh-activiteit, gezamenlijk gebed en iftar',
+      view_poster: 'Bekijk de eventposter', view_gallery: 'Bekijk de sfeerbeelden', gallery_kicker: '8 maart • Brugge', gallery_title: 'Sfeerbeelden van de avond', gallery_intro: 'Van de zorgvuldig gedekte tafels en de tasbeeh-activiteit tot de gezamenlijke iftar.', event_details_label: 'Eventdetails', lightbox_label: 'Vergrote foto', lightbox_close: 'Sluit foto',
       cta_text: 'Nieuwe sociale activiteiten worden hier en via onze sociale kanalen gedeeld.'
     },
     en: {
@@ -53,7 +56,10 @@ const pages = {
       hero_title: 'Social activities', hero_subtitle: 'Meet, connect and enjoy warm community moments where young people get to know each other better.',
       options_intro: 'Choose between upcoming social activities and past community moments.', upcoming_card_text: 'View upcoming meetups, creative activities and warm community moments.', past_card_text: 'View social activities that have already taken place.',
       upcoming_intro: 'No new social activities have been announced yet.', empty_text: 'New social activities will be posted here soon.',
-      past_badge: 'Past social event', past_item_title: 'Community moment', past_item_text: 'A recap of past social activities with photo, date and location will be added here later.',
+      event_kicker: 'Event recap', past_intro: 'A look back at our Sisters’ Iftar on 8 March in Bruges.',
+      past_badge: 'Past social event', past_item_title: 'Sisters’ Iftar', past_item_text: 'On 8 March, sisters came together in Bruges for a warm evening of reflection, creativity, prayer and a shared iftar.',
+      event_date_label: 'Date', event_date: '8 March', event_location_label: 'Location', event_location: 'Bruges', event_program_label: 'Programme', event_program: 'Talk, tasbeeh activity, communal prayer and iftar',
+      view_poster: 'View the event poster', view_gallery: 'View the photo gallery', gallery_kicker: '8 March • Bruges', gallery_title: 'Moments from the evening', gallery_intro: 'From the carefully prepared tables and tasbeeh activity to the shared iftar.', event_details_label: 'Event details', lightbox_label: 'Enlarged photo', lightbox_close: 'Close photo',
       cta_text: 'New social activities will be shared here and through our social channels.'
     },
     fr: {
@@ -61,7 +67,10 @@ const pages = {
       hero_title: 'Activités sociales', hero_subtitle: 'Rencontre, crée du lien et profite de moments chaleureux où les jeunes apprennent à mieux se connaître.',
       options_intro: 'Choisis entre les activités sociales à venir et les moments communautaires passés.', upcoming_card_text: 'Découvre les rencontres, activités créatives et moments communautaires à venir.', past_card_text: 'Découvre les activités sociales qui ont déjà eu lieu.',
       upcoming_intro: 'Aucune nouvelle activité sociale n’est annoncée pour le moment.', empty_text: 'Les nouvelles activités sociales seront bientôt publiées ici.',
-      past_badge: 'Événement social passé', past_item_title: 'Moment communautaire', past_item_text: 'Un retour sur les activités sociales passées avec photo, date et lieu sera ajouté ici plus tard.',
+      event_kicker: 'Retour en images', past_intro: 'Retour sur notre Iftar des sœurs du 8 mars à Bruges.',
+      past_badge: 'Événement social passé', past_item_title: 'Iftar des sœurs', past_item_text: 'Le 8 mars, des sœurs se sont réunies à Bruges pour une soirée chaleureuse de réflexion, de créativité, de prière et d’iftar partagé.',
+      event_date_label: 'Date', event_date: '8 mars', event_location_label: 'Lieu', event_location: 'Bruges', event_program_label: 'Programme', event_program: 'Conférence, activité tasbeeh, prière commune et iftar',
+      view_poster: 'Voir l’affiche de l’événement', view_gallery: 'Voir les photos', gallery_kicker: '8 mars • Bruges', gallery_title: 'Moments de la soirée', gallery_intro: 'Des tables soigneusement dressées et de l’activité tasbeeh jusqu’à l’iftar partagé.', event_details_label: 'Détails de l’événement', lightbox_label: 'Photo agrandie', lightbox_close: 'Fermer la photo',
       cta_text: 'Les nouvelles activités sociales seront partagées ici et via nos réseaux sociaux.'
     },
     ar: {
@@ -69,7 +78,10 @@ const pages = {
       hero_title: 'الأنشطة الاجتماعية', hero_subtitle: 'تعرّف، تواصل، واستمتع بلحظات مجتمعية دافئة يتعرف فيها الشباب على بعضهم أكثر.',
       options_intro: 'اختر بين الأنشطة الاجتماعية القادمة واللحظات المجتمعية السابقة.', upcoming_card_text: 'اطلع على اللقاءات والأنشطة الإبداعية واللحظات المجتمعية القادمة.', past_card_text: 'اطلع على الأنشطة الاجتماعية التي أُقيمت سابقًا.',
       upcoming_intro: 'لا توجد أنشطة اجتماعية جديدة معلنة حاليًا.', empty_text: 'سيتم نشر الأنشطة الاجتماعية الجديدة هنا قريبًا.',
-      past_badge: 'فعالية اجتماعية سابقة', past_item_title: 'لحظة مجتمعية', past_item_text: 'سيضاف لاحقًا ملخص للأنشطة الاجتماعية السابقة مع الصورة والتاريخ والمكان.',
+      event_kicker: 'لمحة من الفعالية', past_intro: 'نظرة على إفطار الأخوات الذي أُقيم يوم 8 مارس في بروج.',
+      past_badge: 'فعالية اجتماعية سابقة', past_item_title: 'إفطار الأخوات', past_item_text: 'في 8 مارس، اجتمعت الأخوات في بروج لقضاء أمسية دافئة جمعت بين التأمل والإبداع والصلاة والإفطار الجماعي.',
+      event_date_label: 'التاريخ', event_date: '8 مارس', event_location_label: 'المكان', event_location: 'بروج', event_program_label: 'البرنامج', event_program: 'محاضرة، نشاط لصنع المسبحة، صلاة جماعية وإفطار',
+      view_poster: 'عرض ملصق الفعالية', view_gallery: 'عرض الصور', gallery_kicker: '8 مارس • بروج', gallery_title: 'لقطات من الأمسية', gallery_intro: 'من تجهيز الطاولات بعناية ونشاط صنع المسبحة إلى الإفطار الجماعي.', event_details_label: 'تفاصيل الفعالية', lightbox_label: 'صورة مكبرة', lightbox_close: 'إغلاق الصورة',
       cta_text: 'سيتم نشر الأنشطة الاجتماعية الجديدة هنا وعبر قنواتنا الاجتماعية.'
     }
   },
@@ -290,12 +302,12 @@ if (heroSlideshow && heroSlides.length > 1) {
   startHeroSlideshow();
 }
 
-const lightbox = document.getElementById('sport-lightbox');
+const lightbox = document.querySelector('.lightbox');
 const lightboxImage = lightbox?.querySelector('img');
 const lightboxClose = lightbox?.querySelector('.lightbox-close');
 
 if (lightbox && lightboxImage) {
-  document.querySelectorAll('.gallery-item').forEach(item => {
+  document.querySelectorAll('.gallery-item, .event-poster').forEach(item => {
     item.addEventListener('click', () => {
       const thumbnail = item.querySelector('img');
       lightboxImage.src = item.dataset.full || thumbnail?.src || '';
