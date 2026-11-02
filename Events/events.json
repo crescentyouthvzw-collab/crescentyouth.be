@@ -1,6 +1,22 @@
 {
   "events": [
     {
+      "id": "road-to-ramadan-2026",
+      "date": "2026-02-28",
+      "time": "",
+      "location": "",
+      "category": "trips",
+      "title": {
+        "nl": "Road to Ramadan",
+        "en": "Road to Ramadan",
+        "fr": "Road to Ramadan",
+        "ar": "Road to Ramadan"
+      },
+      "detailsUrl": "/Events/trips.html#past-events",
+      "registrationUrl": "",
+      "registrationOpen": false
+    },
+    {
       "id": "sisters-iftar-2026",
       "date": "2026-03-08",
       "time": "",

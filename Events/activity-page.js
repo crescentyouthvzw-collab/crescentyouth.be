@@ -92,7 +92,11 @@ const pages = {
       hero_title: 'Trips', hero_subtitle: 'Ontdek samen nieuwe plaatsen, bouw herinneringen op en beleef uitstappen met de community.',
       options_intro: 'Kies hieronder tussen komende trips en afgelopen uitstappen.', upcoming_card_text: 'Bekijk komende uitstappen, dagtrips en ontdekkingsmomenten.', past_card_text: 'Bekijk trips die al hebben plaatsgevonden.',
       upcoming_intro: 'Er zijn momenteel geen nieuwe trips aangekondigd.', empty_text: 'Nieuwe trips worden binnenkort hier geplaatst.',
-      past_badge: 'Afgelopen trip', past_item_title: 'Uitstap', past_item_text: 'Hier komt later een terugblik op afgelopen trips met foto, datum en locatie.',
+      event_kicker: 'Terugblik • 28 februari 2026', past_intro: "Herbeleef onze Road to Ramadan-uitstap met foto's en een video.",
+      past_badge: 'Afgelopen trip', past_item_title: 'Road to Ramadan', past_item_text: 'Op 28 februari 2026 gingen we samen op pad voor Road to Ramadan. Van de treinreis en het bezoek aan de moskee tot ontmoetingen en samen eten: een dag vol bezinning, verbondenheid en mooie herinneringen.',
+      event_details_label: 'Details van de uitstap', event_date_label: 'Datum', event_date: '28 februari 2026', event_program_label: 'Momenten', event_program: 'Samen reizen, moskeebezoek en ontmoeting',
+      watch_video: 'Bekijk de video', view_gallery: "Bekijk de foto's", video_kicker: 'De dag in beeld', video_title: 'Bekijk onze tripvideo', video_intro: 'Een korte terugblik op de reis, de ontmoetingen en de mooie momenten onderweg.', video_label: 'Road to Ramadan - video van de uitstap op 28 februari 2026', video_fallback: 'Je browser ondersteunt deze video niet.',
+      gallery_kicker: '28 februari 2026 • Road to Ramadan', gallery_title: 'Sfeerbeelden van de uitstap', gallery_intro: 'Van het vertrek met de trein tot het groepsmoment in de moskee.', lightbox_label: 'Vergrote foto', lightbox_close: 'Sluit foto', gallery_photo_1: 'Open foto van de treinreis', gallery_photo_2: 'Open groepsfoto een', gallery_photo_3: 'Open groepsfoto twee', gallery_photo_4: 'Open groepsfoto drie',
       cta_text: 'Nieuwe trips worden hier en via onze sociale kanalen gedeeld.'
     },
     en: {
@@ -100,7 +104,11 @@ const pages = {
       hero_title: 'Trips', hero_subtitle: 'Discover new places together, create memories and experience trips with the community.',
       options_intro: 'Choose between upcoming trips and past outings.', upcoming_card_text: 'View upcoming outings, day trips and discovery moments.', past_card_text: 'View trips that have already taken place.',
       upcoming_intro: 'No new trips have been announced yet.', empty_text: 'New trips will be posted here soon.',
-      past_badge: 'Past trip', past_item_title: 'Outing', past_item_text: 'A recap of past trips with photo, date and location will be added here later.',
+      event_kicker: 'Event recap • 28 February 2026', past_intro: 'Relive our Road to Ramadan outing through photos and video.',
+      past_badge: 'Past trip', past_item_title: 'Road to Ramadan', past_item_text: 'On 28 February 2026, we headed out together for Road to Ramadan. From the train journey and mosque visit to conversations and sharing food, it was a day of reflection, connection and good memories.',
+      event_details_label: 'Trip details', event_date_label: 'Date', event_date: '28 February 2026', event_program_label: 'Highlights', event_program: 'Travelling together, visiting a mosque and connecting',
+      watch_video: 'Watch the video', view_gallery: 'View the photos', video_kicker: 'The day in motion', video_title: 'Watch our trip video', video_intro: 'A short look back at the journey, the people and the moments we shared.', video_label: 'Road to Ramadan - trip video from 28 February 2026', video_fallback: 'Your browser does not support this video.',
+      gallery_kicker: '28 February 2026 • Road to Ramadan', gallery_title: 'Moments from the trip', gallery_intro: 'From setting off by train to our group moment at the mosque.', lightbox_label: 'Enlarged photo', lightbox_close: 'Close photo', gallery_photo_1: 'Open photo from the train journey', gallery_photo_2: 'Open first group photo', gallery_photo_3: 'Open second group photo', gallery_photo_4: 'Open third group photo',
       cta_text: 'New trips will be shared here and through our social channels.'
     },
     fr: {
@@ -108,7 +116,11 @@ const pages = {
       hero_title: 'Sorties', hero_subtitle: 'Découvre de nouveaux lieux ensemble, crée des souvenirs et vis des sorties avec la communauté.',
       options_intro: 'Choisis entre les sorties à venir et les sorties passées.', upcoming_card_text: 'Découvre les sorties, excursions d’une journée et moments de découverte à venir.', past_card_text: 'Découvre les sorties qui ont déjà eu lieu.',
       upcoming_intro: 'Aucune nouvelle sortie n’est annoncée pour le moment.', empty_text: 'Les nouvelles sorties seront bientôt publiées ici.',
-      past_badge: 'Sortie passée', past_item_title: 'Sortie', past_item_text: 'Un retour sur les sorties passées avec photo, date et lieu sera ajouté ici plus tard.',
+      event_kicker: 'Retour en images • 28 février 2026', past_intro: 'Revivez notre sortie Road to Ramadan en photos et en vidéo.',
+      past_badge: 'Sortie passée', past_item_title: 'Road to Ramadan', past_item_text: 'Le 28 février 2026, nous sommes partis ensemble pour Road to Ramadan. Du trajet en train et de la visite de la mosquée aux échanges et au repas partagé : une journée de réflexion, de rencontres et de beaux souvenirs.',
+      event_details_label: 'Détails de la sortie', event_date_label: 'Date', event_date: '28 février 2026', event_program_label: 'Moments forts', event_program: 'Voyage en groupe, visite de la mosquée et rencontres',
+      watch_video: 'Voir la vidéo', view_gallery: 'Voir les photos', video_kicker: 'La journée en vidéo', video_title: 'Regardez notre vidéo', video_intro: 'Un court souvenir du voyage, des rencontres et des moments partagés.', video_label: 'Road to Ramadan - vidéo de la sortie du 28 février 2026', video_fallback: 'Votre navigateur ne prend pas en charge cette vidéo.',
+      gallery_kicker: '28 février 2026 • Road to Ramadan', gallery_title: 'Souvenirs de la sortie', gallery_intro: 'Du départ en train à notre photo de groupe à la mosquée.', lightbox_label: 'Photo agrandie', lightbox_close: 'Fermer la photo', gallery_photo_1: 'Ouvrir la photo du trajet en train', gallery_photo_2: 'Ouvrir la première photo de groupe', gallery_photo_3: 'Ouvrir la deuxième photo de groupe', gallery_photo_4: 'Ouvrir la troisième photo de groupe',
       cta_text: 'Les nouvelles sorties seront partagées ici et via nos réseaux sociaux.'
     },
     ar: {
@@ -116,7 +128,11 @@ const pages = {
       hero_title: 'الرحلات', hero_subtitle: 'اكتشفوا أماكن جديدة معًا، واصنعوا ذكريات جميلة، وعيشوا تجربة الرحلات مع المجتمع.',
       options_intro: 'اختر بين الرحلات القادمة والرحلات السابقة.', upcoming_card_text: 'اطلع على الخرجات والرحلات اليومية ولحظات الاكتشاف القادمة.', past_card_text: 'اطلع على الرحلات التي أُقيمت سابقًا.',
       upcoming_intro: 'لا توجد رحلات جديدة معلنة حاليًا.', empty_text: 'سيتم نشر الرحلات الجديدة هنا قريبًا.',
-      past_badge: 'رحلة سابقة', past_item_title: 'رحلة', past_item_text: 'سيضاف لاحقًا ملخص للرحلات السابقة مع الصورة والتاريخ والمكان.',
+      event_kicker: 'ذكريات الرحلة • 28 فبراير 2026', past_intro: 'شاهدوا ذكريات رحلة Road to Ramadan من خلال الصور والفيديو.',
+      past_badge: 'رحلة سابقة', past_item_title: 'Road to Ramadan', past_item_text: 'في 28 فبراير 2026 خرجنا معًا في رحلة Road to Ramadan. من رحلة القطار وزيارة المسجد إلى اللقاءات وتناول الطعام معًا، كان يومًا مليئًا بالتأمل والتواصل والذكريات الجميلة.',
+      event_details_label: 'تفاصيل الرحلة', event_date_label: 'التاريخ', event_date: '28 فبراير 2026', event_program_label: 'أبرز اللحظات', event_program: 'السفر معًا وزيارة المسجد والتعارف',
+      watch_video: 'شاهد الفيديو', view_gallery: 'شاهد الصور', video_kicker: 'ملخص اليوم بالفيديو', video_title: 'شاهد فيديو رحلتنا', video_intro: 'لقطات قصيرة من الرحلة واللقاءات واللحظات التي شاركناها.', video_label: 'Road to Ramadan - فيديو رحلة 28 فبراير 2026', video_fallback: 'متصفحك لا يدعم تشغيل هذا الفيديو.',
+      gallery_kicker: '28 فبراير 2026 • Road to Ramadan', gallery_title: 'صور من الرحلة', gallery_intro: 'من الانطلاق بالقطار إلى الصورة الجماعية في المسجد.', lightbox_label: 'صورة مكبرة', lightbox_close: 'إغلاق الصورة', gallery_photo_1: 'فتح صورة رحلة القطار', gallery_photo_2: 'فتح الصورة الجماعية الأولى', gallery_photo_3: 'فتح الصورة الجماعية الثانية', gallery_photo_4: 'فتح الصورة الجماعية الثالثة',
       cta_text: 'سيتم نشر الرحلات الجديدة هنا وعبر قنواتنا الاجتماعية.'
     }
   }

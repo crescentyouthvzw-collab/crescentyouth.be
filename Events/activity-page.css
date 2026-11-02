@@ -279,3 +279,60 @@ html[dir="rtl"] .hero-eyebrow::before { order: 2; }
 .hero.photo-hero .hero-content { animation: none; }
 .hero.photo-hero h1, .hero.photo-hero p { text-shadow: 0 3px 18px rgba(0,0,0,.35); }
 @media (max-width: 600px) { .hero.photo-hero { min-height: 445px; } }
+
+
+/* Trips: Road to Ramadan, 28 February 2026 */
+body[data-page="trips"] .hero.photo-hero .page-hero-photo img { object-position: center 66%; }
+body[data-page="trips"] .trip-event-section { max-width: 1240px; padding-top: 90px; }
+.trip-event-feature { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); margin-top: 42px; overflow: hidden; border-radius: 28px; background: #fff; box-shadow: 0 24px 64px rgba(30,61,47,.15); }
+.trip-event-photo { position: relative; min-height: 610px; overflow: hidden; background: #173c2c; }
+.trip-event-photo > img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 70%; transition: transform .6s ease; }
+.trip-event-feature:hover .trip-event-photo > img { transform: scale(1.025); }
+.trip-photo-label { position: absolute; bottom: 22px; left: 22px; display: inline-flex; align-items: center; gap: 9px; padding: 10px 15px; border-radius: 999px; background: rgba(20,51,36,.87); color: #fff; font-size: .82rem; font-weight: 800; backdrop-filter: blur(8px); }
+.trip-event-content { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(32px, 5vw, 66px); background: radial-gradient(circle at 100% 0%, rgba(216,184,140,.19), transparent 48%), #fff; }
+.trip-event-content h3 { margin: 9px 0 17px; color: var(--primary); font-family: 'Ubuntu', sans-serif; font-size: clamp(2.3rem, 4.5vw, 4.15rem); line-height: 1.06; letter-spacing: -.035em; }
+.trip-event-content > p { color: #56645b; font-size: 1.05rem; line-height: 1.85; }
+.trip-event-content .event-facts { margin-top: 24px; }
+.trip-event-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
+.trip-event-actions a { display: inline-flex; align-items: center; gap: 9px; min-height: 45px; padding: 12px 18px; border-radius: 999px; font-weight: 800; font-size: .93rem; transition: transform .2s ease, box-shadow .2s ease; }
+.trip-event-actions a:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(25,59,41,.16); }
+.trip-action-primary { background: var(--primary); color: #fff; }
+.trip-action-secondary { border: 1px solid #cfd9cf; background: #f2f5f1; color: var(--primary); }
+.trip-video-section { margin-top: 100px; scroll-margin-top: 115px; }
+.trip-media-intro { max-width: 670px; margin: 0 auto 30px; text-align: center; }
+.trip-media-intro h3 { margin-bottom: 12px; color: var(--primary); font-family: 'Ubuntu', sans-serif; font-size: clamp(2rem, 4vw, 2.85rem); }
+.trip-media-intro p { color: #5e6b62; font-size: 1.05rem; }
+.trip-video-wrap { display: flex; align-items: center; justify-content: center; min-height: 300px; padding: clamp(20px, 5vw, 54px); border-radius: 30px; background: radial-gradient(circle at 5% 20%, rgba(221,190,133,.16), transparent 38%), linear-gradient(140deg, #112e21, #27543e); box-shadow: 0 20px 55px rgba(17,46,33,.19); }
+.trip-video-wrap video { display: block; width: min(100%, 420px); max-height: min(70vh, 720px); aspect-ratio: 9 / 16; border-radius: 18px; background: #101b15; object-fit: contain; box-shadow: 0 16px 48px rgba(0,0,0,.3); }
+.trip-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; scroll-margin-top: 110px; }
+.trip-gallery .gallery-item { aspect-ratio: 3 / 4; }
+.trip-gallery .gallery-item img { object-fit: cover; object-position: center 65%; }
+.trip-gallery .trip-gallery-train img { object-position: center 45%; }
+body[data-page="trips"] .gallery-heading { margin-top: 100px; }
+body[data-page="trips"] .gallery-item:focus-visible,
+body[data-page="trips"] .trip-event-actions a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+html[dir="rtl"] .trip-event-content { align-items: flex-end; text-align: right; }
+html[dir="rtl"] .trip-photo-label { left: auto; right: 22px; }
+html[dir="rtl"] .trip-event-content .event-facts { text-align: right; }
+html[dir="rtl"] .trip-event-content .event-facts li { grid-template-columns: minmax(0, 1fr) 44px; }
+html[dir="rtl"] .trip-event-content .event-facts li .event-fact-icon { grid-column: 2; grid-row: 1; }
+html[dir="rtl"] .trip-event-content .event-facts li > span:last-child { grid-column: 1; grid-row: 1; }
+@media (max-width: 900px) {
+  .trip-event-feature { grid-template-columns: 1fr; }
+  .trip-event-photo { min-height: 0; max-height: 530px; aspect-ratio: 4 / 3; }
+  .trip-event-content { padding: clamp(30px, 6vw, 50px); }
+  .trip-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 550px) {
+  body[data-page="trips"] .trip-event-section { padding-top: 64px; }
+  .trip-event-feature { border-radius: 20px; }
+  .trip-event-photo { aspect-ratio: 4 / 3; }
+  .trip-event-content h3 { font-size: 2.35rem; }
+  .trip-event-actions { width: 100%; }
+  .trip-event-actions a { justify-content: center; flex: 1 1 100%; }
+  .trip-video-section, body[data-page="trips"] .gallery-heading { margin-top: 70px; }
+  .trip-video-wrap { padding: 16px; border-radius: 22px; }
+  .trip-video-wrap video { max-height: 65vh; }
+  .trip-gallery { gap: 10px; }
+  .trip-gallery .gallery-item { border-radius: 12px; }
+}

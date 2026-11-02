@@ -9,7 +9,7 @@
     <link rel="icon" href="/favicon.ico?v=20260409-1507" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/Events/activity-page.css?v=20261102-refresh">
+    <link rel="stylesheet" href="/Events/activity-page.css?v=20261102-road-to-ramadan">
 </head>
 <body data-page="trips">
 <header class="navbar">
@@ -41,8 +41,7 @@
 </header>
 
 <section class="hero photo-hero">
-    <!-- Temporary general youth-activity photograph; replace with a real trip photo when supplied. -->
-    <div class="page-hero-photo" aria-hidden="true"><img src="/images/sport/slides/hero-together.jpg" alt="" loading="eager"></div>
+    <div class="page-hero-photo" aria-hidden="true"><img src="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46%20(2).jpeg" alt="" loading="eager" fetchpriority="high"></div>
     <div class="hero-content">
         <h1 data-i18n="hero_title">Trips</h1>
         <p data-i18n="hero_subtitle">Ontdek samen nieuwe plaatsen, bouw herinneringen op en beleef uitstappen met de community.</p>
@@ -78,19 +77,76 @@
     <div class="empty-event-box"><p data-i18n="empty_text">Nieuwe trips worden binnenkort hier geplaatst.</p></div>
 </section>
 
-<section id="past-events" class="section reveal">
+<section id="past-events" class="section trip-event-section reveal">
+    <span class="section-kicker" data-i18n="event_kicker">Terugblik • 28 februari 2026</span>
     <h2 data-i18n="past_title">Afgelopen events</h2>
-    <div class="activities-grid">
-        <div class="activity-card reveal">
-            <div class="activity-icon image-placeholder"><i class="fas fa-image"></i><span data-i18n="image_later">Afbeelding later toevoegen</span></div>
-            <div class="activity-content">
-                <span class="event-badge" data-i18n="past_badge">Afgelopen trip</span>
-                <h3 data-i18n="past_item_title">Uitstap</h3>
-                <p data-i18n="past_item_text">Hier komt later een terugblik op afgelopen trips met foto, datum en locatie.</p>
+    <p class="section-intro" data-i18n="past_intro">Herbeleef onze Road to Ramadan-uitstap met foto's en een video.</p>
+
+    <article class="trip-event-feature reveal">
+        <div class="trip-event-photo">
+            <img src="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46%20(2).jpeg" width="1200" height="1600" alt="Deelnemers van de Road to Ramadan-uitstap samen in de moskee" loading="lazy">
+            <span class="trip-photo-label"><i class="fas fa-users" aria-hidden="true"></i> Crescent Youth vzw</span>
+        </div>
+        <div class="trip-event-content">
+            <span class="event-badge" data-i18n="past_badge">Afgelopen trip</span>
+            <h3 data-i18n="past_item_title">Road to Ramadan</h3>
+            <p data-i18n="past_item_text">Op 28 februari 2026 gingen we samen op pad voor Road to Ramadan. Van de treinreis en het bezoek aan de moskee tot ontmoetingen en samen eten: een dag vol bezinning, verbondenheid en mooie herinneringen.</p>
+            <ul class="event-facts" data-i18n-aria="event_details_label" aria-label="Details van de uitstap">
+                <li>
+                    <span class="event-fact-icon"><i class="far fa-calendar" aria-hidden="true"></i></span>
+                    <span><small data-i18n="event_date_label">Datum</small><strong data-i18n="event_date">28 februari 2026</strong></span>
+                </li>
+                <li>
+                    <span class="event-fact-icon"><i class="fas fa-people-group" aria-hidden="true"></i></span>
+                    <span><small data-i18n="event_program_label">Momenten</small><strong data-i18n="event_program">Samen reizen, moskeebezoek en ontmoeting</strong></span>
+                </li>
+            </ul>
+            <div class="trip-event-actions">
+                <a class="trip-action-primary" href="#trip-video"><i class="fas fa-circle-play" aria-hidden="true"></i><span data-i18n="watch_video">Bekijk de video</span></a>
+                <a class="trip-action-secondary" href="#trip-gallery"><i class="fas fa-images" aria-hidden="true"></i><span data-i18n="view_gallery">Bekijk de foto's</span></a>
             </div>
         </div>
+    </article>
+
+    <div class="trip-video-section" id="trip-video">
+        <div class="trip-media-intro">
+            <span class="section-kicker" data-i18n="video_kicker">De dag in beeld</span>
+            <h3 data-i18n="video_title">Bekijk onze tripvideo</h3>
+            <p data-i18n="video_intro">Een korte terugblik op de reis, de ontmoetingen en de mooie momenten onderweg.</p>
+        </div>
+        <div class="trip-video-wrap">
+            <video controls playsinline preload="metadata" poster="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46%20(2).jpeg" data-i18n-aria="video_label" aria-label="Road to Ramadan - video van de uitstap op 28 februari 2026">
+                <source src="/images/road%20to%20ramdhan/snapgram.io_noskeevs7hwk.mp4" type="video/mp4">
+                <span data-i18n="video_fallback">Je browser ondersteunt deze video niet.</span>
+            </video>
+        </div>
+    </div>
+
+    <div class="gallery-heading" id="trip-gallery-heading">
+        <span class="section-kicker" data-i18n="gallery_kicker">28 februari 2026 • Road to Ramadan</span>
+        <h3 data-i18n="gallery_title">Sfeerbeelden van de uitstap</h3>
+        <p data-i18n="gallery_intro">Van het vertrek met de trein tot het groepsmoment in de moskee.</p>
+    </div>
+    <div id="trip-gallery" class="event-gallery trip-gallery" aria-labelledby="trip-gallery-heading">
+        <button class="gallery-item trip-gallery-train" type="button" data-full="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46%20(1).jpeg" data-i18n-aria="gallery_photo_1" aria-label="Open foto van de treinreis">
+            <img src="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46%20(1).jpeg" width="738" height="1600" loading="lazy" alt="Twee deelnemers tijdens de treinreis">
+        </button>
+        <button class="gallery-item" type="button" data-full="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46%20(2).jpeg" data-i18n-aria="gallery_photo_2" aria-label="Open groepsfoto een">
+            <img src="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46%20(2).jpeg" width="1200" height="1600" loading="lazy" alt="Groepsfoto van de deelnemers in de moskee">
+        </button>
+        <button class="gallery-item" type="button" data-full="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46%20(3).jpeg" data-i18n-aria="gallery_photo_3" aria-label="Open groepsfoto twee">
+            <img src="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46%20(3).jpeg" width="1200" height="1600" loading="lazy" alt="Tweede groepsfoto in de moskee">
+        </button>
+        <button class="gallery-item" type="button" data-full="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46.jpeg" data-i18n-aria="gallery_photo_4" aria-label="Open groepsfoto drie">
+            <img src="/images/road%20to%20ramdhan/WhatsApp%20Image%202026-11-02%20at%2014.30.46.jpeg" width="1200" height="1600" loading="lazy" alt="Derde groepsfoto in de moskee">
+        </button>
     </div>
 </section>
+
+<dialog id="trip-lightbox" class="lightbox" data-i18n-aria="lightbox_label" aria-label="Vergrote foto">
+    <button class="lightbox-close" type="button" data-i18n-aria="lightbox_close" aria-label="Sluit foto"><i class="fas fa-xmark" aria-hidden="true"></i></button>
+    <img src="" alt="">
+</dialog>
 
 <section class="cta-section reveal">
     <h2 data-i18n="cta_title">Blijf op de hoogte</h2>
@@ -138,7 +194,7 @@
     <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
 </div>
 
-<script src="/Events/activity-page.js?v=20260607-donation1"></script>
+<script src="/Events/activity-page.js?v=20261102-road-to-ramadan"></script>
 </body>
 </html>
 
