@@ -1,0 +1,36 @@
+{
+  "events": [
+    {
+      "id": "sisters-iftar-2026",
+      "date": "2026-03-08",
+      "time": "",
+      "location": "Brugge",
+      "category": "social",
+      "title": {
+        "nl": "Zusters Iftar",
+        "en": "Sisters Iftar",
+        "fr": "Iftar des sœurs",
+        "ar": "إفطار الأخوات"
+      },
+      "detailsUrl": "/Events/social.html#past-events",
+      "registrationUrl": "",
+      "registrationOpen": false
+    },
+    {
+      "id": "noble-journey-2026",
+      "date": "2026-05-23",
+      "time": "14:00",
+      "location": "8 Koude Keukenstraat, 8200 Brugge",
+      "category": "education",
+      "title": {
+        "nl": "The Noble Journey",
+        "en": "The Noble Journey",
+        "fr": "The Noble Journey",
+        "ar": "The Noble Journey"
+      },
+      "detailsUrl": "/Events/noble-journey.html",
+      "registrationUrl": "",
+      "registrationOpen": false
+    }
+  ]
+}

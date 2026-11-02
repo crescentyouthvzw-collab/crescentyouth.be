@@ -181,6 +181,36 @@ const translations = {
     donation_hero_cta: 'Kies je donatie',
     donation_options_title: 'Kies een bedrag',
     donation_options_intro: 'Kies een bedrag dat bij jou past, of doneer vrij.',
+    donation_target_label: 'Ons huidige inzameldoel:',
+    donation_campaign_kicker: 'Ons eerste inzameldoel',
+    donation_campaign_title: 'Samen meer mogelijk maken',
+    donation_campaign_text: 'We zamelen in voor educatieve workshops, sportactiviteiten en warme ontmoetingsmomenten voor jongeren in Brugge.',
+    donation_campaign_target: 'Streefbedrag',
+    donation_campaign_progress_note: 'Het opgehaalde bedrag wordt toegevoegd zodra dit bevestigd is.',
+    donation_impact_title: 'Waar gaat je bijdrage naartoe?',
+    donation_impact_intro: 'Kies het soort activiteit dat je wil steunen. Alle bijdragen helpen samen het inzameldoel van €1.000 te bereiken.',
+    donation_choose_goal_aria: 'Kies een donatiedoel',
+    donation_goal_education_title: 'Educatie & workshops',
+    donation_goal_education_text: 'Materialen, workshops en gastsprekers.',
+    donation_goal_sports_title: 'Sport & beweging',
+    donation_goal_sports_text: 'Sportmateriaal en toegankelijke activiteiten.',
+    donation_goal_community_title: 'Community & verbinding',
+    donation_goal_community_text: 'Benodigdheden voor veilige ontmoetingen.',
+    donation_selected_goal: 'Gekozen doel:',
+    donation_more_amounts: 'Andere bedragen bekijken',
+    donation_payment_note: 'Alle knoppen openen onze bestaande SumUp-betaallinks. Wil je een gift voor het geselecteerde doel bestemmen? Vermeld het doel in de betalingsopmerking als die optie beschikbaar is, of contacteer ons vooraf. Zonder vermelding gaat de gift naar onze algemene jongerenwerking.',
+    calendar_promo_label: 'Evenementenkalender',
+    calendar_promo_title: 'Ontdek wat er op de planning staat',
+    calendar_promo_text: 'Bekijk alle eventdatums op één plek en schrijf je rechtstreeks in zodra de inschrijvingen openen.',
+    calendar_promo_button: 'Bekijk de kalender',
+    calendar_hero_title: 'Evenementenkalender',
+    calendar_hero_subtitle: 'Ontdek workshops, sport, ontmoetingen en trips. Schrijf je rechtstreeks in voor aangekondigde evenementen.',
+    calendar_section_title: 'Alle evenementen',
+    calendar_section_intro: 'Blader door de maanden en klik op een datum om de details te bekijken.',
+    calendar_past_heading: 'Afgelopen evenementen',
+    calendar_past_intro: 'Bekijk enkele mooie momenten die we samen beleefden.',
+    calendar_footer_cta: 'Zelf een idee voor een activiteit?',
+    calendar_footer_text: 'Laat ons weten wat jij graag bij Crescent Youth zou zien.',
 
     values_title: 'Kernwaarden',
     values_intro: 'Dit is wat ons drijft: waarden die jongeren verbinden, laten groeien en samen impact maken.',
@@ -383,6 +413,36 @@ const translations = {
     donation_hero_cta: 'Choose your donation',
     donation_options_title: 'Choose an amount',
     donation_options_intro: 'Choose an amount that suits you, or donate freely.',
+    donation_target_label: 'Our current fundraising goal:',
+    donation_campaign_kicker: 'Our first fundraising goal',
+    donation_campaign_title: 'Making more possible together',
+    donation_campaign_text: 'We are raising funds for educational workshops, sports activities and welcoming community moments for young people in Bruges.',
+    donation_campaign_target: 'Target',
+    donation_campaign_progress_note: 'We will show the amount raised once it has been confirmed.',
+    donation_impact_title: 'What will your donation support?',
+    donation_impact_intro: 'Choose the type of activity you would like to support. All donations contribute to our shared €1,000 goal.',
+    donation_choose_goal_aria: 'Choose a donation goal',
+    donation_goal_education_title: 'Education & workshops',
+    donation_goal_education_text: 'Materials, workshops and guest speakers.',
+    donation_goal_sports_title: 'Sports & movement',
+    donation_goal_sports_text: 'Sports equipment and accessible activities.',
+    donation_goal_community_title: 'Community & connection',
+    donation_goal_community_text: 'Supplies for safe, welcoming gatherings.',
+    donation_selected_goal: 'Selected goal:',
+    donation_more_amounts: 'View other amounts',
+    donation_payment_note: 'All buttons open our existing SumUp payment links. To designate a gift for your selected goal, mention it in the payment note if that option is available, or contact us first. Gifts without a designation support our general youth activities.',
+    calendar_promo_label: 'Event calendar',
+    calendar_promo_title: 'See what is coming up',
+    calendar_promo_text: 'Find all event dates in one place and register directly when booking opens.',
+    calendar_promo_button: 'View the calendar',
+    calendar_hero_title: 'Event calendar',
+    calendar_hero_subtitle: 'Explore workshops, sports, meetups and trips. Register directly for announced events.',
+    calendar_section_title: 'All events',
+    calendar_section_intro: 'Browse the months and select a date to view the details.',
+    calendar_past_heading: 'Past events',
+    calendar_past_intro: 'Take a look at some moments we have shared.',
+    calendar_footer_cta: 'Have an idea for an activity?',
+    calendar_footer_text: 'Tell us what you would like to see at Crescent Youth.',
 
     values_title: 'Core values',
     values_intro: 'These values guide us and help young people grow and make impact together.',
@@ -586,6 +646,36 @@ const translations = {
     donation_hero_cta: 'Choisir mon don',
     donation_options_title: 'Choisis un montant',
     donation_options_intro: 'Choisis un montant qui te convient, ou fais un don libre.',
+    donation_target_label: 'Notre objectif actuel :',
+    donation_campaign_kicker: 'Notre premier objectif de collecte',
+    donation_campaign_title: 'Rendre plus de choses possibles ensemble',
+    donation_campaign_text: 'Nous collectons des fonds pour des ateliers éducatifs, du sport et des moments de rencontre pour les jeunes à Bruges.',
+    donation_campaign_target: 'Objectif',
+    donation_campaign_progress_note: 'Le montant collecté sera affiché après confirmation.',
+    donation_impact_title: 'À quoi sert ton don ?',
+    donation_impact_intro: 'Choisis le type d’activité que tu souhaites soutenir. Tous les dons contribuent à notre objectif commun de 1 000 €.',
+    donation_choose_goal_aria: 'Choisir un objectif de don',
+    donation_goal_education_title: 'Éducation et ateliers',
+    donation_goal_education_text: 'Matériel, ateliers et intervenants.',
+    donation_goal_sports_title: 'Sport et mouvement',
+    donation_goal_sports_text: 'Équipement sportif et activités accessibles.',
+    donation_goal_community_title: 'Communauté et liens',
+    donation_goal_community_text: 'Matériel pour des rencontres accueillantes.',
+    donation_selected_goal: 'Objectif choisi :',
+    donation_more_amounts: 'Voir d’autres montants',
+    donation_payment_note: 'Tous les boutons ouvrent nos liens de paiement SumUp existants. Pour affecter ton don à un objectif précis, indique-le dans la note de paiement si cette option est disponible, ou contacte-nous avant. Sans indication, le don soutient nos activités générales pour les jeunes.',
+    calendar_promo_label: 'Calendrier des événements',
+    calendar_promo_title: 'Découvre les activités à venir',
+    calendar_promo_text: 'Retrouve toutes les dates au même endroit et inscris-toi dès l’ouverture des inscriptions.',
+    calendar_promo_button: 'Voir le calendrier',
+    calendar_hero_title: 'Calendrier des événements',
+    calendar_hero_subtitle: 'Découvre les ateliers, sports, rencontres et sorties. Inscris-toi directement aux événements annoncés.',
+    calendar_section_title: 'Tous les événements',
+    calendar_section_intro: 'Parcours les mois et sélectionne une date pour voir les détails.',
+    calendar_past_heading: 'Événements passés',
+    calendar_past_intro: 'Revis quelques moments partagés ensemble.',
+    calendar_footer_cta: 'Une idée d’activité ?',
+    calendar_footer_text: 'Dis-nous ce que tu aimerais voir chez Crescent Youth.',
 
     values_title: 'Valeurs clés',
     values_intro: 'Nos valeurs rassemblent les jeunes, les font grandir et leur permettent de créer de l’impact ensemble.',
@@ -792,6 +882,36 @@ const translations = {
     donation_hero_cta: 'اختر تبرعك',
     donation_options_title: 'اختر مبلغًا',
     donation_options_intro: 'اختر مبلغًا يناسبك، أو تبرع بالمبلغ الذي تريده.',
+    donation_target_label: 'هدف جمع التبرعات الحالي:',
+    donation_campaign_kicker: 'هدفنا الأول لجمع التبرعات',
+    donation_campaign_title: 'لنحقق المزيد معًا',
+    donation_campaign_text: 'نجمع التبرعات لتنظيم ورش تعليمية وأنشطة رياضية ولقاءات مجتمعية للشباب في بروج.',
+    donation_campaign_target: 'الهدف',
+    donation_campaign_progress_note: 'سنُظهر المبلغ الذي تم جمعه بعد تأكيده.',
+    donation_impact_title: 'أين تذهب مساهمتك؟',
+    donation_impact_intro: 'اختر نوع النشاط الذي ترغب في دعمه. جميع التبرعات تساهم في هدفنا المشترك البالغ 1,000 يورو.',
+    donation_choose_goal_aria: 'اختر هدف التبرع',
+    donation_goal_education_title: 'التعليم وورش العمل',
+    donation_goal_education_text: 'المواد وورش العمل والمتحدثون الضيوف.',
+    donation_goal_sports_title: 'الرياضة والحركة',
+    donation_goal_sports_text: 'المعدات الرياضية والأنشطة المتاحة للجميع.',
+    donation_goal_community_title: 'المجتمع والتواصل',
+    donation_goal_community_text: 'مستلزمات اللقاءات الآمنة والمرحبة.',
+    donation_selected_goal: 'الهدف المحدد:',
+    donation_more_amounts: 'عرض مبالغ أخرى',
+    donation_payment_note: 'تفتح جميع الأزرار روابط الدفع الحالية عبر SumUp. إذا أردت تخصيص تبرعك للهدف الذي اخترته، اذكره في ملاحظة الدفع إن كانت متاحة أو تواصل معنا أولًا. التبرعات من دون تخصيص تدعم أنشطتنا الشبابية العامة.',
+    calendar_promo_label: 'تقويم الفعاليات',
+    calendar_promo_title: 'اكتشف الفعاليات القادمة',
+    calendar_promo_text: 'اطلع على جميع مواعيد الفعاليات في مكان واحد وسجّل مباشرة عند فتح التسجيل.',
+    calendar_promo_button: 'عرض التقويم',
+    calendar_hero_title: 'تقويم الفعاليات',
+    calendar_hero_subtitle: 'اكتشف ورش العمل والرياضة واللقاءات والرحلات. سجّل مباشرة في الفعاليات المعلنة.',
+    calendar_section_title: 'جميع الفعاليات',
+    calendar_section_intro: 'تنقل بين الأشهر واختر تاريخًا لعرض التفاصيل.',
+    calendar_past_heading: 'الفعاليات السابقة',
+    calendar_past_intro: 'استرجع بعض اللحظات الجميلة التي عشناها معًا.',
+    calendar_footer_cta: 'هل لديك فكرة لنشاط؟',
+    calendar_footer_text: 'أخبرنا بما ترغب في رؤيته في Crescent Youth.',
 
     values_title: 'قيمنا',
 
@@ -989,6 +1109,7 @@ const translations = {
 
 const langButtons = document.querySelectorAll('.lang-option');
 const i18nElements = document.querySelectorAll('[data-i18n]');
+const i18nAriaElements = document.querySelectorAll('[data-i18n-aria]');
 const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
 const selectOptions = document.querySelectorAll('[data-i18n-select] option[data-i18n]');
 
@@ -1009,6 +1130,11 @@ function setLanguage(lang) {
     } else {
       el.textContent = dict[key];
     }
+  });
+
+  i18nAriaElements.forEach(el => {
+    const key = el.getAttribute('data-i18n-aria');
+    if (dict[key]) el.setAttribute('aria-label', dict[key]);
   });
 
   placeholderElements.forEach(el => {
@@ -1038,3 +1164,23 @@ langButtons.forEach(btn => {
 
 const storedLang = localStorage.getItem('siteLang') || 'nl';
 setLanguage(storedLang);
+
+// Allow visitors to choose the purpose of a donation before opening SumUp.
+// The existing SumUp links do not automatically transmit the selected purpose.
+const donationGoals = document.querySelectorAll('.impact-goal[data-goal]');
+const selectedGoalLabel = document.getElementById('selected-goal-label');
+if (donationGoals.length && selectedGoalLabel) {
+  donationGoals.forEach(button => {
+    button.addEventListener('click', () => {
+      donationGoals.forEach(goalButton => {
+        const selected = goalButton === button;
+        goalButton.classList.toggle('is-selected', selected);
+        goalButton.setAttribute('aria-pressed', String(selected));
+      });
+      const goalKey = `donation_goal_${button.dataset.goal}_title`;
+      selectedGoalLabel.setAttribute('data-i18n', goalKey);
+      setLanguage(localStorage.getItem('siteLang') || 'nl');
+      document.getElementById('donation-options')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}

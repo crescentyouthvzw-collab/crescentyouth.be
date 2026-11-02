@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evenementenkalender | Crescent Youth vzw</title>
+    <meta name="description" content="Bekijk alle evenementen van Crescent Youth vzw in Brugge en schrijf je rechtstreeks in voor nieuwe activiteiten.">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style.css?v=20261102-calendar">
+    <link rel="stylesheet" href="/Events/calendar.css?v=20261102-calendar">
+</head>
+<body>
+<header class="navbar">
+    <a href="/index.html" class="logo">
+        <img src="/images/crescent_youtrh_logo_new_without name1.png" alt="Crescent Youth logo" class="logo-img">
+        <span class="logo-text">Crescent Youth</span>
+    </a>
+    <nav id="main-nav" aria-label="Hoofdnavigatie">
+        <ul class="nav-links" id="nav-links">
+            <li><a href="/index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="/index.html#activiteiten" data-i18n="nav_activities">Activiteiten</a></li>
+            <li><a href="/Events/calendar.html" data-i18n="nav_events" aria-current="page">Events</a></li>
+            <li><a href="/index.html#membership-preview" data-i18n="nav_membership">Lidmaatschap</a></li>
+            <li><a href="/Donation.html" data-i18n="nav_donate">Doneren</a></li>
+            <li><a href="/index.html#faq" data-i18n="nav_faq">FAQ</a></li>
+            <li><a href="/Registration/Registration.html" data-i18n="nav_register">Lid worden</a></li>
+            <li><a href="/Contact.html" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="nav-actions">
+        <div class="lang-switcher" aria-label="Taal kiezen">
+            <button type="button" class="lang-option active" data-lang="nl">NL</button>
+            <button type="button" class="lang-option" data-lang="en">EN</button>
+            <button type="button" class="lang-option" data-lang="fr">FR</button>
+            <button type="button" class="lang-option" data-lang="ar">AR</button>
+        </div>
+        <button class="menu-toggle" id="mobile-menu" aria-label="Open navigatie" aria-expanded="false"><i class="fas fa-bars"></i></button>
+    </div>
+</header>
+
+<section class="hero calendar-hero">
+    <div class="hero-content">
+        <span class="calendar-eyebrow"><i class="far fa-calendar-check" aria-hidden="true"></i> Crescent Youth vzw</span>
+        <h1 data-i18n="calendar_hero_title">Evenementenkalender</h1>
+        <p data-i18n="calendar_hero_subtitle">Ontdek workshops, sport, ontmoetingen en trips. Schrijf je rechtstreeks in voor aangekondigde evenementen.</p>
+        <a href="#event-calendar" class="btn" data-i18n="calendar_promo_button">Bekijk de kalender</a>
+    </div>
+</section>
+
+<main>
+    <section id="event-calendar" class="section calendar-section">
+        <h2 data-i18n="calendar_section_title">Alle evenementen</h2>
+        <p class="section-intro" data-i18n="calendar_section_intro">Blader door de maanden en klik op een datum om de details te bekijken.</p>
+        <div class="calendar-layout">
+            <div class="calendar-panel">
+                <div class="calendar-toolbar">
+                    <button type="button" id="calendar-prev" class="calendar-nav-btn" aria-label="Vorige maand"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                    <h3 id="calendar-month-title" aria-live="polite">&nbsp;</h3>
+                    <button type="button" id="calendar-next" class="calendar-nav-btn" aria-label="Volgende maand"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                </div>
+                <div class="calendar-weekdays" id="calendar-weekdays" aria-hidden="true"></div>
+                <div class="calendar-days" id="calendar-days" role="group" aria-label="Evenementendatums"></div>
+                <div class="calendar-legend"><span class="event-dot"></span><span id="calendar-legend-label">Datum met een evenement</span></div>
+            </div>
+            <aside class="calendar-events-panel" aria-live="polite">
+                <div class="calendar-events-heading"><span class="calendar-small-label" id="calendar-list-label">Komende evenementen</span><h3 id="calendar-selection-title">Wat staat er gepland?</h3></div>
+                <div id="calendar-events-list" class="calendar-events-list">
+                    <p class="calendar-empty">Evenementen laden...</p>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <section class="section alt calendar-past-section" id="calendar-past-events">
+        <h2 data-i18n="calendar_past_heading">Afgelopen evenementen</h2>
+        <p class="section-intro" data-i18n="calendar_past_intro">Bekijk enkele mooie momenten die we samen beleefden.</p>
+        <div id="calendar-past-list" class="calendar-past-grid"></div>
+    </section>
+
+    <section class="cta-section reveal">
+        <h2 data-i18n="calendar_footer_cta">Zelf een idee voor een activiteit?</h2>
+        <p data-i18n="calendar_footer_text">Laat ons weten wat jij graag bij Crescent Youth zou zien.</p>
+        <a href="/Contact.html" class="btn" data-i18n="footer_contact">Contact</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Crescent Youth vzw</h3>
+            <p data-i18n="footer_about">Wij verbinden jongeren van alle achtergronden met islamitische waarden via educatie, sport en inspirerende activiteiten.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/crescentyouth.be" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@crescentyouth.be" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://linktr.ee/CrescentYouth" target="_blank" rel="noopener noreferrer" class="linktree-icon" aria-label="Linktree"><img src="/images/linktree-seeklogo.png" alt="Linktree"></a>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3 data-i18n="footer_links_title">Snelle links</h3>
+            <p><a href="/index.html" data-i18n="footer_home">Home</a></p>
+            <p><a href="/index.html#activiteiten" data-i18n="footer_activities">Wat doen wij?</a></p>
+            <p><a href="/Donation.html" data-i18n="nav_donate">Doneren</a></p>
+            <p><a href="/Contact.html" data-i18n="footer_contact">Contact</a></p>
+        </div>
+        <div class="footer-section">
+            <h3 data-i18n="footer_contact_title">Contact info</h3>
+            <p><i class="fas fa-envelope" aria-hidden="true"></i> info@crescentyouth.be</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Crescent Youth vzw - Alle rechten voorbehouden</p>
+        <div class="footer-links">
+            <a href="/comply_with_law/terms-and-conditions.html" data-i18n="footer_terms">Algemene voorwaarden</a>
+            <a href="/comply_with_law/privacy-policy.html" data-i18n="footer_privacy">Privacybeleid</a>
+            <a href="/comply_with_law/cookie-policy.html" data-i18n="footer_cookie">Cookiebeleid</a>
+        </div>
+        <a href="#" class="to-top"><i class="fas fa-arrow-up" aria-hidden="true"></i> <span data-i18n="footer_top">Terug naar boven</span></a>
+    </div>
+</footer>
+
+<div id="cookie-banner" class="cookie-banner">
+    <p><span data-i18n="cookies_text">We gebruiken cookies om jouw ervaring te verbeteren. Door onze site te blijven gebruiken, accepteer je ons</span> <a href="/comply_with_law/cookie-policy.html" data-i18n="cookies_policy">cookiebeleid</a>.</p>
+    <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
+</div>
+
+<script src="/script.js?v=20261102-calendar"></script>
+<script src="/Events/calendar.js?v=20261102-calendar"></script>
+</body>
+</html>

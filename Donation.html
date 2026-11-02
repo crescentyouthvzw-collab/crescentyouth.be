@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css?v=20260607-donation1">
+    <link rel="stylesheet" href="style.css?v=20261102-refresh">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
         <ul class="nav-links" id="nav-links">
             <li><a href="index.html" data-i18n="nav_home">Home</a></li>
             <li><a href="index.html#activiteiten" data-i18n="nav_activities">Activiteiten</a></li>
-            <li><a href="index.html#events-highlight" data-i18n="nav_events">Events</a></li>
+            <li><a href="/Events/calendar.html" data-i18n="nav_events">Events</a></li>
             <li><a href="index.html#membership-preview" data-i18n="nav_membership">Lidmaatschap</a></li>
             <li><a href="Donation.html" data-i18n="nav_donate">Doneren</a></li>
             <li><a href="index.html#faq" data-i18n="nav_faq">FAQ</a></li>
@@ -64,42 +64,71 @@
     </div>
 </section>
 
-<section id="donation-options" class="section donation-page reveal">
-    <h2 data-i18n="donation_options_title">Kies een bedrag</h2>
-    <p class="section-intro" data-i18n="donation_options_intro">
-        Kies een bedrag dat bij jou past, of doneer vrij.
-    </p>
+<section class="section donation-page reveal" id="donation-campaign">
+    <div class="fundraising-banner">
+        <div class="fundraising-symbol"><i class="fas fa-seedling" aria-hidden="true"></i></div>
+        <div>
+            <span class="campaign-kicker" data-i18n="donation_campaign_kicker">Ons eerste inzameldoel</span>
+            <h2 data-i18n="donation_campaign_title">Samen meer mogelijk maken</h2>
+            <p data-i18n="donation_campaign_text">We zamelen in voor educatieve workshops, sportactiviteiten en warme ontmoetingsmomenten voor jongeren in Brugge.</p>
+        </div>
+        <div class="fundraising-amount">
+            <span data-i18n="donation_campaign_target">Streefbedrag</span>
+            <strong>€1.000</strong>
+            <small data-i18n="donation_campaign_progress_note">Het opgehaalde bedrag wordt toegevoegd zodra dit bevestigd is.</small>
+        </div>
+    </div>
 
-    <div class="donation-grid">
-        <a href="https://pay.sumup.com/b2c/Q4SVUX2J" target="_blank" rel="noopener noreferrer" class="donation-card donation-open">
-            <span class="donation-icon"><i class="fas fa-hand-holding-heart"></i></span>
-            <strong data-i18n="donation_open_amount">Vrij bedrag</strong>
-        </a>
+    <h2 class="donation-section-heading" data-i18n="donation_impact_title">Waar gaat je bijdrage naartoe?</h2>
+    <p class="section-intro" data-i18n="donation_impact_intro">Kies het soort activiteit dat je wil steunen. Alle bijdragen helpen samen het inzameldoel van €1.000 te bereiken.</p>
 
-        <a href="https://pay.sumup.com/b2c/Q7IMGLP4" target="_blank" rel="noopener noreferrer" class="donation-card">
-            <span class="donation-icon"><i class="fas fa-heart"></i></span>
-            <strong>€50</strong>
-        </a>
+    <div class="impact-goal-grid" role="group" aria-label="Kies een donatiedoel" data-i18n-aria="donation_choose_goal_aria">
+        <button type="button" class="impact-goal is-selected" data-goal="education" aria-pressed="true">
+            <i class="fas fa-book-open" aria-hidden="true"></i>
+            <strong data-i18n="donation_goal_education_title">Educatie & workshops</strong>
+            <span data-i18n="donation_goal_education_text">Materialen, workshops en gastsprekers.</span>
+        </button>
+        <button type="button" class="impact-goal" data-goal="sports" aria-pressed="false">
+            <i class="fas fa-futbol" aria-hidden="true"></i>
+            <strong data-i18n="donation_goal_sports_title">Sport & beweging</strong>
+            <span data-i18n="donation_goal_sports_text">Sportmateriaal en toegankelijke activiteiten.</span>
+        </button>
+        <button type="button" class="impact-goal" data-goal="community" aria-pressed="false">
+            <i class="fas fa-users" aria-hidden="true"></i>
+            <strong data-i18n="donation_goal_community_title">Community & verbinding</strong>
+            <span data-i18n="donation_goal_community_text">Benodigdheden voor veilige ontmoetingen.</span>
+        </button>
+    </div>
 
-        <a href="https://pay.sumup.com/b2c/Q727TTXW" target="_blank" rel="noopener noreferrer" class="donation-card">
-            <span class="donation-icon"><i class="fas fa-star"></i></span>
-            <strong>€25</strong>
-        </a>
+    <div id="donation-options" class="donation-checkout">
+        <h2 data-i18n="donation_options_title">Kies een bedrag</h2>
+        <p class="donation-selected-goal"><span data-i18n="donation_selected_goal">Gekozen doel:</span> <strong id="selected-goal-label" data-i18n="donation_goal_education_title">Educatie & workshops</strong></p>
+        <p class="section-intro" data-i18n="donation_options_intro">Kies een bedrag dat bij jou past, of doneer vrij.</p>
 
-        <a href="https://pay.sumup.com/b2c/QA32NU27" target="_blank" rel="noopener noreferrer" class="donation-card">
-            <span class="donation-icon"><i class="fas fa-seedling"></i></span>
-            <strong>€15</strong>
-        </a>
+        <div class="donation-grid donation-grid-simple">
+            <a href="https://pay.sumup.com/b2c/QMMSLHQP" target="_blank" rel="noopener noreferrer" class="donation-card">
+                <span class="donation-icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
+                <strong>€10</strong>
+            </a>
+            <a href="https://pay.sumup.com/b2c/Q727TTXW" target="_blank" rel="noopener noreferrer" class="donation-card">
+                <span class="donation-icon"><i class="fas fa-star" aria-hidden="true"></i></span>
+                <strong>€25</strong>
+            </a>
+            <a href="https://pay.sumup.com/b2c/Q4SVUX2J" target="_blank" rel="noopener noreferrer" class="donation-card donation-open">
+                <span class="donation-icon"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></span>
+                <strong data-i18n="donation_open_amount">Vrij bedrag</strong>
+            </a>
+        </div>
 
-        <a href="https://pay.sumup.com/b2c/QMMSLHQP" target="_blank" rel="noopener noreferrer" class="donation-card">
-            <span class="donation-icon"><i class="fas fa-users"></i></span>
-            <strong>€10</strong>
-        </a>
-
-        <a href="https://pay.sumup.com/b2c/QM39BZ9G" target="_blank" rel="noopener noreferrer" class="donation-card">
-            <span class="donation-icon"><i class="fas fa-gift"></i></span>
-            <strong>€5</strong>
-        </a>
+        <details class="donation-more-amounts">
+            <summary data-i18n="donation_more_amounts">Andere bedragen bekijken</summary>
+            <div class="donation-other-links">
+                <a href="https://pay.sumup.com/b2c/QM39BZ9G" target="_blank" rel="noopener noreferrer">€5</a>
+                <a href="https://pay.sumup.com/b2c/QA32NU27" target="_blank" rel="noopener noreferrer">€15</a>
+                <a href="https://pay.sumup.com/b2c/Q7IMGLP4" target="_blank" rel="noopener noreferrer">€50</a>
+            </div>
+        </details>
+        <p class="donation-payment-note" data-i18n="donation_payment_note">Alle knoppen openen onze bestaande SumUp-betaallinks. Wil je een gift voor het geselecteerde doel bestemmen? Vermeld het doel in de betalingsopmerking als die optie beschikbaar is, of contacteer ons vooraf. Zonder vermelding gaat de gift naar onze algemene jongerenwerking.</p>
     </div>
 </section>
 
@@ -164,7 +193,7 @@
     <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
 </div>
 
-<script src="script.js?v=20260607-donation1"></script>
+<script src="script.js?v=20261102-refresh"></script>
 
 </body>
 </html>

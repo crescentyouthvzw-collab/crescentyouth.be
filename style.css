@@ -1588,6 +1588,124 @@ footer {
     }
 }
 
+/* Homepage photographic welcome section. Scoped so other page heroes stay unchanged. */
+.home-hero {
+    display: flex;
+    min-height: 610px;
+    align-items: center;
+    justify-content: center;
+    background: #17372a;
+    isolation: isolate;
+}
+.home-hero-media,
+.home-hero-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.home-hero-media { z-index: -2; }
+.home-hero-media img { object-fit: cover; object-position: center 48%; }
+.home-hero::before {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(16, 41, 29, .91), rgba(19, 50, 35, .70) 54%, rgba(15, 42, 29, .46));
+    animation: none;
+    opacity: 1;
+}
+.home-hero .hero-content { max-width: 800px; }
+.home-hero h1 { font-size: clamp(2.5rem, 5vw, 4.4rem); text-shadow: 0 3px 16px rgba(0,0,0,.35); }
+.home-hero p { font-style: normal; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
+
+/* Homepage calendar and campaign teasers. */
+.calendar-promo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 28px;
+    max-width: 1050px;
+    margin: 0 auto 42px;
+    padding: 32px 35px;
+    border-radius: 24px;
+    background: linear-gradient(120deg, #f8f3ea, #fff);
+    border: 1px solid #e8ddcd;
+    box-shadow: 0 10px 34px rgba(25, 54, 38, .07);
+}
+.calendar-promo h3 { color: var(--primary); font-size: clamp(1.35rem, 2.6vw, 1.8rem); margin: 8px 0; }
+.calendar-promo p { color: #56655b; line-height: 1.65; max-width: 620px; }
+.calendar-promo .btn { flex-shrink: 0; white-space: nowrap; background: var(--primary); color: #fff; border-radius: 999px; padding: 14px 24px; font-weight: 700; }
+.calendar-promo .btn:hover { background: var(--green-mid); }
+.donation-target-line { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 15px; color: var(--primary) !important; }
+.donation-target-line i { color: var(--green-mid); }
+.donation-target-line strong { font-size: 1.2rem; }
+
+/* Donation campaign: one transparent €1,000 target and three purposes. */
+.fundraising-banner {
+    display: grid;
+    grid-template-columns: 60px minmax(0, 1fr) minmax(175px, .37fr);
+    align-items: center;
+    gap: 24px;
+    padding: 34px;
+    border-radius: 24px;
+    background: linear-gradient(115deg, #1d4130, #315b44);
+    color: #fff;
+    box-shadow: 0 16px 45px rgba(27, 62, 44, .18);
+}
+.fundraising-symbol { display: grid; width: 60px; height: 60px; place-items: center; border-radius: 18px; background: rgba(255,255,255,.14); color: var(--accent); font-size: 1.8rem; }
+.campaign-kicker { display: inline-block; margin-bottom: 8px; color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.fundraising-banner h2 { color: #fff; font-size: clamp(1.6rem, 2.8vw, 2.1rem); margin: 0 0 10px; text-align: left; }
+.fundraising-banner h2::after { display: none; }
+.fundraising-banner p { color: rgba(255,255,255,.88); line-height: 1.65; }
+.fundraising-amount { display: flex; flex-direction: column; gap: 4px; padding: 20px; border-radius: 18px; background: rgba(255,255,255,.10); text-align: center; }
+.fundraising-amount span { font-weight: 700; font-size: .9rem; }
+.fundraising-amount strong { font-size: clamp(2.1rem, 4vw, 3rem); font-weight: 900; color: var(--accent); line-height: 1.1; }
+.fundraising-amount small { font-size: .75rem; line-height: 1.5; color: rgba(255,255,255,.85); }
+.donation-section-heading { margin-top: 70px !important; }
+.impact-goal-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 32px 0 0; }
+.impact-goal { display: flex; flex-direction: column; align-items: flex-start; gap: 11px; min-height: 195px; padding: 24px; text-align: left; color: var(--text-dark); background: #fff; border: 2px solid #e7e7e2; border-radius: 20px; font: inherit; cursor: pointer; transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.impact-goal i { color: var(--green-mid); font-size: 1.7rem; }
+.impact-goal strong { color: var(--primary); font-size: 1.12rem; }
+.impact-goal span { color: #627066; line-height: 1.55; }
+.impact-goal:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(17, 49, 31, .1); }
+.impact-goal.is-selected { border-color: var(--green-mid); background: #f0f7f2; box-shadow: 0 0 0 3px rgba(59, 114, 76, .12); }
+.impact-goal:focus-visible, .donation-card:focus-visible, .donation-other-links a:focus-visible { outline: 3px solid #c29c68; outline-offset: 3px; }
+.donation-checkout { margin: 75px auto 0; padding-top: 18px; scroll-margin-top: 110px; }
+.donation-selected-goal { text-align: center; color: #56665a; margin: 20px 0 0; }
+.donation-selected-goal strong { color: var(--primary); }
+.donation-checkout .section-intro { margin-top: 15px; margin-bottom: 20px; }
+.donation-grid-simple { max-width: 890px; margin: 26px auto; }
+.donation-grid-simple .donation-card { min-height: 175px; }
+.donation-more-amounts { text-align: center; margin: 20px auto; }
+.donation-more-amounts summary { display: inline-block; color: var(--primary); font-weight: 700; cursor: pointer; text-decoration: underline; text-underline-offset: 4px; }
+.donation-more-amounts summary:hover { color: var(--green-mid); }
+.donation-other-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 20px 0; }
+.donation-other-links a { display: inline-block; min-width: 88px; padding: 12px 20px; border: 1px solid #cbd8ce; border-radius: 999px; font-weight: 700; color: var(--primary); background: #fff; }
+.donation-other-links a:hover { background: #edf4ee; }
+.donation-payment-note { max-width: 810px; margin: 28px auto 0; color: #58675e; font-size: .89rem; line-height: 1.7; text-align: center; }
+
+@media (max-width: 850px) {
+    .calendar-promo { flex-direction: column; align-items: flex-start; }
+    .fundraising-banner { grid-template-columns: 54px minmax(0, 1fr); }
+    .fundraising-symbol { width: 54px; height: 54px; }
+    .fundraising-amount { grid-column: 1 / -1; }
+    .impact-goal-grid { grid-template-columns: 1fr; }
+    .impact-goal { min-height: 0; }
+}
+@media (max-width: 600px) {
+    .home-hero { min-height: 520px; padding: 110px 20px 80px; }
+    .home-hero::before { background: linear-gradient(90deg, rgba(12, 36, 24, .88), rgba(18, 45, 31, .64)); }
+    .home-hero-media img { object-position: center; }
+    .calendar-promo { padding: 25px 22px; }
+    .calendar-promo .btn { width: 100%; text-align: center; }
+    .fundraising-banner { padding: 24px; gap: 17px; }
+    .fundraising-banner h2 { font-size: 1.5rem; }
+    .donation-grid-simple { grid-template-columns: 1fr; }
+    .donation-grid-simple .donation-card { min-height: 115px; flex-direction: row; }
+    .donation-grid-simple .donation-card strong { font-size: 1.65rem; }
+}
+
 @media (max-width: 480px) {
     .quick-stats {
         grid-template-columns: 1fr;
