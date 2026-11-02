@@ -269,6 +269,14 @@
             font-style: italic;
         }
 
+        /* Reuse the existing Noble Journey event imagery until activity photos are supplied. */
+        .education-photo-hero { isolation: isolate; min-height: 500px; display: grid; align-items: center; background: #1a3b2b; }
+        .education-photo-hero .page-hero-photo { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
+        .education-photo-hero .page-hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+        .education-photo-hero::before { inset: 0; z-index: -1; width: 100%; height: 100%; animation: none; background: linear-gradient(90deg, rgba(14, 39, 27, .91), rgba(19, 50, 34, .71), rgba(19, 50, 34, .48)); }
+        .education-photo-hero .hero-content { animation: none; }
+        .education-photo-hero h1, .education-photo-hero p { text-shadow: 0 3px 18px rgba(0,0,0,.35); }
+
         .btn {
             background: var(--accent);
             color: var(--primary);
@@ -720,7 +728,7 @@
         <ul class="nav-links" id="nav-links">
             <li><a href="/index.html" data-i18n="nav_home">Home</a></li>
             <li><a href="/index.html#activiteiten" data-i18n="nav_activities">Wat doen wij?</a></li>
-            <li><a href="/index.html#events-highlight" data-i18n="nav_events">Events</a></li>
+            <li><a href="/Events/calendar.html" data-i18n="nav_events">Events</a></li>
             <li><a href="/index.html#membership-preview" data-i18n="nav_membership">Lidmaatschap</a></li>
             <li><a href="/Donation.html" data-i18n="nav_donate">Doneren</a></li>
             <li><a href="/index.html#faq" data-i18n="nav_faq">FAQ</a></li>
@@ -743,7 +751,8 @@
     </div>
 </header>
 
-<section class="hero">
+<section class="hero education-photo-hero">
+    <div class="page-hero-photo" aria-hidden="true"><img src="/images/NOBLEJOURNEYEVENT/NobleJourneyTop.jpeg" alt="" loading="eager"></div>
     <div class="hero-content">
         <h1 data-i18n="hero_title">Educatie Events</h1>
         <p data-i18n="hero_subtitle">Bekijk onze upcoming en past educatieve activiteiten.</p>
