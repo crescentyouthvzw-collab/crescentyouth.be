@@ -66,6 +66,18 @@ We have **not accessed, edited or tested the spreadsheet itself**. The Apps Scri
 
 8. [Still needed] Confirm the endpoint can save a test registration and return JSON from an actual browser, including an incognito/non-Google-user session. Google's Apps Script redirects, Workspace access restrictions and cross-origin behaviour must be tested before launch.
 
+### Safe editor-only test (no payment, no occupied place)
+
+The source includes `testSportsArenaRegistration()` for a single controlled trial while public registration is still closed. It tests the actual validation, Sheet append, fee and payment-status fields, then removes **only the exact verified dummy row**.
+
+1. Open the dedicated Apps Script project under the new `crescentyouth.be` Google account.
+2. Replace `Code.gs` with the latest `sports-arena-apps-script.gs` from this branch; **Save**. Check that `ARENA_REGISTRATION_OPEN = false` remains unchanged.
+3. In the function dropdown next to **Run**, choose `testSportsArenaRegistration` and click **Run**. Approve the script's Sheets permissions if Google asks.
+4. Look at **Execution log**. Success reads `PASS: registration ... was saved, verified and removed. No seat occupied; no payment sent.`
+5. Open the `Sports Arena 2026` tab and verify there is no `TEST Registration` row. If an error mentions a test ID, check that exact row and remove it manually **only after verifying the ID**.
+
+This test does not call SumUp, needs no public deployment, and leaves the 35 places available. **Do not select `doPost` in the Run dropdown**; it requires an HTTP event argument. Saving the editor code does not replace the currently deployed web-app version. A separate real-browser POST test and deployment update will still be needed before launch.
+
 **Important:** Publishing a new Apps Script version requires updating the deployment. GitHub commits do not deploy Google Apps Script.
 
 ## SumUp payments

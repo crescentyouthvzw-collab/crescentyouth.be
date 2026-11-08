@@ -70,6 +70,12 @@ function doPost(e) {
     return arenaResult_({ success: false, code: 'invalid', message: 'Invalid request.' });
   }
 
+  return arenaProcessRegistration_(data);
+}
+
+// Shared by the live POST handler and the editor-only test. The public handler
+// above still refuses requests while ARENA_REGISTRATION_OPEN is false.
+function arenaProcessRegistration_(data) {
   // Honeypot: do not write automated submissions.
   if (data.website) return arenaResult_({ success: false, code: 'invalid', message: 'Invalid request.' });
   if (data.eventId !== ARENA_EVENT_ID || data.consent !== true) {
@@ -121,6 +127,60 @@ function doPost(e) {
   } catch (err) {
     console.error(err);
     return arenaResult_({ success: false, code: 'server', message: 'Registration unavailable. Please contact the organisers.' });
+  } finally {
+    if (lock.hasLock()) lock.releaseLock();
+  }
+}
+
+/**
+ * Run manually from the Apps Script editor while registration is CLOSED.
+ * Writes a dummy row through the normal validation path, verifies its saved
+ * fields, then removes ONLY that exact row. Never triggers a SumUp payment.
+ */
+function testSportsArenaRegistration() {
+  if (ARENA_REGISTRATION_OPEN) {
+    throw new Error('Close public registration before running this test.');
+  }
+
+  const testEmail = 'sports-arena-test-' + Utilities.getUuid().slice(0, 12).toLowerCase() + '@example.com';
+  const result = JSON.parse(arenaProcessRegistration_({
+    eventId: ARENA_EVENT_ID,
+    firstName: 'TEST',
+    lastName: 'Registration',
+    email: testEmail,
+    phone: '0400000000',
+    memberStatus: 'Yes',
+    sportsSection: 'Discuss',
+    heardFrom: 'Internal registration test',
+    consent: true,
+    website: ''
+  }).getContent());
+
+  if (!result.success || result.amount !== 8 || !result.registrationId) {
+    throw new Error('Test registration failed: ' + JSON.stringify(result));
+  }
+
+  const lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(15000);
+    const sheet = SpreadsheetApp.openById(ARENA_SHEET_ID).getSheetByName(ARENA_TAB);
+    const lastRow = sheet.getLastRow();
+    if (lastRow < 2) throw new Error('Test row not found. Check the sheet manually.');
+
+    const saved = sheet.getRange(lastRow, 1, 1, ARENA_HEADERS.length).getValues()[0];
+    if (saved[1] !== result.registrationId ||
+        String(saved[6]).toLowerCase() !== testEmail ||
+        saved[2] !== ARENA_EVENT_ID ||
+        saved[12] !== 8 ||
+        saved[13] !== 'Pending SumUp payment') {
+      // Never delete an unverified row. If the check fails, an organiser can
+      // locate the dummy entry by its registration ID and remove it manually.
+      throw new Error('Verification failed. No row deleted. Locate test ID ' + result.registrationId);
+    }
+
+    sheet.deleteRow(lastRow);
+    SpreadsheetApp.flush();
+    Logger.log('PASS: registration %s was saved, verified and removed. No seat occupied; no payment sent.', result.registrationId);
   } finally {
     if (lock.hasLock()) lock.releaseLock();
   }
