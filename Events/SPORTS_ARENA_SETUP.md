@@ -58,8 +58,11 @@ We have **not accessed, edited or tested the spreadsheet itself**. The Apps Scri
 4. Leave `ARENA_REGISTRATION_OPEN = false` while configuring.
 5. Run `setupSportsArenaSheet` once and approve Google's permissions. Verify that the **Sports Arena 2026** tab and headers were created.
 6. Choose **Deploy → New deployment → Web app**. Set **Execute as: Me** and use the access option that allows event visitors to submit without signing in (typically **Anyone**). Copy the URL ending in `/exec`.
-7. Add that URL to `googleScriptUrl` in `sports-arena-config.js`.
-8. Confirm the endpoint can successfully save a test registration and return JSON in an actual browser. Google's Apps Script redirects and cross-origin behaviour must be tested before launch.
+7. [Done — 8 November 2026] The organiser deployed version 1 under the `crescentyouth.be` Workspace account. The `/exec` URL is configured in `googleScriptUrl` in `sports-arena-config.js`:
+
+   https://script.google.com/a/macros/crescentyouth.be/s/AKfycby6HIGE_O9C7W0U1MbvX9uUOlZ2MsPzLa9BGLiYslSlvXUz-pi164i1ckaC7x9lIy25WQ/exec
+
+8. [Still needed] Confirm the endpoint can save a test registration and return JSON from an actual browser, including an incognito/non-Google-user session. Google's Apps Script redirects, Workspace access restrictions and cross-origin behaviour must be tested before launch.
 
 **Important:** Publishing a new Apps Script version requires updating the deployment. GitHub commits do not deploy Google Apps Script.
 

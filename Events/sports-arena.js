@@ -147,8 +147,12 @@
         if (config.registrationOpen !== true) return false;
         try {
             const url = new URL(config.googleScriptUrl);
+            // Apps Script can use either the standard deployment path or the
+            // Google Workspace domain-specific /a/macros/{domain}/s/... path.
+            const validScriptPath = /^\/macros\/s\/[^/]+\/exec$/.test(url.pathname) ||
+                /^\/a\/macros\/[^/]+\/s\/[^/]+\/exec$/.test(url.pathname);
             return url.protocol === 'https:' && url.hostname === 'script.google.com' &&
-                url.pathname.startsWith('/macros/s/') && url.pathname.endsWith('/exec') &&
+                validScriptPath &&
                 validPaymentUrl(config.sumupMemberUrl) && validPaymentUrl(config.sumupNonMemberUrl);
         } catch (_) {
             return false;
