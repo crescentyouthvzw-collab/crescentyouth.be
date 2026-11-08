@@ -1,7 +1,8 @@
 (() => {
     'use strict';
 
-    // This is a draft until the venue, sheet receiver and both payment links are ready.
+    // The event details are confirmed. Registration stays gated independently
+    // until the public Google Sheets + SumUp flow is verified and opened.
     const config = window.SPORTS_ARENA_CONFIG || {};
     const form = document.getElementById('registrationForm');
     const fields = document.getElementById('registrationFields');
@@ -155,6 +156,9 @@
         const status = memberStatus.value;
         priceStatus.textContent = status === 'Yes' ? t('price_member') :
             status === 'No' ? t('price_guest') : t('price_select');
+        document.querySelectorAll('.event-registration .price-line[data-plan]').forEach(line => {
+            line.classList.toggle('is-selected', line.dataset.plan === status);
+        });
     }
 
     function updateAvailability() {

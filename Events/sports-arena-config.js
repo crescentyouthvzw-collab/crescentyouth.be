@@ -1,8 +1,8 @@
 /*
  * THE SPORTS ARENA — registration launch controls.
  *
- * Leave registrationOpen false until the venue is confirmed, the Apps Script
- * receiver is deployed and tested, and BOTH SumUp payment links exist.
+ * Leave registrationOpen false until the deployed Apps Script receiver has
+ * passed a real browser-to-Sheets test and organisers approve opening.
  * Do not put Google credentials, API keys, or private attendee data here.
  */
 window.SPORTS_ARENA_CONFIG = Object.freeze({

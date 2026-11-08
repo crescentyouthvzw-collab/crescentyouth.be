@@ -11,10 +11,13 @@ Current event schedule: **13:00–15:00 social games and connections**, then **1
 
 - `/Events/sports-arena.html`: event details, programme, pricing and the Noble Journey-style registration form.
 - `/Events/sports-arena.css` and `/Events/sports-arena.js`: responsive design and NL/EN/FR/AR translations.
+- `/Events/event-registration.css`: reusable two-column Noble Journey-style registration components used by this event and available for future events (see `EVENT_REGISTRATION_TEMPLATE.md`).
 - `/Events/sports-arena-config.js`: registration switch and SumUp/Google Apps Script URL slots.
 - `/Events/sports-arena-apps-script.gs`: Google Sheet receiver to install separately.
 - `/Events/sport.html`: upcoming-event card linked to the new page.
 - `/Events/events.json`: calendar entry, currently linked to details rather than an open registration.
+
+The registration view now follows the **open-form Noble Journey layout from before its 26 May 2026 closing-registration commit**: price card on the left, form card on the right, clear live fee summary and mobile stacking. Only the visual pattern is reused; Sports Arena keeps its own field choices, server-side rules and SumUp links.
 
 Source branch: `feature/the-sports-arena-2026`. The event information can be published to `main` while registration and payments remain disabled.
 
