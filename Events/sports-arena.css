@@ -69,7 +69,7 @@ button { cursor: pointer; }
 .detail-card small { color: var(--muted); font-size: .78rem; text-transform: uppercase; font-weight: 850; letter-spacing: .04em; }
 .detail-card strong { font-size: 1.03rem; line-height: 1.4; }
 .detail-card span { color: #657166; font-size: .88rem; }
-.programme-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.programme-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .programme-card { padding: 30px 27px; border-radius: 24px; background: white; box-shadow: 0 10px 30px var(--shadow); }
 .programme-time { display: inline-block; padding: 6px 13px; border-radius: 99px; background: #f0e4d2; color: var(--primary); font-weight: 900; font-size: .85rem; }
 .programme-icon { display: grid; place-items: center; margin-top: 24px; width: 54px; height: 54px; border-radius: 16px; background: var(--primary); color: #e9d0ac; font-size: 1.3rem; }

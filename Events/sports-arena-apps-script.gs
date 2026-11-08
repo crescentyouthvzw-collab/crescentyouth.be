@@ -9,7 +9,7 @@ const ARENA_SHEET_ID = '1Aw5vezIgw6hH_aTUshbXn9-fp9NjNuZQ4BRQ2XCfCdY';
 const ARENA_TAB = 'Sports Arena 2026';
 const ARENA_EVENT_ID = 'the-sports-arena-2026';
 const ARENA_EVENT_DATE = '2026-11-29';
-const ARENA_MAX_REGISTRATIONS = 30;
+const ARENA_MAX_REGISTRATIONS = 35;
 
 // IMPORTANT: change to true only after venue approval, privacy review,
 // successful end-to-end Sheet + SumUp tests, and a final launch decision.

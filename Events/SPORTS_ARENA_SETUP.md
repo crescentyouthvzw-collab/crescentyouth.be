@@ -5,6 +5,10 @@ Organiser: Crescent Youth vzw
 Planned venue: Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge  
 Status: **venue not finally confirmed; registration closed**
 
+**Date clarification needed:** the organiser's latest message said "29 October", while the original plan and current site say **29 November 2026**. October 2026 has already passed. Leave the website/calendar on 29 November until the month is explicitly confirmed.
+
+Current event schedule: **13:00–15:00 social games and connections**, then **15:00–16:30 sports**. No named prayer break appears in the public schedule; any break can be arranged later. The sports groups are separated with screening between the girls' and boys' sections. Public places and the registration cap: **35**.
+
 ## What has been prepared
 
 - `/Events/sports-arena.html`: event details, programme, pricing and the Noble Journey-style registration form.
@@ -73,14 +77,14 @@ On-site entry is **€15 only if places remain**; this is not handled by the onl
 Before opening registration:
 
 - [ ] Confirm the sports hall (two sections) and Room C for the needed hours, including setup/cleanup.
-- [ ] Confirm venue price, maximum capacity (Room C currently quoted as 30), prayer space, snacks/drinks and equipment.
-- [ ] Confirm the sisters' sports privacy arrangements; the venue indicated that windows cannot be covered.
+- [ ] Confirm venue price, snacks/drinks and equipment. **Room C was previously quoted for 30; confirm a suitable arrangement for the newly planned 35 participants before opening registration.**
+- [ ] Verify the planned physical screening between girls' and boys' sections works on site; the venue previously indicated that windows cannot be covered.
 - [ ] Agree the age/guardian policy if minors can attend.
 - [ ] Finalise social activities, sisters' sports and brothers' sports.
 - [ ] Review the privacy notice and appropriate access/retention of participant data.
 - [ ] Deploy and authorise the Apps Script and verify test rows in the specified Sheet.
 - [ ] Create the two SumUp links and verify each charges the expected amount.
-- [ ] Test both a member and a non-member registration end to end, including duplicate detection and the 30-place limit.
+- [ ] Test both a member and a non-member registration end to end, including duplicate detection and the 35-place limit.
 - [ ] Set `ARENA_REGISTRATION_OPEN = true` in Apps Script and redeploy it.
 - [ ] Set `registrationOpen: true` in `sports-arena-config.js`.
 - [ ] Set `registrationOpen: true` for the event in `Events/events.json`.
@@ -94,7 +98,7 @@ The page and calendar deliberately show the location as **provisional** until co
 - Confirmed venue times, cost and exact space allocation.
 - Snack/drink arrangements, what to bring and participant age policy.
 - Poster/hero imagery if desired.
-- Whether the maximum registration count should remain 30.
+- Final confirmation of the date/month, plus the 35-person venue arrangement.
 
 ## Testing and security notes
 
