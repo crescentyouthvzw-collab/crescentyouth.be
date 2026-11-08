@@ -1,11 +1,9 @@
-# THE SPORTS ARENA — draft branch setup
+# THE SPORTS ARENA — website and registration operations
 
 Event: Sunday, 29 November 2026, 13:00–16:30  
 Organiser: Crescent Youth vzw  
-Planned venue: Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge  
-Status: **venue not finally confirmed; registration closed**
-
-**Date clarification needed:** the organiser's latest message said "29 October", while the original plan and current site say **29 November 2026**. October 2026 has already passed. Leave the website/calendar on 29 November until the month is explicitly confirmed.
+Confirmed venue: Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge  
+Status: **date, venue and event times confirmed by organiser; registration still closed pending live end-to-end verification**
 
 Current event schedule: **13:00–15:00 social games and connections**, then **15:00–16:30 sports**. No named prayer break appears in the public schedule; any break can be arranged later. The sports groups are separated with screening between the girls' and boys' sections. Public places and the registration cap: **35**.
 
@@ -18,7 +16,7 @@ Current event schedule: **13:00–15:00 social games and connections**, then **1
 - `/Events/sport.html`: upcoming-event card linked to the new page.
 - `/Events/events.json`: calendar entry, currently linked to details rather than an open registration.
 
-This work is on `feature/the-sports-arena-2026`, **not on the published main branch**.
+Source branch: `feature/the-sports-arena-2026`. The event information can be published to `main` while registration and payments remain disabled.
 
 ## Registration data destination
 
@@ -48,7 +46,7 @@ The receiver creates a tab called **Sports Arena 2026** with these columns:
 14. Payment Status
 15. Payment Notes
 
-We have **not accessed, edited or tested the spreadsheet itself**. The Apps Script must be installed and authorised by an account with edit access. Do not make the registration spreadsheet public.
+The organiser created the tab and verified the headers in the spreadsheet. Keep the registration spreadsheet private.
 
 ## One-time Google Sheet connection
 
@@ -64,7 +62,7 @@ We have **not accessed, edited or tested the spreadsheet itself**. The Apps Scri
 
    The organiser confirmed that the URL is reachable from an InPrivate browser window (opening it via GET shows the expected `doGet`-not-found message because this script only implements `doPost`). The remaining browser POST/CORS test is still required before launch.
 
-8. [Still needed] Confirm the endpoint can save a test registration and return JSON from an actual browser, including an incognito/non-Google-user session. Google's Apps Script redirects, Workspace access restrictions and cross-origin behaviour must be tested before launch.
+8. [Still needed] Confirm the endpoint can save a test registration and return JSON from an actual browser, including an incognito/non-Google-user session. Google's Apps Script redirects, Workspace access restrictions and cross-origin behaviour must be tested before opening registration.
 
 ### Safe editor-only test (no payment, no occupied place)
 
@@ -77,6 +75,8 @@ The source includes `testSportsArenaRegistration()` for a single controlled tria
 5. Open the `Sports Arena 2026` tab and verify there is no `TEST Registration` row. If an error mentions a test ID, check that exact row and remove it manually **only after verifying the ID**.
 
 This test does not call SumUp, needs no public deployment, and leaves the 35 places available. **Do not select `doPost` in the Run dropdown**; it requires an HTTP event argument. Saving the editor code does not replace the currently deployed web-app version. A separate real-browser POST test and deployment update will still be needed before launch.
+
+**Verified 8 November 2026:** the organiser ran `testSportsArenaRegistration()` successfully. The execution log reported that a dummy €8 registration was saved, verified and removed, with no seat occupied and no payment sent; the sheet was empty afterward. This is an editor-only test, not proof of the public browser flow.
 
 **Important:** Publishing a new Apps Script version requires updating the deployment. GitHub commits do not deploy Google Apps Script.
 
@@ -97,30 +97,32 @@ On-site entry is **€15 only if places remain**; this is not handled by the onl
 
 Before opening registration:
 
-- [ ] Confirm the sports hall (two sections) and Room C for the needed hours, including setup/cleanup.
+- [x] Confirm event date, advertised 13:00–16:30 hours and venue name/address with the organiser.
+- [ ] Confirm the exact sports hall and social room allocation for the needed hours, including setup/cleanup.
 - [ ] Confirm venue price, snacks/drinks and equipment. **Room C was previously quoted for 30; confirm a suitable arrangement for the newly planned 35 participants before opening registration.**
 - [ ] Verify the planned physical screening between girls' and boys' sections works on site; the venue previously indicated that windows cannot be covered.
 - [ ] Agree the age/guardian policy if minors can attend.
 - [ ] Finalise social activities, sisters' sports and brothers' sports.
 - [ ] Review the privacy notice and appropriate access/retention of participant data.
-- [ ] Deploy and authorise the Apps Script and verify test rows in the specified Sheet.
+- [x] Deploy and authorise the Apps Script; run the editor-only test with verified dummy row cleanup.
+- [ ] Verify a real browser POST to the deployed receiver without creating or charging a real attendee.
 - [x] Add the supplied €8 member and €10 non-member SumUp links to the website configuration.
 - [ ] Test each SumUp link at launch and verify the intended amount and payment flow.
 - [ ] Test both a member and a non-member registration end to end, including duplicate detection and the 35-place limit.
 - [ ] Set `ARENA_REGISTRATION_OPEN = true` in Apps Script and redeploy it.
 - [ ] Set `registrationOpen: true` in `sports-arena-config.js`.
 - [ ] Set `registrationOpen: true` for the event in `Events/events.json`.
-- [ ] Merge the reviewed GitHub branch into `main` only when the event is ready for public launch.
+- [ ] Publish confirmed event information to `main` with registration and payments switched **off**.
 
-The page and calendar deliberately show the location as **provisional** until confirmed. No registration, payment or Sheet write is active from the GitHub branch as delivered.
+The public page shows the confirmed venue and programme, while the form stays disabled until a separate registration-opening decision. An Apps Script deployment alone does not make the website ready to accept payments.
 
 ## Content placeholders to finalise
 
 - Actual social games, sisters' sports and brothers' sports.
-- Confirmed venue times, cost and exact space allocation.
+- Venue cost, room allocation and equipment details (the public date/time/location are confirmed).
 - Snack/drink arrangements, what to bring and participant age policy.
 - Poster/hero imagery if desired.
-- Final confirmation of the date/month, plus the 35-person venue arrangement.
+- Confirm the room/venue plan accommodates 35 participants.
 
 ## Testing and security notes
 

@@ -61,8 +61,6 @@ button { cursor: pointer; }
 .section h2 { font-family: Ubuntu, sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.18; letter-spacing: -.02em; text-align: center; color: var(--primary); }
 .section-kicker { display: block; text-align: center; margin-bottom: 10px; color: #457456; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 900; }
 .section-intro { max-width: 800px; margin: 22px auto 36px; color: #5e6b62; line-height: 1.8; text-align: center; font-size: 1.06rem; }
-.notice-banner { display: flex; align-items: center; justify-content: center; gap: 12px; max-width: 900px; margin: 0 auto 50px; padding: 15px 20px; border: 1px solid #e5d2a7; border-radius: 15px; color: #735523; background: #fff6e2; font-weight: 700; text-align: left; }
-.notice-banner i { font-size: 1.3rem; flex: 0 0 auto; }
 .event-detail-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 38px; }
 .detail-card { display: flex; flex-direction: column; gap: 6px; min-height: 195px; padding: 26px 22px; border: 1px solid #e8e9e3; border-radius: 21px; background: white; box-shadow: 0 8px 28px var(--shadow); }
 .detail-card i { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 7px; border-radius: 50%; color: var(--primary); background: #f0e1ce; }
@@ -75,7 +73,6 @@ button { cursor: pointer; }
 .programme-icon { display: grid; place-items: center; margin-top: 24px; width: 54px; height: 54px; border-radius: 16px; background: var(--primary); color: #e9d0ac; font-size: 1.3rem; }
 .programme-card h3 { margin-top: 19px; color: var(--primary); font-size: 1.2rem; }
 .programme-card p { margin-top: 12px; color: #59665e; font-size: .97rem; }
-.programme-card .tba { margin-top: 18px; padding-top: 13px; border-top: 1px solid #e6e9e3; color: #816c46; font-size: .88rem; font-weight: 800; }
 .price-grid { display: flex; justify-content: center; gap: 22px; flex-wrap: wrap; max-width: 770px; margin: 36px auto 0; }
 .price-box { display: flex; flex-direction: column; flex: 1 1 285px; align-items: center; padding: 30px 22px; border: 1px solid #e8e5df; border-radius: 24px; background: #fff; box-shadow: 0 10px 30px var(--shadow); text-align: center; }
 .price-box.featured { background: #fefaf4; border-color: #d4b896; }
@@ -92,7 +89,6 @@ button { cursor: pointer; }
 .side-list { list-style: none; margin-top: 22px; }
 .side-list li { display: flex; gap: 12px; align-items: start; margin-top: 12px; }
 .side-list i { color: var(--accent); margin-top: 6px; }
-.form-side-card .side-warning { margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.2); color: #ecd4b3; font-size: .9rem; }
 .registration-status { padding: 16px 18px; margin-bottom: 18px; border: 1px solid #e4cd98; border-radius: 15px; background: #fff7e5; color: #77521b; font-weight: 850; }
 .registration-status.open { background: #eaf5eb; color: #2e633c; border-color: #a8c9ae; }
 .membership-form fieldset { border: 0; min-width: 0; }
@@ -120,7 +116,6 @@ footer { background: var(--primary); color: white; padding: 45px 24px 23px; }
 .footer-grid a { display: block; margin-top: 7px; }
 .footer-grid a:hover, .footer-bottom a:hover { color: var(--accent); }
 .footer-bottom { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid rgba(255,255,255,.19); padding-top: 18px; max-width: 1180px; margin: 0 auto; font-size: .83rem; color: rgba(255,255,255,.7); }
-[dir="rtl"] .notice-banner { text-align: right; }
 [dir="rtl"] .programme-card, [dir="rtl"] .detail-card, [dir="rtl"] .form-side-card, [dir="rtl"] .form-card { text-align: right; }
 [dir="rtl"] .checkbox-label { direction: rtl; }
 :focus-visible { outline: 3px solid #d4b896; outline-offset: 3px; }
