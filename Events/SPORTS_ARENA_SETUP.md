@@ -60,7 +60,9 @@ We have **not accessed, edited or tested the spreadsheet itself**. The Apps Scri
 6. Choose **Deploy → New deployment → Web app**. Set **Execute as: Me** and use the access option that allows event visitors to submit without signing in (typically **Anyone**). Copy the URL ending in `/exec`.
 7. [Done — 8 November 2026] The organiser deployed version 1 under the `crescentyouth.be` Workspace account. The `/exec` URL is configured in `googleScriptUrl` in `sports-arena-config.js`:
 
-   https://script.google.com/a/macros/crescentyouth.be/s/AKfycby6HIGE_O9C7W0U1MbvX9uUOlZ2MsPzLa9BGLiYslSlvXUz-pi164i1ckaC7x9lIy25WQ/exec
+   https://script.google.com/macros/s/AKfycby6HIGE_O9C7W0U1MbvX9uUOlZ2MsPzLa9BGLiYslSlvXUz-pi164i1ckaC7x9lIy25WQ/exec
+
+   The organiser confirmed that the URL is reachable from an InPrivate browser window (opening it via GET shows the expected `doGet`-not-found message because this script only implements `doPost`). The remaining browser POST/CORS test is still required before launch.
 
 8. [Still needed] Confirm the endpoint can save a test registration and return JSON from an actual browser, including an incognito/non-Google-user session. Google's Apps Script redirects, Workspace access restrictions and cross-origin behaviour must be tested before launch.
 
