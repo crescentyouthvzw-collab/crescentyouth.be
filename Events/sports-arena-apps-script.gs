@@ -1,11 +1,11 @@
 /**
  * THE SPORTS ARENA — Google Apps Script receiver for the registration form.
  *
- * Install in the Google Sheet from Extensions > Apps Script and deploy as a
- * Web app running as the spreadsheet owner. Keep the spreadsheet private.
+ * Paste into the separate Sports Arena Apps Script project, then deploy as a
+ * Web app running as the script owner. Keep the spreadsheet private.
  * This file is source code only; it is NOT deployed by GitHub Pages.
  */
-const ARENA_SHEET_ID = '1Aw5vezIgw6hH_aTUshbXn9-fp9NjNuZQ4BRQ2XCfCdY';
+const ARENA_SHEET_ID = '1SjF_CqadSiCJIPO7w9F5A4lpjoL6b73hxf8FBP5hGOA';
 const ARENA_TAB = 'Sports Arena 2026';
 const ARENA_EVENT_ID = 'the-sports-arena-2026';
 const ARENA_EVENT_DATE = '2026-11-29';

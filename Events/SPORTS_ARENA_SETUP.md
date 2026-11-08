@@ -22,9 +22,13 @@ This work is on `feature/the-sports-arena-2026`, **not on the published main bra
 
 ## Registration data destination
 
-Existing spreadsheet supplied by the organisers:
+New registration spreadsheet created under the organisers' new Google account:
 
-https://docs.google.com/spreadsheets/d/1Aw5vezIgw6hH_aTUshbXn9-fp9NjNuZQ4BRQ2XCfCdY/edit
+https://docs.google.com/spreadsheets/d/1SjF_CqadSiCJIPO7w9F5A4lpjoL6b73hxf8FBP5hGOA/edit
+
+Dedicated Apps Script project (created by the organiser under the new account):
+
+https://script.google.com/u/8/home/projects/1sESGhCvHBUFKmuFx7Accy22oBhRGwgx0q2fMKpFqAVruqEgLmqqeLQyy/edit
 
 The receiver creates a tab called **Sports Arena 2026** with these columns:
 
@@ -48,9 +52,9 @@ We have **not accessed, edited or tested the spreadsheet itself**. The Apps Scri
 
 ## One-time Google Sheet connection
 
-1. Open the spreadsheet using its owner/editor account.
-2. Go to **Extensions → Apps Script**.
-3. Paste the contents of `sports-arena-apps-script.gs` into `Code.gs`.
+1. Sign in to the new Google account with edit permission on the new spreadsheet.
+2. Open the dedicated Apps Script project linked above; do not modify the previous event's script.
+3. Paste the updated contents of `sports-arena-apps-script.gs` into `Code.gs` and save. The new spreadsheet ID is already set in the source.
 4. Leave `ARENA_REGISTRATION_OPEN = false` while configuring.
 5. Run `setupSportsArenaSheet` once and approve Google's permissions. Verify that the **Sports Arena 2026** tab and headers were created.
 6. Choose **Deploy → New deployment → Web app**. Set **Execute as: Me** and use the access option that allows event visitors to submit without signing in (typically **Anyone**). Copy the URL ending in `/exec`.
