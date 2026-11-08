@@ -61,12 +61,12 @@ We have **not accessed, edited or tested the spreadsheet itself**. The Apps Scri
 
 ## SumUp payments
 
-Create **two separate SumUp payment links**, each with the correct fixed amount:
+The organisers supplied two active reusable SumUp payment links (amounts checked against their screenshots):
 
-- Member: **€8**
-- Non-member: **€10**
+- Member: **€8** — https://pay.sumup.com/b2c/QAEK6E05
+- Non-member: **€10** — https://pay.sumup.com/b2c/QFMILULQ
 
-Put them in `sumupMemberUrl` and `sumupNonMemberUrl` in `sports-arena-config.js`.
+Both URLs are now configured in `sumupMemberUrl` and `sumupNonMemberUrl` in `sports-arena-config.js`. Keep the registration switch disabled until the sheet receiver is tested; attendees must register before redirecting to the appropriate link.
 
 The form saves a registration first, then redirects to the matching SumUp link. The spreadsheet records **Pending SumUp payment**. It does **not** automatically mark a payment as received. Reconcile payments in SumUp before changing the Sheet payment status to confirmed. Do not mistake a submitted form for a paid ticket.
 
@@ -83,7 +83,8 @@ Before opening registration:
 - [ ] Finalise social activities, sisters' sports and brothers' sports.
 - [ ] Review the privacy notice and appropriate access/retention of participant data.
 - [ ] Deploy and authorise the Apps Script and verify test rows in the specified Sheet.
-- [ ] Create the two SumUp links and verify each charges the expected amount.
+- [x] Add the supplied €8 member and €10 non-member SumUp links to the website configuration.
+- [ ] Test each SumUp link at launch and verify the intended amount and payment flow.
 - [ ] Test both a member and a non-member registration end to end, including duplicate detection and the 35-place limit.
 - [ ] Set `ARENA_REGISTRATION_OPEN = true` in Apps Script and redeploy it.
 - [ ] Set `registrationOpen: true` in `sports-arena-config.js`.

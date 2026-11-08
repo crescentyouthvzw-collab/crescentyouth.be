@@ -8,6 +8,6 @@
 window.SPORTS_ARENA_CONFIG = Object.freeze({
     registrationOpen: false,
     googleScriptUrl: '',
-    sumupMemberUrl: '',       // SumUp payment link charging exactly €8
-    sumupNonMemberUrl: ''     // SumUp payment link charging exactly €10
+    sumupMemberUrl: 'https://pay.sumup.com/b2c/QAEK6E05',       // €8 members
+    sumupNonMemberUrl: 'https://pay.sumup.com/b2c/QFMILULQ'     // €10 non-members
 });
