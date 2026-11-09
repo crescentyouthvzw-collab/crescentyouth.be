@@ -384,30 +384,55 @@ function arenaSendConfirmation_(row) {
   if (!/^SA26-[A-F0-9-]+$/.test(reference) || !arenaValidEmail_(row[6])) {
     throw new Error('Invalid confirmation recipient or reference.');
   }
-  const subject = 'Je plek is bevestigd | The Social Arena';
+  const subject = 'Je inschrijving is bevestigd | The Social Arena';
+  const date = 'Zondag 29 november 2026';
+  const time = '13:00–16:30 uur';
+  const venue = 'Buurtcentrum Xaverianen';
+  const address = 'Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge';
+  const amount = '€ ' + Number(row[12]).toFixed(2).replace('.', ',');
+  const contact = 'info@crescentyouth.be';
+  const intro = 'We hebben je betaling ontvangen. Je inschrijving voor The Social Arena is definitief bevestigd.';
   const body = [
-    'Bedankt voor je inschrijving! We hebben je betaling ontvangen en je plek is bevestigd.',
-    '',
-    'The Social Arena | Crescent Youth vzw',
-    'Zondag 29 november 2026, 13.00–16.30 uur',
-    'Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge',
-    'Betaald: EUR ' + Number(row[12]).toFixed(2),
-    'Inschrijvingsnummer: ' + reference,
-    '',
-    'We kijken ernaar uit je te zien!',
-    'Crescent Youth vzw',
-    '',
-    'Dit is een automatisch bericht. Vragen? Mail naar info@crescentyouth.be.'
+    intro, '',
+    date + ' · ' + time, venue, address, '',
+    'Betaald bedrag: ' + amount,
+    'Inschrijvingsnummer: ' + reference, '',
+    'Tot in Brugge!',
+    'Crescent Youth vzw', '',
+    'Dit is een automatisch bericht. Vragen? Mail naar ' + contact + '.'
   ].join('\n');
+
+  const htmlBody = `
+    <div lang="nl" style="background-color:#edf2ee;padding:16px 8px;font-family:Arial,sans-serif">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="max-width:560px;background-color:#ffffff;color:#173126;border:1px solid #dbe6dd">
+        <tr><td bgcolor="#173126" style="padding:26px 24px;border-top:4px solid #cfb26b;color:#ffffff">
+          <p style="margin:0 0 12px;color:#f0d99e;font-size:12px;letter-spacing:1px;font-weight:bold">CRESCENT YOUTH VZW</p>
+          <h1 style="margin:0;font-size:28px;line-height:1.2;color:#ffffff">The Social Arena</h1>
+          <p style="margin:10px 0 0;font-size:16px;color:#e5f2e9">Je inschrijving is bevestigd</p>
+        </td></tr>
+        <tr><td style="padding:24px;font-size:16px;line-height:1.55">
+          <p style="margin:0 0 20px">${intro}</p>
+          <h2 style="margin:0 0 10px;font-size:18px">Praktische informatie</h2>
+          <p style="margin:0 0 14px"><strong>${date}</strong><br>${time}</p>
+          <p style="margin:0 0 22px"><strong>${venue}</strong><br>${address}</p>
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr><td bgcolor="#edf5ef" style="padding:16px;color:#173126;border:1px solid #dbe6dd">
+              <p style="margin:0 0 10px"><strong>Betaald bedrag</strong><br>${amount}</p>
+              <p style="margin:0;overflow-wrap:anywhere;word-break:break-word"><strong>Inschrijvingsnummer</strong><br>${reference}</p>
+            </td></tr>
+          </table>
+          <p style="margin:20px 0 0">Tot in Brugge!<br><strong>Crescent Youth vzw</strong></p>
+        </td></tr>
+        <tr><td bgcolor="#f4f7f4" style="padding:16px 24px;color:#30483a;border-top:1px solid #dbe6dd;font-size:14px;line-height:1.5">
+          Dit is een automatisch bericht.<br>Vragen? Mail naar <a href="mailto:${contact}" style="color:#205b3d;text-decoration:underline">${contact}</a>.
+        </td></tr>
+      </table>
+    </div>`;
   MailApp.sendEmail({
     to: row[6],
     subject: subject,
     body: body,
-    htmlBody: '<div style="font:16px/1.6 Arial,sans-serif;color:#173126;max-width:560px;margin:auto">' +
-      '<div style="background:#173126;color:#fff;padding:24px"><small>CRESCENT YOUTH VZW</small>' +
-      '<h1 style="margin:8px 0 0">Je plek is bevestigd</h1></div>' +
-      '<div style="background:#f7f4ef;padding:24px"><p>' + body.split('\n').join('<br>') +
-      '</p></div></div>',
+    htmlBody: htmlBody,
     name: 'Crescent Youth vzw',
     noReply: true
   });
