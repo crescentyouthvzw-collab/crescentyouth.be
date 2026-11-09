@@ -107,25 +107,8 @@ if (statsSection && 'IntersectionObserver' in window &&
   statsObserver.observe(statsSection);
 }
 
-// Cookie banner
-const cookieBanner = document.getElementById('cookie-banner');
-const cookieAccept = document.getElementById('cookie-accept');
-
-if (cookieBanner && !localStorage.getItem('cookiesAccepted')) {
-  setTimeout(() => {
-    cookieBanner.classList.add('show');
-  }, 1000);
-}
-
-if (cookieAccept && cookieBanner) {
-  cookieAccept.addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    cookieBanner.classList.remove('show');
-    setTimeout(() => {
-      cookieBanner.style.display = 'none';
-    }, 400);
-  });
-}
+// The site only stores the language preference.
+document.getElementById('cookie-banner')?.remove();
 
 // FAQ toggle
 const faqQuestions = document.querySelectorAll('.faq-question');
@@ -206,7 +189,7 @@ const translations = {
     donation_goal_sports_text: 'Sportmateriaal en toegankelijke activiteiten.',
     donation_goal_community_title: 'Community & verbinding',
     donation_goal_community_text: 'Benodigdheden voor veilige ontmoetingen.',
-    donation_selected_goal: 'Gekozen doel:',
+    donation_selected_goal: 'Voorkeur (niet meegestuurd naar SumUp):',
     donation_more_amounts: 'Andere bedragen bekijken',
     donation_payment_note: 'Alle knoppen openen onze bestaande SumUp-betaallinks. Wil je een gift voor het geselecteerde doel bestemmen? Vermeld het doel in de betalingsopmerking als die optie beschikbaar is, of contacteer ons vooraf. Zonder vermelding gaat de gift naar onze algemene jongerenwerking.',
     calendar_promo_label: 'Evenementenkalender',
@@ -365,7 +348,7 @@ const translations = {
     membership_photo: 'Ik geef toestemming dat Crescent Youth foto’s/video’s mag gebruiken voor communicatie en sociale media.',
     membership_button: 'Doorgaan naar betaling',
     membership_loading: 'Bezig met verwerken... even geduld',
-    membership_note: 'Na betaling, vermeld je volledige naam en e-mailadres in de SumUp-betalingsopmerking.',
+    membership_note: 'Vermeld vóór je betaalt de naam en het e-mailadres van je aanvraag in de SumUp-betalingsopmerking als die optie beschikbaar is. Kan je geen opmerking toevoegen? Mail ons je betalingsreferentie.',
 
     membership_placeholder_email: 'voorbeeld@gmail.com',
     membership_placeholder_phone: '123456789',
@@ -438,7 +421,7 @@ const translations = {
     donation_goal_sports_text: 'Sports equipment and accessible activities.',
     donation_goal_community_title: 'Community & connection',
     donation_goal_community_text: 'Supplies for safe, welcoming gatherings.',
-    donation_selected_goal: 'Selected goal:',
+    donation_selected_goal: 'Preference (not sent to SumUp):',
     donation_more_amounts: 'View other amounts',
     donation_payment_note: 'All buttons open our existing SumUp payment links. To designate a gift for your selected goal, mention it in the payment note if that option is available, or contact us first. Gifts without a designation support our general youth activities.',
     calendar_promo_label: 'Event calendar',
@@ -598,7 +581,7 @@ const translations = {
     membership_photo: 'I allow Crescent Youth to use photos/videos for communication and social media.',
     membership_button: 'Proceed to Payment',
     membership_loading: 'Processing... Please wait',
-    membership_note: 'After payment, please mention your full name and email in the SumUp payment remark.',
+    membership_note: 'Before paying, enter the name and email from your membership application in the SumUp payment remark if available. If you cannot add a remark, contact us with your payment reference.',
 
     membership_placeholder_email: 'example@gmail.com',
     membership_placeholder_phone: '123456789',
@@ -671,7 +654,7 @@ const translations = {
     donation_goal_sports_text: 'Équipement sportif et activités accessibles.',
     donation_goal_community_title: 'Communauté et liens',
     donation_goal_community_text: 'Matériel pour des rencontres accueillantes.',
-    donation_selected_goal: 'Objectif choisi :',
+    donation_selected_goal: 'Préférence (non transmise à SumUp) :',
     donation_more_amounts: 'Voir d’autres montants',
     donation_payment_note: 'Tous les boutons ouvrent nos liens de paiement SumUp existants. Pour affecter ton don à un objectif précis, indique-le dans la note de paiement si cette option est disponible, ou contacte-nous avant. Sans indication, le don soutient nos activités générales pour les jeunes.',
     calendar_promo_label: 'Calendrier des événements',
@@ -831,7 +814,7 @@ const translations = {
     membership_photo: 'J’autorise Crescent Youth à utiliser des photos/vidéos pour la communication et les réseaux sociaux.',
     membership_button: 'Continuer vers le paiement',
     membership_loading: 'Traitement en cours... merci de patienter',
-    membership_note: 'Après le paiement, indique ton nom complet et ton adresse e-mail dans la remarque SumUp.',
+    membership_note: 'Avant de payer, indique le nom et l’adresse e-mail de ta demande dans la remarque SumUp si cette option est disponible. Sinon, envoie-nous ta référence de paiement.',
 
     membership_placeholder_email: 'exemple@gmail.com',
     membership_placeholder_phone: '123456789',
@@ -907,7 +890,7 @@ const translations = {
     donation_goal_sports_text: 'المعدات الرياضية والأنشطة المتاحة للجميع.',
     donation_goal_community_title: 'المجتمع والتواصل',
     donation_goal_community_text: 'مستلزمات اللقاءات الآمنة والمرحبة.',
-    donation_selected_goal: 'الهدف المحدد:',
+    donation_selected_goal: 'التفضيل (لا يُرسل إلى SumUp):',
     donation_more_amounts: 'عرض مبالغ أخرى',
     donation_payment_note: 'تفتح جميع الأزرار روابط الدفع الحالية عبر SumUp. إذا أردت تخصيص تبرعك للهدف الذي اخترته، اذكره في ملاحظة الدفع إن كانت متاحة أو تواصل معنا أولًا. التبرعات من دون تخصيص تدعم أنشطتنا الشبابية العامة.',
     calendar_promo_label: 'تقويم الفعاليات',
@@ -1109,7 +1092,7 @@ const translations = {
     membership_photo: 'أسمح لشبيبة الهلال باستخدام الصور/الفيديوهات للتواصل ووسائل التواصل الاجتماعي.',
     membership_button: 'المتابعة إلى الدفع',
     membership_loading: 'جارٍ المعالجة... يرجى الانتظار',
-    membership_note: 'بعد الدفع، يرجى كتابة اسمك الكامل وبريدك الإلكتروني في ملاحظة الدفع عبر SumUp.',
+    membership_note: 'قبل الدفع، اكتب الاسم والبريد الإلكتروني المستخدمين في طلب العضوية في ملاحظة SumUp إن أمكن. وإلا فأرسل لنا مرجع الدفع.',
 
     membership_placeholder_email: 'example@gmail.com',
     membership_placeholder_phone: '123456789',
@@ -1117,6 +1100,13 @@ const translations = {
   }
 };
 
+for (const item of document.querySelectorAll('span.lang-option')) {
+  const button = document.createElement('button');
+  for (const attr of item.attributes) button.setAttribute(attr.name, attr.value);
+  button.type = 'button';
+  button.textContent = item.textContent;
+  item.replaceWith(button);
+}
 const langButtons = document.querySelectorAll('.lang-option');
 const i18nElements = document.querySelectorAll('[data-i18n]');
 const i18nAriaElements = document.querySelectorAll('[data-i18n-aria]');
@@ -1171,6 +1161,12 @@ langButtons.forEach(btn => {
     setLanguage(lang);
   });
 });
+
+if (!document.querySelector('script[src*="/site-audit.js"]')) {
+  const siteAudit = document.createElement('script');
+  siteAudit.src = '/site-audit.js?v=20261109-review';
+  document.head.append(siteAudit);
+}
 
 const storedLang = localStorage.getItem('siteLang') || 'nl';
 setLanguage(storedLang);

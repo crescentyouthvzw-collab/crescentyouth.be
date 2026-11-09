@@ -104,6 +104,7 @@
     return typeof event.title === 'string' ? event.title : (event.title?.[language()] || event.title?.nl || 'Crescent Youth');
   }
   function isPast(event) { return event.date < today; }
+  let arenaRegistrationOpen = false;
   function createEventCard(event) {
     const article = make('article', 'calendar-event');
     const meta = make('div', 'calendar-event-meta');
@@ -126,7 +127,8 @@
     }
     article.append(info);
 
-    const canRegister = !isPast(event) && event.registrationOpen === true && safeLink(event.registrationUrl);
+    const open = event.id === 'the-sports-arena-2026' ? arenaRegistrationOpen : event.registrationOpen === true;
+    const canRegister = !isPast(event) && open && safeLink(event.registrationUrl);
     const destination = canRegister || safeLink(event.detailsUrl);
     if (destination) {
       const actionLabel = canRegister ? 'register' : (isPast(event) ? 'recap' : 'details');
@@ -208,6 +210,16 @@
   document.querySelectorAll('.lang-option').forEach(button => button.addEventListener('click', render));
 
   render();
+  const arenaEndpoint = window.SPORTS_ARENA_CONFIG?.googleScriptUrl;
+  if (arenaEndpoint) {
+    fetch(arenaEndpoint, { cache: 'no-store' })
+      .then(response => response.ok ? response.json() : null)
+      .then(status => {
+        arenaRegistrationOpen = status?.registrationOpen === true && status?.membershipPricing === true;
+        renderEventList();
+      })
+      .catch(() => { /* Keep the event details link available. */ });
+  }
   fetch('/Events/events.json', { cache: 'no-store' })
     .then(response => { if (!response.ok) throw new Error('Failed to load events'); return response.json(); })
     .then(data => {

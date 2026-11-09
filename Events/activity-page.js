@@ -188,6 +188,11 @@ function setLanguage(lang) {
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.title = `${dict.title} | Crescent Youth`;
   if (metaDescription && dict.meta) metaDescription.setAttribute('content', dict.meta);
+  const slideLabel = { nl: 'Toon foto', en: 'Show photo', fr: 'Afficher la photo', ar: 'عرض الصورة' };
+  document.querySelectorAll('.hero-slide-dot').forEach((dot, index) =>
+    dot.setAttribute('aria-label', (slideLabel[lang] || slideLabel.nl) + ' ' + (index + 1)));
+  const closeLabel = { nl: 'Sluit foto', en: 'Close photo', fr: 'Fermer la photo', ar: 'إغلاق الصورة' };
+  document.querySelector('.lightbox-close')?.setAttribute('aria-label', closeLabel[lang] || closeLabel.nl);
   currentLanguage = lang;
   localStorage.setItem('siteLang', lang);
 }
@@ -226,11 +231,6 @@ if (animatedEls.length && 'IntersectionObserver' in window &&
   }), { threshold: .18, rootMargin: '0px 0px -40px 0px' });
   animatedEls.forEach(el => observer.observe(el));
 }
-
-const cookieBanner = document.getElementById('cookie-banner');
-const cookieAccept = document.getElementById('cookie-accept');
-if (cookieBanner && !localStorage.getItem('cookiesAccepted')) setTimeout(() => cookieBanner.classList.add('show'), 1000);
-if (cookieAccept && cookieBanner) cookieAccept.addEventListener('click', () => { localStorage.setItem('cookiesAccepted', 'true'); cookieBanner.classList.remove('show'); });
 
 langButtons.forEach(btn => btn.addEventListener('click', event => {
   event.preventDefault();
