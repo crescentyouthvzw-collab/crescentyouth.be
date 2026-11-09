@@ -34,7 +34,7 @@ button { cursor: pointer; }
 .lang-option { padding: 5px 11px; border: 0; border-radius: 99px; color: #e8f5e9; background: transparent; font-size: .78rem; font-weight: 700; }
 .lang-option.active { color: var(--primary); background: var(--accent); }
 .menu-toggle { display: grid; place-items: center; width: 41px; height: 41px; border: 1px solid rgba(255,255,255,.4); border-radius: 50%; background: rgba(0,0,0,.12); color: white; font-size: 1.15rem; }
-.arena-hero { position: relative; isolation: isolate; display: grid; place-items: center; min-height: 585px; overflow: hidden; padding: 100px 24px; text-align: center; color: white; background: linear-gradient(90deg, rgba(13,33,24,.34), rgba(13,33,24,.97) 16%, rgba(13,33,24,.97) 84%, rgba(13,33,24,.42)), url('/images/The%20sports%20arena/The%20Sports%20Arena_%20Bruges%20in%20Motion.png') center / cover no-repeat, #173126; }
+.arena-hero { position: relative; isolation: isolate; display: grid; place-items: center; min-height: 585px; overflow: hidden; padding: 100px 24px; text-align: center; color: white; background: linear-gradient(rgba(13,33,24,.08), rgba(13,33,24,.24)), url('/images/The%20sports%20arena/Emerald%20Bruges%20Sports%20Panorama.webp') center / cover no-repeat, #173126; }
 .arena-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 52px 52px; opacity: .5; }
 .arena-hero-decoration { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 .arena-hero-decoration span { position: absolute; width: 360px; height: 360px; border: 1px solid rgba(212,184,150,.15); border-radius: 50%; }
