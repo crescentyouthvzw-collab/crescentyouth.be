@@ -3,6 +3,11 @@ const mobileMenu = document.getElementById('mobile-menu');
 const mainNav = document.getElementById('main-nav');
 
 if (mobileMenu && mainNav) {
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || mobileMenu.getAttribute('aria-expanded') !== 'true') return;
+    mobileMenu.click();
+    mobileMenu.focus();
+  });
   mobileMenu.addEventListener('click', () => {
     const isOpen = mainNav.classList.toggle('open');
     mobileMenu.classList.toggle('open', isOpen);
@@ -127,7 +132,9 @@ const faqQuestions = document.querySelectorAll('.faq-question');
 faqQuestions.forEach(question => {
   question.addEventListener('click', () => {
     const item = question.parentElement;
-    if (item) item.classList.toggle('active');
+    if (!item) return;
+    const expanded = item.classList.toggle('active');
+    question.setAttribute('aria-expanded', String(expanded));
   });
 });
 
@@ -254,7 +261,7 @@ const translations = {
     faq_q2: 'Wat doet Crescent Youth precies?',
     faq_a2: 'We organiseren van alles: workshops, sport, sociale activiteiten en uitstappen. Van voetbal tot citytrips, van creatieve sessies tot inspirerende talks. Er is altijd wel iets dat bij jou past!',
     faq_q3: 'Hoe oud moet ik zijn om mee te doen?',
-    faq_a3: 'Crescent Youth richt zich op jongeren tussen 14 en 30 jaar.',
+    faq_a3: 'Crescent Youth richt zich op jongeren van 14 tot 30 jaar. Vanaf 15 jaar kan je je als lid inschrijven.',
     faq_q4: 'Kost het iets om lid te worden?',
     faq_a4: 'Lidmaatschap kost slechts 10 euro per jaar. Als lid geniet je van voordelen zoals lagere prijzen voor onze events en activiteiten.',
     faq_q5: 'Hoe kan ik meedoen of meer info krijgen?',
@@ -486,7 +493,7 @@ const translations = {
     faq_q2: 'What does Crescent Youth actually do?',
     faq_a2: 'We organise all kinds of things: workshops, sports, social activities and trips. From football to city trips, from creative sessions to inspiring talks, there is always something that fits you.',
     faq_q3: 'How old do I need to be to join?',
-    faq_a3: 'Crescent Youth is for young people between 14 and 30 years old.',
+    faq_a3: 'Crescent Youth is for young people aged 14 to 30. You can apply for membership from age 15.',
     faq_q4: 'Does it cost anything to become a member?',
     faq_a4: 'Membership costs only 10 euros per year. As a member, you enjoy benefits such as lower prices for our events and activities.',
     faq_q5: 'How can I get involved or get more information?',
@@ -719,7 +726,7 @@ const translations = {
     faq_q2: 'Que fait exactement Crescent Youth ?',
     faq_a2: 'On organise plein de choses : ateliers, sport, activités sociales et sorties. Du foot aux city trips, des sessions créatives aux talks inspirants. Il y a toujours quelque chose pour toi !',
     faq_q3: 'Quel âge faut-il avoir pour participer ?',
-    faq_a3: 'Crescent Youth s’adresse aux jeunes entre 14 et 30 ans.',
+    faq_a3: 'Crescent Youth s’adresse aux jeunes de 14 à 30 ans. Tu peux devenir membre à partir de 15 ans.',
     faq_q4: 'Est-ce que ça coûte quelque chose de devenir membre ?',
     faq_a4: "L’adhésion coûte seulement 10 euros par an. En tant que membre, tu profites d’avantages comme des prix réduits pour nos événements et activités.",
     faq_q5: 'Comment puis-je participer ou obtenir plus d’infos ?',
@@ -975,7 +982,7 @@ const translations = {
 
     faq_q3: 'ما هو العمر المطلوب للمشاركة؟',
 
-    faq_a3: 'شبيبة الهلال موجهة للشباب بين 14 و 30 سنة.',
+    faq_a3: 'أنشطة شبيبة الهلال موجهة للشباب من 14 إلى 30 سنة. يمكنك التسجيل للعضوية من سن 15 سنة.',
 
     faq_q4: 'هل هناك رسوم للعضوية؟',
 

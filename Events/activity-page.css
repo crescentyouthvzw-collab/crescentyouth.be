@@ -22,8 +22,8 @@ header.navbar { background: linear-gradient(90deg, #1e3d2f 0%, #2d5a42 50%, #4a7
 .logo { display: flex; align-items: center; gap: .75rem; }
 .logo-img { width: 72px; height: 72px; object-fit: contain; border-radius: 18px; box-shadow: 0 4px 14px rgba(0,0,0,.35); }
 .logo-text { font-weight: 700; font-size: 1.4rem; color: #fff; letter-spacing: .04em; }
-nav { position: absolute; top: 100%; left: 0; right: 0; background: rgba(30,61,47,.97); display: flex; justify-content: center; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .35s ease, opacity .25s ease; }
-nav.open { max-height: 420px; opacity: 1; }
+nav { position: absolute; top: 100%; left: 0; right: 0; background: rgba(30,61,47,.97); display: flex; justify-content: center; max-height: 0; visibility: hidden; overflow: hidden; opacity: 0; transition: max-height .35s ease, opacity .25s ease; }
+nav.open { max-height: min(440px, calc(100dvh - 76px)); visibility: visible; overflow-y: auto; opacity: 1; }
 .nav-links { list-style: none; display: flex; flex-direction: column; gap: .6rem; padding: 10px 16px 18px; align-items: center; }
 .nav-links li { width: 100%; max-width: 260px; }
 .nav-links a { display: block; width: 100%; color: white; font-weight: 500; font-size: .98rem; padding: 10px 20px; border-radius: 999px; text-align: center; transition: .25s ease; }
@@ -209,7 +209,7 @@ html[dir="rtl"] .sport-feature-content { align-items: flex-end; text-align: righ
 html[dir="rtl"] .hero-eyebrow::before { order: 2; }
 
 @media (min-width: 1240px) {
-  nav { position: static; max-height: none; opacity: 1; background: transparent; overflow: visible; }
+  nav { position: static; visibility: visible; max-height: none; opacity: 1; background: transparent; overflow: visible; }
   .nav-links { flex-direction: row; padding: 0; gap: .3rem; }
   .nav-links li { width: auto; max-width: none; }
   .nav-links a { padding: 9px 12px; font-size: .92rem; }

@@ -62,7 +62,7 @@
       },
       "detailsUrl": "/Events/sports-arena.html",
       "registrationUrl": "/Events/sports-arena.html#registration",
-      "registrationOpen": false
+      "registrationOpen": true
     }
   ]
 }

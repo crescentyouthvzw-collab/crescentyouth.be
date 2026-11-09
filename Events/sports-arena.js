@@ -195,6 +195,11 @@
     langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
     const menu = document.getElementById('mobile-menu');
     const nav = document.getElementById('main-nav');
+    document.addEventListener('keydown', event => {
+        if (event.key !== 'Escape' || menu?.getAttribute('aria-expanded') !== 'true') return;
+        menu.click();
+        menu.focus();
+    });
     menu?.addEventListener('click', () => {
         const open = nav.classList.toggle('open');
         menu.setAttribute('aria-expanded', String(open));

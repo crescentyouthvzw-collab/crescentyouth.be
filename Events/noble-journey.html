@@ -108,14 +108,14 @@
             background: rgba(30, 61, 47, 0.98);
             display: flex;
             justify-content: center;
-            max-height: 0;
+            max-height: 0; visibility: hidden;
             overflow: hidden;
             opacity: 0;
             transition: max-height 0.35s ease, opacity 0.25s ease;
         }
 
         nav.open {
-            max-height: 420px;
+            max-height: min(440px, calc(100dvh - 76px)); visibility: visible; overflow-y: auto;
             opacity: 1;
         }
 
@@ -1166,6 +1166,11 @@
     }
 
     if (mobileMenu && mainNav) {
+        document.addEventListener('keydown', event => {
+          if (event.key !== 'Escape' || mobileMenu.getAttribute('aria-expanded') !== 'true') return;
+          mobileMenu.click();
+          mobileMenu.focus();
+        });
         mobileMenu.addEventListener('click', () => {
             const isOpen = mainNav.classList.toggle('open');
             mobileMenu.classList.toggle('open', isOpen);

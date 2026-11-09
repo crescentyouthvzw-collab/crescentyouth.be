@@ -195,6 +195,11 @@ function setLanguage(lang) {
 const mobileMenu = document.getElementById('mobile-menu');
 const mainNav = document.getElementById('main-nav');
 if (mobileMenu && mainNav) {
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || mobileMenu.getAttribute('aria-expanded') !== 'true') return;
+    mobileMenu.click();
+    mobileMenu.focus();
+  });
   mobileMenu.addEventListener('click', () => {
     const isOpen = mainNav.classList.toggle('open');
     mobileMenu.classList.toggle('open', isOpen);

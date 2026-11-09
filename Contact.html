@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css?v=20261109-site">
+    <link rel="stylesheet" href="style.css?v=20261109-audit">
 </head>
 
 <body>
@@ -184,38 +184,38 @@
                 <input type="checkbox" name="botcheck" style="display:none">
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="contact_label_name">
-                        Naam<span class="required">*</span>
+                    <label class="form-label" for="contact-name"><span data-i18n="contact_label_name">
+                        Naam</span><span class="required">*</span>
                     </label>
-                    <input type="text" name="name" required
+                    <input type="text" id="contact-name" name="name" autocomplete="name" required
                            placeholder="bijv. Ahmed Al-Mansouri"
                            data-i18n-placeholder="contact_placeholder_name">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="contact_label_email">
-                        E-mailadres<span class="required">*</span>
+                    <label class="form-label" for="contact-email"><span data-i18n="contact_label_email">
+                        E-mailadres</span><span class="required">*</span>
                     </label>
-                    <input type="email" name="email" required
+                    <input type="email" id="contact-email" name="email" autocomplete="email" required
                            placeholder="bijv. ahmed@example.com"
                            data-i18n-placeholder="contact_placeholder_email">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="contact_label_phone">
-                        Telefoonnummer<span class="required">*</span>
+                    <label class="form-label" for="contact-phone"><span data-i18n="contact_label_phone">
+                        Telefoonnummer</span>
                     </label>
-                    <input type="tel" name="phone"
+                    <input type="tel" id="contact-phone" name="phone"
                            placeholder="bijv. +32 4xx xx xx xx"
                            data-i18n-placeholder="contact_placeholder_phone"
                            autocomplete="tel">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="contact_label_subject">
-                        Onderwerp<span class="required">*</span>
+                    <label class="form-label" for="contact-subject"><span data-i18n="contact_label_subject">
+                        Onderwerp</span><span class="required">*</span>
                     </label>
-                    <select name="subject_category" required data-i18n-select>
+                    <select id="contact-subject" name="subject_category" required data-i18n-select>
                         <option value="" data-i18n="contact_select_default">Kies een onderwerp</option>
                         <option value="Algemene vraag" data-i18n="contact_select_general">Algemene vraag</option>
                         <option value="Lidmaatschap" data-i18n="contact_select_membership">Lidmaatschap</option>
@@ -227,10 +227,10 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label" data-i18n="contact_label_message">
-                        Bericht<span class="required">*</span>
+                    <label class="form-label" for="contact-message"><span data-i18n="contact_label_message">
+                        Bericht</span><span class="required">*</span>
                     </label>
-                    <textarea name="message" required
+                    <textarea id="contact-message" name="message" required
                               placeholder="Schrijf hier je vraag of voorstel..."
                               data-i18n-placeholder="contact_placeholder_message"></textarea>
                 </div>
@@ -307,7 +307,7 @@
     <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
 </div>
 
-<script src="script.js?v=20261109-site"></script>
+<script src="script.js?v=20261109-audit"></script>
 
 </body>
 </html>

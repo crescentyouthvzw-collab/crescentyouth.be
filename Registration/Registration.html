@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../reset.css">
-    <link rel="stylesheet" href="../style.css?v=20261109-site">
+    <link rel="stylesheet" href="../style.css?v=20261109-audit">
 </head>
 
 <body>
@@ -92,13 +92,13 @@
 
             <label for="phone" data-i18n="membership_phone">Telefoonnummer</label>
             <div class="membership-phone-row">
-                <select id="phoneCode" required></select>
+                <select id="phoneCode" aria-label="Landcode telefoonnummer" required></select>
                 <input
                         type="tel"
                         id="phone"
                         placeholder="123456789"
                         data-i18n-placeholder="membership_placeholder_phone"
-                        maxlength="9"
+                        maxlength="24"
                         required
                 >
             </div>
@@ -125,13 +125,13 @@
 
             <label for="emergencyPhone" data-i18n="membership_emergency_phone">Telefoonnummer noodcontact</label>
             <div class="membership-phone-row">
-                <select id="emergencyPhoneCode" required></select>
+                <select id="emergencyPhoneCode" aria-label="Landcode noodcontact" required></select>
                 <input
                         type="tel"
                         id="emergencyPhone"
                         placeholder="123456789"
                         data-i18n-placeholder="membership_placeholder_phone"
-                        maxlength="9"
+                        maxlength="24"
                         required
                 >
             </div>
@@ -242,8 +242,8 @@
     <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
 </div>
 
-<script src="../script.js?v=20261109-site"></script>
-<script src="script.js"></script>
+<script src="../script.js?v=20261109-audit"></script>
+<script src="script.js?v=20261109-audit"></script>
 
 </body>
 </html>

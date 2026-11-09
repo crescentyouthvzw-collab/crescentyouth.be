@@ -198,11 +198,11 @@ function cleanPhoneCode(code) {
 }
 
 function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.(com|be|nl|fr|de|org|net|edu|info)$/i.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 function isValidPhone(number) {
-    return /^[0-9]{9}$/.test(number);
+    return /^[0-9]{4,14}$/.test(number);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -217,16 +217,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const today = new Date();
     const minAgeDate = new Date(today.getFullYear() - 15, today.getMonth(), today.getDate());
-    dobInput.max = minAgeDate.toISOString().split("T")[0];
+    dobInput.max = `${minAgeDate.getFullYear()}-${String(minAgeDate.getMonth() + 1).padStart(2, '0')}-${String(minAgeDate.getDate()).padStart(2, '0')}`;
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
         const email = document.getElementById("email").value.trim();
         const phoneCode = document.getElementById("phoneCode").value;
-        const phone = document.getElementById("phone").value.trim();
+        const phone = document.getElementById("phone").value.trim().replace(/[().\s-]/g, '');
         const emergencyPhoneCode = document.getElementById("emergencyPhoneCode").value;
-        const emergencyPhone = document.getElementById("emergencyPhone").value.trim();
+        const emergencyPhone = document.getElementById("emergencyPhone").value.trim().replace(/[().\s-]/g, '');
         const dateOfBirth = document.getElementById("dateOfBirth").value;
 
         if (!isValidEmail(email)) {
@@ -235,23 +235,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (!isValidPhone(phone)) {
-            alert("Please enter a valid 9-digit phone number, for example 123456789");
+            alert("Please enter a valid phone number, without the country code.");
             return;
         }
 
         if (!isValidPhone(emergencyPhone)) {
-            alert("Please enter a valid 9-digit emergency phone number, for example 123456789");
+            alert("Please enter a valid emergency phone number, without the country code.");
             return;
         }
 
-        if (!dateOfBirth || new Date(dateOfBirth) > minAgeDate) {
+        if (!dateOfBirth || dateOfBirth > dobInput.max) {
             alert("You must be at least 15 years old to register.");
             return;
         }
 
         loading.style.display = "block";
         submitBtn.disabled = true;
-        submitBtn.textContent = "Processing...";
 
         const formData = new FormData();
 
@@ -281,7 +280,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Something went wrong. Please try again.");
                 loading.style.display = "none";
                 submitBtn.disabled = false;
-                submitBtn.textContent = "Proceed to Payment";
             });
     });
 });

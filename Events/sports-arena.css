@@ -25,8 +25,8 @@ button { cursor: pointer; }
 .logo { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.35rem; letter-spacing: .02em; }
 .logo-img { width: 64px; height: 64px; object-fit: contain; border-radius: 17px; }
 .nav-actions { display: flex; align-items: center; gap: 12px; }
-.navbar nav { position: absolute; top: 100%; left: 0; right: 0; max-height: 0; overflow: hidden; opacity: 0; background: rgba(27,59,42,.98); transition: max-height .3s ease, opacity .2s ease; }
-.navbar nav.open { max-height: 590px; opacity: 1; }
+.navbar nav { position: absolute; top: 100%; left: 0; right: 0; max-height: 0; visibility: hidden; overflow: hidden; opacity: 0; background: rgba(27,59,42,.98); transition: max-height .3s ease, opacity .2s ease; }
+.navbar nav.open { max-height: min(440px, calc(100dvh - 76px)); visibility: visible; overflow-y: auto; opacity: 1; }
 .nav-links { display: flex; flex-direction: column; justify-content: center; align-items: center; list-style: none; gap: 2px; padding: 12px 18px 20px; }
 .nav-links a { display: block; padding: 8px 19px; border-radius: 99px; color: white; font-size: .94rem; font-weight: 600; }
 .nav-links a:hover { background: rgba(255,255,255,.09); color: var(--accent); }
@@ -84,7 +84,7 @@ footer { background: var(--primary); color: white; padding: 45px 24px 23px; }
 [dir="rtl"] .programme-card, [dir="rtl"] .detail-card { text-align: right; }
 :focus-visible { outline: 3px solid #d4b896; outline-offset: 3px; }
 @media (min-width: 1100px) {
-    .navbar nav { position: static; display: block; max-height: none; opacity: 1; overflow: visible; background: transparent; }
+    .navbar nav { position: static; visibility: visible; display: block; max-height: none; opacity: 1; overflow: visible; background: transparent; }
     .nav-links { flex-direction: row; gap: 0; padding: 0; }
     .nav-links a { padding: 8px 11px; font-size: .86rem; }
     .menu-toggle { display: none; }
