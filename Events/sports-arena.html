@@ -9,15 +9,15 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/Events/sports-arena.css?v=20261109-emerald">
+    <link rel="stylesheet" href="/Events/sports-arena.css?v=20261109-main">
     <link rel="stylesheet" href="/Events/event-registration.css?v=20261109-1">
     <script defer src="/Events/sports-arena-config.js?v=20261109-4"></script>
-    <script defer src="/Events/sports-arena.js?v=20261109-audit"></script>
+    <script defer src="/Events/sports-arena.js?v=20261109-member"></script>
 </head>
 <body>
 <header class="navbar">
     <a href="/index.html" class="logo">
-        <img src="/images/crescent_youtrh_logo_new_without name1.png" alt="Crescent Youth logo" class="logo-img">
+        <img src="/images/crescent_youtrh_logo_new_without name1.png" alt="Crescent Youth logo" width="72" height="72" class="logo-img">
         <span class="logo-text">Crescent Youth</span>
     </a>
     <nav id="main-nav" aria-label="Hoofdnavigatie">
@@ -134,16 +134,13 @@
                             <div class="field"><label for="phone" data-i18n="phone_label">Telefoonnummer *</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="30" required></div>
                         </div>
                         <div class="form-row">
-                            <div class="field"><label for="memberStatus" data-i18n="member_question">Ben je lid van Crescent Youth? *</label>
-                                <select id="memberStatus" name="memberStatus" required><option value="" data-i18n="select_option">Selecteer</option><option value="Yes" data-i18n="yes_option">Ja</option><option value="No" data-i18n="no_option">Nee</option></select>
-                            </div>
                             <div class="field"><label for="sportsSection" data-i18n="sports_section_label">Voorkeur sportgroep *</label>
                                 <select id="sportsSection" name="sportsSection" required><option value="" data-i18n="select_option">Selecteer</option><option value="Sisters" data-i18n="section_sisters">Zusters</option><option value="Brothers" data-i18n="section_brothers">Broeders</option><option value="Discuss" data-i18n="section_discuss">Bespreek met organisator</option></select>
                             </div>
                         </div>
                         <div class="field"><label for="heardFrom" data-i18n="heard_label">Hoe hoorde je over dit event?</label><input id="heardFrom" name="heardFrom" type="text" maxlength="150" data-i18n-placeholder="heard_placeholder" placeholder="Instagram, WhatsApp, vrienden, website..."></div>
                         <div class="field bot-field" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
-                        <div class="status-box" id="priceStatus" aria-live="polite" data-i18n="price_select">Kies je lidmaatschapsstatus om je prijs te zien.</div>
+                        <div class="status-box" id="priceStatus" aria-live="polite" data-i18n="price_select">We controleren je e-mailadres of telefoonnummer om het tarief te bepalen. Je ziet het bedrag in SumUp voordat je betaalt.</div>
                         <label class="checkbox-label" for="consent"><input id="consent" type="checkbox" name="consent" value="yes" required><span><span data-i18n="consent_before">Ik geef toestemming om mijn gegevens te verwerken voor de organisatie van dit event en heb het</span> <a href="/comply_with_law/privacy-policy.html" target="_blank" rel="noopener noreferrer" data-i18n="privacy_link">privacybeleid</a> <span data-i18n="consent_after">gelezen.</span></span></label>
                         <button type="submit" class="btn submit-btn" id="submitBtn" disabled data-i18n="submit_closed">Registratie opent binnenkort</button>
                     </fieldset>

@@ -197,6 +197,49 @@ function cleanPhoneCode(code) {
     return code.replace("+", "00").replace(/-/g, "");
 }
 
+const errorMessages = {
+    nl: {
+        email: "Gelieve een geldig e-mailadres in te vullen (bijv. naam@gmail.com).",
+        phone: "Gelieve een geldig telefoonnummer in te vullen (minstens 9 cijfers).",
+        emergencyPhone: "Gelieve een geldig noodtelefoonnummer in te vullen.",
+        age: "Je moet minstens 15 jaar oud zijn om je te registreren.",
+        duplicate: "Dit e-mailadres of telefoonnummer is al gebruikt voor een lidmaatschapsaanvraag. Contacteer ons om verder te gaan.",
+        error: "Er liep iets mis. Probeer het opnieuw of contacteer ons.",
+        processing: "Bezig met verwerken... even geduld",
+        proceed: "Doorgaan naar betaling"
+    },
+    en: {
+        email: "Please enter a valid email address (e.g. name@gmail.com).",
+        phone: "Please enter a valid phone number (at least 9 digits).",
+        emergencyPhone: "Please enter a valid emergency contact phone number.",
+        age: "You must be at least 15 years old to register.",
+        duplicate: "This email address or phone number was already used for a membership application. Contact us to continue.",
+        error: "Something went wrong. Please try again or contact us.",
+        processing: "Processing... Please wait",
+        proceed: "Proceed to Payment"
+    },
+    fr: {
+        email: "Veuillez entrer une adresse e-mail valide (ex. nom@gmail.com).",
+        phone: "Veuillez entrer un numéro de téléphone valide (au moins 9 chiffres).",
+        emergencyPhone: "Veuillez entrer un numéro de téléphone d'urgence valide.",
+        age: "Vous devez avoir au moins 15 ans pour vous inscrire.",
+        duplicate: "Cette adresse e-mail ou ce numéro a déjà été utilisé pour une demande d’adhésion. Contacte-nous pour continuer.",
+        error: "Une erreur s'est produite. Veuillez réessayer ou nous contacter.",
+        processing: "Traitement en cours... merci de patienter",
+        proceed: "Continuer vers le paiement"
+    },
+    ar: {
+        email: "يرجى إدخال بريد إلكتروني صحيح (مثال: name@gmail.com).",
+        phone: "يرجى إدخال رقم هاتف صحيح (9 أرقام على الأقل).",
+        emergencyPhone: "يرجى إدخال رقم هاتف صحيح لجهة اتصال الطوارئ.",
+        age: "يجب أن يكون عمرك 15 عامًا على الأقل للتسجيل.",
+        duplicate: "استُخدم هذا البريد الإلكتروني أو رقم الهاتف في طلب عضوية سابق. تواصل معنا للمتابعة.",
+        error: "حدث خطأ ما. يرجى المحاولة مرة أخرى أو الاتصال بنا.",
+        processing: "جارٍ المعالجة... يرجى الانتظار",
+        proceed: "المتابعة إلى الدفع"
+    }
+};
+
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -229,28 +272,32 @@ document.addEventListener("DOMContentLoaded", function () {
         const emergencyPhone = document.getElementById("emergencyPhone").value.trim().replace(/[().\s-]/g, '');
         const dateOfBirth = document.getElementById("dateOfBirth").value;
 
+        const currentLang = localStorage.getItem("siteLang") || "nl";
+        const msg = (errorMessages[currentLang] || errorMessages.nl);
+
         if (!isValidEmail(email)) {
-            alert("Please enter a valid email address, for example name@gmail.com");
+            alert(msg.email);
             return;
         }
 
         if (!isValidPhone(phone)) {
-            alert("Please enter a valid phone number, without the country code.");
+            alert(msg.phone);
             return;
         }
 
         if (!isValidPhone(emergencyPhone)) {
-            alert("Please enter a valid emergency phone number, without the country code.");
+            alert(msg.emergencyPhone);
             return;
         }
 
         if (!dateOfBirth || dateOfBirth > dobInput.max) {
-            alert("You must be at least 15 years old to register.");
+            alert(msg.age);
             return;
         }
 
         loading.style.display = "block";
         submitBtn.disabled = true;
+        submitBtn.textContent = msg.processing;
 
         const formData = new FormData();
 
@@ -270,16 +317,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
         fetch(scriptURL, {
             method: "POST",
-            mode: "no-cors",
             body: formData
         })
-            .then(function () {
+            .then(async function (response) {
+                if (!response.ok) throw new Error('Registration request failed.');
+                const status = (await response.text()).trim();
+                if (status === 'Duplicate') {
+                    alert(msg.duplicate);
+                    loading.style.display = "none";
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = msg.proceed;
+                    return;
+                }
+                if (status !== 'Success') throw new Error('Registration was not saved.');
                 window.location.href = sumUpLink;
             })
             .catch(function () {
-                alert("Something went wrong. Please try again.");
+                const currentLang = localStorage.getItem("siteLang") || "nl";
+                const msg = (errorMessages[currentLang] || errorMessages.nl);
+                alert(msg.error);
                 loading.style.display = "none";
                 submitBtn.disabled = false;
+                submitBtn.textContent = msg.proceed;
             });
     });
 });

@@ -9,8 +9,6 @@
     const submitBtn = document.getElementById('submitBtn');
     const formMessage = document.getElementById('formMessage');
     const availability = document.getElementById('registrationAvailability');
-    const memberStatus = document.getElementById('memberStatus');
-    const priceStatus = document.getElementById('priceStatus');
     const langButtons = document.querySelectorAll('.lang-option');
     const languages = ['nl', 'en', 'fr', 'ar'];
     let currentLang = localStorage.getItem('siteLang') || 'nl';
@@ -31,13 +29,13 @@
             side_one: 'Respectvolle, begeleide activiteiten', side_two: 'Afgeschermde sportsecties voor meisjes en jongens', side_three: 'Betaling via SumUp na inschrijving',
             registration_closed: 'Registratie opent binnenkort. Dit formulier staat nog niet open.', registration_ready: 'Registratie is geopend. Vul het formulier in en betaal daarna via SumUp.',
             first_name: 'Voornaam *', last_name: 'Achternaam *', email_label: 'E-mailadres *', phone_label: 'Telefoonnummer *',
-            member_question: 'Ben je lid van Crescent Youth? *', sports_section_label: 'Voorkeur sportgroep *', select_option: 'Selecteer', yes_option: 'Ja', no_option: 'Nee',
+            sports_section_label: 'Voorkeur sportgroep *', select_option: 'Selecteer', yes_option: 'Ja', no_option: 'Nee',
             section_sisters: 'Zusters', section_brothers: 'Broeders', section_discuss: 'Bespreek met organisator',
             heard_label: 'Hoe hoorde je over dit event?', heard_placeholder: 'Instagram, WhatsApp, vrienden, website...',
-            price_select: 'Kies je lidmaatschapsstatus om je prijs te zien.', price_member: 'Ledenprijs: €8 vooraf', price_guest: 'Niet-ledenprijs: €10 vooraf',
+            price_select: 'We controleren je e-mailadres of telefoonnummer om het tarief te bepalen. Je ziet het bedrag in SumUp voordat je betaalt.',
             consent_before: 'Ik geef toestemming om mijn gegevens te verwerken voor de organisatie van dit event en heb het', privacy_link: 'privacybeleid', consent_after: 'gelezen.',
             submit_closed: 'Registratie opent binnenkort', submit_ready: 'Registreer & ga naar SumUp', processing: 'Je registratie wordt verwerkt…',
-            saved_redirect: 'Je gegevens zijn opgeslagen. Je wordt doorgestuurd naar SumUp om te betalen.', save_error: 'De registratie kon niet worden bevestigd. Probeer het later opnieuw of contacteer ons.', duplicate: 'Dit e-mailadres is al geregistreerd voor dit event.',
+            saved_redirect: 'Je gegevens zijn opgeslagen. Je wordt doorgestuurd naar SumUp om te betalen.', save_error: 'De registratie kon niet worden bevestigd. Probeer het later opnieuw of contacteer ons.', duplicate: 'Dit e-mailadres of telefoonnummer is al geregistreerd voor dit event.',
             payment_note: 'Een inschrijving is geen betalingsbewijs. Je betaling wordt apart gecontroleerd via SumUp.',
             values_kicker: 'Onze waarden', values_title: 'Respect. Plezier. Verbinding.', values_text: 'Iedereen verdient een warme en veilige omgeving. We verwachten respect voor elkaar, persoonlijke grenzen en de afspraken van de organisatoren.',
             questions: 'Vragen? Contacteer ons', footer_about: 'Wij verbinden jongeren van alle achtergronden via educatie, sport en inspirerende activiteiten.', footer_links: 'Snelle links', footer_contact: 'Contact', terms: 'Algemene voorwaarden'
@@ -57,13 +55,13 @@
             side_one: 'Respectful, guided activities', side_two: 'Screened sports sections for girls and boys', side_three: 'SumUp payment after registration',
             registration_closed: 'Registration is opening soon. This form is not yet accepting entries.', registration_ready: 'Registration is open. Fill out the form and then pay using SumUp.',
             first_name: 'First name *', last_name: 'Last name *', email_label: 'Email address *', phone_label: 'Phone number *',
-            member_question: 'Are you a Crescent Youth member? *', sports_section_label: 'Preferred sports group *', select_option: 'Select', yes_option: 'Yes', no_option: 'No',
+            sports_section_label: 'Preferred sports group *', select_option: 'Select', yes_option: 'Yes', no_option: 'No',
             section_sisters: 'Sisters', section_brothers: 'Brothers', section_discuss: 'Discuss with organiser',
             heard_label: 'How did you hear about this event?', heard_placeholder: 'Instagram, WhatsApp, friends, website...',
-            price_select: 'Select your membership status to see your fee.', price_member: 'Member fee: €8 in advance', price_guest: 'Non-member fee: €10 in advance',
+            price_select: 'We check your email or phone number to determine your fee. You will see the amount in SumUp before you pay.',
             consent_before: 'I consent to the use of my details to organise this event and have read the', privacy_link: 'privacy policy', consent_after: '.',
             submit_closed: 'Registration opening soon', submit_ready: 'Register & continue to SumUp', processing: 'Saving your registration…',
-            saved_redirect: 'Your details have been saved. Redirecting to SumUp for payment.', save_error: 'We could not confirm your registration. Please try later or contact us.', duplicate: 'This email address is already registered for this event.',
+            saved_redirect: 'Your details have been saved. Redirecting to SumUp for payment.', save_error: 'We could not confirm your registration. Please try later or contact us.', duplicate: 'This email address or phone number is already registered for this event.',
             payment_note: 'A registration is not proof of payment. Payments are verified separately through SumUp.',
             values_kicker: 'Our values', values_title: 'Respect. Fun. Connection.', values_text: 'Everyone deserves a warm, welcoming space. Please respect each other, personal boundaries and the organisers’ guidance.',
             questions: 'Questions? Contact us', footer_about: 'We connect young people from all backgrounds through education, sport and inspiring activities.', footer_links: 'Quick links', footer_contact: 'Contact', terms: 'Terms and conditions'
@@ -83,13 +81,13 @@
             side_one: 'Activités encadrées et respectueuses', side_two: 'Espaces sportifs séparés et protégés des regards', side_three: 'Paiement SumUp après inscription',
             registration_closed: 'Les inscriptions ouvriront bientôt. Ce formulaire n’est pas encore actif.', registration_ready: 'Les inscriptions sont ouvertes. Remplis le formulaire puis paie avec SumUp.',
             first_name: 'Prénom *', last_name: 'Nom *', email_label: 'Adresse e-mail *', phone_label: 'Téléphone *',
-            member_question: 'Es-tu membre de Crescent Youth ? *', sports_section_label: 'Groupe sportif préféré *', select_option: 'Sélectionner', yes_option: 'Oui', no_option: 'Non',
+            sports_section_label: 'Groupe sportif préféré *', select_option: 'Sélectionner', yes_option: 'Oui', no_option: 'Non',
             section_sisters: 'Sœurs', section_brothers: 'Frères', section_discuss: 'En parler avec l’organisateur',
             heard_label: 'Comment as-tu découvert cet événement ?', heard_placeholder: 'Instagram, WhatsApp, amis, site web...',
-            price_select: 'Choisis ton statut de membre pour voir le tarif.', price_member: 'Tarif membre : 8 € à l’avance', price_guest: 'Tarif non-membre : 10 € à l’avance',
+            price_select: 'Nous vérifions ton adresse e-mail ou ton numéro de téléphone pour déterminer le tarif. Tu verras le montant dans SumUp avant de payer.',
             consent_before: 'J’accepte le traitement de mes données pour l’organisation de cet événement et j’ai lu la', privacy_link: 'politique de confidentialité', consent_after: '.',
             submit_closed: 'Inscriptions bientôt ouvertes', submit_ready: 'S’inscrire et passer à SumUp', processing: 'Enregistrement en cours…',
-            saved_redirect: 'Tes coordonnées ont été enregistrées. Redirection vers SumUp pour le paiement.', save_error: 'Nous n’avons pas pu confirmer ton inscription. Réessaie plus tard ou contacte-nous.', duplicate: 'Cette adresse e-mail est déjà inscrite à cet événement.',
+            saved_redirect: 'Tes coordonnées ont été enregistrées. Redirection vers SumUp pour le paiement.', save_error: 'Nous n’avons pas pu confirmer ton inscription. Réessaie plus tard ou contacte-nous.', duplicate: 'Cette adresse e-mail ou ce numéro de téléphone est déjà utilisé pour cet événement.',
             payment_note: 'Une inscription ne prouve pas le paiement. Les paiements sont vérifiés séparément via SumUp.',
             values_kicker: 'Nos valeurs', values_title: 'Respect. Plaisir. Rencontres.', values_text: 'Chacun mérite un cadre chaleureux. Respecte les autres, leurs limites personnelles et les consignes des organisateurs.',
             questions: 'Des questions ? Contacte-nous', footer_about: 'Nous réunissons des jeunes de tous horizons grâce à l’éducation, au sport et à des activités inspirantes.', footer_links: 'Liens rapides', footer_contact: 'Contact', terms: 'Conditions générales'
@@ -109,13 +107,13 @@
             side_one: 'أنشطة منظمة ومحترمة', side_two: 'أقسام رياضية منفصلة ومحجوبة بين الفتيات والفتيان', side_three: 'الدفع عبر SumUp بعد التسجيل',
             registration_closed: 'سيفتح التسجيل قريبًا. النموذج غير متاح حاليًا.', registration_ready: 'التسجيل مفتوح. املأ النموذج ثم ادفع عبر SumUp.',
             first_name: 'الاسم الأول *', last_name: 'اسم العائلة *', email_label: 'البريد الإلكتروني *', phone_label: 'رقم الهاتف *',
-            member_question: 'هل أنت عضو في Crescent Youth؟ *', sports_section_label: 'المجموعة الرياضية المفضلة *', select_option: 'اختر', yes_option: 'نعم', no_option: 'لا',
+            sports_section_label: 'المجموعة الرياضية المفضلة *', select_option: 'اختر', yes_option: 'نعم', no_option: 'لا',
             section_sisters: 'الأخوات', section_brothers: 'الإخوة', section_discuss: 'مناقشة الأمر مع المنظم',
             heard_label: 'كيف سمعت عن هذه الفعالية؟', heard_placeholder: 'إنستغرام، واتساب، الأصدقاء، الموقع...',
-            price_select: 'اختر حالة عضويتك لمعرفة الرسوم.', price_member: 'رسوم الأعضاء: 8 يورو مسبقًا', price_guest: 'رسوم غير الأعضاء: 10 يورو مسبقًا',
+            price_select: 'نتحقق من بريدك الإلكتروني أو رقم هاتفك لتحديد الرسوم. ستظهر لك القيمة في SumUp قبل الدفع.',
             consent_before: 'أوافق على معالجة بياناتي لتنظيم هذه الفعالية وقد قرأت', privacy_link: 'سياسة الخصوصية', consent_after: '.',
             submit_closed: 'سيفتح التسجيل قريبًا', submit_ready: 'سجّل وانتقل إلى SumUp', processing: 'جارٍ حفظ التسجيل…',
-            saved_redirect: 'تم حفظ بياناتك. جارٍ الانتقال إلى SumUp للدفع.', save_error: 'تعذر تأكيد التسجيل. حاول لاحقًا أو تواصل معنا.', duplicate: 'هذا البريد الإلكتروني مسجل بالفعل في هذه الفعالية.',
+            saved_redirect: 'تم حفظ بياناتك. جارٍ الانتقال إلى SumUp للدفع.', save_error: 'تعذر تأكيد التسجيل. حاول لاحقًا أو تواصل معنا.', duplicate: 'هذا البريد الإلكتروني أو رقم الهاتف مسجل بالفعل في هذه الفعالية.',
             payment_note: 'التسجيل ليس إثباتًا للدفع. تُراجع المدفوعات بشكل منفصل عبر SumUp.',
             values_kicker: 'قيمنا', values_title: 'الاحترام. المتعة. التواصل.', values_text: 'يستحق الجميع بيئة دافئة وآمنة. نرجو احترام الآخرين وحدودهم الشخصية وتعليمات المنظمين.',
             questions: 'لديك سؤال؟ تواصل معنا', footer_about: 'نجمع الشباب من خلفيات مختلفة عبر التعليم والرياضة والأنشطة الملهمة.', footer_links: 'روابط سريعة', footer_contact: 'اتصل بنا', terms: 'الشروط والأحكام'
@@ -156,15 +154,6 @@
         }
     }
 
-    function updatePrice() {
-        const status = memberStatus.value;
-        priceStatus.textContent = status === 'Yes' ? t('price_member') :
-            status === 'No' ? t('price_guest') : t('price_select');
-        document.querySelectorAll('.event-registration .price-line[data-plan]').forEach(line => {
-            line.classList.toggle('is-selected', line.dataset.plan === status);
-        });
-    }
-
     function updateAvailability() {
         const ready = isReady();
         fields.disabled = !ready;
@@ -187,11 +176,9 @@
         });
         langButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === currentLang));
         localStorage.setItem('siteLang', currentLang);
-        updatePrice();
         updateAvailability();
     }
 
-    memberStatus.addEventListener('change', updatePrice);
     langButtons.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
     const menu = document.getElementById('mobile-menu');
     const nav = document.getElementById('main-nav');
@@ -213,9 +200,6 @@
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         if (!isReady() || !form.reportValidity()) return;
-        const status = memberStatus.value;
-        if (status !== 'Yes' && status !== 'No') return;
-
         const data = Object.fromEntries(new FormData(form).entries());
         const payload = {
             eventId: 'the-sports-arena-2026',
@@ -223,7 +207,7 @@
             lastName: data.lastName?.trim(),
             email: data.email?.trim(),
             phone: data.phone?.trim(),
-            memberStatus: status,
+            membershipPricing: true,
             sportsSection: data.sportsSection,
             heardFrom: data.heardFrom?.trim() || '',
             consent: data.consent === 'yes',
@@ -248,8 +232,7 @@
                 formMessage.className = 'form-message error';
                 return;
             }
-            const expectedFee = status === 'Yes' ? 8 : 10;
-            if (Number(result.amount) !== expectedFee) throw new Error('Fee mismatch');
+            if (![8, 10].includes(result.amount)) throw new Error('Unexpected fee');
             formMessage.textContent = t('saved_redirect');
             formMessage.className = 'form-message success';
             if (!validPaymentUrl(result.paymentUrl)) throw new Error('Invalid SumUp checkout URL');
@@ -268,7 +251,7 @@
         fetch(config.googleScriptUrl, { cache: 'no-store' })
             .then(response => response.json())
             .then(result => {
-                registrationOpen = result.registrationOpen === true;
+                registrationOpen = result.registrationOpen === true && result.membershipPricing === true;
                 updateAvailability();
             })
             .catch(() => updateAvailability());

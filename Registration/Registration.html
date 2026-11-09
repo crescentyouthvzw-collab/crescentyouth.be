@@ -16,14 +16,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <link rel="stylesheet" href="../reset.css">
-    <link rel="stylesheet" href="../style.css?v=20261109-audit">
+    <link rel="stylesheet" href="../style.css?v=20261109-main">
 </head>
 
 <body>
 
 <header class="navbar">
     <a href="../index.html" class="logo">
-        <img src="../images/crescent_youtrh_logo_new_without name1.png" alt="Crescent Youth logo" class="logo-img">
+        <img src="../images/crescent_youtrh_logo_new_without name1.png" alt="Crescent Youth logo" width="72" height="72" class="logo-img">
         <span class="logo-text">Crescent Youth</span>
     </a>
 
@@ -42,10 +42,10 @@
 
     <div class="nav-actions">
         <div class="lang-switcher" aria-label="Taal kiezen">
-            <span class="lang-option active" data-lang="nl">NL</span>
-            <span class="lang-option" data-lang="en">EN</span>
-            <span class="lang-option" data-lang="fr">FR</span>
-            <span class="lang-option" data-lang="ar">AR</span>
+            <button type="button" class="lang-option active" data-lang="nl">NL</button>
+            <button type="button" class="lang-option" data-lang="en">EN</button>
+            <button type="button" class="lang-option" data-lang="fr">FR</button>
+            <button type="button" class="lang-option" data-lang="ar">AR</button>
         </div>
 
         <button class="menu-toggle" id="mobile-menu" aria-controls="main-nav" aria-label="Open navigatie" aria-expanded="false">
@@ -54,7 +54,9 @@
     </div>
 </header>
 
-<section class="hero reveal">
+
+<main>
+<section class="hero">
     <div class="hero-content">
         <h1 data-i18n="membership_page_title">Word lid van Crescent Youth</h1>
         <p data-i18n="membership_page_subtitle">
@@ -76,15 +78,15 @@
         <form id="registrationForm" class="membership-form">
 
             <label for="firstName" data-i18n="membership_first_name">Voornaam</label>
-            <input type="text" id="firstName" required>
+            <input type="text" id="firstName" required autocomplete="given-name">
 
             <label for="lastName" data-i18n="membership_last_name">Achternaam</label>
-            <input type="text" id="lastName" required>
+            <input type="text" id="lastName" required autocomplete="family-name">
 
             <label for="email" data-i18n="membership_email">E-mailadres</label>
             <input
                     type="email"
-                    id="email"
+                    id="email" autocomplete="email"
                     placeholder="voorbeeld@gmail.com"
                     data-i18n-placeholder="membership_placeholder_email"
                     required
@@ -95,7 +97,7 @@
                 <select id="phoneCode" aria-label="Landcode telefoonnummer" required></select>
                 <input
                         type="tel"
-                        id="phone"
+                        id="phone" autocomplete="tel-national"
                         placeholder="123456789"
                         data-i18n-placeholder="membership_placeholder_phone"
                         maxlength="24"
@@ -104,7 +106,7 @@
             </div>
 
             <label for="dateOfBirth" data-i18n="membership_dob">Geboortedatum</label>
-            <input type="date" id="dateOfBirth" required>
+            <input type="date" id="dateOfBirth" required autocomplete="bday">
 
             <label for="gender" data-i18n="membership_gender">Geslacht</label>
             <select id="gender" required>
@@ -121,14 +123,14 @@
             </select>
 
             <label for="emergencyName" data-i18n="membership_emergency_name">Naam noodcontact</label>
-            <input type="text" id="emergencyName" required>
+            <input type="text" id="emergencyName" required autocomplete="name">
 
             <label for="emergencyPhone" data-i18n="membership_emergency_phone">Telefoonnummer noodcontact</label>
             <div class="membership-phone-row">
                 <select id="emergencyPhoneCode" aria-label="Landcode noodcontact" required></select>
                 <input
                         type="tel"
-                        id="emergencyPhone"
+                        id="emergencyPhone" autocomplete="tel"
                         placeholder="123456789"
                         data-i18n-placeholder="membership_placeholder_phone"
                         maxlength="24"
@@ -180,6 +182,8 @@
 
     </div>
 </section>
+</main>
+
 
 <footer>
     <div class="footer-content">
@@ -204,13 +208,15 @@
 
         <div class="footer-section">
             <h3 data-i18n="footer_links_title">Snelle links</h3>
-            <p><a href="../index.html" data-i18n="footer_home">Home</a></p>
-            <p><a href="../index.html#activiteiten" data-i18n="footer_activities">Wat doen wij?</a></p>
-            <p><a href="../index.html#membership-preview" data-i18n="nav_membership">Lidmaatschap</a></p>
+            <p><a href="/index.html" data-i18n="footer_home">Home</a></p>
+            <p><a href="/index.html#missie" data-i18n="footer_mission">Missie</a></p>
+            <p><a href="/index.html#kernwaarden" data-i18n="footer_values">Kernwaarden</a></p>
+            <p><a href="/index.html#activiteiten" data-i18n="footer_activities">Wat doen wij?</a></p>
             <p><a href="/Events/calendar.html" data-i18n="nav_events">Events</a></p>
-            <p><a href="../Donation.html" data-i18n="nav_donate">Doneren</a></p>
-            <p><a href="../Registration/Registration.html" data-i18n="nav_register">Lid worden</a></p>
-            <p><a href="../Contact.html" data-i18n="footer_contact">Contact</a></p>
+            <p><a href="/Donation.html" data-i18n="nav_donate">Doneren</a></p>
+            <p><a href="/index.html#faq" data-i18n="footer_faq">FAQ</a></p>
+            <p><a href="/Registration/Registration.html" data-i18n="nav_register">Lid worden</a></p>
+            <p><a href="/Contact.html" data-i18n="footer_contact">Contact</a></p>
         </div>
 
         <div class="footer-section">
@@ -242,8 +248,8 @@
     <button id="cookie-accept" data-i18n="cookies_button">Akkoord</button>
 </div>
 
-<script src="../script.js?v=20261109-audit"></script>
-<script src="script.js?v=20261109-audit"></script>
+<script src="../script.js?v=20261109-main"></script>
+<script src="script.js?v=20261109-duplicate"></script>
 
 </body>
 </html>
