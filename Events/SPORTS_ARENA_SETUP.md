@@ -1,6 +1,6 @@
-# The Sports Arena registration
+# The Social Arena registration
 
-The website uses its existing form and the dedicated Crescent Youth Apps Script deployment. The receiver writes to the private [Sports Arena registration sheet](https://docs.google.com/spreadsheets/d/1SjF_CqadSiCJIPO7w9F5A4lpjoL6b73hxf8FBP5hGOA/edit?gid=1159388902#gid=1159388902). The tab name is **Sports Arena 2026**.
+The website uses its existing form and the dedicated Crescent Youth Apps Script deployment. The receiver writes to the private [The Social Arena registration sheet](https://docs.google.com/spreadsheets/d/1SjF_CqadSiCJIPO7w9F5A4lpjoL6b73hxf8FBP5hGOA/edit?gid=1159388902#gid=1159388902). The tab name is **Sports Arena 2026**.
 
 ## Prepare the production receiver
 

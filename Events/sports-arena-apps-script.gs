@@ -1,7 +1,7 @@
 /**
- * THE SPORTS ARENA — Google Apps Script receiver for the registration form.
+ * The Social Arena — Google Apps Script receiver for the registration form.
  *
- * Paste into the separate Sports Arena Apps Script project, then deploy as a
+ * Paste into the dedicated event Apps Script project, then deploy as a
  * Web app running as the script owner. Keep the spreadsheet private.
  * This file is source code only; it is NOT deployed by GitHub Pages.
  */
@@ -225,7 +225,7 @@ function arenaCreateCheckout_(reference, amount) {
     merchant_code: merchantCode,
     amount: amount,
     currency: 'EUR',
-    description: 'Crescent Youth - The Sports Arena',
+    description: 'Crescent Youth - The Social Arena',
     valid_until: new Date(Date.now() + 30 * 60 * 1000).toISOString(),
     hosted_checkout: { enabled: true },
     redirect_url: 'https://crescentyouth.be/Events/sports-arena.html#registration'
@@ -288,11 +288,11 @@ function arenaSendConfirmation_(row) {
   if (!/^SA26-[A-F0-9-]+$/.test(reference) || !arenaValidEmail_(row[6])) {
     throw new Error('Invalid confirmation recipient or reference.');
   }
-  const subject = 'Je plek is bevestigd | The Sports Arena';
+  const subject = 'Je plek is bevestigd | The Social Arena';
   const body = [
     'Bedankt voor je inschrijving! We hebben je betaling ontvangen en je plek is bevestigd.',
     '',
-    'The Sports Arena | Crescent Youth vzw',
+    'The Social Arena | Crescent Youth vzw',
     'Zondag 29 november 2026, 13.00–16.30 uur',
     'Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge',
     'Betaald: EUR ' + Number(row[12]).toFixed(2),
