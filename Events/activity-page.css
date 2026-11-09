@@ -93,10 +93,10 @@ footer { background: var(--primary); color: white; padding: 40px 20px 20px; text
 .cookie-banner p { flex: 1; font-size: .9rem; }
 .cookie-banner a { color: var(--accent); text-decoration: underline; }
 .cookie-banner button { background: var(--accent); color: var(--primary); border: none; padding: 9px 26px; border-radius: 999px; font-weight: 700; cursor: pointer; }
-.reveal, .reveal-left, .reveal-right { opacity: 0; }
-.reveal { transform: translateY(30px); }
-.reveal-left { transform: translateX(-40px); }
-.reveal-right { transform: translateX(40px); }
+.reveal-enabled .reveal, .reveal-enabled .reveal-left, .reveal-enabled .reveal-right { opacity: 0; }
+.reveal-enabled .reveal { transform: translateY(30px); }
+.reveal-enabled .reveal-left { transform: translateY(24px); }
+.reveal-enabled .reveal-right { transform: translateY(24px); }
 .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0) translateY(0); transition: opacity .7s ease-out, transform .7s ease-out; }
 html[dir="rtl"] .hero, html[dir="rtl"] .section h2, html[dir="rtl"] .section-intro, html[dir="rtl"] .activity-card, html[dir="rtl"] .empty-event-box, html[dir="rtl"] .cta-section, html[dir="rtl"] footer { text-align: center; }
 

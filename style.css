@@ -1331,22 +1331,22 @@ footer {
 
 /* SCROLL ANIMATIONS */
 
-.reveal,
-.reveal-left,
-.reveal-right {
+.reveal-enabled .reveal,
+.reveal-enabled .reveal-left,
+.reveal-enabled .reveal-right {
     opacity: 0;
 }
 
-.reveal {
+.reveal-enabled .reveal {
     transform: translateY(30px);
 }
 
-.reveal-left {
-    transform: translateX(-40px);
+.reveal-enabled .reveal-left {
+    transform: translateY(24px);
 }
 
-.reveal-right {
-    transform: translateX(40px);
+.reveal-enabled .reveal-right {
+    transform: translateY(24px);
 }
 
 .reveal.visible,

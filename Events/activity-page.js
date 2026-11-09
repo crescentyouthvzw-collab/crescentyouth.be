@@ -211,7 +211,9 @@ window.addEventListener('scroll', () => document.querySelector('.navbar')?.class
 document.querySelector('.to-top')?.addEventListener('click', event => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
 const animatedEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-if (animatedEls.length) {
+if (animatedEls.length && 'IntersectionObserver' in window &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('reveal-enabled');
   const observer = new IntersectionObserver((entries, obs) => entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     entry.target.classList.add('visible');
@@ -337,7 +339,7 @@ if (lightbox && lightboxImage) {
     if (event.target === lightbox) lightbox.close();
   });
   lightbox.addEventListener('close', () => {
-    lightboxImage.src = '';
+    lightboxImage.removeAttribute('src');
     lightboxImage.alt = '';
   });
 }

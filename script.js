@@ -43,7 +43,9 @@ if (toTopBtn) {
 
 // Scroll reveal
 const animatedEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-if (animatedEls.length) {
+if (animatedEls.length && 'IntersectionObserver' in window &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.add('reveal-enabled');
   const observerOptions = { threshold: 0.18, rootMargin: '0px 0px -40px 0px' };
 
   const onAppear = new IntersectionObserver((entries, obs) => {
@@ -86,7 +88,8 @@ const animateStats = () => {
 };
 
 const statsSection = document.querySelector('.quick-stats');
-if (statsSection) {
+if (statsSection && 'IntersectionObserver' in window &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const statsObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

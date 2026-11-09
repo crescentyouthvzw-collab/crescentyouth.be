@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/Events/sports-arena.css?v=20261109-5">
     <link rel="stylesheet" href="/Events/event-registration.css?v=20261109-1">
     <script defer src="/Events/sports-arena-config.js?v=20261109-4"></script>
-    <script defer src="/Events/sports-arena.js?v=20261109-3"></script>
+    <script defer src="/Events/sports-arena.js?v=20261109-site"></script>
 </head>
 <body>
 <header class="navbar">
@@ -20,25 +20,26 @@
         <img src="/images/crescent_youtrh_logo_new_without name1.png" alt="Crescent Youth logo" class="logo-img">
         <span class="logo-text">Crescent Youth</span>
     </a>
-    <nav id="main-nav" aria-label="Main navigation">
+    <nav id="main-nav" aria-label="Hoofdnavigatie">
         <ul class="nav-links" id="nav-links">
             <li><a href="/index.html" data-i18n="nav_home">Home</a></li>
             <li><a href="/index.html#activiteiten" data-i18n="nav_activities">Activiteiten</a></li>
             <li><a href="/Events/calendar.html" data-i18n="nav_events">Events</a></li>
             <li><a href="/index.html#membership-preview" data-i18n="nav_membership">Lidmaatschap</a></li>
             <li><a href="/Donation.html" data-i18n="nav_donate">Doneren</a></li>
+            <li><a href="/index.html#faq" data-i18n="nav_faq">FAQ</a></li>
             <li><a href="/Registration/Registration.html" data-i18n="nav_join">Lid worden</a></li>
             <li><a href="/Contact.html" data-i18n="nav_contact">Contact</a></li>
         </ul>
     </nav>
     <div class="nav-actions">
-        <div class="lang-switcher" aria-label="Choose language">
+        <div class="lang-switcher" aria-label="Taal kiezen">
             <button type="button" class="lang-option active" data-lang="nl">NL</button>
             <button type="button" class="lang-option" data-lang="en">EN</button>
             <button type="button" class="lang-option" data-lang="fr">FR</button>
             <button type="button" class="lang-option" data-lang="ar">AR</button>
         </div>
-        <button type="button" class="menu-toggle" id="mobile-menu" aria-expanded="false" aria-label="Open menu"><i class="fas fa-bars" aria-hidden="true"></i></button>
+        <button type="button" class="menu-toggle" id="mobile-menu" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigatie"><i class="fas fa-bars" aria-hidden="true"></i></button>
     </div>
 </header>
 
@@ -97,14 +98,14 @@
     <section class="section alt event-registration" id="registration">
         <span class="section-kicker" data-i18n="form_kicker">Schrijf je in</span>
         <h2 data-i18n="form_heading">Registratie</h2>
-        <p class="section-intro" data-i18n="form_intro">Vul je gegevens in zodra de registratie opent. Na een succesvolle inschrijving ga je naar de veilige SumUp-betaalpagina.</p>
+        <p class="section-intro" data-i18n="form_intro">Vul je gegevens in om je in te schrijven. Na een succesvolle inschrijving ga je naar de veilige SumUp-betaalpagina.</p>
         <div class="registration-layout">
             <aside class="price-box" id="tickets" aria-labelledby="ticket-prices-heading">
                 <div class="price-card-header">
                     <span class="price-card-icon" aria-hidden="true"><i class="fas fa-ticket"></i></span>
                     <h3 id="ticket-prices-heading" data-i18n="tickets_title">Registratieprijzen</h3>
                 </div>
-                <p class="price-card-intro" data-i18n="tickets_intro">Schrijf je vooraf in om je plaats aan het voordelige tarief te reserveren zodra de registratie opent.</p>
+                <p class="price-card-intro" data-i18n="tickets_intro">Schrijf je vooraf in om je plaats aan het voordelige tarief te reserveren.</p>
                 <div class="price-line" data-plan="Yes">
                     <span data-i18n="member_price_title">Crescent Youth-leden</span>
                     <strong class="price">€8</strong>

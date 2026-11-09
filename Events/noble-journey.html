@@ -737,22 +737,22 @@
             cursor: pointer;
         }
 
-        .reveal,
-        .reveal-left,
-        .reveal-right {
+        .reveal-enabled .reveal,
+        .reveal-enabled .reveal-left,
+        .reveal-enabled .reveal-right {
             opacity: 0;
         }
 
-        .reveal {
+        .reveal-enabled .reveal {
             transform: translateY(30px);
         }
 
-        .reveal-left {
-            transform: translateX(-40px);
+        .reveal-enabled .reveal-left {
+            transform: translateY(24px);
         }
 
-        .reveal-right {
-            transform: translateX(40px);
+        .reveal-enabled .reveal-right {
+            transform: translateY(24px);
         }
 
         .reveal.visible,
@@ -920,7 +920,7 @@
             <span class="lang-option" data-lang="ar">AR</span>
         </div>
 
-        <button class="menu-toggle" id="mobile-menu" aria-label="Open navigatie" aria-expanded="false">
+        <button class="menu-toggle" id="mobile-menu" aria-controls="main-nav" aria-label="Open navigatie" aria-expanded="false">
             <i class="fas fa-bars"></i>
         </button>
     </div>
@@ -1196,7 +1196,9 @@
     }
 
     const animatedEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-    if (animatedEls.length) {
+    if (animatedEls.length && 'IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('reveal-enabled');
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
