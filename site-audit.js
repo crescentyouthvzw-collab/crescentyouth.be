@@ -12,7 +12,7 @@
     if (!document.querySelector('link[href*="/site-audit.css"]')) {
         const styles = document.createElement('link');
         styles.rel = 'stylesheet';
-        styles.href = '/site-audit.css?v=20261109-review';
+        styles.href = '/site-audit.css?v=20261109-deep-qa';
         document.head.append(styles);
     }
 
@@ -41,7 +41,27 @@
         address.replaceWith(' ', link);
     }
 
+    const menu = document.getElementById('mobile-menu');
+    const nav = document.getElementById('main-nav');
+    const switcher = document.querySelector('.lang-switcher');
+    const navigationLabels = {
+        nl: ['Open navigatie', 'Sluit navigatie', 'Hoofdnavigatie', 'Taal kiezen'],
+        en: ['Open menu', 'Close menu', 'Main navigation', 'Choose language'],
+        fr: ['Ouvrir le menu', 'Fermer le menu', 'Navigation principale', 'Choisir la langue'],
+        ar: ['فتح القائمة', 'إغلاق القائمة', 'التنقل الرئيسي', 'اختيار اللغة']
+    };
+    function syncNavigation() {
+        const labels = navigationLabels[root.lang] || navigationLabels.nl;
+        menu?.setAttribute('aria-label', labels[menu.getAttribute('aria-expanded') === 'true' ? 1 : 0]);
+        nav?.setAttribute('aria-label', labels[2]);
+        switcher?.setAttribute('aria-label', labels[3]);
+    }
+    if (menu) new MutationObserver(syncNavigation).observe(menu, {
+        attributes: true, attributeFilter: ['aria-expanded']
+    });
+
     function syncLanguage() {
+        syncNavigation();
         const lang = isLegal ? 'nl' : (root.lang || 'nl');
         for (const button of document.querySelectorAll('button.lang-option[data-lang]')) {
             const choice = button.dataset.lang;

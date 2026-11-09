@@ -167,6 +167,136 @@ const langButtons = document.querySelectorAll('.lang-option');
 const i18nElements = document.querySelectorAll('[data-i18n]');
 const i18nAriaElements = document.querySelectorAll('[data-i18n-aria]');
 const metaDescription = document.querySelector('meta[name="description"]');
+const galleryTranslations = {
+  "Jongeren tijdens een sportactiviteit van Crescent Youth": {
+    "en": "Young people at a Crescent Youth sports activity",
+    "fr": "Des jeunes lors d’une activité sportive de Crescent Youth",
+    "ar": "شباب خلال نشاط رياضي لشبيبة الهلال"
+  },
+  "Jongeren verzamelen zich tijdens een zaalvoetbalactiviteit": {
+    "en": "Young people gather during a futsal activity",
+    "fr": "Des jeunes se rassemblent lors d’une activité de futsal",
+    "ar": "شباب يجتمعون خلال نشاط لكرة القدم داخل الصالة"
+  },
+  "Twee spelers overleggen op het veld": {
+    "en": "Two players talk on the court",
+    "fr": "Deux joueurs discutent sur le terrain",
+    "ar": "لاعبان يتحدثان في الملعب"
+  },
+  "Speler kijkt geconcentreerd naar het veld": {
+    "en": "A player looks intently at the court",
+    "fr": "Un joueur regarde attentivement le terrain",
+    "ar": "لاعب ينظر إلى الملعب بتركيز"
+  },
+  "Spelers nemen rust langs de zijlijn": {
+    "en": "Players take a break on the sidelines",
+    "fr": "Des joueurs se reposent sur le bord du terrain",
+    "ar": "لاعبون يستريحون على جانب الملعب"
+  },
+  "Speler volgt aandachtig de wedstrijd": {
+    "en": "A player watches the match closely",
+    "fr": "Un joueur suit attentivement le match",
+    "ar": "لاعب يتابع المباراة باهتمام"
+  },
+  "Twee teamgenoten met een arm om elkaar heen": {
+    "en": "Two teammates with their arms around each other",
+    "fr": "Deux coéquipiers se tiennent par les épaules",
+    "ar": "زميلان في الفريق يضعان ذراعيهما على كتفي بعضهما"
+  },
+  "Teamgenoten moedigen elkaar aan": {
+    "en": "Teammates encourage one another",
+    "fr": "Des coéquipiers s’encouragent",
+    "ar": "زملاء الفريق يشجعون بعضهم"
+  },
+  "Drie jongeren langs de zijlijn": {
+    "en": "Three young people on the sidelines",
+    "fr": "Trois jeunes au bord du terrain",
+    "ar": "ثلاثة شباب على جانب الملعب"
+  },
+  "Poster van de Zusters Iftar bijeenkomst op 8 maart in Brugge": {
+    "en": "Poster for the Sisters’ Iftar on 8 March in Bruges",
+    "fr": "Affiche de l’iftar des sœurs du 8 mars à Bruges",
+    "ar": "ملصق إفطار الأخوات يوم 8 مارس في بروج"
+  },
+  "Feestelijk gedekte tafels voor de Zusters Iftar": {
+    "en": "Festive table settings for the Sisters’ Iftar",
+    "fr": "Tables dressées pour l’iftar des sœurs",
+    "ar": "طاولات مزينة لإفطار الأخوات"
+  },
+  "Plaats aan tafel met een dadel en ramadankaart": {
+    "en": "A place setting with a date and a Ramadan card",
+    "fr": "Un couvert avec une datte et une carte de Ramadan",
+    "ar": "مكان على الطاولة مع تمرة وبطاقة رمضان"
+  },
+  "Kralen en materialen voor de tasbeeh-activiteit": {
+    "en": "Beads and materials for the prayer-bead activity",
+    "fr": "Perles et matériel pour l’atelier de fabrication de chapelets",
+    "ar": "خرز ومواد لنشاط صنع المسابح"
+  },
+  "Uitgebreid iftarbuffet met warme gerechten": {
+    "en": "An iftar buffet with a variety of hot dishes",
+    "fr": "Buffet d’iftar avec plusieurs plats chauds",
+    "ar": "بوفيه إفطار يضم أطباقًا ساخنة متنوعة"
+  },
+  "Ramadan Kareem plaatskaart met dadel": {
+    "en": "A Ramadan Kareem place card with a date",
+    "fr": "Marque-place Ramadan Kareem avec une datte",
+    "ar": "بطاقة مكان مكتوب عليها رمضان كريم مع تمرة"
+  },
+  "Gezamenlijke iftar aan een sfeervol verlichte tafel": {
+    "en": "A shared iftar at a warmly lit table",
+    "fr": "Iftar partagé autour d’une table éclairée",
+    "ar": "إفطار جماعي حول طاولة مضاءة"
+  },
+  "Gasten die gerechten opscheppen aan het iftarbuffet": {
+    "en": "Guests serving themselves at the iftar buffet",
+    "fr": "Des convives se servent au buffet d’iftar",
+    "ar": "ضيوف يملؤون أطباقهم من بوفيه الإفطار"
+  },
+  "Kleurrijke selectie salades en warme gerechten": {
+    "en": "A colourful selection of salads and hot dishes",
+    "fr": "Sélection colorée de salades et de plats chauds",
+    "ar": "تشكيلة ملونة من السلطات والأطباق الساخنة"
+  },
+  "Close-up van het verzorgde iftarbuffet": {
+    "en": "Close-up of the iftar buffet",
+    "fr": "Gros plan du buffet d’iftar",
+    "ar": "لقطة مقربة لبوفيه الإفطار"
+  },
+  "Brood, salades en warme gerechten bij de gezamenlijke iftar": {
+    "en": "Bread, salads and hot dishes at the shared iftar",
+    "fr": "Pain, salades et plats chauds lors de l’iftar partagé",
+    "ar": "خبز وسلطات وأطباق ساخنة في الإفطار الجماعي"
+  },
+  "Deelnemers van de Road to Ramadan-uitstap samen in de moskee": {
+    "en": "Road to Ramadan participants together in the mosque",
+    "fr": "Participants à la sortie Road to Ramadan réunis dans la mosquée",
+    "ar": "المشاركون في رحلة Road to Ramadan مجتمعون في المسجد"
+  },
+  "Twee deelnemers tijdens de treinreis": {
+    "en": "Two participants during the train journey",
+    "fr": "Deux participants pendant le trajet en train",
+    "ar": "مشاركان خلال رحلة القطار"
+  },
+  "Groepsfoto van de deelnemers in de moskee": {
+    "en": "Group photo of participants in the mosque",
+    "fr": "Photo de groupe des participants dans la mosquée",
+    "ar": "صورة جماعية للمشاركين في المسجد"
+  },
+  "Tweede groepsfoto in de moskee": {
+    "en": "Second group photo in the mosque",
+    "fr": "Deuxième photo de groupe dans la mosquée",
+    "ar": "الصورة الجماعية الثانية في المسجد"
+  },
+  "Derde groepsfoto in de moskee": {
+    "en": "Third group photo in the mosque",
+    "fr": "Troisième photo de groupe dans la mosquée",
+    "ar": "الصورة الجماعية الثالثة في المسجد"
+  }
+};
+const galleryDescriptions = Array.from(document.images)
+  .filter(image => Object.hasOwn(galleryTranslations, image.alt))
+  .map(image => [image, image.alt]);
 let currentLanguage = localStorage.getItem('siteLang') || 'nl';
 
 function dictionaryFor(lang) {
@@ -193,6 +323,9 @@ function setLanguage(lang) {
     dot.setAttribute('aria-label', (slideLabel[lang] || slideLabel.nl) + ' ' + (index + 1)));
   const closeLabel = { nl: 'Sluit foto', en: 'Close photo', fr: 'Fermer la photo', ar: 'إغلاق الصورة' };
   document.querySelector('.lightbox-close')?.setAttribute('aria-label', closeLabel[lang] || closeLabel.nl);
+  for (const [image, original] of galleryDescriptions) {
+    image.alt = galleryTranslations[original][lang] || original;
+  }
   currentLanguage = lang;
   localStorage.setItem('siteLang', lang);
 }

@@ -100,7 +100,7 @@
             programme_kicker: 'خطة اليوم', programme_title: 'البرنامج', programme_intro: 'نبدأ بألعاب اجتماعية وتعارف، ثم ننتقل إلى الرياضة في مجموعات منفصلة للفتيات والفتيان.',
             social_title: 'ألعاب اجتماعية وتعارف', social_text: 'تعارف وألعاب جماعية وتحديات ودية في بيئة محترمة وتحت الإشراف.',
             sports_title: 'Sports Arena', sports_text: 'رياضة ترفيهية وروح الفريق واللعب النزيه. للفتيات والفتيان أقسام رياضية منفصلة مع حاجز بصري بين المجموعتين.',
-            tickets_kicker: 'المشاركة', tickets_title: 'رسوم التسجيل', tickets_intro: 'سجّل مسبقًا لحجز مكانك بالسعر المخفّض عند فتح التسجيل.',
+            tickets_kicker: 'المشاركة', tickets_title: 'رسوم التسجيل', tickets_intro: 'سجّل مسبقًا لحجز مكانك بالسعر المخفّض.',
             member_price_title: 'أعضاء Crescent Youth', guest_price_title: 'غير الأعضاء', advance_registration: 'التسجيل المسبق', onsite_price: 'التسجيل في المكان: 15 يورو، إذا بقيت أماكن متاحة.',
             form_kicker: 'انضم للفعالية', form_heading: 'التسجيل', form_intro: 'أدخل بياناتك للتسجيل. بعد حفظ التسجيل ستنتقل إلى صفحة دفع SumUp الآمنة.',
             side_title: 'مكانك في THE SPORTS ARENA', side_text: 'بعد ظهر مليء بالتعارف والألعاب والرياضة. الأماكن محدودة.',
@@ -200,18 +200,19 @@
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         if (!isReady() || !form.reportValidity()) return;
-        const data = Object.fromEntries(new FormData(form).entries());
+        // Personal fields have no native form names. Only this JSON POST sends them.
+        const value = id => form.querySelector('#' + id).value.trim();
         const payload = {
             eventId: 'the-sports-arena-2026',
-            firstName: data.firstName?.trim(),
-            lastName: data.lastName?.trim(),
-            email: data.email?.trim(),
-            phone: data.phone?.trim(),
+            firstName: value('firstName'),
+            lastName: value('lastName'),
+            email: value('email'),
+            phone: value('phone'),
             membershipPricing: true,
-            sportsSection: data.sportsSection,
-            heardFrom: data.heardFrom?.trim() || '',
-            consent: data.consent === 'yes',
-            website: data.website || ''
+            sportsSection: value('sportsSection'),
+            heardFrom: value('heardFrom'),
+            consent: form.querySelector('#consent').checked,
+            website: value('website')
         };
 
         formMessage.textContent = t('processing');

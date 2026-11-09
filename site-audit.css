@@ -50,3 +50,41 @@ html { scroll-padding-top: 105px; }
     header.navbar #nav-links a { padding: 8px 10px; font-size: .9rem; white-space: nowrap; }
     header.navbar #mobile-menu { display: none; }
 }
+
+header.navbar .lang-option {
+    display: inline-grid;
+    place-items: center;
+    min-block-size: 44px;
+    min-inline-size: 44px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 999px;
+    background: #1e3d2f;
+    color: #fff;
+    font-family: inherit;
+    font-size: .78rem;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+}
+
+header.navbar .lang-option:hover {
+    background: #2d5a42;
+    color: #fff;
+}
+
+header.navbar .lang-option.active {
+    background: #d4b896;
+    color: #173126;
+}
+
+@media (max-width: 360px) {
+    header.navbar { padding-inline: 8px; gap: 6px; }
+    header.navbar .logo { flex: 0 0 auto; min-width: 0; gap: 0; }
+    header.navbar .logo-text { display: none; }
+    header.navbar .logo-img { inline-size: 40px; block-size: 40px; }
+    header.navbar .nav-actions { flex: 0 0 auto; gap: 4px; }
+    header.navbar .lang-switcher { gap: 2px; padding: 0; }
+    header.navbar .lang-option { padding-inline: 0; }
+    header.navbar #mobile-menu { inline-size: 44px; block-size: 44px; flex: 0 0 44px; }
+}
