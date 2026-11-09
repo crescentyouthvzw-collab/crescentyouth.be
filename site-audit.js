@@ -12,7 +12,7 @@
     if (!document.querySelector('link[href*="/site-audit.css"]')) {
         const styles = document.createElement('link');
         styles.rel = 'stylesheet';
-        styles.href = '/site-audit.css?v=20261109-uniform';
+        styles.href = '/site-audit.css?v=20261109-footer';
         document.head.append(styles);
     }
 
@@ -48,6 +48,21 @@
         ar: ['نجمع الشباب في بروج من خلال التعليم والرياضة والأنشطة.', 'روابط سريعة', 'معلومات التواصل', 'المقر المسجل', 'رقم المؤسسة', 'المعلومات القانونية', 'الشروط والأحكام', 'سياسة الخصوصية', 'سياسة ملفات تعريف الارتباط', 'جميع الحقوق محفوظة.', 'العودة إلى الأعلى']
     };
     const footer = document.querySelector('footer');
+    const brandImage = document.querySelector('header .logo img, header .brand img')?.src;
+    for (const brand of document.querySelectorAll('header .logo-text, header .brand span')) {
+        brand.setAttribute('translate', 'no');
+        brand.classList.add('notranslate');
+    }
+
+    function footerLanguage() {
+        if (!isLegal) return root.lang || 'nl';
+        try {
+            const saved = localStorage.getItem('siteLang');
+            return Object.hasOwn(footerText, saved) ? saved : 'nl';
+        } catch (_) {
+            return 'nl';
+        }
+    }
     const menuLinks = [...document.querySelectorAll('#nav-links a')];
 
     function syncSharedLayout(lang) {
@@ -68,13 +83,15 @@
         if (!footer || footer.dataset.locale === lang) return;
         footer.className = 'site-footer';
         footer.dataset.locale = lang;
+        footer.lang = lang;
+        footer.dir = lang === 'ar' ? 'rtl' : 'ltr';
         const [about, quick, contact, office, number, legal, terms, privacy, cookies, rights, top] =
             footerText[lang] || footerText.nl;
         const links = navLinks.map(item => '<li><a href="' + item[0] + '">' + item[column] + '</a></li>').join('');
         footer.innerHTML = `
             <div class="site-footer-grid">
                 <div>
-                    <h2>Crescent Youth vzw</h2><p>${about}</p>
+                    <h2 class="site-footer-brand"><img alt="" width="44" height="44"><span class="notranslate" translate="no">Crescent Youth vzw</span></h2><p>${about}</p>
                     <div class="site-footer-social">
                         <a href="https://www.instagram.com/crescentyouth.be/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.5-3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/></svg></a>
                         <a href="https://www.tiktok.com/@crescentyouth.be" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2h3c.3 2.4 2 4.2 4 4.5v3a8 8 0 0 1-4-1.5v8a6 6 0 1 1-6-6h1v3h-1a3 3 0 1 0 3 3V2Z"/></svg></a>
@@ -93,12 +110,15 @@
                 </ul></div>
             </div>
             <div class="site-footer-bottom">
-                <p>© ${new Date().getFullYear()} Crescent Youth vzw. ${rights}</p>
-                <a href="#">↑ ${top}</a>
+                <p>© ${new Date().getFullYear()} <span class="notranslate" translate="no">Crescent Youth vzw</span>. ${rights}</p>
+                <a href="#" class="site-footer-top"><span aria-hidden="true">↑</span> ${top}</a>
             </div>`;
+        const logo = footer.querySelector('.site-footer-brand img');
+        if (brandImage) logo.src = brandImage;
+        else logo.remove();
     }
 
-    window.addEventListener('hashchange', () => syncSharedLayout(isLegal ? 'nl' : root.lang));
+    window.addEventListener('hashchange', () => syncSharedLayout(footerLanguage()));
 
 
     const menu = document.getElementById('mobile-menu');
@@ -123,7 +143,7 @@
     function syncLanguage() {
         syncNavigation();
         const lang = isLegal ? 'nl' : (root.lang || 'nl');
-        syncSharedLayout(lang);
+        syncSharedLayout(footerLanguage());
         for (const button of document.querySelectorAll('button.lang-option[data-lang]')) {
             const choice = button.dataset.lang;
             button.setAttribute('aria-pressed', String(choice === lang));
