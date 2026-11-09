@@ -9,9 +9,10 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/Events/sports-arena.css?v=20261109-1">
-    <script defer src="/Events/sports-arena-config.js?v=20261109-1"></script>
-    <script defer src="/Events/sports-arena.js?v=20261109-1"></script>
+    <link rel="stylesheet" href="/Events/sports-arena.css?v=20261109-3">
+    <link rel="stylesheet" href="/Events/event-registration.css?v=20261109-1">
+    <script defer src="/Events/sports-arena-config.js?v=20261109-4"></script>
+    <script defer src="/Events/sports-arena.js?v=20261109-3"></script>
 </head>
 <body>
 <header class="navbar">
@@ -93,32 +94,30 @@
         </div>
     </section>
 
-    <section class="section" id="tickets">
-        <span class="section-kicker" data-i18n="tickets_kicker">Deelname</span>
-        <h2 data-i18n="tickets_title">Registratieprijzen</h2>
-        <p class="section-intro" data-i18n="tickets_intro">Schrijf je vooraf in om je plaats aan het voordelige tarief te reserveren zodra de registratie opent.</p>
-        <div class="price-grid">
-            <div class="price-box"><span data-i18n="member_price_title">Crescent Youth-leden</span><strong>€8</strong><small data-i18n="advance_registration">Vooraf registreren</small></div>
-            <div class="price-box featured"><span data-i18n="guest_price_title">Niet-leden</span><strong>€10</strong><small data-i18n="advance_registration">Vooraf registreren</small></div>
-        </div>
-        <p class="ticket-note" data-i18n="onsite_price">Registratie ter plaatse: €15, enkel als er nog plaatsen beschikbaar zijn.</p>
-    </section>
-
-    <section class="section alt" id="registration">
+    <section class="section alt event-registration" id="registration">
         <span class="section-kicker" data-i18n="form_kicker">Schrijf je in</span>
         <h2 data-i18n="form_heading">Registratie</h2>
         <p class="section-intro" data-i18n="form_intro">Vul je gegevens in zodra de registratie opent. Na een succesvolle inschrijving ga je naar de veilige SumUp-betaalpagina.</p>
         <div class="registration-layout">
-            <aside class="registration-aside">
-                <div class="form-side-card">
-                    <div class="side-icon"><i class="fas fa-ticket" aria-hidden="true"></i></div>
-                    <h3 data-i18n="side_title">Jouw plaats bij THE SPORTS ARENA</h3>
-                    <p data-i18n="side_text">Een gezellige namiddag met nieuwe gezichten, leuke spellen en sport. Er is een beperkt aantal plaatsen voorzien.</p>
-                    <ul class="side-list">
-                        <li><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="side_one">Respectvolle, begeleide activiteiten</span></li>
-                        <li><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="side_two">Afgeschermde sportsecties voor meisjes en jongens</span></li>
-                        <li><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="side_three">Betaling via SumUp na inschrijving</span></li>
-                    </ul>
+            <aside class="price-box" id="tickets" aria-labelledby="ticket-prices-heading">
+                <div class="price-card-header">
+                    <span class="price-card-icon" aria-hidden="true"><i class="fas fa-ticket"></i></span>
+                    <h3 id="ticket-prices-heading" data-i18n="tickets_title">Registratieprijzen</h3>
+                </div>
+                <p class="price-card-intro" data-i18n="tickets_intro">Schrijf je vooraf in om je plaats aan het voordelige tarief te reserveren zodra de registratie opent.</p>
+                <div class="price-line" data-plan="Yes">
+                    <span data-i18n="member_price_title">Crescent Youth-leden</span>
+                    <strong class="price">€8</strong>
+                </div>
+                <div class="price-line" data-plan="No">
+                    <span data-i18n="guest_price_title">Niet-leden</span>
+                    <strong class="price">€10</strong>
+                </div>
+                <p class="note"><i class="fas fa-circle-info" aria-hidden="true"></i><span data-i18n="onsite_price">Registratie ter plaatse: €15, enkel als er nog plaatsen beschikbaar zijn.</span></p>
+                <p class="note"><i class="fas fa-users" aria-hidden="true"></i><span data-i18n="capacity">35 plaatsen</span></p>
+                <div class="ticket-details">
+                    <p><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="side_two">Afgeschermde sportsecties voor meisjes en jongens</span></p>
+                    <p><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="side_three">Betaling via SumUp na inschrijving</span></p>
                 </div>
             </aside>
             <div class="form-card">
