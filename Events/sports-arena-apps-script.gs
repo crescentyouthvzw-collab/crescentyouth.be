@@ -60,14 +60,70 @@ function arenaValidEmail_(value) {
   return /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/.test(value) && value.length <= 150;
 }
 
+// Compare Belgian local numbers, international numbers, and older Sheet values.
+function arenaPhoneKey_(value) {
+  const raw = String(value || '').trim().replace(/^'/, '');
+  if (!/^\+?[\d ()./-]+$/.test(raw)) return '';
+  let digits = raw.replace(/\D/g, '');
+  const international = raw.startsWith('+') || digits.startsWith('00');
+  if (digits.startsWith('00')) digits = digits.slice(2);
+  if (international || /^32\d{8,10}$/.test(digits)) {
+    digits = digits.replace(/^320(?=\d{8,9}$)/, '32');
+  } else if (/^0?\d{8,9}$/.test(digits)) {
+    digits = '32' + digits.replace(/^0/, '');
+  }
+  return /^[1-9]\d{7,14}$/.test(digits) ? digits : '';
+}
+
+function arenaEmailKey_(value) {
+  return String(value || '').trim().replace(/^'/, '').toLowerCase();
+}
+
+function arenaMembershipRows_() {
+  const settings = PropertiesService.getScriptProperties();
+  const manualId = settings.getProperty('ARENA_MANUAL_MEMBERS_SHEET_ID');
+  const paidId = settings.getProperty('ARENA_PAID_MEMBERS_SHEET_ID');
+  if (!manualId || !paidId) throw new Error('Membership spreadsheets are not configured.');
+
+  const manual = SpreadsheetApp.openById(manualId).getSheetByName('Ledenlijst');
+  const paid = SpreadsheetApp.openById(paidId).getSheetByName('Sheet1');
+  if (!manual || !paid) throw new Error('Membership tabs are missing.');
+  // The native copy keeps the original layout: F = name, G = phone, H = email.
+  const rosterRows = manual.getRange(1, 6, manual.getLastRow(), 3).getDisplayValues();
+  const paidRows = paid.getDataRange().getDisplayValues();
+  if (!rosterRows.some(row => row.map(cell => cell.trim().toLowerCase()).join('|') ===
+        'voornaam + naam|telefoon nummer|e-mail') ||
+      paidRows[0].slice(3, 5).join('|') !== 'Email|Phone' ||
+      paidRows[0][14] !== 'Payment Status') {
+    throw new Error('Membership headers do not match.');
+  }
+
+  const approvedRows = rosterRows
+    .filter(([name, phone, email]) => name.trim() &&
+      (arenaValidEmail_(arenaEmailKey_(email)) || arenaPhoneKey_(phone)))
+    .map(([, phone, email]) => [email, phone]);
+  if (!approvedRows.length) throw new Error('No contacts found in the manual roster.');
+  return approvedRows.concat(paidRows.slice(1)
+    .filter(row => String(row[14]).trim().toLowerCase() === 'payment done')
+    .map(row => row.slice(3, 5)));
+}
+
+function checkSportsArenaMembershipSetup() {
+  const rows = arenaMembershipRows_();
+  const usable = rows.filter(row => arenaValidEmail_(arenaEmailKey_(row[0])) || arenaPhoneKey_(row[1]));
+  if (!usable.length) throw new Error('No usable membership records were found.');
+  Logger.log('PASS: both membership sheets are readable. Usable roster rows: %s.', usable.length);
+}
+
 function arenaOpen_() {
   const settings = PropertiesService.getScriptProperties();
   return settings.getProperty('ARENA_REGISTRATION_OPEN') === 'true' &&
-    Boolean(settings.getProperty('SUMUP_API_KEY') && settings.getProperty('SUMUP_MERCHANT_CODE'));
+    Boolean(settings.getProperty('SUMUP_API_KEY') && settings.getProperty('SUMUP_MERCHANT_CODE') &&
+      settings.getProperty('ARENA_MANUAL_MEMBERS_SHEET_ID') && settings.getProperty('ARENA_PAID_MEMBERS_SHEET_ID'));
 }
 
 function doGet() {
-  return arenaResult_({ registrationOpen: arenaOpen_() });
+  return arenaResult_({ registrationOpen: arenaOpen_(), membershipPricing: true });
 }
 
 function doPost(e) {
@@ -81,6 +137,9 @@ function doPost(e) {
     return arenaResult_({ success: false, code: 'invalid', message: 'Invalid request.' });
   }
 
+  if (data?.membershipPricing !== true) {
+    return arenaResult_({ success: false, code: 'refresh', message: 'Please reload the registration page.' });
+  }
   return arenaProcessRegistration_(data);
 }
 
@@ -95,20 +154,17 @@ function arenaProcessRegistration_(data, testOnly) {
 
   const firstName = arenaSafeCell_(data.firstName, 80);
   const lastName = arenaSafeCell_(data.lastName, 80);
-  const email = String(data.email || '').trim().toLowerCase();
-  const phone = arenaSafeCell_(data.phone, 30);
-  const member = data.memberStatus;
+  const email = arenaEmailKey_(data.email);
+  const phone = arenaPhoneKey_(data.phone);
   const section = data.sportsSection;
   const heardFrom = arenaSafeCell_(data.heardFrom, 150);
 
   if (!firstName || !lastName || !arenaValidEmail_(email) ||
-      phone.replace(/\D/g, '').length < 6 ||
-      !['Yes', 'No'].includes(member) ||
+      !phone ||
       !['Sisters', 'Brothers', 'Discuss'].includes(section)) {
     return arenaResult_({ success: false, code: 'invalid', message: 'Please check your details.' });
   }
 
-  const fee = member === 'Yes' ? 8 : 10;
   const lock = LockService.getScriptLock();
   try {
     lock.waitLock(15000);
@@ -120,18 +176,46 @@ function arenaProcessRegistration_(data, testOnly) {
       ? sheet.getRange(2, 1, sheet.getLastRow() - 1, ARENA_HEADERS.length).getValues()
       : [];
 
-    if (rows.some(row => String(row[6]).trim().toLowerCase() === email && row[2] === ARENA_EVENT_ID && row[13] !== 'Expired')) {
-      return arenaResult_({ success: false, code: 'duplicate', message: 'Email already registered.' });
+    const current = rows.map((row, index) => ({ row, number: index + 2 }))
+      .filter(({ row }) => row[2] === ARENA_EVENT_ID && row[13] !== 'Expired');
+    const matches = current.filter(({ row }) =>
+      arenaEmailKey_(row[6]) === email || arenaPhoneKey_(row[7]) === phone);
+    let occupied = current.length;
+    if (matches.length) {
+      const { row, number } = matches[0];
+      if (testOnly || matches.length !== 1 || row[13] !== 'Pending SumUp payment' ||
+          !row[15] || arenaEmailKey_(row[6]) !== email || arenaPhoneKey_(row[7]) !== phone) {
+        return arenaDuplicate_();
+      }
+
+      const checkout = arenaVerifiedCheckout_(row);
+      if (checkout.status === 'PAID') return arenaDuplicate_();
+      if (checkout.status === 'EXPIRED') {
+        sheet.getRange(number, 14).setValue('Expired');
+        SpreadsheetApp.flush();
+        occupied--;
+      } else {
+        if (!['PENDING', 'FAILED'].includes(checkout.status) ||
+            !arenaValidCheckoutUrl_(checkout.hosted_checkout_url)) {
+          throw new Error('SumUp checkout cannot be resumed.');
+        }
+        return arenaResult_({ success: true, registrationId: row[1], amount: row[12], paymentUrl: checkout.hosted_checkout_url });
+      }
     }
-    if (rows.filter(row => row[2] === ARENA_EVENT_ID && row[13] !== 'Expired').length >= ARENA_MAX_REGISTRATIONS) {
+    if (occupied >= ARENA_MAX_REGISTRATIONS) {
       return arenaResult_({ success: false, code: 'full', message: 'Registration is full.' });
     }
 
+    const eligible = !testOnly && arenaMembershipRows_().some(row =>
+      arenaEmailKey_(row[0]) === email || arenaPhoneKey_(row[1]) === phone
+    );
+    const member = eligible ? 'Yes' : 'No';
+    const fee = eligible ? 8 : 10;
     const registrationId = 'SA26-' + Utilities.getUuid().toUpperCase();
     const checkout = testOnly ? null : arenaCreateCheckout_(registrationId, fee);
     sheet.appendRow([
       new Date(), registrationId, ARENA_EVENT_ID, ARENA_EVENT_DATE,
-      firstName, lastName, arenaSafeCell_(email, 150), phone, member,
+      firstName, lastName, arenaSafeCell_(email, 150), arenaSafeCell_('+' + phone, 30), member,
       section, heardFrom, 'Yes', fee, 'Pending SumUp payment', '', checkout ? checkout.id : '', ''
     ]);
     SpreadsheetApp.flush();
@@ -161,14 +245,13 @@ function testSportsArenaRegistration() {
     lastName: 'Registration',
     email: testEmail,
     phone: '0400000000',
-    memberStatus: 'Yes',
     sportsSection: 'Discuss',
     heardFrom: 'Internal registration test',
     consent: true,
     website: ''
   }, true).getContent());
 
-  if (!result.success || result.amount !== 8 || !result.registrationId) {
+  if (!result.success || result.amount !== 10 || !result.registrationId) {
     throw new Error('Test registration failed: ' + JSON.stringify(result));
   }
 
@@ -183,7 +266,7 @@ function testSportsArenaRegistration() {
     if (saved[1] !== result.registrationId ||
         String(saved[6]).toLowerCase() !== testEmail ||
         saved[2] !== ARENA_EVENT_ID ||
-        saved[12] !== 8 ||
+        saved[12] !== 10 ||
         saved[13] !== 'Pending SumUp payment') {
       // Never delete an unverified row. If the check fails, an organiser can
       // locate the dummy entry by its registration ID and remove it manually.
@@ -218,6 +301,14 @@ function arenaSumUp_(path, payload) {
   return JSON.parse(response.getContentText());
 }
 
+function arenaDuplicate_() {
+  return arenaResult_({ success: false, code: 'duplicate', message: 'Email or phone already registered.' });
+}
+
+function arenaValidCheckoutUrl_(url) {
+  return /^https:\/\/checkout\.sumup\.com\/pay\/[a-z0-9-]+$/i.test(url);
+}
+
 function arenaCreateCheckout_(reference, amount) {
   const merchantCode = PropertiesService.getScriptProperties().getProperty('SUMUP_MERCHANT_CODE');
   const checkout = arenaSumUp_('', {
@@ -230,7 +321,7 @@ function arenaCreateCheckout_(reference, amount) {
     hosted_checkout: { enabled: true },
     redirect_url: 'https://crescentyouth.be/Events/sports-arena.html#registration'
   });
-  if (!checkout.id || !/^https:\/\/checkout\.sumup\.com\/pay\/[a-z0-9-]+$/i.test(checkout.hosted_checkout_url)) {
+  if (!checkout.id || !arenaValidCheckoutUrl_(checkout.hosted_checkout_url)) {
     throw new Error('SumUp did not return a hosted checkout.');
   }
   return checkout;
@@ -263,7 +354,7 @@ function checkSportsArenaPayments() {
   }
 }
 
-function arenaReconcilePayment_(sheet, rowNumber, row) {
+function arenaVerifiedCheckout_(row) {
   const checkout = arenaSumUp_('/' + encodeURIComponent(row[15]));
   const merchant = PropertiesService.getScriptProperties().getProperty('SUMUP_MERCHANT_CODE');
   if (checkout.id !== row[15] || checkout.checkout_reference !== row[1] ||
@@ -271,6 +362,11 @@ function arenaReconcilePayment_(sheet, rowNumber, row) {
       Number(checkout.amount) !== Number(row[12])) {
     throw new Error('Checkout details do not match the registration.');
   }
+  return checkout;
+}
+
+function arenaReconcilePayment_(sheet, rowNumber, row) {
+  const checkout = arenaVerifiedCheckout_(row);
   if (checkout.status === 'EXPIRED' && row[13] === 'Pending SumUp payment') {
     sheet.getRange(rowNumber, 14).setValue('Expired');
   }
