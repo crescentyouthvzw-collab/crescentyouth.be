@@ -130,14 +130,19 @@
         if (!raw) return false;
         try {
             const url = new URL(raw);
-            return url.protocol === 'https:' && url.hostname === 'pay.sumup.com';
+            return url.protocol === 'https:' && url.hostname === 'checkout.sumup.com' && url.pathname.startsWith('/pay/');
         } catch (_) {
             return false;
         }
     }
 
+    let registrationOpen = false;
+
     function isReady() {
-        if (config.registrationOpen !== true) return false;
+        return registrationOpen;
+    }
+
+    function validScriptUrl() {
         try {
             const url = new URL(config.googleScriptUrl);
             // Apps Script can use either the standard deployment path or the
@@ -145,8 +150,7 @@
             const validScriptPath = /^\/macros\/s\/[^/]+\/exec$/.test(url.pathname) ||
                 /^\/a\/macros\/[^/]+\/s\/[^/]+\/exec$/.test(url.pathname);
             return url.protocol === 'https:' && url.hostname === 'script.google.com' &&
-                validScriptPath &&
-                validPaymentUrl(config.sumupMemberUrl) && validPaymentUrl(config.sumupNonMemberUrl);
+                validScriptPath;
         } catch (_) {
             return false;
         }
@@ -243,8 +247,8 @@
             if (Number(result.amount) !== expectedFee) throw new Error('Fee mismatch');
             formMessage.textContent = t('saved_redirect');
             formMessage.className = 'form-message success';
-            const paymentUrl = status === 'Yes' ? config.sumupMemberUrl : config.sumupNonMemberUrl;
-            window.location.assign(paymentUrl);
+            if (!validPaymentUrl(result.paymentUrl)) throw new Error('Invalid SumUp checkout URL');
+            window.location.assign(result.paymentUrl);
         } catch (error) {
             console.error('Registration could not be confirmed:', error);
             formMessage.textContent = t('save_error');
@@ -255,4 +259,13 @@
     });
 
     setLanguage(currentLang);
+    if (validScriptUrl()) {
+        fetch(config.googleScriptUrl, { cache: 'no-store' })
+            .then(response => response.json())
+            .then(result => {
+                registrationOpen = result.registrationOpen === true;
+                updateAvailability();
+            })
+            .catch(() => updateAvailability());
+    }
 })();

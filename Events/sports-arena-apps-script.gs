@@ -11,15 +11,11 @@ const ARENA_EVENT_ID = 'the-sports-arena-2026';
 const ARENA_EVENT_DATE = '2026-11-29';
 const ARENA_MAX_REGISTRATIONS = 35;
 
-// IMPORTANT: change to true only after venue approval, privacy review,
-// successful end-to-end Sheet + SumUp tests, and a final launch decision.
-const ARENA_REGISTRATION_OPEN = false;
-
 const ARENA_HEADERS = [
   'Created At', 'Registration ID', 'Event ID', 'Event Date',
   'First Name', 'Last Name', 'Email', 'Phone', 'Member',
   'Sports Section', 'Heard From', 'Consent', 'Price EUR',
-  'Payment Status', 'Payment Notes'
+  'Payment Status', 'Payment Notes', 'SumUp Checkout ID', 'Confirmation Sent At'
 ];
 
 function setupSportsArenaSheet() {
@@ -28,9 +24,14 @@ function setupSportsArenaSheet() {
   if (!sheet) sheet = spreadsheet.insertSheet(ARENA_TAB);
   if (sheet.getLastRow() > 0) {
     const existing = sheet.getRange(1, 1, 1, ARENA_HEADERS.length).getValues()[0];
-    if (existing.join('|') !== ARENA_HEADERS.join('|')) {
+    if (existing.slice(0, 15).join('|') !== ARENA_HEADERS.slice(0, 15).join('|') ||
+        existing.slice(15).some((header, index) => header && header !== ARENA_HEADERS[15 + index])) {
       throw new Error('Existing tab headers do not match. Check manually before proceeding.');
     }
+    sheet.getRange(1, 16, 1, 2).setValues([ARENA_HEADERS.slice(15)])
+      .setBackground('#1e3d2f').setFontColor('#ffffff').setFontWeight('bold');
+    sheet.setColumnWidth(16, 245);
+    sheet.setColumnWidth(17, 180);
     return;
   }
   sheet.appendRow(ARENA_HEADERS);
@@ -56,11 +57,21 @@ function arenaSafeCell_(value, maxLength) {
 }
 
 function arenaValidEmail_(value) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 150;
+  return /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/.test(value) && value.length <= 150;
+}
+
+function arenaOpen_() {
+  const settings = PropertiesService.getScriptProperties();
+  return settings.getProperty('ARENA_REGISTRATION_OPEN') === 'true' &&
+    Boolean(settings.getProperty('SUMUP_API_KEY') && settings.getProperty('SUMUP_MERCHANT_CODE'));
+}
+
+function doGet() {
+  return arenaResult_({ registrationOpen: arenaOpen_() });
 }
 
 function doPost(e) {
-  if (!ARENA_REGISTRATION_OPEN) {
+  if (!arenaOpen_()) {
     return arenaResult_({ success: false, code: 'closed', message: 'Registration is not open.' });
   }
   let data;
@@ -74,10 +85,10 @@ function doPost(e) {
 }
 
 // Shared by the live POST handler and the editor-only test. The public handler
-// above still refuses requests while ARENA_REGISTRATION_OPEN is false.
-function arenaProcessRegistration_(data) {
+// above still refuses requests while registration is closed.
+function arenaProcessRegistration_(data, testOnly) {
   // Honeypot: do not write automated submissions.
-  if (data.website) return arenaResult_({ success: false, code: 'invalid', message: 'Invalid request.' });
+  if (!data || typeof data !== 'object' || data.website) return arenaResult_({ success: false, code: 'invalid', message: 'Invalid request.' });
   if (data.eventId !== ARENA_EVENT_ID || data.consent !== true) {
     return arenaResult_({ success: false, code: 'invalid', message: 'Event or consent is missing.' });
   }
@@ -109,21 +120,22 @@ function arenaProcessRegistration_(data) {
       ? sheet.getRange(2, 1, sheet.getLastRow() - 1, ARENA_HEADERS.length).getValues()
       : [];
 
-    if (rows.some(row => String(row[6]).trim().toLowerCase() === email && row[2] === ARENA_EVENT_ID)) {
+    if (rows.some(row => String(row[6]).trim().toLowerCase() === email && row[2] === ARENA_EVENT_ID && row[13] !== 'Expired')) {
       return arenaResult_({ success: false, code: 'duplicate', message: 'Email already registered.' });
     }
-    if (rows.filter(row => row[2] === ARENA_EVENT_ID).length >= ARENA_MAX_REGISTRATIONS) {
+    if (rows.filter(row => row[2] === ARENA_EVENT_ID && row[13] !== 'Expired').length >= ARENA_MAX_REGISTRATIONS) {
       return arenaResult_({ success: false, code: 'full', message: 'Registration is full.' });
     }
 
-    const registrationId = 'SA26-' + Utilities.getUuid().slice(0, 8).toUpperCase();
+    const registrationId = 'SA26-' + Utilities.getUuid().toUpperCase();
+    const checkout = testOnly ? null : arenaCreateCheckout_(registrationId, fee);
     sheet.appendRow([
       new Date(), registrationId, ARENA_EVENT_ID, ARENA_EVENT_DATE,
       firstName, lastName, arenaSafeCell_(email, 150), phone, member,
-      section, heardFrom, 'Yes', fee, 'Pending SumUp payment', ''
+      section, heardFrom, 'Yes', fee, 'Pending SumUp payment', '', checkout ? checkout.id : '', ''
     ]);
     SpreadsheetApp.flush();
-    return arenaResult_({ success: true, registrationId: registrationId, amount: fee });
+    return arenaResult_({ success: true, registrationId: registrationId, amount: fee, paymentUrl: checkout ? checkout.hosted_checkout_url : null });
   } catch (err) {
     console.error(err);
     return arenaResult_({ success: false, code: 'server', message: 'Registration unavailable. Please contact the organisers.' });
@@ -138,7 +150,7 @@ function arenaProcessRegistration_(data) {
  * fields, then removes ONLY that exact row. Never triggers a SumUp payment.
  */
 function testSportsArenaRegistration() {
-  if (ARENA_REGISTRATION_OPEN) {
+  if (arenaOpen_()) {
     throw new Error('Close public registration before running this test.');
   }
 
@@ -154,7 +166,7 @@ function testSportsArenaRegistration() {
     heardFrom: 'Internal registration test',
     consent: true,
     website: ''
-  }).getContent());
+  }, true).getContent());
 
   if (!result.success || result.amount !== 8 || !result.registrationId) {
     throw new Error('Test registration failed: ' + JSON.stringify(result));
@@ -184,4 +196,123 @@ function testSportsArenaRegistration() {
   } finally {
     if (lock.hasLock()) lock.releaseLock();
   }
+}
+
+function arenaSumUp_(path, payload) {
+  const key = PropertiesService.getScriptProperties().getProperty('SUMUP_API_KEY');
+  if (!key) throw new Error('Missing SumUp API key.');
+  const options = {
+    headers: { Authorization: 'Bearer ' + key },
+    muteHttpExceptions: true,
+    followRedirects: false
+  };
+  if (payload) {
+    options.method = 'post';
+    options.contentType = 'application/json';
+    options.payload = JSON.stringify(payload);
+  }
+  const response = UrlFetchApp.fetch('https://api.sumup.com/v0.1/checkouts' + path, options);
+  if (response.getResponseCode() >= 300) {
+    throw new Error('SumUp returned HTTP ' + response.getResponseCode());
+  }
+  return JSON.parse(response.getContentText());
+}
+
+function arenaCreateCheckout_(reference, amount) {
+  const merchantCode = PropertiesService.getScriptProperties().getProperty('SUMUP_MERCHANT_CODE');
+  const checkout = arenaSumUp_('', {
+    checkout_reference: reference,
+    merchant_code: merchantCode,
+    amount: amount,
+    currency: 'EUR',
+    description: 'Crescent Youth - The Sports Arena',
+    valid_until: new Date(Date.now() + 30 * 60 * 1000).toISOString(),
+    hosted_checkout: { enabled: true },
+    redirect_url: 'https://crescentyouth.be/Events/sports-arena.html#registration'
+  });
+  if (!checkout.id || !/^https:\/\/checkout\.sumup\.com\/pay\/[a-z0-9-]+$/i.test(checkout.hosted_checkout_url)) {
+    throw new Error('SumUp did not return a hosted checkout.');
+  }
+  return checkout;
+}
+
+// Install once as the Crescent Youth Google Workspace account that sends mail.
+function installSportsArenaPaymentCheck() {
+  if (ScriptApp.getProjectTriggers().some(trigger =>
+    trigger.getHandlerFunction() === 'checkSportsArenaPayments')) return;
+  ScriptApp.newTrigger('checkSportsArenaPayments').timeBased().everyMinutes(5).create();
+}
+
+function checkSportsArenaPayments() {
+  const lock = LockService.getScriptLock();
+  if (!lock.tryLock(1000)) return;
+  try {
+    const sheet = SpreadsheetApp.openById(ARENA_SHEET_ID).getSheetByName(ARENA_TAB);
+    const rows = sheet.getDataRange().getValues();
+    rows.slice(1).forEach((row, index) => {
+      if (row[2] !== ARENA_EVENT_ID || !row[15] || row[16] || row[13] === 'Expired') return;
+      try {
+        arenaReconcilePayment_(sheet, index + 2, row);
+      } catch (err) {
+        console.error('Reconciliation failed for ' + row[1] + ': ' + err.message);
+      }
+    });
+  } finally {
+    SpreadsheetApp.flush();
+    lock.releaseLock();
+  }
+}
+
+function arenaReconcilePayment_(sheet, rowNumber, row) {
+  const checkout = arenaSumUp_('/' + encodeURIComponent(row[15]));
+  const merchant = PropertiesService.getScriptProperties().getProperty('SUMUP_MERCHANT_CODE');
+  if (checkout.id !== row[15] || checkout.checkout_reference !== row[1] ||
+      checkout.merchant_code !== merchant || checkout.currency !== 'EUR' ||
+      Number(checkout.amount) !== Number(row[12])) {
+    throw new Error('Checkout details do not match the registration.');
+  }
+  if (checkout.status === 'EXPIRED' && row[13] === 'Pending SumUp payment') {
+    sheet.getRange(rowNumber, 14).setValue('Expired');
+  }
+  if (checkout.status !== 'PAID') return;
+
+  sheet.getRange(rowNumber, 14, 1, 2).setValues([['Paid', 'Verified by SumUp']]);
+  SpreadsheetApp.flush();
+  arenaSendConfirmation_(row);
+  sheet.getRange(rowNumber, 17).setValue(new Date());
+  SpreadsheetApp.flush();
+}
+
+function arenaSendConfirmation_(row) {
+  const reference = String(row[1]);
+  if (!/^SA26-[A-F0-9-]+$/.test(reference) || !arenaValidEmail_(row[6])) {
+    throw new Error('Invalid confirmation recipient or reference.');
+  }
+  const subject = 'Je plek is bevestigd | The Sports Arena';
+  const body = [
+    'Bedankt voor je inschrijving! We hebben je betaling ontvangen en je plek is bevestigd.',
+    '',
+    'The Sports Arena | Crescent Youth vzw',
+    'Zondag 29 november 2026, 13.00–16.30 uur',
+    'Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge',
+    'Betaald: EUR ' + Number(row[12]).toFixed(2),
+    'Inschrijvingsnummer: ' + reference,
+    '',
+    'We kijken ernaar uit je te zien!',
+    'Crescent Youth vzw',
+    '',
+    'Dit is een automatisch bericht. Vragen? Mail naar info@crescentyouth.be.'
+  ].join('\n');
+  MailApp.sendEmail({
+    to: row[6],
+    subject: subject,
+    body: body,
+    htmlBody: '<div style="font:16px/1.6 Arial,sans-serif;color:#173126;max-width:560px;margin:auto">' +
+      '<div style="background:#173126;color:#fff;padding:24px"><small>CRESCENT YOUTH VZW</small>' +
+      '<h1 style="margin:8px 0 0">Je plek is bevestigd</h1></div>' +
+      '<div style="background:#f7f4ef;padding:24px"><p>' + body.split('\n').join('<br>') +
+      '</p></div></div>',
+    name: 'Crescent Youth vzw',
+    noReply: true
+  });
 }
