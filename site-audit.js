@@ -12,7 +12,7 @@
     if (!document.querySelector('link[href*="/site-audit.css"]')) {
         const styles = document.createElement('link');
         styles.rel = 'stylesheet';
-        styles.href = '/site-audit.css?v=20261109-deep-qa';
+        styles.href = '/site-audit.css?v=20261109-uniform';
         document.head.append(styles);
     }
 
@@ -31,15 +31,75 @@
     const ogTitle = metadata('meta[property="og:title"]', 'meta', { property: 'og:title', content: baseTitle });
     const ogDescription = metadata('meta[property="og:description"]', 'meta', { property: 'og:description', content: baseDescription || baseTitle });
 
-    for (const paragraph of document.querySelectorAll('footer p')) {
-        if (paragraph.querySelector('a')) continue;
-        const address = [...paragraph.childNodes].find(node => node.nodeType === 3 && node.textContent.trim() === 'info@crescentyouth.be');
-        if (!address) continue;
-        const link = document.createElement('a');
-        link.href = 'mailto:info@crescentyouth.be';
-        link.textContent = 'info@crescentyouth.be';
-        address.replaceWith(' ', link);
+    const navLinks = [
+        ['/index.html', 'Home', 'Home', 'Accueil', 'الرئيسية'],
+        ['/index.html#activiteiten', 'Activiteiten', 'Activities', 'Activités', 'الأنشطة'],
+        ['/Events/calendar.html', 'Events', 'Events', 'Événements', 'الفعاليات'],
+        ['/index.html#membership-preview', 'Lidmaatschap', 'Membership', 'Adhésion', 'العضوية'],
+        ['/Donation.html', 'Doneren', 'Donate', 'Faire un don', 'تبرع'],
+        ['/index.html#faq', 'FAQ', 'FAQ', 'FAQ', 'الأسئلة الشائعة'],
+        ['/Registration/Registration.html', 'Lid worden', 'Join us', 'Nous rejoindre', 'انضم إلينا'],
+        ['/Contact.html', 'Contact', 'Contact', 'Contact', 'اتصل بنا']
+    ];
+    const footerText = {
+        nl: ['Jongeren in Brugge verbinden via educatie, sport en activiteiten.', 'Snelle links', 'Contact en gegevens', 'Maatschappelijke zetel', 'Ondernemingsnummer', 'Juridische informatie', 'Algemene voorwaarden', 'Privacybeleid', 'Cookiebeleid', 'Alle rechten voorbehouden.', 'Terug naar boven'],
+        en: ['Connecting young people in Bruges through education, sports and activities.', 'Quick links', 'Contact and details', 'Registered office', 'Enterprise number', 'Legal information', 'Terms and conditions', 'Privacy policy', 'Cookie policy', 'All rights reserved.', 'Back to top'],
+        fr: ['Nous rassemblons les jeunes à Bruges autour de l’éducation, du sport et d’activités.', 'Liens rapides', 'Contact et coordonnées', 'Siège social', 'Numéro d’entreprise', 'Informations légales', 'Conditions générales', 'Politique de confidentialité', 'Politique de cookies', 'Tous droits réservés.', 'Retour en haut'],
+        ar: ['نجمع الشباب في بروج من خلال التعليم والرياضة والأنشطة.', 'روابط سريعة', 'معلومات التواصل', 'المقر المسجل', 'رقم المؤسسة', 'المعلومات القانونية', 'الشروط والأحكام', 'سياسة الخصوصية', 'سياسة ملفات تعريف الارتباط', 'جميع الحقوق محفوظة.', 'العودة إلى الأعلى']
+    };
+    const footer = document.querySelector('footer');
+    const menuLinks = [...document.querySelectorAll('#nav-links a')];
+
+    function syncSharedLayout(lang) {
+        const column = { nl: 1, en: 2, fr: 3, ar: 4 }[lang] || 1;
+        const current = path === '/index.html' && navLinks.some(([href]) => href === path + location.hash)
+            ? path + location.hash
+            : path.startsWith('/Events/') ? '/Events/calendar.html' : path;
+        for (const link of menuLinks) {
+            const url = new URL(link.href);
+            const href = (url.pathname === '/' ? '/index.html' : url.pathname) + url.hash;
+            const item = navLinks.find(([target]) => target === href);
+            if (!item) continue;
+            link.textContent = item[column];
+            if (href === current) link.setAttribute('aria-current', href === path ? 'page' : 'location');
+            else link.removeAttribute('aria-current');
+        }
+
+        if (!footer || footer.dataset.locale === lang) return;
+        footer.className = 'site-footer';
+        footer.dataset.locale = lang;
+        const [about, quick, contact, office, number, legal, terms, privacy, cookies, rights, top] =
+            footerText[lang] || footerText.nl;
+        const links = navLinks.map(item => '<li><a href="' + item[0] + '">' + item[column] + '</a></li>').join('');
+        footer.innerHTML = `
+            <div class="site-footer-grid">
+                <div>
+                    <h2>Crescent Youth vzw</h2><p>${about}</p>
+                    <div class="site-footer-social">
+                        <a href="https://www.instagram.com/crescentyouth.be/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.5-3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/></svg></a>
+                        <a href="https://www.tiktok.com/@crescentyouth.be" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2h3c.3 2.4 2 4.2 4 4.5v3a8 8 0 0 1-4-1.5v8a6 6 0 1 1-6-6h1v3h-1a3 3 0 1 0 3 3V2Z"/></svg></a>
+                        <a href="https://linktr.ee/CrescentYouth" aria-label="Linktree" target="_blank" rel="noopener noreferrer"><img src="/images/linktree-seeklogo.png" alt=""></a>
+                    </div>
+                </div>
+                <div><h2>${quick}</h2><ul>${links}</ul></div>
+                <div><h2>${contact}</h2><p><a href="mailto:info@crescentyouth.be">info@crescentyouth.be</a></p>
+                    <address>${office}<br>Molenwiekstraat-West 13<br>8200 Brugge, Belgium</address>
+                    <p>${number} <a href="https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?ondernemingsnummer=1023462539">1023.462.539</a></p>
+                </div>
+                <div><h2>${legal}</h2><ul>
+                    <li><a href="/comply_with_law/terms-and-conditions.html">${terms}</a></li>
+                    <li><a href="/comply_with_law/privacy-policy.html">${privacy}</a></li>
+                    <li><a href="/comply_with_law/cookie-policy.html">${cookies}</a></li>
+                </ul></div>
+            </div>
+            <div class="site-footer-bottom">
+                <p>© ${new Date().getFullYear()} Crescent Youth vzw. ${rights}</p>
+                <a href="#">↑ ${top}</a>
+            </div>`;
     }
+
+    window.addEventListener('hashchange', () => syncSharedLayout(isLegal ? 'nl' : root.lang));
+
 
     const menu = document.getElementById('mobile-menu');
     const nav = document.getElementById('main-nav');
@@ -63,6 +123,7 @@
     function syncLanguage() {
         syncNavigation();
         const lang = isLegal ? 'nl' : (root.lang || 'nl');
+        syncSharedLayout(lang);
         for (const button of document.querySelectorAll('button.lang-option[data-lang]')) {
             const choice = button.dataset.lang;
             button.setAttribute('aria-pressed', String(choice === lang));

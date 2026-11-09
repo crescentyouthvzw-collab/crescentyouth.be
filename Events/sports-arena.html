@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="/Events/sports-arena.css?v=20261109-main">
     <link rel="stylesheet" href="/Events/event-registration.css?v=20261109-1">
     <script defer src="/Events/sports-arena-config.js?v=20261109-4"></script>
-    <script defer src="/Events/sports-arena.js?v=20261109-deep-qa"></script>
+    <script defer src="/Events/sports-arena.js?v=20261109-uniform"></script>
     <link rel="canonical" href="https://crescentyouth.be/Events/sports-arena.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://crescentyouth.be/Events/sports-arena.html">
     <meta property="og:title" content="THE SPORTS ARENA | Crescent Youth">
     <meta property="og:description" content="THE SPORTS ARENA van Crescent Youth vzw: sociale spellen en sport op zondag 29 november 2026, 13:00–16:30, in Buurtcentrum Xaverianen, Sint-Michiels, Brugge.">
-    <link rel="stylesheet" href="/site-audit.css?v=20261109-deep-qa">
-    <script defer src="/site-audit.js?v=20261109-deep-qa"></script>
+    <link rel="stylesheet" href="/site-audit.css?v=20261109-uniform">
+    <script defer src="/site-audit.js?v=20261109-uniform"></script>
     <meta property="og:image" content="https://crescentyouth.be/images/The%20sports%20arena/The%20Sports%20Arena_%20Bruges%20in%20Motion.png">
 </head>
 <body>
@@ -131,7 +131,7 @@
             </aside>
             <div class="form-card">
                 <div class="registration-status" id="registrationAvailability" role="status" aria-live="polite" data-i18n="registration_closed">Registratie opent binnenkort. Dit formulier staat nog niet open.</div>
-                <form id="registrationForm" class="membership-form" method="post" action="#registration">
+                <form id="registrationForm" class="membership-form" method="post" action="#registration" hidden>
                     <fieldset id="registrationFields" disabled>
                         <div class="form-row">
                             <div class="field"><label for="firstName" data-i18n="first_name">Voornaam *</label><input id="firstName" type="text" autocomplete="given-name" maxlength="80" required></div>
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                         <div class="field"><label for="heardFrom" data-i18n="heard_label">Hoe hoorde je over dit event?</label><input id="heardFrom" type="text" maxlength="150" data-i18n-placeholder="heard_placeholder" placeholder="Instagram, WhatsApp, vrienden, website..."></div>
-                        <div class="field bot-field" aria-hidden="true"><label for="website">Website</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
+                        <div class="field bot-field" aria-hidden="true"><label for="website" data-i18n="website_label">Website</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
                         <div class="status-box" id="priceStatus" aria-live="polite" data-i18n="price_select">We controleren je e-mailadres of telefoonnummer om het tarief te bepalen. Je ziet het bedrag in SumUp voordat je betaalt.</div>
                         <label class="checkbox-label" for="consent"><input id="consent" type="checkbox" value="yes" required><span><span data-i18n="consent_before">Ik geef toestemming om mijn gegevens te verwerken voor de organisatie van dit event en heb het</span> <a href="/comply_with_law/privacy-policy.html" target="_blank" rel="noopener noreferrer" data-i18n="privacy_link">privacybeleid</a> <span data-i18n="consent_after">gelezen.</span></span></label>
                         <button type="submit" class="btn submit-btn" id="submitBtn" disabled data-i18n="submit_closed">Registratie opent binnenkort</button>

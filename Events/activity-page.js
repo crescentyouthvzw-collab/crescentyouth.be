@@ -323,8 +323,10 @@ function setLanguage(lang) {
     dot.setAttribute('aria-label', (slideLabel[lang] || slideLabel.nl) + ' ' + (index + 1)));
   const closeLabel = { nl: 'Sluit foto', en: 'Close photo', fr: 'Fermer la photo', ar: 'إغلاق الصورة' };
   document.querySelector('.lightbox-close')?.setAttribute('aria-label', closeLabel[lang] || closeLabel.nl);
+  const enlarge = { nl: 'Vergroot foto', en: 'Enlarge photo', fr: 'Agrandir la photo', ar: 'تكبير الصورة' };
   for (const [image, original] of galleryDescriptions) {
     image.alt = galleryTranslations[original][lang] || original;
+    image.closest('button.gallery-item')?.setAttribute('aria-label', (enlarge[lang] || enlarge.nl) + ': ' + image.alt);
   }
   currentLanguage = lang;
   localStorage.setItem('siteLang', lang);

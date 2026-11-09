@@ -31,7 +31,7 @@
             first_name: 'Voornaam *', last_name: 'Achternaam *', email_label: 'E-mailadres *', phone_label: 'Telefoonnummer *',
             sports_section_label: 'Voorkeur sportgroep *', select_option: 'Selecteer', yes_option: 'Ja', no_option: 'Nee',
             section_sisters: 'Zusters', section_brothers: 'Broeders', section_discuss: 'Bespreek met organisator',
-            heard_label: 'Hoe hoorde je over dit event?', heard_placeholder: 'Instagram, WhatsApp, vrienden, website...',
+            website_label: 'Website', heard_label: 'Hoe hoorde je over dit event?', heard_placeholder: 'Instagram, WhatsApp, vrienden, website...',
             price_select: 'We controleren je e-mailadres of telefoonnummer om het tarief te bepalen. Je ziet het bedrag in SumUp voordat je betaalt.',
             consent_before: 'Ik geef toestemming om mijn gegevens te verwerken voor de organisatie van dit event en heb het', privacy_link: 'privacybeleid', consent_after: 'gelezen.',
             submit_closed: 'Registratie opent binnenkort', submit_ready: 'Registreer & ga naar SumUp', processing: 'Je registratie wordt verwerkt…',
@@ -57,7 +57,7 @@
             first_name: 'First name *', last_name: 'Last name *', email_label: 'Email address *', phone_label: 'Phone number *',
             sports_section_label: 'Preferred sports group *', select_option: 'Select', yes_option: 'Yes', no_option: 'No',
             section_sisters: 'Sisters', section_brothers: 'Brothers', section_discuss: 'Discuss with organiser',
-            heard_label: 'How did you hear about this event?', heard_placeholder: 'Instagram, WhatsApp, friends, website...',
+            website_label: 'Website', heard_label: 'How did you hear about this event?', heard_placeholder: 'Instagram, WhatsApp, friends, website...',
             price_select: 'We check your email or phone number to determine your fee. You will see the amount in SumUp before you pay.',
             consent_before: 'I consent to the use of my details to organise this event and have read the', privacy_link: 'privacy policy', consent_after: '.',
             submit_closed: 'Registration opening soon', submit_ready: 'Register & continue to SumUp', processing: 'Saving your registration…',
@@ -83,7 +83,7 @@
             first_name: 'Prénom *', last_name: 'Nom *', email_label: 'Adresse e-mail *', phone_label: 'Téléphone *',
             sports_section_label: 'Groupe sportif préféré *', select_option: 'Sélectionner', yes_option: 'Oui', no_option: 'Non',
             section_sisters: 'Sœurs', section_brothers: 'Frères', section_discuss: 'En parler avec l’organisateur',
-            heard_label: 'Comment as-tu découvert cet événement ?', heard_placeholder: 'Instagram, WhatsApp, amis, site web...',
+            website_label: 'Site web', heard_label: 'Comment as-tu découvert cet événement ?', heard_placeholder: 'Instagram, WhatsApp, amis, site web...',
             price_select: 'Nous vérifions ton adresse e-mail ou ton numéro de téléphone pour déterminer le tarif. Tu verras le montant dans SumUp avant de payer.',
             consent_before: 'J’accepte le traitement de mes données pour l’organisation de cet événement et j’ai lu la', privacy_link: 'politique de confidentialité', consent_after: '.',
             submit_closed: 'Inscriptions bientôt ouvertes', submit_ready: 'S’inscrire et passer à SumUp', processing: 'Enregistrement en cours…',
@@ -109,7 +109,7 @@
             first_name: 'الاسم الأول *', last_name: 'اسم العائلة *', email_label: 'البريد الإلكتروني *', phone_label: 'رقم الهاتف *',
             sports_section_label: 'المجموعة الرياضية المفضلة *', select_option: 'اختر', yes_option: 'نعم', no_option: 'لا',
             section_sisters: 'الأخوات', section_brothers: 'الإخوة', section_discuss: 'مناقشة الأمر مع المنظم',
-            heard_label: 'كيف سمعت عن هذه الفعالية؟', heard_placeholder: 'إنستغرام، واتساب، الأصدقاء، الموقع...',
+            website_label: 'الموقع الإلكتروني', heard_label: 'كيف سمعت عن هذه الفعالية؟', heard_placeholder: 'إنستغرام، واتساب، الأصدقاء، الموقع...',
             price_select: 'نتحقق من بريدك الإلكتروني أو رقم هاتفك لتحديد الرسوم. ستظهر لك القيمة في SumUp قبل الدفع.',
             consent_before: 'أوافق على معالجة بياناتي لتنظيم هذه الفعالية وقد قرأت', privacy_link: 'سياسة الخصوصية', consent_after: '.',
             submit_closed: 'سيفتح التسجيل قريبًا', submit_ready: 'سجّل وانتقل إلى SumUp', processing: 'جارٍ حفظ التسجيل…',
@@ -156,6 +156,7 @@
 
     function updateAvailability() {
         const ready = isReady();
+        form.hidden = !ready;
         fields.disabled = !ready;
         submitBtn.disabled = !ready;
         submitBtn.textContent = ready ? t('submit_ready') : t('submit_closed');
