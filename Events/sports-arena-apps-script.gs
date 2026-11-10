@@ -9,7 +9,10 @@ const ARENA_SHEET_ID = '1SjF_CqadSiCJIPO7w9F5A4lpjoL6b73hxf8FBP5hGOA';
 const ARENA_TAB = 'Sports Arena 2026';
 const ARENA_EVENT_ID = 'the-sports-arena-2026';
 const ARENA_EVENT_DATE = '2026-11-29';
-const ARENA_MAX_REGISTRATIONS = 35;
+const ARENA_MAX_REGISTRATIONS = 40;
+const ARENA_DISPLAY_CAPACITY = 35;
+const ARENA_GENDER_LIMITS = { Male: 24, Female: 16 };
+const ARENA_LEGACY_GENDERS = { Brothers: 'Male', Sisters: 'Female' };
 
 const ARENA_HEADERS = [
   'Created At', 'Registration ID', 'Event ID', 'Event Date',
@@ -128,11 +131,37 @@ function arenaRows_(sheet) {
     : [];
 }
 
+function arenaActiveRows_(rows) {
+  return rows.filter(row => row[2] === ARENA_EVENT_ID && row[13] !== 'Expired');
+}
+
+function arenaRemainingByGender_(active) {
+  const remaining = { ...ARENA_GENDER_LIMITS };
+  for (const row of active) {
+    const gender = row[17] || ARENA_LEGACY_GENDERS[row[9]];
+    // Keep unclassified registrations within both limits until their gender is recorded.
+    if (gender !== 'Female') remaining.Male--;
+    if (gender !== 'Male') remaining.Female--;
+  }
+  return remaining;
+}
+
+function arenaAvailablePlaces_(active) {
+  const remaining = arenaRemainingByGender_(active);
+  return Math.max(0, Math.min(ARENA_MAX_REGISTRATIONS - active.length,
+    Math.max(0, remaining.Male) + Math.max(0, remaining.Female)));
+}
+
 function arenaCapacity_(rows) {
-  const active = rows.filter(row => row[2] === ARENA_EVENT_ID && row[13] !== 'Expired');
-  const paid = active.filter(row => row[13] === 'Paid' && row[14] === 'Verified by SumUp').length;
-  return { capacity: ARENA_MAX_REGISTRATIONS, paidCount: paid,
-    pendingCount: active.length - paid, availablePlaces: Math.max(0, ARENA_MAX_REGISTRATIONS - active.length) };
+  const active = arenaActiveRows_(rows);
+  const paid = active.filter(row => row[13] === 'Paid');
+  const verified = paid.filter(row => row[14] === 'Verified by SumUp').length;
+  return {
+    capacity: ARENA_DISPLAY_CAPACITY,
+    paidCount: Math.min(verified, ARENA_DISPLAY_CAPACITY),
+    soldOut: arenaAvailablePlaces_(paid) === 0,
+    availablePlaces: arenaAvailablePlaces_(active)
+  };
 }
 
 function doGet() {
@@ -177,13 +206,12 @@ function arenaProcessRegistration_(data, testOnly) {
   const lastName = arenaSafeCell_(data.lastName, 80);
   const email = arenaEmailKey_(data.email);
   const phone = arenaPhoneKey_(data.phone);
-  const section = data.gender ? '' : data.sportsSection || '';
-  const gender = data.gender || '';
+  const gender = data.gender || ARENA_LEGACY_GENDERS[data.sportsSection];
   const heardFrom = arenaSafeCell_(data.heardFrom, 150);
 
   if (!firstName || !lastName || !arenaValidEmail_(email) ||
       !phone ||
-      !(data.gender ? ['Male', 'Female'].includes(gender) : ['Sisters', 'Brothers', 'Discuss'].includes(section))) {
+      !['Male', 'Female'].includes(gender)) {
     return arenaResult_({ success: false, code: 'invalid', message: 'Please check your details.' });
   }
 
@@ -195,13 +223,14 @@ function arenaProcessRegistration_(data, testOnly) {
     if (!sheet) throw new Error('Run setupSportsArenaSheet first.');
     if (sheet.getLastRow() < 1) throw new Error('Registration headers are missing.');
     const rows = arenaRows_(sheet);
-    if (!testOnly && arenaCapacity_(rows).availablePlaces === 0) arenaRefreshPayments_(sheet, rows);
+    if (!testOnly && arenaRemainingByGender_(arenaActiveRows_(rows))[gender] <= 0) {
+      arenaRefreshPayments_(sheet, rows);
+    }
 
-    const current = rows.map((row, index) => ({ row, number: index + 2 }))
+    let current = rows.map((row, index) => ({ row, number: index + 2 }))
       .filter(({ row }) => row[2] === ARENA_EVENT_ID && row[13] !== 'Expired');
     const matches = current.filter(({ row }) =>
       arenaEmailKey_(row[6]) === email || arenaPhoneKey_(row[7]) === phone);
-    let occupied = current.length;
     if (matches.length) {
       const { row, number } = matches[0];
       if (testOnly || matches.length !== 1 || row[13] !== 'Pending SumUp payment' ||
@@ -214,22 +243,27 @@ function arenaProcessRegistration_(data, testOnly) {
       if (checkout.status === 'EXPIRED') {
         sheet.getRange(number, 14).setValue('Expired');
         SpreadsheetApp.flush();
-        occupied--;
+        current = current.filter(entry => entry.number !== number);
       } else {
         if (!['PENDING', 'FAILED'].includes(checkout.status) ||
             !arenaValidCheckoutUrl_(checkout.hosted_checkout_url)) {
           throw new Error('SumUp checkout cannot be resumed.');
         }
-        if (gender) {
+        if (row[17] !== gender) {
+          const others = current.filter(entry => entry.number !== number).map(entry => entry.row);
+          if (arenaRemainingByGender_(others)[gender] <= 0) return arenaGenderFull_();
           sheet.getRange(number, 18).setValue(gender);
           SpreadsheetApp.flush();
+          CacheService.getScriptCache().remove('arena-capacity');
         }
         return arenaResult_({ success: true, registrationId: row[1], amount: row[12], paymentUrl: checkout.hosted_checkout_url });
       }
     }
-    if (occupied >= ARENA_MAX_REGISTRATIONS) {
+    if (current.length >= ARENA_MAX_REGISTRATIONS) {
       return arenaResult_({ success: false, code: 'full', message: 'Er zijn momenteel geen plaatsen vrij. Probeer later opnieuw als een betaling niet wordt afgerond.' });
     }
+
+    if (arenaRemainingByGender_(current.map(entry => entry.row))[gender] <= 0) return arenaGenderFull_();
 
     const eligible = !testOnly && arenaMembershipRows_().some(row =>
       arenaEmailKey_(row[0]) === email || arenaPhoneKey_(row[1]) === phone
@@ -241,7 +275,7 @@ function arenaProcessRegistration_(data, testOnly) {
     sheet.appendRow([
       new Date(), registrationId, ARENA_EVENT_ID, ARENA_EVENT_DATE,
       firstName, lastName, arenaSafeCell_(email, 150), arenaSafeCell_('+' + phone, 30), member,
-      section, heardFrom, 'Yes', fee, 'Pending SumUp payment', '', checkout ? checkout.id : '', '', gender
+      '', heardFrom, 'Yes', fee, 'Pending SumUp payment', '', checkout ? checkout.id : '', '', gender
     ]);
     SpreadsheetApp.flush();
     CacheService.getScriptCache().remove('arena-capacity');
@@ -325,6 +359,10 @@ function arenaSumUp_(path, payload) {
     throw new Error('SumUp returned HTTP ' + response.getResponseCode());
   }
   return JSON.parse(response.getContentText());
+}
+
+function arenaGenderFull_() {
+  return arenaResult_({ success: false, code: 'gender_full', message: 'No places currently available for the selected group.' });
 }
 
 function arenaDuplicate_() {

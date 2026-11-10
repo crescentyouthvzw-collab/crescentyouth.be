@@ -126,10 +126,10 @@
     let capacityStatus = null;
     let submitting = false;
     const capacityCopy = {
-        nl: { gender_label: 'Geslacht *', gender_male: 'Man', gender_female: 'Vrouw', loading: 'Beschikbaarheid wordt opgehaald…', count: '{paid} van {total} plaatsen bevestigd', help: 'Alleen geverifieerde betalingen tellen mee. Tijdelijke betaalreserveringen kunnen plaatsen bezet houden.', full: 'Alle plaatsen zijn betaald en bevestigd.', held: 'De laatste plaatsen zijn tijdelijk gereserveerd voor betaling. Heb je al een betaalpoging gedaan? Vul dezelfde gegevens in om verder te gaan.', error: 'De beschikbaarheid kan nu niet worden opgehaald. De controle vindt ook plaats vóór betaling.' },
-        en: { gender_label: 'Gender *', gender_male: 'Male', gender_female: 'Female', loading: 'Checking availability…', count: '{paid} of {total} places confirmed', help: 'Only verified payments are counted. Places may be temporarily held during checkout.', full: 'All places are paid and confirmed.', held: 'The remaining places are temporarily held for payment. Already started checkout? Enter the same details to continue.', error: 'Availability is temporarily unavailable. Places are also checked before payment.' },
-        fr: { gender_label: 'Genre *', gender_male: 'Homme', gender_female: 'Femme', loading: 'Vérification des places…', count: '{paid} places confirmées sur {total}', help: 'Seuls les paiements vérifiés sont comptés. Des places peuvent être temporairement réservées pendant le paiement.', full: 'Toutes les places sont payées et confirmées.', held: 'Les dernières places sont temporairement réservées pour le paiement. Déjà commencé ? Saisis les mêmes coordonnées pour continuer.', error: 'La disponibilité est momentanément indisponible. Les places sont aussi vérifiées avant le paiement.' },
-        ar: { gender_label: 'الجنس *', gender_male: 'ذكر', gender_female: 'أنثى', loading: 'جارٍ التحقق من الأماكن…', count: 'تم تأكيد {paid} من أصل {total} مكانًا', help: 'تُحتسب المدفوعات التي تم التحقق منها فقط. قد تُحجز أماكن مؤقتًا أثناء الدفع.', full: 'تم دفع جميع الأماكن وتأكيدها.', held: 'الأماكن المتبقية محجوزة مؤقتًا للدفع. إذا بدأت الدفع، أدخل البيانات نفسها للمتابعة.', error: 'تعذر تحديث عدد الأماكن مؤقتًا. يتم التحقق من الأماكن أيضًا قبل الدفع.' }
+        nl: { limited: 'Er zijn nog enkele plaatsen beschikbaar.', gender_full: 'Voor deze groep is er momenteel geen plaats beschikbaar.', gender_label: 'Geslacht *', gender_male: 'Man', gender_female: 'Vrouw', loading: 'Beschikbaarheid wordt opgehaald…', count: '{paid} van {total} plaatsen bevestigd', help: 'Alleen geverifieerde betalingen tellen mee. Tijdelijke betaalreserveringen kunnen plaatsen bezet houden.', full: 'Alle plaatsen zijn betaald en bevestigd.', held: 'De laatste plaatsen zijn tijdelijk gereserveerd voor betaling. Heb je al een betaalpoging gedaan? Vul dezelfde gegevens in om verder te gaan.', error: 'De beschikbaarheid kan nu niet worden opgehaald. De controle vindt ook plaats vóór betaling.' },
+        en: { limited: 'A few places are still available.', gender_full: 'There are currently no places available for this group.', gender_label: 'Gender *', gender_male: 'Male', gender_female: 'Female', loading: 'Checking availability…', count: '{paid} of {total} places confirmed', help: 'Only verified payments are counted. Places may be temporarily held during checkout.', full: 'All places are paid and confirmed.', held: 'The remaining places are temporarily held for payment. Already started checkout? Enter the same details to continue.', error: 'Availability is temporarily unavailable. Places are also checked before payment.' },
+        fr: { limited: 'Il reste quelques places.', gender_full: 'Il ne reste actuellement aucune place pour ce groupe.', gender_label: 'Genre *', gender_male: 'Homme', gender_female: 'Femme', loading: 'Vérification des places…', count: '{paid} places confirmées sur {total}', help: 'Seuls les paiements vérifiés sont comptés. Des places peuvent être temporairement réservées pendant le paiement.', full: 'Toutes les places sont payées et confirmées.', held: 'Les dernières places sont temporairement réservées pour le paiement. Déjà commencé ? Saisis les mêmes coordonnées pour continuer.', error: 'La disponibilité est momentanément indisponible. Les places sont aussi vérifiées avant le paiement.' },
+        ar: { limited: 'لا تزال هناك أماكن محدودة متاحة.', gender_full: 'لا توجد أماكن متاحة لهذه المجموعة حاليًا.', gender_label: 'الجنس *', gender_male: 'ذكر', gender_female: 'أنثى', loading: 'جارٍ التحقق من الأماكن…', count: 'تم تأكيد {paid} من أصل {total} مكانًا', help: 'تُحتسب المدفوعات التي تم التحقق منها فقط. قد تُحجز أماكن مؤقتًا أثناء الدفع.', full: 'تم دفع جميع الأماكن وتأكيدها.', held: 'الأماكن المتبقية محجوزة مؤقتًا للدفع. إذا بدأت الدفع، أدخل البيانات نفسها للمتابعة.', error: 'تعذر تحديث عدد الأماكن مؤقتًا. يتم التحقق من الأماكن أيضًا قبل الدفع.' }
     };
     Object.entries(capacityCopy).forEach(([lang, copy]) => Object.assign(translations[lang], copy));
 
@@ -150,7 +150,7 @@
     }
 
     function isReady() {
-        return registrationOpen && (!capacityStatus || capacityStatus.paidCount < capacityStatus.capacity);
+        return registrationOpen && capacityStatus?.soldOut !== true;
     }
 
     function validScriptUrl() {
@@ -175,8 +175,9 @@
         submitBtn.textContent = ready ? t('submit_ready') : t('submit_closed');
         availability.textContent = ready ? t('registration_ready') : t('registration_closed');
         if (registrationOpen && capacityStatus) {
-            if (capacityStatus.paidCount >= capacityStatus.capacity) availability.textContent = t('full');
+            if (capacityStatus.soldOut === true) availability.textContent = t('full');
             else if (capacityStatus.availablePlaces === 0) availability.textContent = t('held');
+            else if (capacityStatus.paidCount >= capacityStatus.capacity) availability.textContent = t('limited');
         }
         availability.classList.toggle('open', ready);
         updateCapacity();
@@ -249,9 +250,9 @@
             if (!response.ok) throw new Error('HTTP ' + response.status);
             const result = await response.json();
             if (!result.success) {
-                formMessage.textContent = result.code === 'duplicate' ? t('duplicate') : result.code === 'full' ? t('held') : (result.message || t('save_error'));
+                formMessage.textContent = ({ duplicate: t('duplicate'), full: t('held'), gender_full: t('gender_full') })[result.code] || result.message || t('save_error');
                 formMessage.className = 'form-message error';
-                if (result.code === 'full') refreshCapacity();
+                if (['full', 'gender_full'].includes(result.code)) refreshCapacity();
                 return;
             }
             if (![8, 10].includes(result.amount)) throw new Error('Unexpected fee');
