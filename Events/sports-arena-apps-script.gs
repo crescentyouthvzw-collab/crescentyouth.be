@@ -419,7 +419,7 @@ function arenaSendConfirmation_(row) {
   }
   const subject = 'Je inschrijving is bevestigd | The Social Arena';
   const date = 'Zondag 29 november 2026';
-  const time = '13:00–16:30 uur';
+  const time = '12:30–16:30 uur';
   const venue = 'Buurtcentrum Xaverianen';
   const address = 'Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge';
   const amount = '€ ' + Number(row[12]).toFixed(2).replace('.', ',');
