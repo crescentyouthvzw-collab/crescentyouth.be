@@ -15,7 +15,7 @@ const ARENA_HEADERS = [
   'Created At', 'Registration ID', 'Event ID', 'Event Date',
   'First Name', 'Last Name', 'Email', 'Phone', 'Member',
   'Sports Section', 'Heard From', 'Consent', 'Price EUR',
-  'Payment Status', 'Payment Notes', 'SumUp Checkout ID', 'Confirmation Sent At'
+  'Payment Status', 'Payment Notes', 'SumUp Checkout ID', 'Confirmation Sent At', 'Gender'
 ];
 
 function setupSportsArenaSheet() {
@@ -28,7 +28,7 @@ function setupSportsArenaSheet() {
         existing.slice(15).some((header, index) => header && header !== ARENA_HEADERS[15 + index])) {
       throw new Error('Existing tab headers do not match. Check manually before proceeding.');
     }
-    sheet.getRange(1, 16, 1, 2).setValues([ARENA_HEADERS.slice(15)])
+    sheet.getRange(1, 16, 1, ARENA_HEADERS.length - 15).setValues([ARENA_HEADERS.slice(15)])
       .setBackground('#1e3d2f').setFontColor('#ffffff').setFontWeight('bold');
     sheet.setColumnWidth(16, 245);
     sheet.setColumnWidth(17, 180);
@@ -122,8 +122,29 @@ function arenaOpen_() {
       settings.getProperty('ARENA_MANUAL_MEMBERS_SHEET_ID') && settings.getProperty('ARENA_PAID_MEMBERS_SHEET_ID'));
 }
 
+function arenaRows_(sheet) {
+  return sheet.getLastRow() > 1
+    ? sheet.getRange(2, 1, sheet.getLastRow() - 1, ARENA_HEADERS.length).getValues()
+    : [];
+}
+
+function arenaCapacity_(rows) {
+  const active = rows.filter(row => row[2] === ARENA_EVENT_ID && row[13] !== 'Expired');
+  const paid = active.filter(row => row[13] === 'Paid' && row[14] === 'Verified by SumUp').length;
+  return { capacity: ARENA_MAX_REGISTRATIONS, paidCount: paid,
+    pendingCount: active.length - paid, availablePlaces: Math.max(0, ARENA_MAX_REGISTRATIONS - active.length) };
+}
+
 function doGet() {
-  return arenaResult_({ registrationOpen: arenaOpen_(), membershipPricing: true });
+  const cache = CacheService.getScriptCache();
+  const cached = cache.get('arena-capacity');
+  const status = { registrationOpen: arenaOpen_(), membershipPricing: true };
+  if (cached) return arenaResult_(Object.assign(status, JSON.parse(cached)));
+  if (status.registrationOpen) checkSportsArenaPayments();
+  const sheet = SpreadsheetApp.openById(ARENA_SHEET_ID).getSheetByName(ARENA_TAB);
+  const capacity = arenaCapacity_(arenaRows_(sheet));
+  cache.put('arena-capacity', JSON.stringify(capacity), 20);
+  return arenaResult_(Object.assign(status, capacity));
 }
 
 function doPost(e) {
@@ -156,12 +177,13 @@ function arenaProcessRegistration_(data, testOnly) {
   const lastName = arenaSafeCell_(data.lastName, 80);
   const email = arenaEmailKey_(data.email);
   const phone = arenaPhoneKey_(data.phone);
-  const section = data.sportsSection;
+  const section = data.gender ? '' : data.sportsSection || '';
+  const gender = data.gender || '';
   const heardFrom = arenaSafeCell_(data.heardFrom, 150);
 
   if (!firstName || !lastName || !arenaValidEmail_(email) ||
       !phone ||
-      !['Sisters', 'Brothers', 'Discuss'].includes(section)) {
+      !(data.gender ? ['Male', 'Female'].includes(gender) : ['Sisters', 'Brothers', 'Discuss'].includes(section))) {
     return arenaResult_({ success: false, code: 'invalid', message: 'Please check your details.' });
   }
 
@@ -172,9 +194,8 @@ function arenaProcessRegistration_(data, testOnly) {
     const sheet = spreadsheet.getSheetByName(ARENA_TAB);
     if (!sheet) throw new Error('Run setupSportsArenaSheet first.');
     if (sheet.getLastRow() < 1) throw new Error('Registration headers are missing.');
-    const rows = sheet.getLastRow() > 1
-      ? sheet.getRange(2, 1, sheet.getLastRow() - 1, ARENA_HEADERS.length).getValues()
-      : [];
+    const rows = arenaRows_(sheet);
+    if (!testOnly && arenaCapacity_(rows).availablePlaces === 0) arenaRefreshPayments_(sheet, rows);
 
     const current = rows.map((row, index) => ({ row, number: index + 2 }))
       .filter(({ row }) => row[2] === ARENA_EVENT_ID && row[13] !== 'Expired');
@@ -199,11 +220,15 @@ function arenaProcessRegistration_(data, testOnly) {
             !arenaValidCheckoutUrl_(checkout.hosted_checkout_url)) {
           throw new Error('SumUp checkout cannot be resumed.');
         }
+        if (gender) {
+          sheet.getRange(number, 18).setValue(gender);
+          SpreadsheetApp.flush();
+        }
         return arenaResult_({ success: true, registrationId: row[1], amount: row[12], paymentUrl: checkout.hosted_checkout_url });
       }
     }
     if (occupied >= ARENA_MAX_REGISTRATIONS) {
-      return arenaResult_({ success: false, code: 'full', message: 'Registration is full.' });
+      return arenaResult_({ success: false, code: 'full', message: 'Er zijn momenteel geen plaatsen vrij. Probeer later opnieuw als een betaling niet wordt afgerond.' });
     }
 
     const eligible = !testOnly && arenaMembershipRows_().some(row =>
@@ -216,9 +241,10 @@ function arenaProcessRegistration_(data, testOnly) {
     sheet.appendRow([
       new Date(), registrationId, ARENA_EVENT_ID, ARENA_EVENT_DATE,
       firstName, lastName, arenaSafeCell_(email, 150), arenaSafeCell_('+' + phone, 30), member,
-      section, heardFrom, 'Yes', fee, 'Pending SumUp payment', '', checkout ? checkout.id : '', ''
+      section, heardFrom, 'Yes', fee, 'Pending SumUp payment', '', checkout ? checkout.id : '', '', gender
     ]);
     SpreadsheetApp.flush();
+    CacheService.getScriptCache().remove('arena-capacity');
     return arenaResult_({ success: true, registrationId: registrationId, amount: fee, paymentUrl: checkout ? checkout.hosted_checkout_url : null });
   } catch (err) {
     console.error(err);
@@ -245,7 +271,7 @@ function testSportsArenaRegistration() {
     lastName: 'Registration',
     email: testEmail,
     phone: '0400000000',
-    sportsSection: 'Discuss',
+    gender: 'Male',
     heardFrom: 'Internal registration test',
     consent: true,
     website: ''
@@ -339,19 +365,23 @@ function checkSportsArenaPayments() {
   if (!lock.tryLock(1000)) return;
   try {
     const sheet = SpreadsheetApp.openById(ARENA_SHEET_ID).getSheetByName(ARENA_TAB);
-    const rows = sheet.getDataRange().getValues();
-    rows.slice(1).forEach((row, index) => {
-      if (row[2] !== ARENA_EVENT_ID || !row[15] || row[16] || row[13] === 'Expired') return;
-      try {
-        arenaReconcilePayment_(sheet, index + 2, row);
-      } catch (err) {
-        console.error('Reconciliation failed for ' + row[1] + ': ' + err.message);
-      }
-    });
+    arenaRefreshPayments_(sheet, arenaRows_(sheet));
+    CacheService.getScriptCache().remove('arena-capacity');
   } finally {
     SpreadsheetApp.flush();
     lock.releaseLock();
   }
+}
+
+function arenaRefreshPayments_(sheet, rows) {
+  rows.forEach((row, index) => {
+    if (row[2] !== ARENA_EVENT_ID || !row[15] || row[16] || row[13] === 'Expired') return;
+    try {
+      arenaReconcilePayment_(sheet, index + 2, row);
+    } catch (err) {
+      console.error('Reconciliation failed for ' + row[1] + ': ' + err.message);
+    }
+  });
 }
 
 function arenaVerifiedCheckout_(row) {
@@ -369,10 +399,13 @@ function arenaReconcilePayment_(sheet, rowNumber, row) {
   const checkout = arenaVerifiedCheckout_(row);
   if (checkout.status === 'EXPIRED' && row[13] === 'Pending SumUp payment') {
     sheet.getRange(rowNumber, 14).setValue('Expired');
+    row[13] = 'Expired';
   }
   if (checkout.status !== 'PAID') return;
 
   sheet.getRange(rowNumber, 14, 1, 2).setValues([['Paid', 'Verified by SumUp']]);
+  row[13] = 'Paid';
+  row[14] = 'Verified by SumUp';
   SpreadsheetApp.flush();
   arenaSendConfirmation_(row);
   sheet.getRange(rowNumber, 17).setValue(new Date());

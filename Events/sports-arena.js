@@ -123,9 +123,34 @@
     }
 
     let registrationOpen = false;
+    let capacityStatus = null;
+    let submitting = false;
+    const capacityCopy = {
+        nl: { gender_label: 'Geslacht *', gender_male: 'Man', gender_female: 'Vrouw', loading: 'Beschikbaarheid wordt opgehaald…', count: '{paid} van {total} plaatsen bevestigd', help: 'Alleen geverifieerde betalingen tellen mee. Tijdelijke betaalreserveringen kunnen plaatsen bezet houden.', full: 'Alle plaatsen zijn betaald en bevestigd.', held: 'De laatste plaatsen zijn tijdelijk gereserveerd voor betaling. Heb je al een betaalpoging gedaan? Vul dezelfde gegevens in om verder te gaan.', error: 'De beschikbaarheid kan nu niet worden opgehaald. De controle vindt ook plaats vóór betaling.' },
+        en: { gender_label: 'Gender *', gender_male: 'Male', gender_female: 'Female', loading: 'Checking availability…', count: '{paid} of {total} places confirmed', help: 'Only verified payments are counted. Places may be temporarily held during checkout.', full: 'All places are paid and confirmed.', held: 'The remaining places are temporarily held for payment. Already started checkout? Enter the same details to continue.', error: 'Availability is temporarily unavailable. Places are also checked before payment.' },
+        fr: { gender_label: 'Genre *', gender_male: 'Homme', gender_female: 'Femme', loading: 'Vérification des places…', count: '{paid} places confirmées sur {total}', help: 'Seuls les paiements vérifiés sont comptés. Des places peuvent être temporairement réservées pendant le paiement.', full: 'Toutes les places sont payées et confirmées.', held: 'Les dernières places sont temporairement réservées pour le paiement. Déjà commencé ? Saisis les mêmes coordonnées pour continuer.', error: 'La disponibilité est momentanément indisponible. Les places sont aussi vérifiées avant le paiement.' },
+        ar: { gender_label: 'الجنس *', gender_male: 'ذكر', gender_female: 'أنثى', loading: 'جارٍ التحقق من الأماكن…', count: 'تم تأكيد {paid} من أصل {total} مكانًا', help: 'تُحتسب المدفوعات التي تم التحقق منها فقط. قد تُحجز أماكن مؤقتًا أثناء الدفع.', full: 'تم دفع جميع الأماكن وتأكيدها.', held: 'الأماكن المتبقية محجوزة مؤقتًا للدفع. إذا بدأت الدفع، أدخل البيانات نفسها للمتابعة.', error: 'تعذر تحديث عدد الأماكن مؤقتًا. يتم التحقق من الأماكن أيضًا قبل الدفع.' }
+    };
+    Object.entries(capacityCopy).forEach(([lang, copy]) => Object.assign(translations[lang], copy));
+
+    function updateCapacity() {
+        const label = document.getElementById('capacityCount');
+        const progress = document.getElementById('capacityProgress');
+        const help = document.getElementById('capacityHelp');
+        if (!capacityStatus) {
+            label.textContent = t('loading');
+            return;
+        }
+        label.textContent = t('count').replace('{paid}', capacityStatus.paidCount).replace('{total}', capacityStatus.capacity);
+        progress.max = capacityStatus.capacity;
+        progress.value = capacityStatus.paidCount;
+        progress.hidden = false;
+        progress.setAttribute('aria-label', label.textContent);
+        help.textContent = t('help');
+    }
 
     function isReady() {
-        return registrationOpen;
+        return registrationOpen && (!capacityStatus || capacityStatus.paidCount < capacityStatus.capacity);
     }
 
     function validScriptUrl() {
@@ -146,10 +171,15 @@
         const ready = isReady();
         form.hidden = !ready;
         fields.disabled = !ready;
-        submitBtn.disabled = !ready;
+        submitBtn.disabled = !ready || submitting;
         submitBtn.textContent = ready ? t('submit_ready') : t('submit_closed');
         availability.textContent = ready ? t('registration_ready') : t('registration_closed');
+        if (registrationOpen && capacityStatus) {
+            if (capacityStatus.paidCount >= capacityStatus.capacity) availability.textContent = t('full');
+            else if (capacityStatus.availablePlaces === 0) availability.textContent = t('held');
+        }
         availability.classList.toggle('open', ready);
+        updateCapacity();
     }
 
     function setLanguage(lang) {
@@ -188,7 +218,7 @@
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
-        if (!isReady() || !form.reportValidity()) return;
+        if (submitting || !isReady() || !form.reportValidity()) return;
         // Personal fields have no native form names. Only this JSON POST sends them.
         const value = id => form.querySelector('#' + id).value.trim();
         const payload = {
@@ -198,7 +228,7 @@
             email: value('email'),
             phone: value('phone'),
             membershipPricing: true,
-            sportsSection: value('sportsSection'),
+            gender: value('gender'),
             heardFrom: value('heardFrom'),
             consent: form.querySelector('#consent').checked,
             website: value('website')
@@ -206,6 +236,7 @@
 
         formMessage.textContent = t('processing');
         formMessage.className = 'form-message';
+        submitting = true;
         submitBtn.disabled = true;
 
         try {
@@ -218,8 +249,9 @@
             if (!response.ok) throw new Error('HTTP ' + response.status);
             const result = await response.json();
             if (!result.success) {
-                formMessage.textContent = result.code === 'duplicate' ? t('duplicate') : (result.message || t('save_error'));
+                formMessage.textContent = result.code === 'duplicate' ? t('duplicate') : result.code === 'full' ? t('held') : (result.message || t('save_error'));
                 formMessage.className = 'form-message error';
+                if (result.code === 'full') refreshCapacity();
                 return;
             }
             if (![8, 10].includes(result.amount)) throw new Error('Unexpected fee');
@@ -232,18 +264,27 @@
             formMessage.textContent = t('save_error');
             formMessage.className = 'form-message error';
         } finally {
+            submitting = false;
             submitBtn.disabled = !isReady();
         }
     });
 
     setLanguage(currentLang);
-    if (validScriptUrl()) {
-        fetch(config.googleScriptUrl, { cache: 'no-store' })
+    async function refreshCapacity() {
+        if (!validScriptUrl() || document.hidden) return;
+        return fetch(config.googleScriptUrl, { cache: 'no-store' })
             .then(response => response.json())
             .then(result => {
                 registrationOpen = result.registrationOpen === true && result.membershipPricing === true;
+                if (Number.isInteger(result.paidCount) && Number.isInteger(result.capacity) &&
+                    result.paidCount >= 0 && result.capacity > 0 && Number.isInteger(result.availablePlaces)) capacityStatus = result;
                 updateAvailability();
             })
-            .catch(() => updateAvailability());
+            .catch(() => {
+                if (!capacityStatus) document.getElementById('capacityCount').textContent = t('error');
+            });
     }
+    refreshCapacity();
+    setInterval(refreshCapacity, 30000);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) refreshCapacity(); });
 })();

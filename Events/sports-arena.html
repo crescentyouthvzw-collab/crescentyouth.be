@@ -9,10 +9,10 @@
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/Events/sports-arena.css?v=20261109-main">
+    <link rel="stylesheet" href="/Events/sports-arena.css?v=20261110-capacity">
     <link rel="stylesheet" href="/Events/event-registration.css?v=20261109-1">
     <script defer src="/Events/sports-arena-config.js?v=20261109-4"></script>
-    <script defer src="/Events/sports-arena.js?v=20261109-social-arena"></script>
+    <script defer src="/Events/sports-arena.js?v=20261110-capacity"></script>
     <link rel="canonical" href="https://crescentyouth.be/Events/sports-arena.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://crescentyouth.be/Events/sports-arena.html">
@@ -103,7 +103,11 @@
                     <strong class="price">€10</strong>
                 </div>
                 <p class="note"><i class="fas fa-circle-info" aria-hidden="true"></i><span data-i18n="onsite_price">Registratie ter plaatse: €15, enkel als er nog plaatsen beschikbaar zijn.</span></p>
-                <p class="note"><i class="fas fa-users" aria-hidden="true"></i><span data-i18n="capacity">35 plaatsen</span></p>
+                <div class="arena-capacity">
+                    <p class="note"><i class="fas fa-users" aria-hidden="true"></i><span id="capacityCount" role="status" aria-live="polite">Beschikbaarheid wordt opgehaald…</span></p>
+                    <progress id="capacityProgress" max="35" value="0" hidden aria-label="Betaalde inschrijvingen"></progress>
+                    <p id="capacityHelp" class="capacity-help"></p>
+                </div>
                 <div class="ticket-details">
                     <p><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="side_two">Afgeschermde sportsecties voor meisjes en jongens</span></p>
                     <p><i class="fas fa-check" aria-hidden="true"></i><span data-i18n="side_three">Betaling via SumUp na inschrijving</span></p>
@@ -122,8 +126,8 @@
                             <div class="field"><label for="phone" data-i18n="phone_label">Telefoonnummer *</label><input id="phone" type="tel" autocomplete="tel" maxlength="30" required></div>
                         </div>
                         <div class="form-row">
-                            <div class="field"><label for="sportsSection" data-i18n="sports_section_label">Voorkeur sportgroep *</label>
-                                <select id="sportsSection" required><option value="" data-i18n="select_option">Selecteer</option><option value="Sisters" data-i18n="section_sisters">Zusters</option><option value="Brothers" data-i18n="section_brothers">Broeders</option><option value="Discuss" data-i18n="section_discuss">Bespreek met organisator</option></select>
+                            <div class="field"><label for="gender" data-i18n="gender_label">Geslacht *</label>
+                                <select id="gender" required><option value="" data-i18n="select_option">Selecteer</option><option value="Male" data-i18n="gender_male">Man</option><option value="Female" data-i18n="gender_female">Vrouw</option></select>
                             </div>
                         </div>
                         <div class="field"><label for="heardFrom" data-i18n="heard_label">Hoe hoorde je over dit event?</label><input id="heardFrom" type="text" maxlength="150" data-i18n-placeholder="heard_placeholder" placeholder="Instagram, WhatsApp, vrienden, website..."></div>
