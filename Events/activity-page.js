@@ -5,7 +5,7 @@ const pages = {
       title: 'Sport', meta: 'Bekijk komende en afgelopen sportactiviteiten van Crescent Youth vzw in Brugge.',
       hero_title: 'Sport', hero_subtitle: 'Beweeg mee met sportieve activiteiten die jongeren verbinden, energie geven en teamwork versterken.',
       options_intro: 'Kies hieronder tussen komende sportactiviteiten en afgelopen sportmomenten.', upcoming_card_text: 'Bekijk komende sportactiviteiten, toernooien en actieve challenges.', past_card_text: 'Bekijk sportactiviteiten die al hebben plaatsgevonden.',
-      upcoming_intro: 'The Social Arena vindt plaats op zondag 29 november in Buurtcentrum Xaverianen. Bekijk de eventdetails en registratie-informatie.', empty_text: 'Nieuwe sportactiviteiten worden binnenkort hier geplaatst.', upcoming_item_badge: '29 november 2026', upcoming_item_text: 'Zondag 29 november 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Sint-Michiels, Brugge.', upcoming_item_link: 'Bekijk eventdetails',
+      upcoming_intro: 'The Social Arena vindt plaats op zondag 29 november in Buurtcentrum Xaverianen. Bekijk de eventdetails en registratie-informatie.', empty_text: 'Nieuwe sportactiviteiten worden binnenkort hier geplaatst.', upcoming_item_badge: '29 november 2026', upcoming_item_text: 'Zondag 29 november 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13, 8200 Brugge.', upcoming_item_link: 'Bekijk eventdetails',
       past_badge: 'Afgelopen sportevent', past_item_title: 'Sportmoment', past_item_text: 'Een paar sfeerbeelden van onze voetbalmomenten! Wil je erbij zijn?',
       past_item_cta: 'Volg ons op Instagram en join onze WhatsApp-groepen om mee te doen aan de volgende activiteit. Kom voetballen, ontmoet nieuwe mensen en maak deel uit van Crescent Youth.',
       cta_text: 'Nieuwe sportevents worden hier en via onze sociale kanalen gedeeld.'
@@ -14,7 +14,7 @@ const pages = {
       title: 'Sport', meta: 'View upcoming and past sports activities from Crescent Youth vzw in Bruges.',
       hero_title: 'Sport', hero_subtitle: 'Join sports activities that connect young people, build energy and strengthen teamwork.',
       options_intro: 'Choose between upcoming sports activities and past sports moments.', upcoming_card_text: 'View upcoming sports activities, tournaments and active challenges.', past_card_text: 'View sports activities that have already taken place.',
-      upcoming_intro: 'The Social Arena takes place on Sunday 29 November at Buurtcentrum Xaverianen. See the event and registration details.', empty_text: 'New sports activities will be posted here soon.', upcoming_item_badge: '29 November 2026', upcoming_item_text: 'Sunday 29 November 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Sint-Michiels, Bruges.', upcoming_item_link: 'View event details',
+      upcoming_intro: 'The Social Arena takes place on Sunday 29 November at Buurtcentrum Xaverianen. See the event and registration details.', empty_text: 'New sports activities will be posted here soon.', upcoming_item_badge: '29 November 2026', upcoming_item_text: 'Sunday 29 November 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13, 8200 Brugge.', upcoming_item_link: 'View event details',
       past_badge: 'Past sport event', past_item_title: 'Sports moment', past_item_text: 'A few snapshots from our football moments! Want to join us?',
       past_item_cta: 'Follow us on Instagram and join our WhatsApp groups to take part in our next activity. Come play football, meet new people and be part of Crescent Youth.',
       cta_text: 'New sports events will be shared here and through our social channels.'
@@ -23,7 +23,7 @@ const pages = {
       title: 'Sport', meta: 'Découvre les activités sportives à venir et passées de Crescent Youth vzw à Bruges.',
       hero_title: 'Sport', hero_subtitle: 'Participe à des activités sportives qui rassemblent les jeunes, donnent de l’énergie et renforcent l’esprit d’équipe.',
       options_intro: 'Choisis entre les activités sportives à venir et les moments sportifs passés.', upcoming_card_text: 'Découvre les activités sportives, tournois et défis à venir.', past_card_text: 'Découvre les activités sportives qui ont déjà eu lieu.',
-      upcoming_intro: 'The Social Arena aura lieu le dimanche 29 novembre au Buurtcentrum Xaverianen. Découvre les détails de l’événement et les informations d’inscription.', empty_text: 'Les nouvelles activités sportives seront bientôt publiées ici.', upcoming_item_badge: '29 novembre 2026', upcoming_item_text: 'Dimanche 29 novembre 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Sint-Michiels, Bruges.', upcoming_item_link: 'Voir les détails',
+      upcoming_intro: 'The Social Arena aura lieu le dimanche 29 novembre au Buurtcentrum Xaverianen. Découvre les détails de l’événement et les informations d’inscription.', empty_text: 'Les nouvelles activités sportives seront bientôt publiées ici.', upcoming_item_badge: '29 novembre 2026', upcoming_item_text: 'Dimanche 29 novembre 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13, 8200 Brugge.', upcoming_item_link: 'Voir les détails',
       past_badge: 'Événement sportif passé', past_item_title: 'Moment sportif', past_item_text: 'Quelques photos de nos moments de football ! Envie de nous rejoindre ?',
       past_item_cta: 'Suivez-nous sur Instagram et rejoignez nos groupes WhatsApp pour participer à nos prochaines activités. Venez jouer au football, rencontrer de nouvelles personnes et faire partie de Crescent Youth.',
       cta_text: 'Les nouveaux événements sportifs seront partagés ici et via nos réseaux sociaux.'
@@ -32,7 +32,7 @@ const pages = {
       title: 'الرياضة', meta: 'اطلع على الأنشطة الرياضية القادمة والسابقة لشبيبة الهلال في بروج.',
       hero_title: 'الرياضة', hero_subtitle: 'شارك في أنشطة رياضية تجمع الشباب، وتمنحهم الطاقة، وتعزز روح الفريق.',
       options_intro: 'اختر بين الأنشطة الرياضية القادمة واللحظات الرياضية السابقة.', upcoming_card_text: 'اطلع على الأنشطة الرياضية والبطولات والتحديات القادمة.', past_card_text: 'اطلع على الأنشطة الرياضية التي أُقيمت سابقًا.',
-      upcoming_intro: 'تُقام فعالية The Social Arena يوم الأحد 29 نوفمبر في Buurtcentrum Xaverianen. اطّلع على تفاصيل الفعالية ومعلومات التسجيل.', empty_text: 'سيتم نشر الأنشطة الرياضية الجديدة هنا قريبًا.', upcoming_item_badge: '29 نوفمبر 2026', upcoming_item_text: 'الأحد 29 نوفمبر 2026 · 12:30–16:30 · Buurtcentrum Xaverianen، سينت ميخيلس، بروج.', upcoming_item_link: 'تفاصيل الفعالية',
+      upcoming_intro: 'تُقام فعالية The Social Arena يوم الأحد 29 نوفمبر في Buurtcentrum Xaverianen. اطّلع على تفاصيل الفعالية ومعلومات التسجيل.', empty_text: 'سيتم نشر الأنشطة الرياضية الجديدة هنا قريبًا.', upcoming_item_badge: '29 نوفمبر 2026', upcoming_item_text: 'الأحد 29 نوفمبر 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13, 8200 Brugge.', upcoming_item_link: 'تفاصيل الفعالية',
       past_badge: 'فعالية رياضية سابقة', past_item_title: 'لحظة رياضية', past_item_text: 'بعض الصور من لحظاتنا في كرة القدم! هل ترغب في الانضمام إلينا؟',
       past_item_cta: 'تابعونا على إنستغرام وانضموا إلى مجموعاتنا على واتساب للمشاركة في أنشطتنا القادمة. تعالوا للعب كرة القدم، والتعرّف على أشخاص جدد، وكونوا جزءًا من شباب الهلال.',
       cta_text: 'سيتم نشر الفعاليات الرياضية الجديدة هنا وعبر قنواتنا الاجتماعية.'
@@ -44,7 +44,7 @@ const pages = {
       title: 'Sociale activiteiten', meta: 'Bekijk komende en afgelopen sociale activiteiten van Crescent Youth vzw in Brugge.',
       hero_title: 'Sociale activiteiten', hero_subtitle: 'Ontmoet, verbind en geniet van warme communitymomenten waar jongeren elkaar beter leren kennen.',
       options_intro: 'Kies hieronder tussen komende sociale activiteiten en afgelopen communitymomenten.', upcoming_card_text: 'Bekijk komende ontmoetingen, creatieve activiteiten en gezellige communitymomenten.', past_card_text: 'Bekijk sociale activiteiten die al hebben plaatsgevonden.',
-      upcoming_intro: 'Er zijn momenteel geen nieuwe sociale activiteiten aangekondigd.', empty_text: 'Nieuwe sociale activiteiten worden binnenkort hier geplaatst.',
+      upcoming_intro: 'The Social Arena is een samenwerking tussen Sociale Activiteiten en Sport. Bekijk de eventdetails en registratie-informatie.', empty_text: 'Nieuwe sociale activiteiten worden binnenkort hier geplaatst.',
       event_kicker: 'Terugblik', past_intro: 'Een terugblik op onze Zusters Iftar van 8 maart in Brugge.',
       past_badge: 'Afgelopen sociaal event', past_item_title: 'Zusters Iftar', past_item_text: 'Op 8 maart kwamen zusters samen in Brugge voor een warme avond van bezinning, creativiteit, gebed en een gezamenlijke iftar.',
       event_date_label: 'Datum', event_date: '8 maart', event_location_label: 'Locatie', event_location: 'Brugge', event_program_label: 'Programma', event_program: 'Lezing, tasbeeh-activiteit, gezamenlijk gebed en iftar',
@@ -55,7 +55,7 @@ const pages = {
       title: 'Social activities', meta: 'View upcoming and past social activities from Crescent Youth vzw in Bruges.',
       hero_title: 'Social activities', hero_subtitle: 'Meet, connect and enjoy warm community moments where young people get to know each other better.',
       options_intro: 'Choose between upcoming social activities and past community moments.', upcoming_card_text: 'View upcoming meetups, creative activities and warm community moments.', past_card_text: 'View social activities that have already taken place.',
-      upcoming_intro: 'No new social activities have been announced yet.', empty_text: 'New social activities will be posted here soon.',
+      upcoming_intro: 'The Social Arena is a collaboration between Social Activities and Sport. View the event and registration details.', empty_text: 'New social activities will be posted here soon.',
       event_kicker: 'Event recap', past_intro: 'A look back at our Sisters’ Iftar on 8 March in Bruges.',
       past_badge: 'Past social event', past_item_title: 'Sisters’ Iftar', past_item_text: 'On 8 March, sisters came together in Bruges for a warm evening of reflection, creativity, prayer and a shared iftar.',
       event_date_label: 'Date', event_date: '8 March', event_location_label: 'Location', event_location: 'Bruges', event_program_label: 'Programme', event_program: 'Talk, tasbeeh activity, communal prayer and iftar',
@@ -66,7 +66,7 @@ const pages = {
       title: 'Activités sociales', meta: 'Découvre les activités sociales à venir et passées de Crescent Youth vzw à Bruges.',
       hero_title: 'Activités sociales', hero_subtitle: 'Rencontre, crée du lien et profite de moments chaleureux où les jeunes apprennent à mieux se connaître.',
       options_intro: 'Choisis entre les activités sociales à venir et les moments communautaires passés.', upcoming_card_text: 'Découvre les rencontres, activités créatives et moments communautaires à venir.', past_card_text: 'Découvre les activités sociales qui ont déjà eu lieu.',
-      upcoming_intro: 'Aucune nouvelle activité sociale n’est annoncée pour le moment.', empty_text: 'Les nouvelles activités sociales seront bientôt publiées ici.',
+      upcoming_intro: 'The Social Arena est une collaboration entre les activités sociales et sportives. Consulte les détails de l’événement et de l’inscription.', empty_text: 'Les nouvelles activités sociales seront bientôt publiées ici.',
       event_kicker: 'Retour en images', past_intro: 'Retour sur notre Iftar des sœurs du 8 mars à Bruges.',
       past_badge: 'Événement social passé', past_item_title: 'Iftar des sœurs', past_item_text: 'Le 8 mars, des sœurs se sont réunies à Bruges pour une soirée chaleureuse de réflexion, de créativité, de prière et d’iftar partagé.',
       event_date_label: 'Date', event_date: '8 mars', event_location_label: 'Lieu', event_location: 'Bruges', event_program_label: 'Programme', event_program: 'Conférence, activité tasbeeh, prière commune et iftar',
@@ -77,7 +77,7 @@ const pages = {
       title: 'الأنشطة الاجتماعية', meta: 'اطلع على الأنشطة الاجتماعية القادمة والسابقة لشبيبة الهلال في بروج.',
       hero_title: 'الأنشطة الاجتماعية', hero_subtitle: 'تعرّف، تواصل، واستمتع بلحظات مجتمعية دافئة يتعرف فيها الشباب على بعضهم أكثر.',
       options_intro: 'اختر بين الأنشطة الاجتماعية القادمة واللحظات المجتمعية السابقة.', upcoming_card_text: 'اطلع على اللقاءات والأنشطة الإبداعية واللحظات المجتمعية القادمة.', past_card_text: 'اطلع على الأنشطة الاجتماعية التي أُقيمت سابقًا.',
-      upcoming_intro: 'لا توجد أنشطة اجتماعية جديدة معلنة حاليًا.', empty_text: 'سيتم نشر الأنشطة الاجتماعية الجديدة هنا قريبًا.',
+      upcoming_intro: 'تُقام فعالية The Social Arena بالتعاون بين الأنشطة الاجتماعية والرياضة. اطّلع على تفاصيل الفعالية والتسجيل.', empty_text: 'سيتم نشر الأنشطة الاجتماعية الجديدة هنا قريبًا.',
       event_kicker: 'لمحة من الفعالية', past_intro: 'نظرة على إفطار الأخوات الذي أُقيم يوم 8 مارس في بروج.',
       past_badge: 'فعالية اجتماعية سابقة', past_item_title: 'إفطار الأخوات', past_item_text: 'في 8 مارس، اجتمعت الأخوات في بروج لقضاء أمسية دافئة جمعت بين التأمل والإبداع والصلاة والإفطار الجماعي.',
       event_date_label: 'التاريخ', event_date: '8 مارس', event_location_label: 'المكان', event_location: 'بروج', event_program_label: 'البرنامج', event_program: 'محاضرة، نشاط لصنع المسبحة، صلاة جماعية وإفطار',
@@ -300,6 +300,10 @@ const galleryDescriptions = Array.from(document.images)
 let currentLanguage = localStorage.getItem('siteLang') || 'nl';
 
 function dictionaryFor(lang) {
+  if (pageName === 'social') {
+    const { upcoming_item_badge, upcoming_item_text, upcoming_item_link } = pages.sport[lang];
+    return { ...common[lang], ...pageData[lang], upcoming_item_badge, upcoming_item_text, upcoming_item_link };
+  }
   return { ...common[lang], ...pageData[lang] };
 }
 
