@@ -11,7 +11,7 @@ const ARENA_EVENT_ID = 'the-sports-arena-2026';
 const ARENA_EVENT_DATE = '2026-11-29';
 const ARENA_MAX_REGISTRATIONS = 40;
 const ARENA_DISPLAY_CAPACITY = 35;
-const ARENA_GENDER_LIMITS = { Male: 24, Female: 16 };
+const ARENA_GENDER_LIMITS = { Male: 21, Female: 19 };
 const ARENA_LEGACY_GENDERS = { Brothers: 'Male', Sisters: 'Female' };
 
 const ARENA_HEADERS = [
