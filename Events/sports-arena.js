@@ -24,7 +24,7 @@
             form_kicker: 'Schrijf je in', form_heading: 'Registratie', form_intro: 'Vul je gegevens in om je in te schrijven. Na een succesvolle inschrijving ga je naar de veilige SumUp-betaalpagina.',
             side_title: 'Jouw plaats bij The Social Arena', side_text: 'Een gezellige namiddag met nieuwe gezichten, leuke spellen en sport. Er is een beperkt aantal plaatsen voorzien.',
             side_one: 'Respectvolle, begeleide activiteiten', side_two: 'Afgeschermde sportsecties voor meisjes en jongens', side_three: 'Betaling via SumUp na inschrijving',
-            registration_closed: 'Registratie opent binnenkort. Dit formulier staat nog niet open.', registration_ready: 'Registratie is geopend. Vul het formulier in en betaal daarna via SumUp.',
+            registration_checking: 'Beschikbaarheid van de inschrijving wordt gecontroleerd…', registration_unavailable: 'De beschikbaarheid kan tijdelijk niet worden gecontroleerd.', registration_closed: 'Registratie opent binnenkort. Dit formulier staat nog niet open.', registration_ready: 'Registratie is geopend. Vul het formulier in en betaal daarna via SumUp.',
             first_name: 'Voornaam *', last_name: 'Achternaam *', email_label: 'E-mailadres *', phone_label: 'Telefoonnummer *',
             sports_section_label: 'Voorkeur sportgroep *', select_option: 'Selecteer', yes_option: 'Ja', no_option: 'Nee',
             section_sisters: 'Zusters', section_brothers: 'Broeders', section_discuss: 'Bespreek met organisator',
@@ -47,7 +47,7 @@
             form_kicker: 'Join the event', form_heading: 'Registration', form_intro: 'Fill out your details to register. After your registration is saved, you will be directed to secure SumUp payment.',
             side_title: 'Your place at The Social Arena', side_text: 'An afternoon with new faces, fun games and sports. Places will be limited.',
             side_one: 'Respectful, guided activities', side_two: 'Screened sports sections for girls and boys', side_three: 'SumUp payment after registration',
-            registration_closed: 'Registration is opening soon. This form is not yet accepting entries.', registration_ready: 'Registration is open. Fill out the form and then pay using SumUp.',
+            registration_checking: 'Checking registration availability…', registration_unavailable: 'Registration availability could not be checked.', registration_closed: 'Registration is opening soon. This form is not yet accepting entries.', registration_ready: 'Registration is open. Fill out the form and then pay using SumUp.',
             first_name: 'First name *', last_name: 'Last name *', email_label: 'Email address *', phone_label: 'Phone number *',
             sports_section_label: 'Preferred sports group *', select_option: 'Select', yes_option: 'Yes', no_option: 'No',
             section_sisters: 'Sisters', section_brothers: 'Brothers', section_discuss: 'Discuss with organiser',
@@ -70,7 +70,7 @@
             form_kicker: 'Inscription', form_heading: 'Inscription', form_intro: 'Renseigne tes coordonnées pour t’inscrire. Une fois enregistré, tu seras dirigé vers le paiement sécurisé SumUp.',
             side_title: 'Ta place à The Social Arena', side_text: 'Un après-midi de rencontres, de jeux et de sport. Les places seront limitées.',
             side_one: 'Activités encadrées et respectueuses', side_two: 'Espaces sportifs séparés et protégés des regards', side_three: 'Paiement SumUp après inscription',
-            registration_closed: 'Les inscriptions ouvriront bientôt. Ce formulaire n’est pas encore actif.', registration_ready: 'Les inscriptions sont ouvertes. Remplis le formulaire puis paie avec SumUp.',
+            registration_checking: 'Vérification de la disponibilité des inscriptions…', registration_unavailable: 'La disponibilité des inscriptions n’a pas pu être vérifiée.', registration_closed: 'Les inscriptions ouvriront bientôt. Ce formulaire n’est pas encore actif.', registration_ready: 'Les inscriptions sont ouvertes. Remplis le formulaire puis paie avec SumUp.',
             first_name: 'Prénom *', last_name: 'Nom *', email_label: 'Adresse e-mail *', phone_label: 'Téléphone *',
             sports_section_label: 'Groupe sportif préféré *', select_option: 'Sélectionner', yes_option: 'Oui', no_option: 'Non',
             section_sisters: 'Sœurs', section_brothers: 'Frères', section_discuss: 'En parler avec l’organisateur',
@@ -93,7 +93,7 @@
             form_kicker: 'انضم للفعالية', form_heading: 'التسجيل', form_intro: 'أدخل بياناتك للتسجيل. بعد حفظ التسجيل ستنتقل إلى صفحة دفع SumUp الآمنة.',
             side_title: 'مكانك في The Social Arena', side_text: 'بعد ظهر مليء بالتعارف والألعاب والرياضة. الأماكن محدودة.',
             side_one: 'أنشطة منظمة ومحترمة', side_two: 'أقسام رياضية منفصلة ومحجوبة بين الفتيات والفتيان', side_three: 'الدفع عبر SumUp بعد التسجيل',
-            registration_closed: 'سيفتح التسجيل قريبًا. النموذج غير متاح حاليًا.', registration_ready: 'التسجيل مفتوح. املأ النموذج ثم ادفع عبر SumUp.',
+            registration_checking: 'جارٍ التحقق من توفر التسجيل…', registration_unavailable: 'تعذر التحقق من توفر التسجيل مؤقتًا.', registration_closed: 'سيفتح التسجيل قريبًا. النموذج غير متاح حاليًا.', registration_ready: 'التسجيل مفتوح. املأ النموذج ثم ادفع عبر SumUp.',
             first_name: 'الاسم الأول *', last_name: 'اسم العائلة *', email_label: 'البريد الإلكتروني *', phone_label: 'رقم الهاتف *',
             sports_section_label: 'المجموعة الرياضية المفضلة *', select_option: 'اختر', yes_option: 'نعم', no_option: 'لا',
             section_sisters: 'الأخوات', section_brothers: 'الإخوة', section_discuss: 'مناقشة الأمر مع المنظم',
@@ -123,6 +123,8 @@
     }
 
     let registrationOpen = false;
+    let registrationState = 'checking';
+    let checkingAvailability = false;
     let capacityStatus = null;
     let submitting = false;
     const capacityCopy = {
@@ -173,7 +175,7 @@
         fields.disabled = !ready;
         submitBtn.disabled = !ready || submitting;
         submitBtn.textContent = ready ? t('submit_ready') : t('submit_closed');
-        availability.textContent = ready ? t('registration_ready') : t('registration_closed');
+        availability.textContent = t(ready ? 'registration_ready' : 'registration_' + registrationState);
         if (registrationOpen && capacityStatus) {
             if (capacityStatus.soldOut === true) availability.textContent = t('full');
             else if (capacityStatus.availablePlaces === 0) availability.textContent = t('held');
@@ -272,18 +274,34 @@
 
     setLanguage(currentLang);
     async function refreshCapacity() {
-        if (!validScriptUrl() || document.hidden) return;
+        if (document.hidden || checkingAvailability) return;
+        if (!validScriptUrl()) {
+            registrationState = 'unavailable';
+            updateAvailability();
+            return;
+        }
+        checkingAvailability = true;
         return fetch(config.googleScriptUrl, { cache: 'no-store' })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                return response.json();
+            })
             .then(result => {
-                registrationOpen = result.registrationOpen === true && result.membershipPricing === true;
+                if (typeof result.registrationOpen !== 'boolean') throw new Error('Invalid registration status');
+                registrationOpen = result.registrationOpen && result.membershipPricing === true;
+                registrationState = 'closed';
                 if (Number.isInteger(result.paidCount) && Number.isInteger(result.capacity) &&
                     result.paidCount >= 0 && result.capacity > 0 && Number.isInteger(result.availablePlaces)) capacityStatus = result;
                 updateAvailability();
             })
             .catch(() => {
+                if (registrationState !== 'closed') {
+                    registrationState = 'unavailable';
+                    updateAvailability();
+                }
                 if (!capacityStatus) document.getElementById('capacityCount').textContent = t('error');
-            });
+            })
+            .finally(() => { checkingAvailability = false; });
     }
     refreshCapacity();
     setInterval(refreshCapacity, 30000);

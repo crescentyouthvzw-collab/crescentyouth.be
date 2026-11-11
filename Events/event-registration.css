@@ -296,7 +296,7 @@
 .event-registration .form-message.error { color: #ac3a2e; }
 .event-registration .form-message.success { color: #2e6a3d; }
 .event-registration .form-help { margin-top: 18px; color: #6e746f; font-size: .85rem; line-height: 1.6; }
-.event-registration .bot-field { position: absolute !important; left: -9999px !important; height: 1px !important; overflow: hidden; }
+.event-registration .bot-field { display: none !important; }
 
 [dir="rtl"] .event-registration .price-box,
 [dir="rtl"] .event-registration .form-card { text-align: right; }

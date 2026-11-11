@@ -116,7 +116,10 @@
     if (event.time) {
       const time = make('span');
       const icon = make('i', 'far fa-clock'); icon.setAttribute('aria-hidden', 'true');
-      time.append(icon, document.createTextNode(event.time));
+      const range = document.createElement('bdi');
+      range.dir = 'ltr';
+      range.textContent = event.time;
+      time.append(icon, range);
       info.append(time);
     }
     if (event.location) {

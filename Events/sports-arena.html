@@ -10,9 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/Events/sports-arena.css?v=20261110-capacity">
-    <link rel="stylesheet" href="/Events/event-registration.css?v=20261109-1">
+    <link rel="stylesheet" href="/Events/event-registration.css?v=20261111-qa">
     <script defer src="/Events/sports-arena-config.js?v=20261109-4"></script>
-    <script defer src="/Events/sports-arena.js?v=20261110-group-limits"></script>
+    <script defer src="/Events/sports-arena.js?v=20261111-qa"></script>
     <link rel="canonical" href="https://crescentyouth.be/Events/sports-arena.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://crescentyouth.be/Events/sports-arena.html">
@@ -61,8 +61,8 @@
             <p class="arena-tagline">More Than Sports. A Place to Connect.</p>
             <div class="arena-hero-meta">
                 <span><i class="far fa-calendar" aria-hidden="true"></i><span data-i18n="event_date">Zondag 29 november 2026</span></span>
-                <span><i class="far fa-clock" aria-hidden="true"></i>12:30–16:30</span>
-                <span><i class="fas fa-location-dot" aria-hidden="true"></i><span dir="ltr">Xaverianen · Xaverianenstraat 13, 8200 Brugge</span></span>
+                <span><i class="far fa-clock" aria-hidden="true"></i><bdi dir="ltr">12:30–16:30</bdi></span>
+                <span><i class="fas fa-location-dot" aria-hidden="true"></i><span dir="ltr">Xaverianen · Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge</span></span>
             </div>
             <div class="arena-hero-actions">
                 <a href="#details" class="btn btn-primary" data-i18n="view_details">Bekijk eventdetails</a>
@@ -77,7 +77,7 @@
         <p class="section-intro" data-i18n="about_text">The Social Arena brengt jongeren samen voor sport, interactieve spellen en echte ontmoetingen. Maak nieuwe vrienden, doe mee aan leuke uitdagingen en geniet van een respectvolle en ontspannen sfeer.</p>
         <div class="event-detail-grid">
             <div class="detail-card"><i class="far fa-calendar-check" aria-hidden="true"></i><small data-i18n="label_date">Datum</small><strong data-i18n="event_date">Zondag 29 november 2026</strong></div>
-            <div class="detail-card"><i class="far fa-clock" aria-hidden="true"></i><small data-i18n="label_time">Tijd</small><strong>12:30–16:30</strong></div>
+            <div class="detail-card"><i class="far fa-clock" aria-hidden="true"></i><small data-i18n="label_time">Tijd</small><strong dir="ltr">12:30–16:30</strong></div>
             <div class="detail-card"><i class="fas fa-location-dot" aria-hidden="true"></i><small data-i18n="label_venue">Locatie</small><strong>Buurtcentrum Xaverianen</strong><span>Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge</span></div>
             <div class="detail-card"><i class="fas fa-users" aria-hidden="true"></i><small data-i18n="label_places">Plaatsen</small><strong data-i18n="capacity">35 plaatsen</strong></div>
         </div>
@@ -114,7 +114,7 @@
                 </div>
             </aside>
             <div class="form-card">
-                <div class="registration-status" id="registrationAvailability" role="status" aria-live="polite" data-i18n="registration_closed">Registratie opent binnenkort. Dit formulier staat nog niet open.</div>
+                <div class="registration-status" id="registrationAvailability" role="status" aria-live="polite">Beschikbaarheid van de inschrijving wordt gecontroleerd…</div>
                 <form id="registrationForm" class="membership-form" method="post" action="#registration" hidden>
                     <fieldset id="registrationFields" disabled>
                         <div class="form-row">

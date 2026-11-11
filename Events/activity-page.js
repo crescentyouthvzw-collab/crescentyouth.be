@@ -5,8 +5,8 @@ const pages = {
       title: 'Sport', meta: 'Bekijk komende en afgelopen sportactiviteiten van Crescent Youth vzw in Brugge.',
       hero_title: 'Sport', hero_subtitle: 'Beweeg mee met sportieve activiteiten die jongeren verbinden, energie geven en teamwork versterken.',
       options_intro: 'Kies hieronder tussen komende sportactiviteiten en afgelopen sportmomenten.', upcoming_card_text: 'Bekijk komende sportactiviteiten, toernooien en actieve challenges.', past_card_text: 'Bekijk sportactiviteiten die al hebben plaatsgevonden.',
-      upcoming_intro: 'The Social Arena vindt plaats op zondag 29 november in Buurtcentrum Xaverianen. Bekijk de eventdetails en registratie-informatie.', empty_text: 'Nieuwe sportactiviteiten worden binnenkort hier geplaatst.', upcoming_item_badge: '29 november 2026', upcoming_item_text: 'Zondag 29 november 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13, 8200 Brugge.', upcoming_item_link: 'Bekijk eventdetails',
-      past_badge: 'Afgelopen sportevent', past_item_title: 'Sportmoment', past_item_text: 'Een paar sfeerbeelden van onze voetbalmomenten! Wil je erbij zijn?',
+      upcoming_intro: 'The Social Arena vindt plaats op zondag 29 november in Buurtcentrum Xaverianen. Bekijk de eventdetails en registratie-informatie.', empty_text: 'Nieuwe sportactiviteiten worden binnenkort hier geplaatst.', upcoming_item_badge: '29 november 2026', upcoming_item_text: 'Zondag 29 november 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge.', upcoming_item_link: 'Bekijk eventdetails',
+      lightbox_label: 'Vergrote sportfoto', past_badge: 'Afgelopen sportevent', past_item_title: 'Sportmoment', past_item_text: 'Een paar sfeerbeelden van onze voetbalmomenten! Wil je erbij zijn?',
       past_item_cta: 'Volg ons op Instagram en join onze WhatsApp-groepen om mee te doen aan de volgende activiteit. Kom voetballen, ontmoet nieuwe mensen en maak deel uit van Crescent Youth.',
       cta_text: 'Nieuwe sportevents worden hier en via onze sociale kanalen gedeeld.'
     },
@@ -14,8 +14,8 @@ const pages = {
       title: 'Sport', meta: 'View upcoming and past sports activities from Crescent Youth vzw in Bruges.',
       hero_title: 'Sport', hero_subtitle: 'Join sports activities that connect young people, build energy and strengthen teamwork.',
       options_intro: 'Choose between upcoming sports activities and past sports moments.', upcoming_card_text: 'View upcoming sports activities, tournaments and active challenges.', past_card_text: 'View sports activities that have already taken place.',
-      upcoming_intro: 'The Social Arena takes place on Sunday 29 November at Buurtcentrum Xaverianen. See the event and registration details.', empty_text: 'New sports activities will be posted here soon.', upcoming_item_badge: '29 November 2026', upcoming_item_text: 'Sunday 29 November 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13, 8200 Brugge.', upcoming_item_link: 'View event details',
-      past_badge: 'Past sport event', past_item_title: 'Sports moment', past_item_text: 'A few snapshots from our football moments! Want to join us?',
+      upcoming_intro: 'The Social Arena takes place on Sunday 29 November at Buurtcentrum Xaverianen. See the event and registration details.', empty_text: 'New sports activities will be posted here soon.', upcoming_item_badge: '29 November 2026', upcoming_item_text: 'Sunday 29 November 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge.', upcoming_item_link: 'View event details',
+      lightbox_label: 'Enlarged sports photo', past_badge: 'Past sport event', past_item_title: 'Sports moment', past_item_text: 'A few snapshots from our football moments! Want to join us?',
       past_item_cta: 'Follow us on Instagram and join our WhatsApp groups to take part in our next activity. Come play football, meet new people and be part of Crescent Youth.',
       cta_text: 'New sports events will be shared here and through our social channels.'
     },
@@ -23,8 +23,8 @@ const pages = {
       title: 'Sport', meta: 'Découvre les activités sportives à venir et passées de Crescent Youth vzw à Bruges.',
       hero_title: 'Sport', hero_subtitle: 'Participe à des activités sportives qui rassemblent les jeunes, donnent de l’énergie et renforcent l’esprit d’équipe.',
       options_intro: 'Choisis entre les activités sportives à venir et les moments sportifs passés.', upcoming_card_text: 'Découvre les activités sportives, tournois et défis à venir.', past_card_text: 'Découvre les activités sportives qui ont déjà eu lieu.',
-      upcoming_intro: 'The Social Arena aura lieu le dimanche 29 novembre au Buurtcentrum Xaverianen. Découvre les détails de l’événement et les informations d’inscription.', empty_text: 'Les nouvelles activités sportives seront bientôt publiées ici.', upcoming_item_badge: '29 novembre 2026', upcoming_item_text: 'Dimanche 29 novembre 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13, 8200 Brugge.', upcoming_item_link: 'Voir les détails',
-      past_badge: 'Événement sportif passé', past_item_title: 'Moment sportif', past_item_text: 'Quelques photos de nos moments de football ! Envie de nous rejoindre ?',
+      upcoming_intro: 'The Social Arena aura lieu le dimanche 29 novembre au Buurtcentrum Xaverianen. Découvre les détails de l’événement et les informations d’inscription.', empty_text: 'Les nouvelles activités sportives seront bientôt publiées ici.', upcoming_item_badge: '29 novembre 2026', upcoming_item_text: 'Dimanche 29 novembre 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge.', upcoming_item_link: 'Voir les détails',
+      lightbox_label: 'Photo sportive agrandie', past_badge: 'Événement sportif passé', past_item_title: 'Moment sportif', past_item_text: 'Quelques photos de nos moments de football ! Envie de nous rejoindre ?',
       past_item_cta: 'Suivez-nous sur Instagram et rejoignez nos groupes WhatsApp pour participer à nos prochaines activités. Venez jouer au football, rencontrer de nouvelles personnes et faire partie de Crescent Youth.',
       cta_text: 'Les nouveaux événements sportifs seront partagés ici et via nos réseaux sociaux.'
     },
@@ -32,8 +32,8 @@ const pages = {
       title: 'الرياضة', meta: 'اطلع على الأنشطة الرياضية القادمة والسابقة لشبيبة الهلال في بروج.',
       hero_title: 'الرياضة', hero_subtitle: 'شارك في أنشطة رياضية تجمع الشباب، وتمنحهم الطاقة، وتعزز روح الفريق.',
       options_intro: 'اختر بين الأنشطة الرياضية القادمة واللحظات الرياضية السابقة.', upcoming_card_text: 'اطلع على الأنشطة الرياضية والبطولات والتحديات القادمة.', past_card_text: 'اطلع على الأنشطة الرياضية التي أُقيمت سابقًا.',
-      upcoming_intro: 'تُقام فعالية The Social Arena يوم الأحد 29 نوفمبر في Buurtcentrum Xaverianen. اطّلع على تفاصيل الفعالية ومعلومات التسجيل.', empty_text: 'سيتم نشر الأنشطة الرياضية الجديدة هنا قريبًا.', upcoming_item_badge: '29 نوفمبر 2026', upcoming_item_text: 'الأحد 29 نوفمبر 2026 · 12:30–16:30 · Buurtcentrum Xaverianen, Xaverianenstraat 13, 8200 Brugge.', upcoming_item_link: 'تفاصيل الفعالية',
-      past_badge: 'فعالية رياضية سابقة', past_item_title: 'لحظة رياضية', past_item_text: 'بعض الصور من لحظاتنا في كرة القدم! هل ترغب في الانضمام إلينا؟',
+      upcoming_intro: 'تُقام فعالية The Social Arena يوم الأحد 29 نوفمبر في Buurtcentrum Xaverianen. اطّلع على تفاصيل الفعالية ومعلومات التسجيل.', empty_text: 'سيتم نشر الأنشطة الرياضية الجديدة هنا قريبًا.', upcoming_item_badge: '29 نوفمبر 2026', upcoming_item_text: 'الأحد 29 نوفمبر 2026 · ⁦12:30–16:30⁩ · Buurtcentrum Xaverianen, Xaverianenstraat 13/3, 8200 Sint-Michiels, Brugge.', upcoming_item_link: 'تفاصيل الفعالية',
+      lightbox_label: 'صورة رياضية مكبرة', past_badge: 'فعالية رياضية سابقة', past_item_title: 'لحظة رياضية', past_item_text: 'بعض الصور من لحظاتنا في كرة القدم! هل ترغب في الانضمام إلينا؟',
       past_item_cta: 'تابعونا على إنستغرام وانضموا إلى مجموعاتنا على واتساب للمشاركة في أنشطتنا القادمة. تعالوا للعب كرة القدم، والتعرّف على أشخاص جدد، وكونوا جزءًا من شباب الهلال.',
       cta_text: 'سيتم نشر الفعاليات الرياضية الجديدة هنا وعبر قنواتنا الاجتماعية.'
     }

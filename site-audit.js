@@ -55,13 +55,7 @@
     }
 
     function footerLanguage() {
-        if (!isLegal) return root.lang || 'nl';
-        try {
-            const saved = localStorage.getItem('siteLang');
-            return Object.hasOwn(footerText, saved) ? saved : 'nl';
-        } catch (_) {
-            return 'nl';
-        }
+        return root.lang || 'nl';
     }
     const menuLinks = [...document.querySelectorAll('#nav-links a')];
 
@@ -142,7 +136,7 @@
 
     function syncLanguage() {
         syncNavigation();
-        const lang = isLegal ? 'nl' : (root.lang || 'nl');
+        const lang = root.lang || 'nl';
         syncSharedLayout(footerLanguage());
         for (const button of document.querySelectorAll('button.lang-option[data-lang]')) {
             const choice = button.dataset.lang;
